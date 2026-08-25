@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import ScrollReveal from '@/components/ScrollReveal';
 import { servicesData } from '@/data/services';
 import { 
   Code2, 
@@ -36,27 +37,26 @@ export default function ServicesPage() {
 
       <div className="container">
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: '72px' }}>
-          <div className="badge-pill brand" style={{ marginBottom: '16px' }}>
-            <Terminal size={14} />
-            <span>Architecture & Capabilities</span>
+        <ScrollReveal animation="fade-up">
+          <div style={{ textAlign: 'center', marginBottom: '72px' }}>
+            <div className="badge-pill brand" style={{ marginBottom: '16px' }}>
+              <Terminal size={14} />
+              <span>Architecture & Capabilities</span>
+            </div>
+            <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.6rem)', marginBottom: '20px' }}>
+              Enterprise Engineering <span className="text-gradient">Capabilities</span>
+            </h1>
+            <p style={{ color: '#94A3B8', fontSize: '1.15rem', maxWidth: '720px', margin: '0 auto', lineHeight: '1.6' }}>
+              We translate intricate technical challenges into resilient, maintainable, and high-performance digital infrastructure.
+            </p>
           </div>
-          <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.6rem)', marginBottom: '20px' }}>
-            Enterprise Engineering <span className="text-gradient">Capabilities</span>
-          </h1>
-          <p style={{ color: '#94A3B8', fontSize: '1.15rem', maxWidth: '720px', margin: '0 auto', lineHeight: '1.6' }}>
-            We translate intricate technical challenges into resilient, maintainable, and high-performance digital infrastructure.
-          </p>
-        </div>
+        </ScrollReveal>
 
-        {/* Detailed Services Sections */}
+        {/* Detailed Services Sections with ScrollReveal */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
-          {servicesData.map((service, index) => {
-            const isEven = index % 2 === 0;
-
-            return (
+          {servicesData.map((service, index) => (
+            <ScrollReveal key={service.id} animation="fade-up" delay={index * 100}>
               <section
-                key={service.id}
                 id={service.slug}
                 className="glass-card"
                 style={{
@@ -200,34 +200,35 @@ export default function ServicesPage() {
                   </div>
                 </div>
               </section>
-            );
-          })}
+            </ScrollReveal>
+          ))}
         </div>
 
         {/* Bottom CTA Card */}
-        <div
-          className="glass-card"
-          style={{
-            marginTop: '80px',
-            textAlign: 'center',
-            padding: '60px 32px',
-            background: 'linear-gradient(135deg, rgba(224, 26, 138, 0.15) 0%, rgba(0, 102, 255, 0.2) 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
-          }}
-        >
-          <h2 style={{ fontSize: '2.2rem', color: '#FFFFFF', marginBottom: '16px' }}>
-            Need a Custom Architecture Review?
-          </h2>
-          <p style={{ color: '#CBD5E1', fontSize: '1.05rem', maxWidth: '600px', margin: '0 auto 32px' }}>
-            Our Technical Directors will analyze your current code repository, database bottleneck, or product roadmap at zero cost.
-          </p>
-          <Link href="/contact" className="btn-primary" style={{ padding: '16px 36px', fontSize: '1rem' }}>
-            <span>Book 30-Min Architecture Discovery</span>
-            <ArrowRight size={18} />
-          </Link>
-        </div>
+        <ScrollReveal animation="zoom-in" delay={150}>
+          <div
+            className="glass-card"
+            style={{
+              marginTop: '80px',
+              textAlign: 'center',
+              padding: '60px 32px',
+              background: 'linear-gradient(135deg, rgba(224, 26, 138, 0.15) 0%, rgba(0, 102, 255, 0.2) 100%)',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+            }}
+          >
+            <h2 style={{ fontSize: '2.2rem', color: '#FFFFFF', marginBottom: '16px' }}>
+              Need a Custom Architecture Review?
+            </h2>
+            <p style={{ color: '#CBD5E1', fontSize: '1.05rem', maxWidth: '600px', margin: '0 auto 32px' }}>
+              Our Technical Directors will analyze your current code repository, database bottleneck, or product roadmap at zero cost.
+            </p>
+            <Link href="/contact" className="btn-primary" style={{ padding: '16px 36px', fontSize: '1rem' }}>
+              <span>Book 30-Min Architecture Discovery</span>
+              <ArrowRight size={18} />
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
-
     </div>
   );
 }

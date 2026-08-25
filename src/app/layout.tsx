@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ScrollProgressBar from '@/components/ScrollProgressBar';
 
 export const metadata: Metadata = {
   title: 'Vamtech | Enterprise Software Development, Cloud & AI Engineering',
@@ -36,6 +37,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body>
+        <ScrollProgressBar />
         <Navbar />
         <main style={{ minHeight: 'calc(100vh - 80px)', paddingTop: '80px' }}>
           {children}
