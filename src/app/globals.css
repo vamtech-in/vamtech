@@ -87,19 +87,24 @@
   --card-padding: 40px;
   --element-gap: 16px;
 
-  /* Border Radii */
-  --radius-tags: 9999px;
-  --radius-pills: 9999px;
-  --radius-buttons: 100px;
-  --radius-cards: 40px;
+  /* Border Radius */
   --radius-2xl: 16px;
   --radius-3xl: 40px;
+  --radius-full: 100px;
+  --radius-full-2: 2000px;
+  --radius-full-3: 9999px;
+
+  /* Named Radii */
+  --radius-tags: 9999px;
+  --radius-cards: 40px;
+  --radius-pills: 9999px;
+  --radius-buttons: 100px;
 
   /* Hairline Border */
   --border-hairline: 1px solid var(--color-ash);
 
   /* Shadows */
-  --shadow-md: rgba(0, 0, 0, 0.06) 0px 4px 12px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px;
   --shadow-subtle: rgba(0, 0, 0, 0.04) 0px 2px 8px 0px;
 
   /* Surfaces */
