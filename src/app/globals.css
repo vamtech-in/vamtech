@@ -285,21 +285,28 @@ a {
 }
 
 /* Responsive Media Queries */
-@media (max-width: 1024px) {
-  .grid-3, .grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .footer-grid {
-    grid-template-columns: 1fr 1fr !important;
+.navbar-status-badge {
+  display: flex !important;
+}
+
+@media (max-width: 1240px) {
+  .navbar-status-badge {
+    display: none !important;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1080px) {
   .desktop-nav {
     display: none !important;
   }
   .mobile-trigger {
     display: block !important;
+  }
+  .grid-3, .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
   }
   .audience-grid,
   .calculator-grid,
@@ -309,6 +316,9 @@ a {
   .contact-layout-grid {
     grid-template-columns: 1fr !important;
     gap: 28px !important;
+  }
+  .telemetry-bar {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
@@ -325,6 +335,9 @@ a {
   }
   .form-grid, .budget-grid {
     grid-template-columns: 1fr 1fr !important;
+  }
+  .telemetry-bar {
+    grid-template-columns: 1fr !important;
   }
 }
 

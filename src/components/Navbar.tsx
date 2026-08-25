@@ -61,7 +61,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '28px' }} className="desktop-nav">
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '20px' }} className="desktop-nav">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
 
@@ -79,11 +79,12 @@ export default function Navbar() {
                       display: 'flex',
                       alignItems: 'center',
                       gap: '4px',
-                      fontSize: '0.94rem',
+                      fontSize: '0.9rem',
                       fontWeight: 600,
                       color: isActive ? '#FFFFFF' : '#94A3B8',
                       transition: 'color 0.2s ease',
                       padding: '8px 0',
+                      whiteSpace: 'nowrap',
                     }}
                   >
                     <span>{link.name}</span>
@@ -98,15 +99,16 @@ export default function Navbar() {
                         top: '100%',
                         left: '-20px',
                         width: '320px',
-                        background: 'rgba(11, 16, 30, 0.95)',
-                        backdropFilter: 'blur(20px)',
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        background: 'rgba(11, 16, 30, 0.98)',
+                        backdropFilter: 'blur(24px)',
+                        border: '1px solid rgba(255, 255, 255, 0.12)',
                         borderRadius: '16px',
                         padding: '16px',
-                        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.6)',
+                        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.7)',
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '8px',
+                        zIndex: 110,
                       }}
                     >
                       <Link
@@ -203,12 +205,13 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 style={{
-                  fontSize: '0.94rem',
+                  fontSize: '0.9rem',
                   fontWeight: 600,
                   color: isActive ? '#FFFFFF' : '#94A3B8',
                   transition: 'color 0.2s ease',
                   position: 'relative',
                   padding: '6px 0',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 <span>{link.name}</span>
@@ -231,11 +234,10 @@ export default function Navbar() {
         </nav>
 
         {/* Right CTA & Status */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          {/* Senior SLA Status Indicator */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
+          {/* Senior SLA Status Indicator - Hidden on medium screens to prevent overlapping */}
           <div
             style={{
-              display: 'flex',
               alignItems: 'center',
               gap: '8px',
               padding: '6px 14px',
@@ -245,8 +247,9 @@ export default function Navbar() {
               fontSize: '0.78rem',
               color: '#4ADE80',
               fontWeight: 600,
+              whiteSpace: 'nowrap',
             }}
-            className="desktop-nav"
+            className="navbar-status-badge"
           >
             <span
               style={{
@@ -258,12 +261,12 @@ export default function Navbar() {
                 display: 'inline-block',
               }}
             />
-            <span>All Systems 99.99% Operational</span>
+            <span>99.99% Operational</span>
           </div>
 
-          <Link href="/contact" className="btn-primary" style={{ padding: '10px 22px', fontSize: '0.9rem' }}>
+          <Link href="/contact" className="btn-primary" style={{ padding: '9px 20px', fontSize: '0.88rem', whiteSpace: 'nowrap' }}>
             <span>Book a Call</span>
-            <ArrowRight size={16} />
+            <ArrowRight size={15} />
           </Link>
 
           {/* Mobile Menu Trigger */}
