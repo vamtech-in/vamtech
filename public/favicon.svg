@@ -1,5 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <rect width="32" height="32" rx="8" fill="#f6f3f1" stroke="#cecac8" stroke-width="1"/>
-  <text x="7" y="22" font-family="'Times New Roman', Georgia, serif" font-size="18" font-weight="400" fill="#242424">v</text>
-  <circle cx="21" cy="20" r="2.5" fill="#2b59d1"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="favV" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6F00" />
+      <stop offset="100%" stop-color="#FF2A4D" />
+    </linearGradient>
+    <linearGradient id="favA" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E6007A" />
+      <stop offset="100%" stop-color="#8A1FD8" />
+    </linearGradient>
+    <linearGradient id="favM" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7F22DD" />
+      <stop offset="100%" stop-color="#0066FF" />
+    </linearGradient>
+  </defs>
+
+  <rect width="48" height="48" rx="12" fill="#f6f3f1" stroke="#cecac8" stroke-width="1.2"/>
+  
+  <g transform="translate(1, 2) scale(0.95)">
+    <!-- V -->
+    <path d="M 6 18 L 13 32 C 14 34 16 34 17 32 L 24 18" fill="none" stroke="url(#favV)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- A -->
+    <path d="M 23 32 L 29 18 C 30 16 32 16 33 18 L 39 32" fill="none" stroke="url(#favA)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="31" cy="28.5" r="2.8" fill="#FF4400"/>
+  </g>
 </svg>
