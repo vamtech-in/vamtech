@@ -128,7 +128,7 @@ export default function ContactForm() {
               textTransform: 'uppercase',
             }}
           >
-            Ref: {leadRefId} • NDA Active
+            Ref: {leadRefId} • Inquiry Submitted
           </span>
 
           <h3
@@ -140,7 +140,7 @@ export default function ContactForm() {
               marginBottom: '12px',
             }}
           >
-            Architecture Scope Received
+            Project Inquiry Received
           </h3>
 
           <p
@@ -153,7 +153,7 @@ export default function ContactForm() {
               lineHeight: 1.6,
             }}
           >
-            Thank you, <strong>{formData.name || 'Partner'}</strong>. A Principal Systems Architect is reviewing your technical requirements and will dispatch an architecture evaluation within 4 business hours.
+            Thank you, <strong>{formData.name || 'Partner'}</strong>. Our team is reviewing your project details and will respond within 1 business day with an honest feasibility assessment.
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
@@ -293,11 +293,25 @@ export default function ContactForm() {
           </div>
 
           <div>
-            <label className="monad-label">System Architecture Brief or Bottleneck Description *</label>
+            <label className="monad-label">Preferred Timeline</label>
+            <select
+              value={formData.timeline}
+              onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
+              className="monad-select"
+            >
+              <option value="ASAP">ASAP</option>
+              <option value="Within 1–2 Months">Within 1–2 Months</option>
+              <option value="Within 3–6 Months">Within 3–6 Months</option>
+              <option value="Just Exploring">Just Exploring</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="monad-label">Tell us about your project *</label>
             <textarea
               required
               rows={4}
-              placeholder="Describe your current tech stack, concurrency goals, latency bottlenecks, or target deadlines..."
+              placeholder="Tell us about your project, goals, current tech stack, and any key deadlines..."
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               className="monad-textarea"
@@ -316,7 +330,7 @@ export default function ContactForm() {
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-smoke)', fontSize: '12px' }}>
               <ShieldCheck size={14} color="var(--color-lake-blue)" />
-              <span>Strict NDA Protected • Zero Junior Handoffs</span>
+              <span>Protected & Confidential</span>
             </div>
 
             <button
@@ -325,7 +339,7 @@ export default function ContactForm() {
               className="btn-primary"
               style={{ fontSize: '14px', padding: '14px 32px' }}
             >
-              <span>{isSubmitting ? 'Transmitting Scope...' : 'Transmit Architecture Scope'}</span>
+              <span>{isSubmitting ? 'Sending...' : 'Send Project Inquiry'}</span>
               <span className="arrow-glyph">▸</span>
             </button>
           </div>
@@ -381,7 +395,7 @@ export default function ContactForm() {
                   Discovery Call Confirmed
                 </h4>
                 <p style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '13px', color: 'var(--color-graphite)', marginBottom: '24px', lineHeight: 1.5 }}>
-                  Calendar invite dispatched for <strong>{selectedDate}</strong>. A Principal Architect has received your scope overview.
+                  We'll follow up to schedule your call for <strong>{selectedDate}</strong>. Check your email for confirmation details.
                 </p>
                 <button
                   onClick={() => setShowCalendarModal(false)}
@@ -401,15 +415,15 @@ export default function ContactForm() {
                 </div>
 
                 <p style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '13px', color: 'var(--color-graphite)', marginBottom: '20px' }}>
-                  Select a 30-minute window for a technical consultation with our Principal Distributed Systems Architect.
+                  Select a preferred 30-minute window and we'll confirm via email.
                 </p>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
                   {[
-                    'Tomorrow, 10:00 AM EST',
-                    'Tomorrow, 2:00 PM EST',
-                    'Thursday, 11:30 AM EST',
-                    'Thursday, 4:00 PM EST',
+                    'Tomorrow, 10:00 AM',
+                    'Tomorrow, 2:00 PM',
+                    'Day after tomorrow, 11:30 AM',
+                    'Day after tomorrow, 4:00 PM',
                   ].map((slot) => (
                     <button
                       key={slot}

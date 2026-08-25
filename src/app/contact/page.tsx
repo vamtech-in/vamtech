@@ -66,7 +66,7 @@ export default function ContactPage() {
                 lineHeight: 1.5,
               }}
             >
-              Connect directly with a Principal Systems Architect. We respond within 4 business hours with an honest technical feasibility assessment.
+              Connect directly with our team. We respond within 1 business day with an honest technical feasibility assessment.
             </p>
           </div>
         </ScrollReveal>
@@ -122,11 +122,11 @@ export default function ContactPage() {
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <Phone size={18} color="var(--color-lake-blue)" style={{ flexShrink: 0 }} />
-                    <span>+1 (800) 582-VAMTECH</span>
+                    <span>+1 (800) VAM-TECH</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <Clock size={18} color="var(--color-lake-blue)" style={{ flexShrink: 0 }} />
-                    <span>Guaranteed SLA Response: &lt; 4 Hours</span>
+                    <span>Response Time: Within 1 Business Day</span>
                   </div>
                 </div>
               </div>

@@ -4,7 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CommandPalette from '@/components/CommandPalette';
-import ParallaxGlow from '@/components/ParallaxGlow';
+
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 
 const ebGaramond = EB_Garamond({
@@ -90,7 +90,6 @@ export default function RootLayout({
           color: '#242424',
           minHeight: '100vh',
           margin: 0,
-          fontFamily: 'var(--font-abc-diatype-mono)',
         }}
       >
         <ScrollProgressBar />

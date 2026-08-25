@@ -6,8 +6,7 @@ import {
   MapPin, 
   Mail, 
   Phone, 
-  ArrowUpRight, 
-  ArrowRight
+  ArrowUpRight
 } from 'lucide-react';
 
 export default function Footer() {
@@ -170,17 +169,17 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '13px', color: 'var(--color-graphite)' }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
                 <MapPin size={16} color="var(--color-lake-blue)" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <span>San Francisco, CA & Global Pods</span>
+                <span style={{ color: '#aeb8b3' }}>San Francisco, CA & Global Pods</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Mail size={16} color="var(--color-lake-blue)" style={{ flexShrink: 0 }} />
-                <a href="mailto:contact@vamtech.io" style={{ color: 'var(--color-off-black)', textDecoration: 'underline' }}>
+                <a href="mailto:contact@vamtech.io" style={{ color: '#aeb8b3', textDecoration: 'underline' }}>
                   contact@vamtech.io
                 </a>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Phone size={16} color="var(--color-lake-blue)" style={{ flexShrink: 0 }} />
-                <span>+1 (800) 582-VAMTECH</span>
+                <span style={{ color: '#aeb8b3' }}>+1 (800) VAM-TECH</span>
               </div>
               <div style={{ marginTop: '10px' }}>
                 <Link href="/contact" className="btn-secondary" style={{ width: '100%', fontSize: '12px', padding: '10px 18px' }}>
@@ -210,7 +209,7 @@ export default function Footer() {
           }}
         >
           <div>
-            © {new Date().getFullYear()} Vamtech Technologies Inc. Typeset in Untitled Serif & Diatype Mono.
+            © {new Date().getFullYear()} Vamtech Technologies Inc. Typeset in EB Garamond & JetBrains Mono.
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <Link href="/privacy" style={{ color: 'var(--color-smoke)' }}>Privacy</Link>

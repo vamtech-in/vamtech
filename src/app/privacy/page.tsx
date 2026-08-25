@@ -14,7 +14,7 @@ export default function PrivacyPage() {
         <Link
           href="/"
           className="text-link-arrow"
-          style={{ fontSize: '13px', marginBottom: '32px' }}
+          style={{ fontSize: '13px', marginBottom: '32px', display: 'inline-block' }}
         >
           <span>← Back to Home</span>
         </Link>
