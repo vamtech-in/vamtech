@@ -2,33 +2,46 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
+export type ScrollAnimationType = 
+  | 'fade-up' 
+  | 'fade-down' 
+  | 'fade-left' 
+  | 'fade-right' 
+  | 'zoom-in' 
+  | 'blur-in' 
+  | 'tilt-in'
+  | 'scale-up';
+
 interface ScrollRevealProps {
   children: React.ReactNode;
-  animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'zoom-in' | 'blur-in' | '3d-flip';
+  animation?: ScrollAnimationType;
   delay?: number; // in ms
   duration?: number; // in ms
   threshold?: number;
+  distance?: number; // in px
   className?: string;
   style?: React.CSSProperties;
+  once?: boolean;
 }
 
 export default function ScrollReveal({
   children,
   animation = 'fade-up',
   delay = 0,
-  duration = 650,
-  threshold = 0.05,
+  duration = 700,
+  threshold = 0.12,
+  distance = 36,
   className = '',
   style = {},
+  once = true,
 }: ScrollRevealProps) {
-  // Start with true on first render so content is ALWAYS visible and never flashes blank
-  const [isVisible, setIsVisible] = useState(true);
-  const [mounted, setMounted] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setMounted(true);
-    // After mounting, check visibility with IntersectionObserver
+    setHasMounted(true);
+
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
       setIsVisible(true);
       return;
@@ -38,52 +51,62 @@ export default function ScrollReveal({
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.unobserve(entry.target);
+          if (once && ref.current) {
+            observer.unobserve(ref.current);
+          }
+        } else if (!once) {
+          setIsVisible(false);
         }
       },
       {
         threshold,
-        rootMargin: '50px 0px 50px 0px',
+        rootMargin: '0px 0px -40px 0px',
       }
     );
 
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
+    const el = ref.current;
+    if (el) {
+      observer.observe(el);
     }
-
-    // Safety fallback: Ensure content is visible after 300ms no matter what
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 300);
 
     return () => {
-      clearTimeout(timer);
-      if (currentRef) {
-        observer.unobserve(currentRef);
+      if (el) {
+        observer.unobserve(el);
       }
     };
-  }, [threshold]);
+  }, [threshold, once]);
 
-  const getTransform = () => {
-    if (!mounted || isVisible) return 'none';
+  const getHiddenTransform = (): string => {
     switch (animation) {
       case 'fade-up':
-        return 'translate3d(0, 32px, 0)';
+        return `translate3d(0, ${distance}px, 0)`;
       case 'fade-down':
-        return 'translate3d(0, -32px, 0)';
+        return `translate3d(0, -${distance}px, 0)`;
       case 'fade-left':
-        return 'translate3d(32px, 0, 0)';
+        return `translate3d(${distance}px, 0, 0)`;
       case 'fade-right':
-        return 'translate3d(-32px, 0, 0)';
+        return `translate3d(-${distance}px, 0, 0)`;
       case 'zoom-in':
-        return 'scale3d(0.94, 0.94, 1)';
-      case '3d-flip':
-        return 'perspective(1000px) rotateX(10deg) translate3d(0, 30px, 0)';
-      default:
+      case 'scale-up':
+        return 'scale3d(0.92, 0.92, 1) translate3d(0, 16px, 0)';
+      case 'tilt-in':
+        return `perspective(1000px) rotateX(12deg) translate3d(0, ${distance}px, 0)`;
+      case 'blur-in':
         return 'translate3d(0, 20px, 0)';
+      default:
+        return `translate3d(0, ${distance}px, 0)`;
     }
   };
+
+  const getHiddenFilter = (): string => {
+    if (animation === 'blur-in') {
+      return 'blur(8px)';
+    }
+    return 'none';
+  };
+
+  // SSR or before mount: Render visible to prevent flash of blank content
+  const activeHidden = hasMounted && !isVisible;
 
   return (
     <div
@@ -91,13 +114,15 @@ export default function ScrollReveal({
       className={className}
       style={{
         ...style,
-        opacity: !mounted || isVisible ? 1 : 0.2,
-        transform: getTransform(),
-        transition: `opacity ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
-        willChange: 'opacity, transform',
+        opacity: activeHidden ? 0 : 1,
+        transform: activeHidden ? getHiddenTransform() : 'translate3d(0, 0, 0) scale3d(1, 1, 1)',
+        filter: activeHidden ? getHiddenFilter() : 'blur(0px)',
+        transition: `opacity ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, filter ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+        willChange: activeHidden ? 'opacity, transform, filter' : 'auto',
       }}
     >
       {children}
     </div>
   );
 }
+

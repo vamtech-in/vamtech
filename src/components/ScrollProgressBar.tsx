@@ -15,6 +15,7 @@ export default function ScrollProgressBar() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -26,8 +27,8 @@ export default function ScrollProgressBar() {
         left: 0,
         right: 0,
         height: '3px',
-        zIndex: 1000,
-        background: 'rgba(255, 255, 255, 0.05)',
+        zIndex: 9999,
+        backgroundColor: 'rgba(0, 0, 0, 0.04)',
         pointerEvents: 'none',
       }}
     >
@@ -35,11 +36,12 @@ export default function ScrollProgressBar() {
         style={{
           height: '100%',
           width: `${scrollProgress}%`,
-          background: 'var(--gradient-primary)',
-          boxShadow: '0 0 10px rgba(224, 26, 138, 0.7), 0 0 5px rgba(0, 102, 255, 0.7)',
-          transition: 'width 0.1s cubic-bezier(0.25, 1, 0.5, 1)',
+          background: 'linear-gradient(90deg, #2b59d1 0%, #a0b5eb 50%, #a7fccd 100%)',
+          boxShadow: '0 0 12px rgba(43, 89, 209, 0.6), 0 0 4px rgba(167, 252, 205, 0.8)',
+          transition: 'width 0.12s cubic-bezier(0.16, 1, 0.3, 1)',
         }}
       />
     </div>
   );
 }
+
