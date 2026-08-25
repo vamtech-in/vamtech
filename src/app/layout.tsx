@@ -63,6 +63,27 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Suppress noisy third-party chrome-extension errors from bubbling to Next.js dev overlay
+              if (typeof window !== 'undefined') {
+                window.addEventListener('error', function(e) {
+                  if (e.filename && e.filename.startsWith('chrome-extension://')) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                  }
+                }, true);
+                window.addEventListener('unhandledrejection', function(e) {
+                  if (e.reason && (e.reason.stack?.includes('chrome-extension://') || e.reason.message?.includes('chrome: call method'))) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                  }
+                }, true);
+              }
+            `,
+          }}
+        />
       </head>
       <body
         style={{
