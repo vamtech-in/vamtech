@@ -5,12 +5,9 @@ import {
   Database, 
   Cpu, 
   Cloud, 
-  ShieldCheck, 
-  Terminal, 
   Sparkles, 
-  Zap, 
-  Layers, 
-  CheckCircle2 
+  CheckCircle2,
+  Code2
 } from 'lucide-react';
 
 interface TechItem {
@@ -34,7 +31,7 @@ const techItems: TechItem[] = [
     slaMetric: '<2ms p99 execution',
   },
   {
-    name: 'TypeScript / Node.js / Next.js',
+    name: 'TypeScript / Next.js',
     category: 'languages',
     categoryLabel: 'Core Languages',
     highlight: 'Strict compile-time type safety with React Server Components',
@@ -49,7 +46,7 @@ const techItems: TechItem[] = [
     highlight: 'CUDA-accelerated matrix operations & async vector processing',
     concurrencyModel: 'AsyncIO & Multi-GPU distributed inference',
     enterpriseUse: 'Vector RAG search engines & LLM fine-tuning guardrails',
-    slaMetric: '99.4% Audit Precision',
+    slaMetric: '99.4% Precision',
   },
   {
     name: 'PostgreSQL + pgvector',
@@ -58,136 +55,172 @@ const techItems: TechItem[] = [
     highlight: 'ACID transactional integrity with high-dimensional vector cosine search',
     concurrencyModel: 'MVCC + Connection pooling (PgBouncer)',
     enterpriseUse: 'Primary core transactional ledger & hybrid semantic search',
-    slaMetric: 'Zero Data Loss (RPO=0)',
+    slaMetric: 'Zero Data Loss',
   },
   {
-    name: 'Apache Kafka & Redis',
+    name: 'Apache Kafka / Redpanda',
     category: 'databases',
     categoryLabel: 'Data & Storage',
-    highlight: 'Distributed commit log & in-memory cluster caching',
-    concurrencyModel: 'Partitioned consumer groups & atomic Lua scripts',
-    enterpriseUse: 'Real-time telemetry event streaming & session synchronization',
-    slaMetric: '100,000+ msgs/sec',
+    highlight: 'Distributed commit log with partitioned stream replay',
+    concurrencyModel: 'Zero-copy kernel sendfile & consumer groups',
+    enterpriseUse: 'Asynchronous event bus for high-volume audit & payment telemetry',
+    slaMetric: '2M+ msg/sec',
   },
   {
-    name: 'Kubernetes (EKS/GKE)',
+    name: 'Kubernetes & Cilium eBPF',
     category: 'cloud',
-    categoryLabel: 'Cloud & DevOps',
-    highlight: 'Declarative container orchestration with dynamic HPA scaling',
-    concurrencyModel: 'Distributed etcd consensus & multi-AZ pods',
-    enterpriseUse: 'Production cluster workload management & canary rollouts',
-    slaMetric: '99.99% Availability',
-  },
-  {
-    name: 'Terraform & OpenTofu',
-    category: 'cloud',
-    categoryLabel: 'Cloud & DevOps',
-    highlight: 'Idempotent Infrastructure as Code with automated state locking',
-    concurrencyModel: 'Dependency Graph DAG evaluation',
-    enterpriseUse: 'Multi-environment reproducibility (Dev, Staging, Production)',
-    slaMetric: '100% Auditable IaC',
+    categoryLabel: 'Cloud & SRE',
+    highlight: 'Kernel-level network observability with hardware mTLS encryption',
+    concurrencyModel: 'Autonomous HPA pod autoscaling across multi-AZ clusters',
+    enterpriseUse: 'Multi-region zero-trust container orchestration',
+    slaMetric: '99.999% SLA',
   },
 ];
 
 export default function TechEcosystemExplorer() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [activeCategory, setActiveCategory] = useState<string>('all');
 
-  const categories = [
-    { id: 'all', label: 'Full Ecosystem' },
-    { id: 'languages', label: 'Languages & Runtimes' },
-    { id: 'databases', label: 'Data & Vector Stores' },
-    { id: 'ai', label: 'AI & Inference Engines' },
-    { id: 'cloud', label: 'Cloud & Kubernetes' },
-  ];
-
-  const filtered = selectedCategory === 'all'
+  const filteredItems = activeCategory === 'all'
     ? techItems
-    : techItems.filter(item => item.category === selectedCategory);
+    : techItems.filter((i) => i.category === activeCategory);
 
   return (
-    <div style={{ position: 'relative' }}>
-      {/* Category Pills */}
-      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '10px', marginBottom: '32px' }}>
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => setSelectedCategory(cat.id)}
+    <div
+      className="monad-card"
+      style={{
+        backgroundColor: '#ffffff',
+        padding: '48px 40px',
+      }}
+    >
+      <div style={{ textAlign: 'center', marginBottom: '36px' }}>
+        <div style={{ display: 'inline-flex', marginBottom: '12px' }}>
+          <span
             style={{
-              padding: '10px 20px',
+              padding: '4px 12px',
               borderRadius: '9999px',
-              fontSize: '0.88rem',
-              fontWeight: 600,
-              cursor: 'pointer',
-              background: selectedCategory === cat.id ? 'var(--gradient-primary)' : 'rgba(255, 255, 255, 0.04)',
-              border: selectedCategory === cat.id ? 'none' : '1px solid rgba(255, 255, 255, 0.08)',
-              color: '#FFFFFF',
-              transition: 'all 0.25s',
-              boxShadow: selectedCategory === cat.id ? '0 4px 20px rgba(224, 26, 138, 0.3)' : 'none',
+              backgroundColor: 'var(--color-periwinkle-mist)',
+              color: 'var(--color-lake-blue)',
+              fontSize: '11px',
+              fontFamily: 'var(--font-abc-diatype-mono)',
+              textTransform: 'uppercase',
+              fontWeight: 500,
             }}
           >
-            {cat.label}
-          </button>
-        ))}
+            Engineering Stack
+          </span>
+        </div>
+        <h3
+          style={{
+            fontFamily: 'var(--font-untitled-serif)',
+            fontSize: 'clamp(24px, 3.2vw, 36px)',
+            fontWeight: 400,
+            color: 'var(--color-off-black)',
+            marginBottom: '12px',
+          }}
+        >
+          Curated Production Ecosystem
+        </h3>
+        <p style={{ maxWidth: '640px', margin: '0 auto', fontSize: '15px', color: 'var(--color-graphite)' }}>
+          Battle-tested languages, high-throughput streaming buses, and zero-trust cloud primitives.
+        </p>
       </div>
 
-      {/* Tech Cards Grid */}
+      {/* Filter Tabs */}
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-          gap: '20px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          gap: '10px',
+          marginBottom: '36px',
         }}
       >
-        {filtered.map((tech, idx) => (
+        {[
+          { id: 'all', label: 'All Technologies' },
+          { id: 'languages', label: 'Core Languages' },
+          { id: 'databases', label: 'Data & Queues' },
+          { id: 'cloud', label: 'Cloud & Kubernetes' },
+          { id: 'ai', label: 'AI & Vector' },
+        ].map((tab) => {
+          const isSelected = activeCategory === tab.id;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveCategory(tab.id)}
+              className="pipeline-node-tag"
+              style={{
+                backgroundColor: isSelected ? 'var(--color-off-black)' : 'var(--color-parchment)',
+                color: isSelected ? '#ffffff' : 'var(--color-off-black)',
+                borderColor: isSelected ? 'var(--color-off-black)' : 'var(--color-ash)',
+                cursor: 'pointer',
+                padding: '10px 20px',
+                fontSize: '12px',
+              }}
+            >
+              <span>{tab.label}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Grid of Tech Cards */}
+      <div className="grid-3">
+        {filteredItems.map((tech) => (
           <div
-            key={idx}
-            className="glass-card"
+            key={tech.name}
             style={{
-              padding: '24px',
-              borderRadius: '16px',
+              padding: '28px',
+              borderRadius: '24px',
+              backgroundColor: 'var(--color-parchment)',
+              border: '1px solid var(--color-ash)',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              background: 'rgba(14, 20, 36, 0.65)',
             }}
           >
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+                <span className="mono-helper">{tech.categoryLabel}</span>
                 <span
                   style={{
-                    fontSize: '0.72rem',
-                    fontFamily: 'var(--font-mono)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                    color: '#38BDF8',
                     padding: '3px 8px',
-                    borderRadius: '4px',
-                    background: 'rgba(0, 102, 255, 0.1)',
+                    borderRadius: '9999px',
+                    backgroundColor: '#ffffff',
+                    border: '1px solid var(--color-ash)',
+                    fontSize: '11px',
+                    fontFamily: 'var(--font-abc-diatype-mono)',
+                    color: 'var(--color-lake-blue)',
+                    fontWeight: 500,
                   }}
                 >
-                  {tech.categoryLabel}
-                </span>
-                <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#4ADE80' }}>
                   {tech.slaMetric}
                 </span>
               </div>
 
-              <h4 style={{ fontSize: '1.2rem', color: '#FFFFFF', marginBottom: '8px', fontWeight: 700 }}>
+              <h4
+                style={{
+                  fontFamily: 'var(--font-untitled-serif)',
+                  fontSize: '20px',
+                  fontWeight: 400,
+                  color: 'var(--color-off-black)',
+                  marginBottom: '8px',
+                }}
+              >
                 {tech.name}
               </h4>
-              <p style={{ fontSize: '0.86rem', color: '#94A3B8', lineHeight: '1.5', marginBottom: '16px' }}>
+
+              <p style={{ fontSize: '13px', color: 'var(--color-graphite)', marginBottom: '16px', lineHeight: 1.5 }}>
                 {tech.highlight}
               </p>
             </div>
 
-            <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '14px', display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '0.78rem' }}>
-              <div style={{ color: '#CBD5E1' }}>
-                <strong style={{ color: '#64748B' }}>Concurrency: </strong>
-                {tech.concurrencyModel}
+            <div style={{ borderTop: '1px solid var(--color-ash)', paddingTop: '12px' }}>
+              <div style={{ fontSize: '11px', color: 'var(--color-smoke)', textTransform: 'uppercase', marginBottom: '4px' }}>
+                Concurreny & Runtime Model
               </div>
-              <div style={{ color: '#CBD5E1' }}>
-                <strong style={{ color: '#64748B' }}>Application: </strong>
-                {tech.enterpriseUse}
+              <div style={{ fontSize: '12.5px', fontFamily: 'var(--font-abc-diatype-mono)', color: 'var(--color-off-black)' }}>
+                {tech.concurrencyModel}
               </div>
             </div>
           </div>

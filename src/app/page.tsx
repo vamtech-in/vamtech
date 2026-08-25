@@ -1,87 +1,132 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
+import Logo from '@/components/Logo';
+import AtmosphericWash from '@/components/AtmosphericWash';
+import MonadPipelineDiagram from '@/components/MonadPipelineDiagram';
 import AudienceLens from '@/components/AudienceLens';
+import SystemArchitectureVisualizer from '@/components/SystemArchitectureVisualizer';
+import TechEcosystemExplorer from '@/components/TechEcosystemExplorer';
 import ProjectCostEstimator from '@/components/ProjectCostEstimator';
-import ContactForm from '@/components/ContactForm';
+import AnimatedCounter from '@/components/AnimatedCounter';
 import ScrollReveal from '@/components/ScrollReveal';
-import { servicesData } from '@/data/services';
-import { caseStudiesData } from '@/data/caseStudies';
 import { 
   ArrowRight, 
   CheckCircle2, 
   ShieldCheck, 
-  Zap, 
-  Terminal, 
-  Lock, 
-  Users, 
-  TrendingUp, 
-  ChevronRight, 
-  Sparkles,
-  Layers,
-  Code2,
-  CloudCog
+  Sparkles, 
+  Layers, 
+  Code2, 
+  CloudCog, 
+  Terminal,
+  Activity,
+  Workflow,
+  Cpu,
+  Database,
+  Lock,
+  ChevronDown
 } from 'lucide-react';
 
-import AnimatedCounter from '@/components/AnimatedCounter';
-import TiltCard from '@/components/TiltCard';
-import SystemArchitectureVisualizer from '@/components/SystemArchitectureVisualizer';
-import TechEcosystemExplorer from '@/components/TechEcosystemExplorer';
-
 export default function HomePage() {
-  const iconMap: Record<string, React.ReactNode> = {
-    Code2: <Code2 size={24} />,
-    CloudCog: <CloudCog size={24} />,
-    Sparkles: <Sparkles size={24} />,
-    Layout: <Layers size={24} />,
-  };
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+
+  const faqItems = [
+    {
+      question: 'How does Vamtech guarantee zero-junior handoffs on mission-critical engagements?',
+      answer: 'Every project is staffed exclusively by Principal and Senior Staff engineers with 8+ years of production experience in high-concurrency distributed systems, vector search pipelines, and zero-trust cloud architectures. You work directly with architects who write and review every commit.'
+    },
+    {
+      question: 'What is the in-flight zero-copy schema transformation architecture?',
+      answer: 'Our proprietary stream normalization engine maps heterogeneous logs, CVE telemetry, and audit events to OCSF (Open Cybersecurity Schema Framework) standard in kernel-level memory with sub-millisecond latency (0.42ms p99) before forwarding to SIEMs, Iceberg data lakes, or vector indexes.'
+    },
+    {
+      question: 'How do your fixed-scope MVP sprints differ from traditional agency models?',
+      answer: 'Our MVP sprints are fixed-price, fixed-timeline (typically 4–8 weeks), and deliver fully production-grade, typed codebases with 100% IP ownership, complete CI/CD automation, and SOC 2 Type II compliance scaffolding rather than throwaway prototypes.'
+    },
+    {
+      question: 'What regulatory and security compliance frameworks do you support?',
+      answer: 'We provide out-of-the-box architecture alignments for SOC 2 Type II, HIPAA BAA compliance, ISO/IEC 27001, GDPR data residency boundaries, and automated SAST/SCA security pipeline disclosures with strict mTLS encryption.'
+    },
+    {
+      question: 'Can Vamtech squads integrate with our in-house engineering team?',
+      answer: 'Yes. Our Dedicated Engineering Squad model embeds senior engineers directly into your sprint rituals, Jira/GitHub workflows, and Slack channels with complete transparency, bi-weekly milestone demonstrations, and automated code review telemetry.'
+    }
+  ];
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden' }}>
-      {/* Hero Section */}
-      <section style={{ padding: '80px 0 100px', position: 'relative' }}>
+      {/* Background Pastel Atmospheric Washes (Monad Signature) */}
+      <AtmosphericWash variant="coral-sky" size={680} top="-160px" left="-120px" opacity={0.5} />
+      <AtmosphericWash variant="sky-mint" size={600} top="750px" right="-140px" opacity={0.45} />
+      <AtmosphericWash variant="gold-coral" size={540} top="2200px" left="-100px" opacity={0.4} />
+
+      {/* ====================================================================
+          1. Hero Section — Pure Typographic Editorial Hero
+          ==================================================================== */}
+      <section style={{ padding: '80px 0 80px', position: 'relative', zIndex: 1 }}>
         <div className="container" style={{ textAlign: 'center' }}>
-          {/* Tagline pill */}
+          {/* Tagline / System Status Pill */}
           <ScrollReveal animation="fade-down" delay={100}>
-            <div style={{ display: 'inline-flex', marginBottom: '24px' }}>
-              <div className="badge-pill brand" style={{ padding: '8px 20px', fontSize: '0.9rem' }}>
-                <Sparkles size={16} />
-                <span>Engineered for Scale, Security & High Concurrency</span>
-              </div>
+            <div style={{ display: 'inline-flex', marginBottom: '28px' }}>
+              <span
+                className="pipeline-node-tag"
+                style={{
+                  backgroundColor: '#ffffff',
+                  padding: '8px 20px',
+                  fontSize: '12px',
+                }}
+              >
+                <span
+                  style={{
+                    width: '7px',
+                    height: '7px',
+                    borderRadius: '50%',
+                    backgroundColor: 'var(--color-lake-blue)',
+                    display: 'inline-block',
+                  }}
+                />
+                <span>EDITORIAL TECH JOURNAL & PRODUCTION LABS</span>
+              </span>
             </div>
           </ScrollReveal>
 
-          {/* Main H1 Headline */}
+          {/* Untitled Serif Headline locked at weight 400 */}
           <ScrollReveal animation="fade-up" delay={200}>
             <h1
               style={{
-                fontSize: 'clamp(2.6rem, 5.5vw, 4.2rem)',
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: 'clamp(40px, 6.2vw, 80px)',
+                fontWeight: 400,
                 lineHeight: 1.15,
-                fontWeight: 800,
-                maxWidth: '960px',
-                margin: '0 auto 24px',
-                letterSpacing: '-1.5px',
+                color: 'var(--color-off-black)',
+                letterSpacing: '-0.025em',
+                maxWidth: '1080px',
+                margin: '0 auto 28px',
               }}
             >
-              We Architect <span className="text-gradient">Mission-Critical</span> Software & Autonomous AI Systems
+              Architecting mission-critical software, zero-copy data pipelines, & autonomous AI.
             </h1>
           </ScrollReveal>
 
-          {/* Subtitle */}
+          {/* Subtext in ABC Diatype Mono at 20px Graphite */}
           <ScrollReveal animation="fade-up" delay={300}>
             <p
               style={{
-                fontSize: 'clamp(1.05rem, 2vw, 1.25rem)',
-                color: '#94A3B8',
-                maxWidth: '740px',
-                margin: '0 auto 40px',
-                lineHeight: 1.6,
+                fontFamily: 'var(--font-abc-diatype-mono)',
+                fontSize: 'clamp(16px, 1.8vw, 20px)',
+                color: 'var(--color-graphite)',
+                maxWidth: '780px',
+                margin: '0 auto 48px',
+                lineHeight: 1.4,
+                letterSpacing: '-0.02em',
               }}
             >
-              Vamtech partners with engineering leaders and ambitious founders to build high-throughput backend engines, modern cloud platforms, and enterprise AI workflows.
+              Vamtech partners with engineering executives and ambitious founders to build high-throughput backend engines, modern cloud platforms, and enterprise AI workflows.
             </p>
           </ScrollReveal>
 
-          {/* Action Buttons */}
+          {/* Centered Actions: Lake Blue Primary Pill (single CTA) + Ghost Pill */}
           <ScrollReveal animation="fade-up" delay={400}>
             <div
               style={{
@@ -90,442 +135,437 @@ export default function HomePage() {
                 justifyContent: 'center',
                 gap: '18px',
                 flexWrap: 'wrap',
-                marginBottom: '64px',
+                marginBottom: '72px',
               }}
             >
-              <Link href="/contact" className="btn-primary" style={{ padding: '16px 36px', fontSize: '1.05rem' }}>
-                <span>Start a Project</span>
-                <ArrowRight size={18} />
+              <Link href="/contact" className="btn-primary" style={{ padding: '16px 36px', fontSize: '14px' }}>
+                <span>Get a Demo</span>
+                <span className="arrow-glyph">▸</span>
               </Link>
-              <Link href="/case-studies" className="btn-secondary" style={{ padding: '16px 32px', fontSize: '1.05rem' }}>
-                <span>Explore Case Studies</span>
+              <Link href="/case-studies" className="btn-ghost" style={{ padding: '16px 32px', fontSize: '14px' }}>
+                <span>Read Technical Journal</span>
               </Link>
             </div>
           </ScrollReveal>
 
-          {/* Verified Stats Band with Smooth Scroll Counter */}
-          <ScrollReveal animation="3d-flip" delay={450}>
+          {/* Key SLA Telemetry Strip */}
+          <ScrollReveal animation="fade-up" delay={500}>
             <div
-              className="glass-card"
               style={{
-                maxWidth: '1060px',
-                margin: '0 auto',
-                padding: '32px 40px',
-                borderRadius: '20px',
-                background: 'rgba(14, 20, 36, 0.75)',
-                border: '1px solid rgba(224, 26, 138, 0.3)',
-                boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 30px rgba(224, 26, 138, 0.15)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '32px',
+                padding: '16px 36px',
+                borderRadius: '9999px',
+                border: '1px solid var(--color-ash)',
+                backgroundColor: '#ffffff',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
               }}
             >
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(4, 1fr)',
-                  gap: '24px',
-                }}
-                className="stats-grid"
-              >
-                <div>
-                  <div style={{ fontSize: '2.4rem', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-display)' }}>
-                    <span className="text-gradient">
-                      <AnimatedCounter end={99.99} decimals={2} suffix="%" />
-                    </span>
-                  </div>
-                  <div style={{ fontSize: '0.85rem', color: '#94A3B8', marginTop: '4px', fontWeight: 600 }}>
-                    Production SLA Delivered
-                  </div>
-                </div>
-
-                <div>
-                  <div style={{ fontSize: '2.4rem', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-display)' }}>
-                    <span style={{ color: '#38BDF8' }}>
-                      <AnimatedCounter end={40} suffix="+" />
-                    </span>
-                  </div>
-                  <div style={{ fontSize: '0.85rem', color: '#94A3B8', marginTop: '4px', fontWeight: 600 }}>
-                    Enterprise Systems Shipped
-                  </div>
-                </div>
-
-                <div>
-                  <div style={{ fontSize: '2.4rem', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-display)' }}>
-                    <span style={{ color: '#F472B6' }}>
-                      <AnimatedCounter end={4.2} decimals={1} suffix="x" />
-                    </span>
-                  </div>
-                  <div style={{ fontSize: '0.85rem', color: '#94A3B8', marginTop: '4px', fontWeight: 600 }}>
-                    Avg Client Velocity Boost
-                  </div>
-                </div>
-
-                <div>
-                  <div style={{ fontSize: '2.4rem', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-display)' }}>
-                    <span style={{ color: '#4ADE80' }}>
-                      <AnimatedCounter end={32} prefix="$" suffix="M+" />
-                    </span>
-                  </div>
-                  <div style={{ fontSize: '0.85rem', color: '#94A3B8', marginTop: '4px', fontWeight: 600 }}>
-                    Value & Savings Created
-                  </div>
-                </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span className="mono-helper">P99 LATENCY</span>
+                <span className="mono-text" style={{ fontWeight: 500, color: 'var(--color-lake-blue)' }}>
+                  &lt;1.2ms
+                </span>
+              </div>
+              <div style={{ width: '1px', height: '14px', backgroundColor: 'var(--color-ash)' }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span className="mono-helper">THROUGHPUT</span>
+                <span className="mono-text" style={{ fontWeight: 500, color: 'var(--color-off-black)' }}>
+                  120k Req/Sec
+                </span>
+              </div>
+              <div style={{ width: '1px', height: '14px', backgroundColor: 'var(--color-ash)' }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span className="mono-helper">COMPLIANCE</span>
+                <span className="mono-text" style={{ fontWeight: 500, color: 'var(--color-off-black)' }}>
+                  SOC 2 Type II
+                </span>
               </div>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Stakeholder Selector Section */}
-      <section style={{ padding: '80px 0', position: 'relative' }}>
+      {/* ====================================================================
+          2. Social Proof Partner Logo Strip (Grayscale, 32px gap, single row)
+          ==================================================================== */}
+      <section style={{ padding: '32px 0 64px', position: 'relative', zIndex: 1 }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+            <span className="mono-helper">
+              TRUSTED BY ENGINEERING LEADERS AT SCALE
+            </span>
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '48px',
+              flexWrap: 'wrap',
+              opacity: 0.7,
+              filter: 'grayscale(100%)',
+            }}
+          >
+            {[
+              'DATALINK CORP',
+              'CLOUDSCALE NETWORKS',
+              'FINANCIAL PROTOCOL',
+              'HEALTHPULSE AI',
+              'SYNAPSE LOGISTICS',
+              'ZERO-TRUST MESH',
+            ].map((partner, index) => (
+              <span
+                key={index}
+                style={{
+                  fontFamily: 'var(--font-abc-diatype-mono)',
+                  fontSize: '13px',
+                  fontWeight: 500,
+                  letterSpacing: '-0.01em',
+                  color: 'var(--color-off-black)',
+                }}
+              >
+                {partner}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ====================================================================
+          3. Signature Monad Data Pipeline Diagram Section
+          ==================================================================== */}
+      <section style={{ padding: '40px 0 80px', position: 'relative', zIndex: 1 }}>
         <div className="container">
           <ScrollReveal animation="fade-up">
-            <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-              <div className="badge-pill cyan" style={{ marginBottom: '12px' }}>
-                <Users size={14} />
-                <span>Tailored Stakeholder Perspectives</span>
+            <MonadPipelineDiagram />
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ====================================================================
+          4. Feature Cards Grid & Elevated Periwinkle Mist Card
+          ==================================================================== */}
+      <section style={{ padding: '40px 0 80px', position: 'relative', zIndex: 1 }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+            <div style={{ display: 'inline-flex', marginBottom: '12px' }}>
+              <span
+                style={{
+                  padding: '4px 12px',
+                  borderRadius: '9999px',
+                  backgroundColor: 'var(--color-periwinkle-mist)',
+                  color: 'var(--color-lake-blue)',
+                  fontSize: '11px',
+                  fontFamily: 'var(--font-abc-diatype-mono)',
+                  textTransform: 'uppercase',
+                  fontWeight: 500,
+                }}
+              >
+                Core Capabilities
+              </span>
+            </div>
+            <h2
+              style={{
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: 'clamp(28px, 4vw, 48px)',
+                fontWeight: 400,
+                color: 'var(--color-off-black)',
+                marginBottom: '16px',
+              }}
+            >
+              Engineered with Mathematical Rigor
+            </h2>
+            <p style={{ maxWidth: '680px', margin: '0 auto', fontSize: '16px', color: 'var(--color-graphite)' }}>
+              We build systems that withstand severe production spikes, fail over deterministically, and preserve state integrity.
+            </p>
+          </div>
+
+          {/* 1. Elevated Feature Card (Periwinkle Mist #cfdaf5) with Gradient Illustration */}
+          <ScrollReveal animation="fade-up">
+            <div
+              className="monad-card-periwinkle"
+              style={{
+                marginBottom: '32px',
+                display: 'grid',
+                gridTemplateColumns: '1.2fr 1fr',
+                gap: '40px',
+                alignItems: 'center',
+              }}
+            >
+              <div>
+                <div style={{ display: 'inline-flex', marginBottom: '14px' }}>
+                  <span
+                    style={{
+                      fontSize: '11px',
+                      fontFamily: 'var(--font-abc-diatype-mono)',
+                      textTransform: 'uppercase',
+                      letterSpacing: '-0.02em',
+                      padding: '4px 12px',
+                      borderRadius: '9999px',
+                      backgroundColor: '#ffffff',
+                      color: 'var(--color-lake-blue)',
+                      fontWeight: 500,
+                    }}
+                  >
+                    FLAGSHIP ARCHITECTURE
+                  </span>
+                </div>
+
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-untitled-serif)',
+                    fontSize: 'clamp(24px, 3.2vw, 36px)',
+                    fontWeight: 400,
+                    color: 'var(--color-off-black)',
+                    marginBottom: '16px',
+                  }}
+                >
+                  In-Flight Data Transforms & Zero-Copy Normalization
+                </h3>
+
+                <p
+                  style={{
+                    fontFamily: 'var(--font-abc-diatype-mono)',
+                    fontSize: '15px',
+                    color: 'var(--color-off-black)',
+                    lineHeight: 1.6,
+                    marginBottom: '28px',
+                  }}
+                >
+                  Process multi-gigabit event streams with deterministic zero-copy memory buffers. Translate raw JSON/Syslog to structured OCSF schemas in under 0.5ms before routing to downstream lakes and analytical SIEMs.
+                </p>
+
+                <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                  <Link href="/services#custom-software" className="btn-secondary" style={{ fontSize: '13px' }}>
+                    <span>Explore Transformation Specs</span>
+                  </Link>
+                  <Link href="/case-studies" className="text-link-arrow" style={{ fontSize: '13px' }}>
+                    <span>View Benchmark Report →</span>
+                  </Link>
+                </div>
               </div>
-              <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', marginBottom: '16px' }}>
-                Built for Every Decision-Maker on Your Team
-              </h2>
-              <p style={{ color: '#94A3B8', maxWidth: '650px', margin: '0 auto', fontSize: '1.02rem' }}>
-                B2B software purchases require buy-in from engineering, product, legal, and finance. Select your role to see the exact proofs that matter to you.
-              </p>
+
+              {/* Gradient Illustration: Overlapping Pastel Shapes (Coral -> Sky Blue -> Mint) */}
+              <div
+                style={{
+                  position: 'relative',
+                  height: '280px',
+                  borderRadius: '24px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                  border: '1px solid rgba(160, 181, 235, 0.5)',
+                  overflow: 'hidden',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '24px',
+                }}
+              >
+                {/* Overlapping translucent geometric circles */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    width: '180px',
+                    height: '180px',
+                    borderRadius: '50%',
+                    background: 'radial-gradient(circle, #ff9473 0%, rgba(255, 148, 115, 0.4) 70%)',
+                    top: '20px',
+                    left: '30px',
+                    mixBlendMode: 'multiply',
+                    filter: 'blur(4px)',
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    width: '200px',
+                    height: '200px',
+                    borderRadius: '50%',
+                    background: 'radial-gradient(circle, #a0b5eb 0%, rgba(160, 181, 235, 0.4) 70%)',
+                    bottom: '10px',
+                    right: '40px',
+                    mixBlendMode: 'multiply',
+                    filter: 'blur(4px)',
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    width: '140px',
+                    height: '140px',
+                    borderRadius: '50%',
+                    background: 'radial-gradient(circle, #a7fccd 0%, rgba(167, 252, 205, 0.5) 70%)',
+                    top: '60px',
+                    right: '60px',
+                    mixBlendMode: 'multiply',
+                    filter: 'blur(2px)',
+                  }}
+                />
+
+                {/* Overlaid Data Node Pill */}
+                <div
+                  style={{
+                    position: 'relative',
+                    zIndex: 2,
+                    backgroundColor: '#ffffff',
+                    padding: '16px 24px',
+                    borderRadius: '9999px',
+                    border: '1px solid var(--color-ash)',
+                    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.06)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                  }}
+                >
+                  <Workflow size={18} color="var(--color-lake-blue)" />
+                  <span style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '13px', fontWeight: 500 }}>
+                    STREAM_OCSF_TRANSFORM :: 0.42ms
+                  </span>
+                </div>
+              </div>
             </div>
           </ScrollReveal>
 
-          <ScrollReveal animation="fade-up" delay={200}>
+          {/* 3 Standard Feature Cards (Parchment, 1px Ash border, 40px radius, 40px padding) */}
+          <div className="grid-3">
+            {[
+              {
+                icon: <Code2 size={20} />,
+                title: 'High-Concurrency Backends',
+                desc: 'Go and Rust microservice meshes engineered for sub-millisecond p99 execution, lock-free channel concurrency, and zero memory leaks.',
+                badge: '120k req/s',
+                link: '/services#custom-software'
+              },
+              {
+                icon: <Sparkles size={20} />,
+                title: 'Vector RAG & AI Workflows',
+                desc: 'Deterministic LLM guardrails, hybrid dense/sparse vector retrieval, and automated multi-agent routing for enterprise knowledge bases.',
+                badge: '99.4% Precision',
+                link: '/services#ai-automation'
+              },
+              {
+                icon: <CloudCog size={20} />,
+                title: 'Zero-Trust Cloud & DevOps',
+                desc: 'Multi-region Kubernetes clusters orchestrated with Terraform, Cilium eBPF network security, and automated SOC 2 audit telemetry.',
+                badge: '99.999% Uptime',
+                link: '/services#cloud-devops'
+              }
+            ].map((card, idx) => (
+              <ScrollReveal key={card.title} animation="fade-up" delay={idx * 100}>
+                <div
+                  className="monad-card"
+                  style={{
+                    backgroundColor: 'var(--color-parchment)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    height: '100%',
+                  }}
+                >
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                      <div
+                        style={{
+                          padding: '10px',
+                          borderRadius: '12px',
+                          backgroundColor: '#ffffff',
+                          border: '1px solid var(--color-ash)',
+                          color: 'var(--color-off-black)',
+                        }}
+                      >
+                        {card.icon}
+                      </div>
+                      <span
+                        style={{
+                          padding: '4px 10px',
+                          borderRadius: '9999px',
+                          backgroundColor: '#ffffff',
+                          border: '1px solid var(--color-ash)',
+                          fontSize: '11px',
+                          fontFamily: 'var(--font-abc-diatype-mono)',
+                          color: 'var(--color-lake-blue)',
+                          fontWeight: 500,
+                        }}
+                      >
+                        {card.badge}
+                      </span>
+                    </div>
+
+                    <h4
+                      style={{
+                        fontFamily: 'var(--font-untitled-serif)',
+                        fontSize: '24px',
+                        fontWeight: 400,
+                        color: 'var(--color-off-black)',
+                        marginBottom: '12px',
+                      }}
+                    >
+                      {card.title}
+                    </h4>
+
+                    <p style={{ fontSize: '15px', color: 'var(--color-graphite)', lineHeight: 1.6, marginBottom: '24px' }}>
+                      {card.desc}
+                    </p>
+                  </div>
+
+                  <Link href={card.link} className="text-link-arrow" style={{ fontSize: '13px' }}>
+                    <span>Deep Dive Specification →</span>
+                  </Link>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ====================================================================
+          5. Audience Lens & Stakeholder Perspectives
+          ==================================================================== */}
+      <section style={{ padding: '40px 0 80px', position: 'relative', zIndex: 1 }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <span className="mono-helper">STAKEHOLDER NAVIGATION</span>
+            <h2
+              style={{
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: 'clamp(28px, 4vw, 48px)',
+                fontWeight: 400,
+                color: 'var(--color-off-black)',
+                marginTop: '8px',
+              }}
+            >
+              Audience Lens: Tailored Engineering Value
+            </h2>
+          </div>
+
+          <ScrollReveal animation="fade-up">
             <AudienceLens />
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Services Snapshot Section */}
-      <section style={{ padding: '80px 0', position: 'relative' }} id="services">
-        <div className="container">
+      {/* ====================================================================
+          6. Architecture Visualizer & Tech Ecosystem
+          ==================================================================== */}
+      <section style={{ padding: '40px 0 80px', position: 'relative', zIndex: 1 }}>
+        <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
           <ScrollReveal animation="fade-up">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '48px', flexWrap: 'wrap', gap: '20px' }}>
-              <div>
-                <div className="badge-pill brand" style={{ marginBottom: '12px' }}>
-                  <Terminal size={14} />
-                  <span>Our Core Capabilities</span>
-                </div>
-                <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', marginBottom: '12px' }}>
-                  End-to-End Software Engineering
-                </h2>
-                <p style={{ color: '#94A3B8', maxWidth: '600px', fontSize: '1rem' }}>
-                  From high-throughput transaction backends to intelligent RAG pipelines, we engineer software that drives verifiable outcomes.
-                </p>
-              </div>
-
-              <Link href="/services" className="btn-secondary">
-                <span>View All Services & Tech Stacks</span>
-                <ArrowRight size={16} />
-              </Link>
-            </div>
+            <SystemArchitectureVisualizer />
           </ScrollReveal>
 
-          {/* 4 Core Services Grid with Staggered Scroll Animation */}
-          <div className="grid-2">
-            {servicesData.map((service, index) => (
-              <ScrollReveal key={service.id} animation="fade-up" delay={index * 120}>
-                <TiltCard style={{ height: '100%' }}>
-                  <div
-                    className="glass-card"
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      borderTop: `2px solid ${service.colorAccent}`,
-                      height: '100%',
-                    }}
-                  >
-                    <div>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
-                        <div
-                          style={{
-                            padding: '12px',
-                            borderRadius: '14px',
-                            background: `rgba(255, 255, 255, 0.05)`,
-                            color: service.colorAccent,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          {iconMap[service.iconName]}
-                        </div>
-                        <span
-                          style={{
-                            fontSize: '0.8rem',
-                            fontWeight: 700,
-                            padding: '4px 12px',
-                            borderRadius: '9999px',
-                            background: 'rgba(255, 255, 255, 0.05)',
-                            color: '#CBD5E1',
-                          }}
-                        >
-                          {service.metricsHighlight}
-                        </span>
-                      </div>
-
-                      <h3 style={{ fontSize: '1.4rem', color: '#FFFFFF', marginBottom: '10px' }}>
-                        {service.title}
-                      </h3>
-                      <p style={{ color: '#94A3B8', fontSize: '0.94rem', lineHeight: '1.6', marginBottom: '20px' }}>
-                        {service.tagline}
-                      </p>
-
-                      {/* Key Deliverables Bullet Points */}
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px' }}>
-                        {service.keyDeliverables.slice(0, 3).map((item, i) => (
-                          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#CBD5E1' }}>
-                            <CheckCircle2 size={16} color={service.colorAccent} style={{ flexShrink: 0 }} />
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      {/* Tech stack pills */}
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
-                        {service.techStack.map((tech) => (
-                          <span
-                            key={tech}
-                            style={{
-                              fontSize: '0.75rem',
-                              fontFamily: 'var(--font-mono)',
-                              padding: '3px 8px',
-                              borderRadius: '6px',
-                              background: 'rgba(255, 255, 255, 0.04)',
-                              color: '#94A3B8',
-                              border: '1px solid rgba(255, 255, 255, 0.06)',
-                            }}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-
-                      <Link
-                        href={`/services#${service.slug}`}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '6px',
-                          fontSize: '0.9rem',
-                          fontWeight: 600,
-                          color: service.colorAccent,
-                        }}
-                      >
-                        <span>Read Architecture Blueprint</span>
-                        <ChevronRight size={16} />
-                      </Link>
-                    </div>
-                  </div>
-                </TiltCard>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-    {/* Senior Interactive Architecture Visualizer Section */}
-    <section style={{ padding: '80px 0', position: 'relative' }}>
-      <div className="container">
-        <ScrollReveal animation="fade-up">
-          <SystemArchitectureVisualizer />
-        </ScrollReveal>
-      </div>
-    </section>
-
-    {/* Senior Tech Ecosystem Explorer Section */}
-    <section style={{ padding: '80px 0', position: 'relative' }}>
-      <div className="container">
-        <ScrollReveal animation="fade-up">
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <div className="badge-pill cyan" style={{ marginBottom: '12px' }}>
-              <Code2 size={14} />
-              <span>Zero Black-Box Frameworks</span>
-            </div>
-            <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', marginBottom: '16px' }}>
-              The Vamtech Production Technology Matrix
-            </h2>
-            <p style={{ color: '#94A3B8', maxWidth: '650px', margin: '0 auto', fontSize: '1.02rem' }}>
-              We build with strictly typed, memory-efficient runtimes and open-source standards designed for multi-year enterprise stability.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal animation="fade-up" delay={200}>
-          <TechEcosystemExplorer />
-        </ScrollReveal>
-      </div>
-    </section>
-
-      {/* Featured Case Studies */}
-      <section style={{ padding: '80px 0', position: 'relative' }}>
-        <div className="container">
           <ScrollReveal animation="fade-up">
-            <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-              <div className="badge-pill brand" style={{ marginBottom: '12px' }}>
-                <TrendingUp size={14} />
-                <span>Proven Results • Zero Fluff</span>
-              </div>
-              <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', marginBottom: '16px' }}>
-                Engineering Case Studies & Measured Outcomes
-              </h2>
-              <p style={{ color: '#94A3B8', maxWidth: '650px', margin: '0 auto', fontSize: '1.02rem' }}>
-                We don&apos;t just deliver code—we deliver business outcomes with verifiable metrics.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid-3" style={{ marginBottom: '40px' }}>
-            {caseStudiesData.map((study, index) => (
-              <ScrollReveal key={study.id} animation="fade-up" delay={index * 140}>
-                <TiltCard style={{ height: '100%' }}>
-                  <div
-                    className="glass-card"
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      height: '100%',
-                    }}
-                  >
-                    <div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-                        <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                          {study.industry}
-                        </span>
-                        <span style={{ fontSize: '0.75rem', color: '#64748B' }}>
-                          {study.duration}
-                        </span>
-                      </div>
-
-                      <h3 style={{ fontSize: '1.25rem', color: '#FFFFFF', marginBottom: '12px', lineHeight: '1.3' }}>
-                        {study.title}
-                      </h3>
-                      <p style={{ fontSize: '0.9rem', color: '#94A3B8', marginBottom: '20px', lineHeight: '1.6' }}>
-                        {study.summary}
-                      </p>
-
-                      {/* Highlights Metric Callout */}
-                      <div
-                        style={{
-                          background: 'rgba(0, 102, 255, 0.08)',
-                          border: '1px solid rgba(0, 102, 255, 0.2)',
-                          borderRadius: '12px',
-                          padding: '14px',
-                          marginBottom: '20px',
-                        }}
-                      >
-                        <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#FFFFFF' }}>
-                          <span className="text-gradient">{study.metrics[0].value}</span>
-                        </div>
-                        <div style={{ fontSize: '0.82rem', color: '#CBD5E1', fontWeight: 600 }}>
-                          {study.metrics[0].label}
-                        </div>
-                      </div>
-                    </div>
-
-                    <Link
-                      href={`/case-studies#${study.slug}`}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        fontSize: '0.9rem',
-                        fontWeight: 600,
-                        color: '#38BDF8',
-                      }}
-                    >
-                      <span>View Problem $\rightarrow$ Solution Breakdown</span>
-                      <ChevronRight size={16} />
-                    </Link>
-                  </div>
-                </TiltCard>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal animation="fade-up" delay={200}>
-            <div style={{ textAlign: 'center' }}>
-              <Link href="/case-studies" className="btn-secondary">
-                <span>Explore All Client Case Studies</span>
-                <ArrowRight size={16} />
-              </Link>
-            </div>
+            <TechEcosystemExplorer />
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Why Vamtech - Concrete Differentiators */}
-      <section style={{ padding: '80px 0', background: 'rgba(14, 20, 36, 0.4)', borderTop: '1px solid rgba(255, 255, 255, 0.05)', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
-        <div className="container">
-          <ScrollReveal animation="fade-up">
-            <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-              <div className="badge-pill cyan" style={{ marginBottom: '12px' }}>
-                <ShieldCheck size={14} />
-                <span>Why Engineering Leaders Choose Us</span>
-              </div>
-              <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', marginBottom: '16px' }}>
-                Not Another Generic Dev Agency
-              </h2>
-              <p style={{ color: '#94A3B8', maxWidth: '650px', margin: '0 auto', fontSize: '1.02rem' }}>
-                We eliminate traditional agency bloat and deliver direct senior technical horsepower.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid-3">
-            <ScrollReveal animation="fade-up" delay={100}>
-              <div className="glass-card" style={{ height: '100%' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(255, 94, 58, 0.15)', color: '#FF5E3A', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-                  <Users size={24} />
-                </div>
-                <h3 style={{ fontSize: '1.25rem', color: '#FFFFFF', marginBottom: '10px' }}>
-                  0% Junior Handoffs
-                </h3>
-                <p style={{ color: '#94A3B8', fontSize: '0.92rem', lineHeight: '1.6' }}>
-                  Traditional agencies pitch senior leaders then secretly hand off work to junior trainees. At Vamtech, you work directly with senior architects with 6+ years of production experience.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal animation="fade-up" delay={200}>
-              <div className="glass-card" style={{ height: '100%' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(224, 26, 138, 0.15)', color: '#E01A8A', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-                  <Lock size={24} />
-                </div>
-                <h3 style={{ fontSize: '1.25rem', color: '#FFFFFF', marginBottom: '10px' }}>
-                  100% IP Ownership & Clean Handover
-                </h3>
-                <p style={{ color: '#94A3B8', fontSize: '0.92rem', lineHeight: '1.6' }}>
-                  No vendor lock-in, proprietary runtime black boxes, or hostage code. Every line of code, Dockerfile, Terraform script, and schema belongs entirely to your company.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal animation="fade-up" delay={300}>
-              <div className="glass-card" style={{ height: '100%' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(0, 102, 255, 0.15)', color: '#0066FF', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-                  <Zap size={24} />
-                </div>
-                <h3 style={{ fontSize: '1.25rem', color: '#FFFFFF', marginBottom: '10px' }}>
-                  Predictable Sprints & Warranty
-                </h3>
-                <p style={{ color: '#94A3B8', fontSize: '0.92rem', lineHeight: '1.6' }}>
-                  Weekly working staging demos, clear roadmap milestones, and a 30-day post-launch warranty with guaranteed bug-free delivery.
-                </p>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Interactive Scope & Cost Estimator */}
-      <section style={{ padding: '80px 0' }} id="estimator">
+      {/* ====================================================================
+          7. Interactive Scope & Budget Estimator
+          ==================================================================== */}
+      <section style={{ padding: '40px 0 80px', position: 'relative', zIndex: 1 }}>
         <div className="container">
           <ScrollReveal animation="fade-up">
             <ProjectCostEstimator />
@@ -533,29 +573,146 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Interactive Contact & Intake Section */}
-      <section style={{ padding: '80px 0 100px', position: 'relative' }} id="contact">
+      {/* ====================================================================
+          8. FAQ Accordion Items (1px solid Ash bottom border only, trailing chevron)
+          ==================================================================== */}
+      <section style={{ padding: '40px 0 80px', position: 'relative', zIndex: 1 }}>
         <div className="container">
-          <ScrollReveal animation="fade-up">
-            <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-              <div className="badge-pill brand" style={{ marginBottom: '12px' }}>
-                <Sparkles size={14} />
-                <span>Let&apos;s Build Together</span>
-              </div>
-              <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', marginBottom: '16px' }}>
-                Ready to Accelerate Your Roadmap?
-              </h2>
-              <p style={{ color: '#94A3B8', maxWidth: '650px', margin: '0 auto', fontSize: '1.02rem' }}>
-                Submit your project scope below or book an architecture discovery session with our technical leads.
-              </p>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <div style={{ display: 'inline-flex', marginBottom: '12px' }}>
+              <span
+                style={{
+                  padding: '4px 12px',
+                  borderRadius: '9999px',
+                  backgroundColor: 'var(--color-periwinkle-mist)',
+                  color: 'var(--color-lake-blue)',
+                  fontSize: '11px',
+                  fontFamily: 'var(--font-abc-diatype-mono)',
+                  textTransform: 'uppercase',
+                  fontWeight: 500,
+                }}
+              >
+                Inquiries & Standards
+              </span>
             </div>
-          </ScrollReveal>
+            <h2
+              style={{
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: 'clamp(28px, 4vw, 48px)',
+                fontWeight: 400,
+                color: 'var(--color-off-black)',
+              }}
+            >
+              Frequently Examined Questions
+            </h2>
+          </div>
 
-          <ScrollReveal animation="fade-up" delay={200}>
-            <div style={{ maxWidth: '920px', margin: '0 auto' }}>
-              <ContactForm />
+          <div style={{ maxWidth: '960px', margin: '0 auto' }}>
+            {faqItems.map((item, index) => {
+              const isOpen = openFaqIndex === index;
+              return (
+                <div
+                  key={index}
+                  className="faq-accordion-item"
+                  onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                >
+                  <div className="faq-accordion-header">
+                    <div className="faq-question">
+                      {item.question}
+                    </div>
+                    <div className={`faq-chevron ${isOpen ? 'open' : ''}`}>
+                      ↓
+                    </div>
+                  </div>
+
+                  {isOpen && (
+                    <div className="faq-answer">
+                      {item.answer}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ====================================================================
+          9. Direct Action / Call to Arms Section (Parchment with Lake Blue CTA)
+          ==================================================================== */}
+      <section style={{ padding: '40px 0 100px', position: 'relative', zIndex: 1 }}>
+        <div className="container">
+          <div
+            className="monad-card-dark"
+            style={{
+              padding: '64px 48px',
+              textAlign: 'center',
+              position: 'relative',
+              overflow: 'hidden',
+            }}
+          >
+            <div style={{ display: 'inline-flex', marginBottom: '16px' }}>
+              <span
+                style={{
+                  padding: '4px 14px',
+                  borderRadius: '9999px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                  color: 'var(--color-mint)',
+                  fontSize: '11px',
+                  fontFamily: 'var(--font-abc-diatype-mono)',
+                  textTransform: 'uppercase',
+                }}
+              >
+                • SPRINT APPOINTMENTS OPEN
+              </span>
             </div>
-          </ScrollReveal>
+
+            <h2
+              style={{
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: 'clamp(32px, 4.5vw, 56px)',
+                fontWeight: 400,
+                color: '#ffffff',
+                maxWidth: '760px',
+                margin: '0 auto 20px',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              Ready to architect high-concurrency systems?
+            </h2>
+
+            <p
+              style={{
+                fontFamily: 'var(--font-abc-diatype-mono)',
+                fontSize: '16px',
+                color: '#cecac8',
+                maxWidth: '620px',
+                margin: '0 auto 40px',
+                lineHeight: 1.6,
+              }}
+            >
+              Schedule a 30-minute architectural discovery call directly with a Principal Systems Engineer. Zero junior handoffs, transparent scoping.
+            </p>
+
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+              <Link href="/contact" className="btn-primary" style={{ padding: '16px 36px', fontSize: '14px' }}>
+                <span>Get a Demo</span>
+                <span className="arrow-glyph">▸</span>
+              </Link>
+              <Link
+                href="/pricing"
+                className="btn-ghost"
+                style={{
+                  padding: '16px 32px',
+                  fontSize: '14px',
+                  borderColor: '#cecac8',
+                  color: '#ffffff',
+                }}
+              >
+                <span>View Engagement Sizing</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>

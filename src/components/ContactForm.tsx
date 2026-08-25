@@ -3,17 +3,15 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
 import { 
-  Send, 
-  CheckCircle, 
-  Sparkles, 
+  CheckCircle2, 
+  ArrowRight, 
   Calendar, 
   Clock, 
-  ArrowRight, 
-  User, 
+  ShieldCheck, 
   Mail, 
+  User, 
   Building2, 
-  MessageSquare,
-  ShieldCheck
+  MessageSquare
 } from 'lucide-react';
 
 export default function ContactForm() {
@@ -41,18 +39,18 @@ export default function ContactForm() {
       setIsSubmitting(false);
       setSubmitted(true);
 
-      // Trigger celebratory confetti
+      // Trigger celebratory confetti using Monad palette
       try {
         confetti({
-          particleCount: 80,
-          spread: 70,
+          particleCount: 70,
+          spread: 60,
           origin: { y: 0.6 },
-          colors: ['#FF5E3A', '#E01A8A', '#7B2CBF', '#0066FF'],
+          colors: ['#2b59d1', '#a0b5eb', '#ff9473', '#a7fccd', '#242424'],
         });
       } catch (err) {
-        // Confetti fallback
+        // Fallback
       }
-    }, 900);
+    }, 800);
   };
 
   const handleBookMeeting = () => {
@@ -61,384 +59,277 @@ export default function ContactForm() {
   };
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div
+      className="monad-card"
+      style={{
+        backgroundColor: '#ffffff',
+        padding: '48px 40px',
+      }}
+    >
       {submitted ? (
-        <div
-          className="glass-card"
-          style={{
-            padding: '48px',
-            textAlign: 'center',
-            borderRadius: '24px',
-            background: 'linear-gradient(180deg, rgba(14, 20, 36, 0.95) 0%, rgba(8, 12, 22, 0.98) 100%)',
-            border: '1px solid rgba(74, 222, 128, 0.4)',
-            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
-          }}
-        >
+        <div style={{ textAlign: 'center', padding: '40px 20px' }}>
           <div
             style={{
-              width: '72px',
-              height: '72px',
+              width: '64px',
+              height: '64px',
               borderRadius: '50%',
-              background: 'rgba(74, 222, 128, 0.15)',
-              color: '#4ADE80',
+              backgroundColor: 'rgba(167, 252, 205, 0.3)',
+              color: '#0b5930',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               margin: '0 auto 24px',
-              border: '2px solid rgba(74, 222, 128, 0.4)',
             }}
           >
-            <CheckCircle size={38} />
+            <CheckCircle2 size={32} />
           </div>
-          <h3 style={{ fontSize: '1.8rem', color: '#FFFFFF', marginBottom: '12px' }}>
-            Inquiry Dispatched Successfully!
-          </h3>
-          <p style={{ color: '#CBD5E1', fontSize: '1.05rem', maxWidth: '540px', margin: '0 auto 28px', lineHeight: '1.7' }}>
-            Thank you, <strong style={{ color: '#F472B6' }}>{formData.name || 'there'}</strong>. A Principal Engineer at Vamtech will review your architecture requirements and reply within <strong>4 business hours</strong>.
-          </p>
 
-          <div
+          <h3
             style={{
-              background: 'rgba(255, 255, 255, 0.03)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              borderRadius: '16px',
-              padding: '24px',
-              maxWidth: '540px',
-              margin: '0 auto 32px',
-              textAlign: 'left',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '10px',
-              fontSize: '0.9rem',
+              fontFamily: 'var(--font-untitled-serif)',
+              fontSize: '32px',
+              fontWeight: 400,
+              color: 'var(--color-off-black)',
+              marginBottom: '12px',
             }}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span style={{ color: '#94A3B8' }}>Service Target:</span>
-              <span style={{ color: '#F8FAFC', fontWeight: 600 }}>{formData.serviceInterest}</span>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span style={{ color: '#94A3B8' }}>Budget Tier:</span>
-              <span style={{ color: '#38BDF8', fontWeight: 600 }}>{formData.budgetRange}</span>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span style={{ color: '#94A3B8' }}>Delivery Timeline:</span>
-              <span style={{ color: '#F8FAFC', fontWeight: 600 }}>{formData.timeline}</span>
-            </div>
-          </div>
+            Architecture Scope Received
+          </h3>
+
+          <p
+            style={{
+              fontFamily: 'var(--font-abc-diatype-mono)',
+              fontSize: '15px',
+              color: 'var(--color-graphite)',
+              maxWidth: '520px',
+              margin: '0 auto 32px',
+              lineHeight: 1.6,
+            }}
+          >
+            Thank you, <strong>{formData.name || 'Partner'}</strong>. A Principal Systems Architect is reviewing your requirements and will reply within 4 business hours.
+          </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
             <button
               onClick={() => setShowCalendarModal(true)}
               className="btn-primary"
-              style={{ padding: '12px 28px' }}
+              style={{ fontSize: '13px' }}
             >
-              <Calendar size={18} />
-              <span>Directly Book 30-Min Architecture Discovery</span>
+              <span>Instant Schedule Discovery Call</span>
+              <span className="arrow-glyph">▸</span>
             </button>
             <button
               onClick={() => setSubmitted(false)}
-              className="btn-secondary"
-              style={{ padding: '12px 24px' }}
+              className="btn-ghost"
+              style={{ fontSize: '13px' }}
             >
-              Send Another Inquiry
+              Submit Another Scope
             </button>
           </div>
         </div>
       ) : (
-        <form
-          onSubmit={handleSubmit}
-          className="glass-card"
-          style={{
-            padding: '40px',
-            borderRadius: '24px',
-            background: 'linear-gradient(180deg, rgba(14, 20, 36, 0.85) 0%, rgba(8, 12, 22, 0.95) 100%)',
-            border: '1px solid rgba(224, 26, 138, 0.3)',
-          }}
-        >
-          <div style={{ marginBottom: '28px' }}>
-            <div className="badge-pill brand" style={{ marginBottom: '10px' }}>
-              <Sparkles size={14} />
-              <span>Guaranteed 4-Hour Response Window</span>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }} className="form-grid">
+            <div>
+              <label className="monad-label">Your Name *</label>
+              <input
+                type="text"
+                required
+                placeholder="Elena Vance"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="monad-input"
+              />
             </div>
-            <h3 style={{ fontSize: '1.5rem', color: '#FFFFFF', marginBottom: '8px' }}>
-              Start Your Engineering Engagement
-            </h3>
-            <p style={{ color: '#94A3B8', fontSize: '0.94rem' }}>
-              Fill in your project details. We will execute an initial architectural feasibility assessment free of charge.
-            </p>
+
+            <div>
+              <label className="monad-label">Work Email *</label>
+              <input
+                type="email"
+                required
+                placeholder="elena@enterprise.io"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="monad-input"
+              />
+            </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }} className="form-grid">
-            {/* Name */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }} className="form-grid">
             <div>
-              <label style={{ display: 'block', fontSize: '0.86rem', fontWeight: 600, color: '#CBD5E1', marginBottom: '6px' }}>
-                Full Name *
-              </label>
-              <div style={{ position: 'relative' }}>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Alex Henderson"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '12px 14px 12px 40px',
-                    borderRadius: '12px',
-                    background: 'rgba(255, 255, 255, 0.04)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    color: '#FFFFFF',
-                    fontSize: '0.92rem',
-                    outline: 'none',
-                  }}
-                />
-                <User size={16} color="#94A3B8" style={{ position: 'absolute', left: '14px', top: '14px' }} />
-              </div>
+              <label className="monad-label">Company / Organization</label>
+              <input
+                type="text"
+                placeholder="Vance Logistics"
+                value={formData.company}
+                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                className="monad-input"
+              />
             </div>
 
-            {/* Email */}
             <div>
-              <label style={{ display: 'block', fontSize: '0.86rem', fontWeight: 600, color: '#CBD5E1', marginBottom: '6px' }}>
-                Work Email *
-              </label>
-              <div style={{ position: 'relative' }}>
-                <input
-                  type="email"
-                  required
-                  placeholder="alex@company.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '12px 14px 12px 40px',
-                    borderRadius: '12px',
-                    background: 'rgba(255, 255, 255, 0.04)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    color: '#FFFFFF',
-                    fontSize: '0.92rem',
-                    outline: 'none',
-                  }}
-                />
-                <Mail size={16} color="#94A3B8" style={{ position: 'absolute', left: '14px', top: '14px' }} />
-              </div>
+              <label className="monad-label">Your Role / Title</label>
+              <input
+                type="text"
+                placeholder="VP of Engineering / Founder"
+                value={formData.role}
+                onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                className="monad-input"
+              />
             </div>
+          </div>
 
-            {/* Company */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }} className="form-grid">
             <div>
-              <label style={{ display: 'block', fontSize: '0.86rem', fontWeight: 600, color: '#CBD5E1', marginBottom: '6px' }}>
-                Company / Organization
-              </label>
-              <div style={{ position: 'relative' }}>
-                <input
-                  type="text"
-                  placeholder="e.g. Acme Corp"
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '12px 14px 12px 40px',
-                    borderRadius: '12px',
-                    background: 'rgba(255, 255, 255, 0.04)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    color: '#FFFFFF',
-                    fontSize: '0.92rem',
-                    outline: 'none',
-                  }}
-                />
-                <Building2 size={16} color="#94A3B8" style={{ position: 'absolute', left: '14px', top: '14px' }} />
-              </div>
-            </div>
-
-            {/* Primary Service */}
-            <div>
-              <label style={{ display: 'block', fontSize: '0.86rem', fontWeight: 600, color: '#CBD5E1', marginBottom: '6px' }}>
-                Area of Interest
-              </label>
+              <label className="monad-label">Primary Capability Area</label>
               <select
                 value={formData.serviceInterest}
                 onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
-                style={{
-                  width: '100%',
-                  padding: '12px 14px',
-                  borderRadius: '12px',
-                  background: '#0E1424',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  color: '#FFFFFF',
-                  fontSize: '0.92rem',
-                  outline: 'none',
-                }}
+                className="monad-select"
               >
-                <option value="Custom Enterprise Software">Custom Enterprise Software</option>
-                <option value="Cloud Modernization & DevOps">Cloud Modernization & DevOps</option>
-                <option value="AI & Agentic Automation">AI & Agentic Automation</option>
-                <option value="High-Performance Web & Mobile Apps">High-Performance Web & Mobile Apps</option>
-                <option value="Fractional CTO & Advisory">Fractional CTO & Architecture Retainer</option>
+                <option value="Custom Enterprise Software">Custom Enterprise Software (Go / Microservices)</option>
+                <option value="Cloud Modernization & DevOps">Cloud Modernization & Kubernetes</option>
+                <option value="AI Engineering & RAG">AI Engineering & Vector RAG</option>
+                <option value="Next.js Web Applications">Next.js Web Applications</option>
+                <option value="Fractional CTO & Architecture Audit">Fractional CTO & Architecture Audit</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="monad-label">Estimated Budget Tier</label>
+              <select
+                value={formData.budgetRange}
+                onChange={(e) => setFormData({ ...formData, budgetRange: e.target.value })}
+                className="monad-select"
+              >
+                <option value="Under $20k">Under $20k (Sprint Audit)</option>
+                <option value="$20k – $50k">$20k – $50k (MVP Sprint)</option>
+                <option value="$50k – $150k">$50k – $150k (Dedicated Squad)</option>
+                <option value="$150k+">$150k+ (Enterprise Overhaul)</option>
               </select>
             </div>
           </div>
 
-          {/* Budget Range Selector */}
-          <div style={{ marginBottom: '20px' }}>
-            <label style={{ display: 'block', fontSize: '0.86rem', fontWeight: 600, color: '#CBD5E1', marginBottom: '8px' }}>
-              Estimated Project Budget Range
-            </label>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }} className="budget-grid">
-              {['< $20k', '$20k – $50k', '$50k – $100k', '$100k+'].map((tier) => (
-                <button
-                  type="button"
-                  key={tier}
-                  onClick={() => setFormData({ ...formData, budgetRange: tier })}
-                  style={{
-                    padding: '10px',
-                    borderRadius: '10px',
-                    fontSize: '0.82rem',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    background: formData.budgetRange === tier ? 'rgba(224, 26, 138, 0.25)' : 'rgba(255, 255, 255, 0.03)',
-                    border: formData.budgetRange === tier ? '1px solid #E01A8A' : '1px solid rgba(255, 255, 255, 0.08)',
-                    color: formData.budgetRange === tier ? '#FFFFFF' : '#94A3B8',
-                    transition: 'all 0.2s',
-                  }}
-                >
-                  {tier}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Message */}
-          <div style={{ marginBottom: '24px' }}>
-            <label style={{ display: 'block', fontSize: '0.86rem', fontWeight: 600, color: '#CBD5E1', marginBottom: '6px' }}>
-              Project Summary & Technical Requirements
-            </label>
+          <div>
+            <label className="monad-label">System Architecture Brief or Bottleneck Description *</label>
             <textarea
-              rows={4}
               required
-              placeholder="Tell us what you're looking to build or optimize (e.g. tech stack, current bottlenecks, launch timeline)..."
+              rows={4}
+              placeholder="Describe your current tech stack, concurrency goals, latency bottlenecks, or target deadlines..."
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              style={{
-                width: '100%',
-                padding: '12px 14px',
-                borderRadius: '12px',
-                background: 'rgba(255, 255, 255, 0.04)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                color: '#FFFFFF',
-                fontSize: '0.92rem',
-                outline: 'none',
-                resize: 'vertical',
-                fontFamily: 'inherit',
-              }}
+              className="monad-textarea"
             />
           </div>
 
-          {/* Submit */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#64748B', fontSize: '0.82rem' }}>
-              <ShieldCheck size={16} color="#4ADE80" />
-              <span>Strict NDA Protected • Zero spam</span>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '16px',
+              paddingTop: '8px',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-smoke)', fontSize: '12px' }}>
+              <ShieldCheck size={14} color="var(--color-lake-blue)" />
+              <span>Strict NDA Protected • Zero Junior Handoffs</span>
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
               className="btn-primary"
-              style={{ padding: '13px 32px', minWidth: '200px' }}
+              style={{ fontSize: '14px', padding: '14px 32px' }}
             >
-              {isSubmitting ? (
-                <span>Transmitting Spec...</span>
-              ) : (
-                <>
-                  <span>Submit Inquiry</span>
-                  <Send size={16} />
-                </>
-              )}
+              <span>{isSubmitting ? 'Transmitting Scope...' : 'Transmit Architecture Scope'}</span>
+              <span className="arrow-glyph">▸</span>
             </button>
           </div>
         </form>
       )}
 
-      {/* Calendar Booking Simulation Modal */}
+      {/* Calendar Discovery Modal */}
       {showCalendarModal && (
         <div
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(3, 6, 15, 0.85)',
-            backdropFilter: 'blur(12px)',
+            backgroundColor: 'rgba(36, 36, 36, 0.5)',
+            backdropFilter: 'blur(8px)',
+            zIndex: 300,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            zIndex: 999,
             padding: '20px',
           }}
+          onClick={() => setShowCalendarModal(false)}
         >
           <div
-            className="glass-card"
             style={{
               width: '100%',
-              maxWidth: '520px',
+              maxWidth: '480px',
+              backgroundColor: '#ffffff',
+              border: '1px solid var(--color-ash)',
+              borderRadius: '28px',
               padding: '36px',
-              borderRadius: '24px',
-              background: '#0B101E',
-              border: '1px solid rgba(0, 102, 255, 0.4)',
+              boxShadow: '0 24px 64px rgba(0, 0, 0, 0.15)',
             }}
+            onClick={(e) => e.stopPropagation()}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-              <div style={{ padding: '8px', borderRadius: '10px', background: 'rgba(0, 102, 255, 0.15)', color: '#38BDF8' }}>
-                <Calendar size={22} />
-              </div>
-              <h3 style={{ fontSize: '1.3rem', color: '#FFFFFF' }}>Schedule 30-Min Discovery</h3>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+              <Calendar size={20} color="var(--color-lake-blue)" />
+              <h4 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '22px', fontWeight: 400 }}>
+                Select Architecture Discovery Slot
+              </h4>
             </div>
-            <p style={{ color: '#94A3B8', fontSize: '0.9rem', marginBottom: '24px' }}>
-              Select a preferred time slot with our Senior Engineering Lead for your architecture review.
+
+            <p style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '13px', color: 'var(--color-graphite)', marginBottom: '20px' }}>
+              Select a 30-minute window for a technical consultation with our Principal Distributed Systems Architect.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
               {[
                 'Tomorrow, 10:00 AM EST',
                 'Tomorrow, 2:00 PM EST',
                 'Thursday, 11:30 AM EST',
-                'Friday, 3:00 PM EST',
+                'Thursday, 4:00 PM EST',
               ].map((slot) => (
                 <button
-                  type="button"
                   key={slot}
                   onClick={() => setSelectedDate(slot)}
+                  className="pipeline-node-tag"
                   style={{
-                    padding: '12px 16px',
-                    borderRadius: '10px',
-                    textAlign: 'left',
-                    background: selectedDate === slot ? 'rgba(0, 102, 255, 0.25)' : 'rgba(255, 255, 255, 0.03)',
-                    border: selectedDate === slot ? '1px solid #0066FF' : '1px solid rgba(255, 255, 255, 0.08)',
-                    color: selectedDate === slot ? '#FFFFFF' : '#94A3B8',
-                    cursor: 'pointer',
-                    display: 'flex',
+                    width: '100%',
                     justifyContent: 'space-between',
-                    alignItems: 'center',
-                    fontSize: '0.9rem',
+                    backgroundColor: selectedDate === slot ? 'var(--color-off-black)' : 'var(--color-parchment)',
+                    color: selectedDate === slot ? '#ffffff' : 'var(--color-off-black)',
+                    borderColor: selectedDate === slot ? 'var(--color-off-black)' : 'var(--color-ash)',
+                    cursor: 'pointer',
+                    padding: '12px 18px',
+                    fontSize: '13px',
                   }}
                 >
                   <span>{slot}</span>
-                  {selectedDate === slot && <CheckCircle size={16} color="#00D2FF" />}
+                  {selectedDate === slot && <span style={{ color: 'var(--color-mint)' }}>✓</span>}
                 </button>
               ))}
             </div>
 
             <div style={{ display: 'flex', gap: '12px' }}>
               <button
-                type="button"
                 onClick={handleBookMeeting}
                 className="btn-primary"
-                style={{ flex: 1 }}
+                style={{ flex: 1, fontSize: '13px' }}
               >
-                Confirm Video Call
+                <span>Confirm Invitation</span>
+                <span className="arrow-glyph">▸</span>
               </button>
               <button
-                type="button"
                 onClick={() => setShowCalendarModal(false)}
-                className="btn-secondary"
-                style={{ padding: '10px 18px' }}
+                className="btn-ghost"
+                style={{ fontSize: '13px' }}
               >
                 Cancel
               </button>
@@ -446,7 +337,6 @@ export default function ContactForm() {
           </div>
         </div>
       )}
-
     </div>
   );
 }

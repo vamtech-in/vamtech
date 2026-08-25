@@ -4,13 +4,11 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { 
   Calculator, 
-  Layers, 
-  Sparkles, 
-  Clock, 
-  Users, 
   ArrowRight, 
-  CheckCircle, 
-  HelpCircle 
+  CheckCircle2, 
+  HelpCircle,
+  Clock,
+  Users
 } from 'lucide-react';
 
 export default function ProjectCostEstimator() {
@@ -20,7 +18,6 @@ export default function ProjectCostEstimator() {
   const [hasDesignReady, setHasDesignReady] = useState<boolean>(true);
   const [needsCompliance, setNeedsCompliance] = useState<boolean>(false);
 
-  // Dynamic cost calculation algorithm
   const baseRatePerDevWeek = 2800;
   const projectMultiplier = {
     mvp: 1.0,
@@ -38,105 +35,94 @@ export default function ProjectCostEstimator() {
 
   return (
     <div
-      className="glass-card"
+      className="monad-card"
       style={{
-        borderRadius: '24px',
-        padding: '40px',
-        background: 'linear-gradient(180deg, rgba(14, 20, 36, 0.9) 0%, rgba(8, 12, 22, 0.95) 100%)',
-        border: '1px solid rgba(0, 102, 255, 0.3)',
+        backgroundColor: '#ffffff',
+        padding: '48px 40px',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-        <div style={{ padding: '8px', borderRadius: '10px', background: 'rgba(0, 102, 255, 0.15)', color: '#38BDF8' }}>
-          <Calculator size={20} />
-        </div>
-        <span className="badge-pill cyan">Interactive Project Scope & Budget Sizer</span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+        <span
+          style={{
+            padding: '4px 12px',
+            borderRadius: '9999px',
+            backgroundColor: 'var(--color-periwinkle-mist)',
+            color: 'var(--color-lake-blue)',
+            fontSize: '11px',
+            fontFamily: 'var(--font-abc-diatype-mono)',
+            textTransform: 'uppercase',
+            fontWeight: 500,
+          }}
+        >
+          Interactive Scope Calculator
+        </span>
       </div>
-      <h3 style={{ fontSize: '1.6rem', color: '#FFFFFF', marginBottom: '12px' }}>
-        Instant Engineering Investment Estimator
+
+      <h3
+        style={{
+          fontFamily: 'var(--font-untitled-serif)',
+          fontSize: 'clamp(24px, 3vw, 32px)',
+          fontWeight: 400,
+          color: 'var(--color-off-black)',
+          marginBottom: '12px',
+        }}
+      >
+        Engineering Investment & Sprint Sizing
       </h3>
-      <p style={{ color: '#94A3B8', fontSize: '0.96rem', marginBottom: '32px' }}>
-        Select your project parameters below to get a transparent ballpark timeline and sprint allocation estimate.
+      <p style={{ color: 'var(--color-graphite)', fontSize: '15px', marginBottom: '36px' }}>
+        Configure engineering parameters below to calculate transparent ballpark budgets and squad allocations.
       </p>
 
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '1.2fr 1fr',
-          gap: '36px',
+          gridTemplateColumns: '1.4fr 1fr',
+          gap: '40px',
+          alignItems: 'start',
         }}
         className="calculator-grid"
       >
-        {/* Controls */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          {/* Step 1: Project Type */}
+        {/* Left Side: Controls */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+          {/* Project Type Pills */}
           <div>
-            <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, color: '#CBD5E1', marginBottom: '10px' }}>
-              1. Project Category
-            </label>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+            <label className="monad-label">1. Architecture Scope</label>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
               {[
-                { id: 'mvp', label: 'Full-Stack MVP Web/App' },
-                { id: 'ai', label: 'AI / RAG / Automation' },
-                { id: 'enterprise', label: 'Enterprise Software' },
-                { id: 'cloud', label: 'Cloud Infra & DevOps' },
-              ].map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => setProjectType(item.id as any)}
-                  style={{
-                    padding: '12px',
-                    borderRadius: '12px',
-                    fontSize: '0.86rem',
-                    fontWeight: 600,
-                    textAlign: 'center',
-                    cursor: 'pointer',
-                    background: projectType === item.id ? 'rgba(0, 102, 255, 0.25)' : 'rgba(255, 255, 255, 0.03)',
-                    border: projectType === item.id ? '1px solid #0066FF' : '1px solid rgba(255, 255, 255, 0.08)',
-                    color: projectType === item.id ? '#FFFFFF' : '#94A3B8',
-                    transition: 'all 0.2s ease',
-                  }}
-                >
-                  {item.label}
-                </button>
-              ))}
+                { id: 'mvp', label: 'Fixed MVP Sprint' },
+                { id: 'enterprise', label: 'Enterprise Platform' },
+                { id: 'ai', label: 'AI & Vector RAG' },
+                { id: 'cloud', label: 'DevOps & SRE' },
+              ].map((t) => {
+                const isSelected = projectType === t.id;
+                return (
+                  <button
+                    key={t.id}
+                    onClick={() => setProjectType(t.id as any)}
+                    className="pipeline-node-tag"
+                    style={{
+                      justifyContent: 'center',
+                      backgroundColor: isSelected ? 'var(--color-off-black)' : 'var(--color-parchment)',
+                      color: isSelected ? '#ffffff' : 'var(--color-off-black)',
+                      borderColor: isSelected ? 'var(--color-off-black)' : 'var(--color-ash)',
+                      cursor: 'pointer',
+                      padding: '12px 16px',
+                      fontSize: '12px',
+                    }}
+                  >
+                    {t.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* Step 2: Duration Slider */}
+          {/* Dedicated Engineers Slider */}
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-              <label style={{ fontSize: '0.88rem', fontWeight: 600, color: '#CBD5E1' }}>
-                2. Target Delivery Duration
-              </label>
-              <span style={{ color: '#38BDF8', fontWeight: 700, fontSize: '0.9rem' }}>
-                {durationWeeks} Weeks ({Math.round(durationWeeks / 4.33 * 10) / 10} mo)
-              </span>
-            </div>
-            <input
-              type="range"
-              min="4"
-              max="24"
-              step="2"
-              value={durationWeeks}
-              onChange={(e) => setDurationWeeks(Number(e.target.value))}
-              style={{ width: '100%', accentColor: '#0066FF', cursor: 'pointer' }}
-            />
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: '#64748B', marginTop: '4px' }}>
-              <span>4 Weeks (Sprint)</span>
-              <span>12 Weeks (Standard MVP)</span>
-              <span>24 Weeks (Scale-up)</span>
-            </div>
-          </div>
-
-          {/* Step 3: Squad Sizing */}
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-              <label style={{ fontSize: '0.88rem', fontWeight: 600, color: '#CBD5E1' }}>
-                3. Dedicated Senior Engineers
-              </label>
-              <span style={{ color: '#F472B6', fontWeight: 700, fontSize: '0.9rem' }}>
-                {teamSize} Engineers (+ 1 Tech Lead)
+              <label className="monad-label">2. Dedicated Senior Engineers</label>
+              <span className="mono-text" style={{ fontSize: '13px', fontWeight: 500, color: 'var(--color-lake-blue)' }}>
+                {teamSize} Senior Engineers
               </span>
             </div>
             <input
@@ -146,86 +132,138 @@ export default function ProjectCostEstimator() {
               step="1"
               value={teamSize}
               onChange={(e) => setTeamSize(Number(e.target.value))}
-              style={{ width: '100%', accentColor: '#E01A8A', cursor: 'pointer' }}
+              style={{
+                width: '100%',
+                accentColor: 'var(--color-lake-blue)',
+                cursor: 'pointer',
+              }}
             />
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '6px' }}>
+              <span className="mono-helper">1 Dev</span>
+              <span className="mono-helper">4 Devs (Squad)</span>
+              <span className="mono-helper">8 Devs (Pod)</span>
+            </div>
           </div>
 
-          {/* Step 4: Add-on Checkboxes */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', fontSize: '0.88rem', color: '#CBD5E1' }}>
-              <input
-                type="checkbox"
-                checked={needsCompliance}
-                onChange={(e) => setNeedsCompliance(e.target.checked)}
-                style={{ accentColor: '#0066FF', width: '16px', height: '16px' }}
-              />
-              <span>Includes SOC 2 / HIPAA compliance audits & penetration testing</span>
-            </label>
+          {/* Duration Slider */}
+          <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+              <label className="monad-label">3. Target Timeline</label>
+              <span className="mono-text" style={{ fontSize: '13px', fontWeight: 500, color: 'var(--color-lake-blue)' }}>
+                {durationWeeks} Weeks ({Math.round(durationWeeks / 4)} Mo.)
+              </span>
+            </div>
+            <input
+              type="range"
+              min="4"
+              max="24"
+              step="2"
+              value={durationWeeks}
+              onChange={(e) => setDurationWeeks(Number(e.target.value))}
+              style={{
+                width: '100%',
+                accentColor: 'var(--color-lake-blue)',
+                cursor: 'pointer',
+              }}
+            />
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '6px' }}>
+              <span className="mono-helper">4 Weeks</span>
+              <span className="mono-helper">12 Weeks</span>
+              <span className="mono-helper">24 Weeks</span>
+            </div>
+          </div>
 
-            <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', fontSize: '0.88rem', color: '#CBD5E1' }}>
+          {/* Checkboxes */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
               <input
                 type="checkbox"
                 checked={hasDesignReady}
                 onChange={(e) => setHasDesignReady(e.target.checked)}
-                style={{ accentColor: '#0066FF', width: '16px', height: '16px' }}
+                style={{ accentColor: 'var(--color-lake-blue)' }}
               />
-              <span>We already have Figma designs / wireframes ready (Reduces scope)</span>
+              <span style={{ fontSize: '13px', color: 'var(--color-graphite)', fontFamily: 'var(--font-abc-diatype-mono)' }}>
+                Figma Design Tokens & Wireframes Already Prepared
+              </span>
+            </label>
+
+            <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={needsCompliance}
+                onChange={(e) => setNeedsCompliance(e.target.checked)}
+                style={{ accentColor: 'var(--color-lake-blue)' }}
+              />
+              <span style={{ fontSize: '13px', color: 'var(--color-graphite)', fontFamily: 'var(--font-abc-diatype-mono)' }}>
+                Requires SOC 2 / HIPAA / GDPR Regulatory Sign-off
+              </span>
             </label>
           </div>
         </div>
 
-        {/* Results Card */}
+        {/* Right Side: Calculation Outcome Card (Periwinkle Mist or Off-Black) */}
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(224, 26, 138, 0.1) 0%, rgba(0, 102, 255, 0.15) 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            borderRadius: '18px',
-            padding: '28px',
+            backgroundColor: 'var(--color-parchment)',
+            border: '1px solid var(--color-ash)',
+            borderRadius: '24px',
+            padding: '36px 30px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
+            height: '100%',
           }}
         >
           <div>
-            <div style={{ fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#94A3B8', fontWeight: 600, marginBottom: '6px' }}>
-              Estimated Investment Range
-            </div>
-            <div style={{ fontSize: '2.2rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.1, marginBottom: '6px' }}>
-              ${minEstimate.toLocaleString()} – ${maxEstimate.toLocaleString()}
-            </div>
-            <div style={{ fontSize: '0.84rem', color: '#38BDF8', marginBottom: '24px' }}>
-              *Transparent milestones • 100% IP handover • Zero hidden fees
+            <div className="mono-helper" style={{ marginBottom: '8px' }}>
+              BALLPARK SPRINT ESTIMATION
             </div>
 
-            <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem', color: '#CBD5E1' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: '#94A3B8' }}>Delivery Cadence:</span>
-                <span style={{ fontWeight: 600 }}>Bi-Weekly Production Sprints</span>
+            <div
+              style={{
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: 'clamp(28px, 3.2vw, 40px)',
+                fontWeight: 400,
+                color: 'var(--color-off-black)',
+                letterSpacing: '-0.02em',
+                marginBottom: '6px',
+              }}
+            >
+              ${minEstimate.toLocaleString()} – ${maxEstimate.toLocaleString()}
+            </div>
+
+            <div className="mono-text" style={{ fontSize: '12px', color: 'var(--color-smoke)', marginBottom: '24px' }}>
+              Estimated allocation: {teamSize * durationWeeks * 40} engineering hours
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', borderTop: '1px solid var(--color-ash)', paddingTop: '20px', marginBottom: '24px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
+                <span style={{ color: 'var(--color-graphite)' }}>Squad Composition:</span>
+                <span className="mono-text" style={{ fontWeight: 500, color: 'var(--color-off-black)' }}>{teamSize} Senior Staff</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: '#94A3B8' }}>Team Allocation:</span>
-                <span style={{ fontWeight: 600 }}>{teamSize} Full-Time Senior Devs</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
+                <span style={{ color: 'var(--color-graphite)' }}>Sprint Cadence:</span>
+                <span className="mono-text" style={{ fontWeight: 500, color: 'var(--color-off-black)' }}>2-Week Milestones</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: '#94A3B8' }}>Warranty Included:</span>
-                <span style={{ fontWeight: 600, color: '#4ADE80' }}>30 Days Post-Launch</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
+                <span style={{ color: 'var(--color-graphite)' }}>Code Ownership:</span>
+                <span className="mono-text" style={{ fontWeight: 500, color: 'var(--color-off-black)' }}>100% IP Transfer</span>
               </div>
             </div>
           </div>
 
-          <div style={{ marginTop: '28px' }}>
+          <div>
             <Link
-              href={`/contact?type=${projectType}&team=${teamSize}&weeks=${durationWeeks}`}
+              href="/contact"
               className="btn-primary"
-              style={{ width: '100%', padding: '12px 20px', fontSize: '0.94rem' }}
+              style={{ width: '100%', fontSize: '13px', padding: '14px 20px' }}
             >
-              <span>Lock in This Scope & Quote</span>
-              <ArrowRight size={16} />
+              <span>Lock Sizing & Book Discovery</span>
+              <span className="arrow-glyph">▸</span>
             </Link>
           </div>
         </div>
       </div>
-
     </div>
   );
 }

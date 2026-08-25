@@ -7,14 +7,12 @@ import Logo from './Logo';
 import { 
   Menu, 
   X, 
-  ArrowRight, 
   ChevronDown, 
-  ShieldCheck, 
-  Sparkles, 
   Code2, 
   CloudCog, 
-  Briefcase, 
-  Layers 
+  Sparkles, 
+  Layers,
+  ArrowRight
 } from 'lucide-react';
 
 export default function Navbar() {
@@ -34,34 +32,49 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Services', href: '/services', hasDropdown: true },
     { name: 'Case Studies', href: '/case-studies' },
-    { name: 'Pricing & Models', href: '/pricing' },
-    { name: 'About', href: '/about' },
-    { name: 'Security & Trust', href: '/security' },
+    { name: 'Pricing & Sizing', href: '/pricing' },
+    { name: 'About & Labs', href: '/about' },
+    { name: 'Security Center', href: '/security' },
     { name: 'Contact', href: '/contact' },
   ];
 
   return (
     <header
       style={{
-        position: 'fixed',
+        position: 'sticky',
         top: 0,
         left: 0,
         right: 0,
         zIndex: 100,
-        transition: 'all 0.3s ease',
-        background: isScrolled ? 'rgba(6, 9, 19, 0.85)' : 'transparent',
-        backdropFilter: isScrolled ? 'blur(16px)' : 'none',
-        borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid transparent',
+        transition: 'all 0.25s ease',
+        backgroundColor: isScrolled ? 'rgba(246, 243, 241, 0.95)' : 'var(--color-parchment)',
+        backdropFilter: isScrolled ? 'blur(12px)' : 'none',
+        borderBottom: isScrolled ? '1px solid var(--color-ash)' : '1px solid transparent',
       }}
     >
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '80px' }}>
-        {/* Logo */}
+      <div
+        className="container"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          height: '80px',
+        }}
+      >
+        {/* Brand Logo with Dot */}
         <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
           <Logo size="md" showTagline={true} />
         </Link>
 
-        {/* Desktop Nav */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '20px' }} className="desktop-nav">
+        {/* Desktop Nav in ABC Diatype Mono 18px / 14px Uppercase */}
+        <nav
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '28px',
+          }}
+          className="desktop-nav"
+        >
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
 
@@ -79,35 +92,43 @@ export default function Navbar() {
                       display: 'flex',
                       alignItems: 'center',
                       gap: '4px',
-                      fontSize: '0.9rem',
-                      fontWeight: 600,
-                      color: isActive ? '#FFFFFF' : '#94A3B8',
-                      transition: 'color 0.2s ease',
+                      fontFamily: 'var(--font-abc-diatype-mono)',
+                      fontSize: '14px',
+                      fontWeight: 500,
+                      textTransform: 'uppercase',
+                      letterSpacing: '-0.025em',
+                      color: isActive ? 'var(--color-lake-blue)' : 'var(--color-off-black)',
                       padding: '8px 0',
                       whiteSpace: 'nowrap',
+                      transition: 'color 0.2s ease',
                     }}
                   >
                     <span>{link.name}</span>
-                    <ChevronDown size={14} style={{ transition: 'transform 0.2s', transform: servicesDropdownOpen ? 'rotate(180deg)' : 'none' }} />
+                    <ChevronDown
+                      size={14}
+                      style={{
+                        transition: 'transform 0.2s',
+                        transform: servicesDropdownOpen ? 'rotate(180deg)' : 'none',
+                      }}
+                    />
                   </Link>
 
-                  {/* Dropdown Menu */}
+                  {/* Dropdown Menu — Parchment with 1px Ash border */}
                   {servicesDropdownOpen && (
                     <div
                       style={{
                         position: 'absolute',
                         top: '100%',
                         left: '-20px',
-                        width: '320px',
-                        background: 'rgba(11, 16, 30, 0.98)',
-                        backdropFilter: 'blur(24px)',
-                        border: '1px solid rgba(255, 255, 255, 0.12)',
-                        borderRadius: '16px',
+                        width: '340px',
+                        backgroundColor: '#ffffff',
+                        border: '1px solid var(--color-ash)',
+                        borderRadius: '24px',
                         padding: '16px',
-                        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.7)',
+                        boxShadow: '0 12px 32px rgba(0, 0, 0, 0.08)',
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: '8px',
+                        gap: '6px',
                         zIndex: 110,
                       }}
                     >
@@ -117,18 +138,29 @@ export default function Navbar() {
                           display: 'flex',
                           alignItems: 'flex-start',
                           gap: '12px',
-                          padding: '10px',
-                          borderRadius: '10px',
+                          padding: '10px 14px',
+                          borderRadius: '16px',
                           transition: 'background 0.2s',
                         }}
                         className="dropdown-item"
                       >
-                        <div style={{ padding: '8px', borderRadius: '8px', background: 'rgba(255, 94, 58, 0.15)', color: '#FF5E3A' }}>
-                          <Code2 size={18} />
+                        <div
+                          style={{
+                            padding: '8px',
+                            borderRadius: '10px',
+                            backgroundColor: 'rgba(43, 89, 209, 0.1)',
+                            color: 'var(--color-lake-blue)',
+                          }}
+                        >
+                          <Code2 size={16} />
                         </div>
                         <div>
-                          <div style={{ fontWeight: 600, fontSize: '0.9rem', color: '#FFFFFF' }}>Custom Enterprise Software</div>
-                          <div style={{ fontSize: '0.78rem', color: '#94A3B8' }}>Microservices & high-scale APIs</div>
+                          <div style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '16px', color: 'var(--color-off-black)' }}>
+                            Custom Enterprise Software
+                          </div>
+                          <div style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '11px', color: 'var(--color-graphite)' }}>
+                            High-concurrency microservices & APIs
+                          </div>
                         </div>
                       </Link>
 
@@ -138,18 +170,29 @@ export default function Navbar() {
                           display: 'flex',
                           alignItems: 'flex-start',
                           gap: '12px',
-                          padding: '10px',
-                          borderRadius: '10px',
+                          padding: '10px 14px',
+                          borderRadius: '16px',
                           transition: 'background 0.2s',
                         }}
                         className="dropdown-item"
                       >
-                        <div style={{ padding: '8px', borderRadius: '8px', background: 'rgba(0, 102, 255, 0.15)', color: '#0066FF' }}>
-                          <CloudCog size={18} />
+                        <div
+                          style={{
+                            padding: '8px',
+                            borderRadius: '10px',
+                            backgroundColor: 'rgba(160, 181, 235, 0.25)',
+                            color: '#1a3e9c',
+                          }}
+                        >
+                          <CloudCog size={16} />
                         </div>
                         <div>
-                          <div style={{ fontWeight: 600, fontSize: '0.9rem', color: '#FFFFFF' }}>Cloud & DevOps</div>
-                          <div style={{ fontSize: '0.78rem', color: '#94A3B8' }}>Kubernetes & CI/CD automation</div>
+                          <div style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '16px', color: 'var(--color-off-black)' }}>
+                            Cloud & Zero-Trust DevOps
+                          </div>
+                          <div style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '11px', color: 'var(--color-graphite)' }}>
+                            Multi-region Kubernetes & Terraform
+                          </div>
                         </div>
                       </Link>
 
@@ -159,18 +202,29 @@ export default function Navbar() {
                           display: 'flex',
                           alignItems: 'flex-start',
                           gap: '12px',
-                          padding: '10px',
-                          borderRadius: '10px',
+                          padding: '10px 14px',
+                          borderRadius: '16px',
                           transition: 'background 0.2s',
                         }}
                         className="dropdown-item"
                       >
-                        <div style={{ padding: '8px', borderRadius: '8px', background: 'rgba(224, 26, 138, 0.15)', color: '#E01A8A' }}>
-                          <Sparkles size={18} />
+                        <div
+                          style={{
+                            padding: '8px',
+                            borderRadius: '10px',
+                            backgroundColor: 'rgba(167, 252, 205, 0.35)',
+                            color: '#0b5930',
+                          }}
+                        >
+                          <Sparkles size={16} />
                         </div>
                         <div>
-                          <div style={{ fontWeight: 600, fontSize: '0.9rem', color: '#FFFFFF' }}>AI & Automation</div>
-                          <div style={{ fontSize: '0.78rem', color: '#94A3B8' }}>Vector RAG & autonomous agents</div>
+                          <div style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '16px', color: 'var(--color-off-black)' }}>
+                            AI & Agentic Workflows
+                          </div>
+                          <div style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '11px', color: 'var(--color-graphite)' }}>
+                            Vector RAG & deterministic guardrails
+                          </div>
                         </div>
                       </Link>
 
@@ -180,18 +234,29 @@ export default function Navbar() {
                           display: 'flex',
                           alignItems: 'flex-start',
                           gap: '12px',
-                          padding: '10px',
-                          borderRadius: '10px',
+                          padding: '10px 14px',
+                          borderRadius: '16px',
                           transition: 'background 0.2s',
                         }}
                         className="dropdown-item"
                       >
-                        <div style={{ padding: '8px', borderRadius: '8px', background: 'rgba(123, 44, 191, 0.15)', color: '#A855F7' }}>
-                          <Layers size={18} />
+                        <div
+                          style={{
+                            padding: '8px',
+                            borderRadius: '10px',
+                            backgroundColor: 'rgba(255, 148, 115, 0.25)',
+                            color: '#9e2d0f',
+                          }}
+                        >
+                          <Layers size={16} />
                         </div>
                         <div>
-                          <div style={{ fontWeight: 600, fontSize: '0.9rem', color: '#FFFFFF' }}>Web & Mobile Apps</div>
-                          <div style={{ fontSize: '0.78rem', color: '#94A3B8' }}>Next.js & React Native products</div>
+                          <div style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '16px', color: 'var(--color-off-black)' }}>
+                            High-Performance Web Apps
+                          </div>
+                          <div style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '11px', color: 'var(--color-graphite)' }}>
+                            Next.js React Server Components & Edge
+                          </div>
                         </div>
                       </Link>
                     </div>
@@ -205,13 +270,16 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 style={{
-                  fontSize: '0.9rem',
-                  fontWeight: 600,
-                  color: isActive ? '#FFFFFF' : '#94A3B8',
-                  transition: 'color 0.2s ease',
-                  position: 'relative',
+                  fontFamily: 'var(--font-abc-diatype-mono)',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  textTransform: 'uppercase',
+                  letterSpacing: '-0.025em',
+                  color: isActive ? 'var(--color-lake-blue)' : 'var(--color-off-black)',
                   padding: '6px 0',
                   whiteSpace: 'nowrap',
+                  position: 'relative',
+                  transition: 'color 0.2s ease',
                 }}
               >
                 <span>{link.name}</span>
@@ -219,12 +287,11 @@ export default function Navbar() {
                   <span
                     style={{
                       position: 'absolute',
-                      bottom: -2,
+                      bottom: -4,
                       left: 0,
                       right: 0,
-                      height: '2px',
-                      background: 'var(--gradient-primary)',
-                      borderRadius: '2px',
+                      height: '1.5px',
+                      backgroundColor: 'var(--color-lake-blue)',
                     }}
                   />
                 )}
@@ -233,40 +300,31 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right CTA & Status */}
+        {/* Action Buttons: Ghost Pill (Login) + Lake Blue Pill (Get a Demo ▸) */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
-          {/* Senior SLA Status Indicator - Hidden on medium screens to prevent overlapping */}
-          <div
+          <Link
+            href="/security"
+            className="btn-ghost"
             style={{
-              alignItems: 'center',
-              gap: '8px',
-              padding: '6px 14px',
-              borderRadius: '9999px',
-              background: 'rgba(74, 222, 128, 0.08)',
-              border: '1px solid rgba(74, 222, 128, 0.25)',
-              fontSize: '0.78rem',
-              color: '#4ADE80',
-              fontWeight: 600,
-              whiteSpace: 'nowrap',
+              padding: '10px 20px',
+              fontSize: '13px',
+              display: 'none',
             }}
-            className="navbar-status-badge"
           >
-            <span
-              style={{
-                width: '7px',
-                height: '7px',
-                borderRadius: '50%',
-                background: '#4ADE80',
-                boxShadow: '0 0 8px #4ADE80',
-                display: 'inline-block',
-              }}
-            />
-            <span>99.99% Operational</span>
-          </div>
+            Trust Center
+          </Link>
 
-          <Link href="/contact" className="btn-primary" style={{ padding: '9px 20px', fontSize: '0.88rem', whiteSpace: 'nowrap' }}>
-            <span>Book a Call</span>
-            <ArrowRight size={15} />
+          {/* Single saturated primary action button per screen */}
+          <Link
+            href="/contact"
+            className="btn-primary"
+            style={{
+              padding: '11px 24px',
+              fontSize: '13px',
+            }}
+          >
+            <span>Get a Demo</span>
+            <span className="arrow-glyph" aria-hidden="true">▸</span>
           </Link>
 
           {/* Mobile Menu Trigger */}
@@ -276,14 +334,14 @@ export default function Navbar() {
               display: 'none',
               background: 'transparent',
               border: 'none',
-              color: '#FFFFFF',
+              color: 'var(--color-off-black)',
               cursor: 'pointer',
               padding: '8px',
             }}
             className="mobile-trigger"
             aria-label="Toggle Navigation"
           >
-            {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
@@ -297,9 +355,9 @@ export default function Navbar() {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'rgba(6, 9, 19, 0.98)',
-            backdropFilter: 'blur(20px)',
-            padding: '24px',
+            backgroundColor: 'var(--color-parchment)',
+            borderTop: '1px solid var(--color-ash)',
+            padding: '32px 24px',
             display: 'flex',
             flexDirection: 'column',
             gap: '20px',
@@ -312,29 +370,32 @@ export default function Navbar() {
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
               style={{
-                fontSize: '1.2rem',
-                fontWeight: 600,
-                color: pathname === link.href ? '#FF5E3A' : '#F8FAFC',
+                fontFamily: 'var(--font-abc-diatype-mono)',
+                fontSize: '16px',
+                fontWeight: 500,
+                textTransform: 'uppercase',
+                letterSpacing: '-0.02em',
+                color: pathname === link.href ? 'var(--color-lake-blue)' : 'var(--color-off-black)',
                 padding: '12px 0',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                borderBottom: '1px solid var(--color-ash)',
               }}
             >
               {link.name}
             </Link>
           ))}
-          <div style={{ marginTop: '20px' }}>
+          <div style={{ marginTop: '24px' }}>
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
               className="btn-primary"
               style={{ width: '100%', textAlign: 'center' }}
             >
-              Book a Strategy Call
+              <span>Get a Demo</span>
+              <span className="arrow-glyph">▸</span>
             </Link>
           </div>
         </div>
       )}
-
     </header>
   );
 }

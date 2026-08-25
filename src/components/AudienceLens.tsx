@@ -16,17 +16,17 @@ export default function AudienceLens() {
   const [activeTab, setActiveTab] = useState<string>('cto');
 
   const icons: Record<string, React.ReactNode> = {
-    cto: <Code2 size={20} />,
-    business: <TrendingUp size={20} />,
-    procurement: <ShieldCheck size={20} />,
-    investor: <Rocket size={20} />
+    cto: <Code2 size={16} />,
+    business: <TrendingUp size={16} />,
+    procurement: <ShieldCheck size={16} />,
+    investor: <Rocket size={16} />
   };
 
   const activeData = stakeholderData.find((item) => item.id === activeTab) || stakeholderData[0];
 
   return (
     <div style={{ position: 'relative' }}>
-      {/* Selector Tabs */}
+      {/* Selector Pill Tabs (Monad 9999px pill containers) */}
       <div
         style={{
           display: 'flex',
@@ -34,7 +34,7 @@ export default function AudienceLens() {
           justifyContent: 'center',
           flexWrap: 'wrap',
           gap: '12px',
-          marginBottom: '36px',
+          marginBottom: '40px',
         }}
       >
         {stakeholderData.map((item) => {
@@ -43,134 +43,156 @@ export default function AudienceLens() {
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
+              className="pipeline-node-tag"
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                padding: '12px 24px',
-                borderRadius: '9999px',
-                fontSize: '0.94rem',
-                fontWeight: 600,
+                backgroundColor: isSelected ? 'var(--color-off-black)' : '#ffffff',
+                color: isSelected ? '#ffffff' : 'var(--color-off-black)',
+                borderColor: isSelected ? 'var(--color-off-black)' : 'var(--color-ash)',
                 cursor: 'pointer',
-                transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-                background: isSelected
-                  ? 'linear-gradient(135deg, rgba(255, 94, 58, 0.2) 0%, rgba(224, 26, 138, 0.2) 50%, rgba(0, 102, 255, 0.2) 100%)'
-                  : 'rgba(255, 255, 255, 0.04)',
-                color: isSelected ? '#FFFFFF' : '#94A3B8',
-                border: isSelected
-                  ? '1px solid rgba(224, 26, 138, 0.5)'
-                  : '1px solid rgba(255, 255, 255, 0.08)',
-                boxShadow: isSelected ? '0 0 25px rgba(224, 26, 138, 0.25)' : 'none',
+                padding: '12px 24px',
+                fontSize: '13px',
+                boxShadow: isSelected ? '0 4px 12px rgba(0,0,0,0.08)' : 'none',
               }}
             >
-              <span style={{ color: isSelected ? '#FF5E3A' : '#64748B' }}>
+              <span style={{ color: isSelected ? 'var(--color-mint)' : 'var(--color-graphite)' }}>
                 {icons[item.id]}
               </span>
-              <span>{item.roleTitle}</span>
+              <span>{item.roleTitle.split(' / ')[0]}</span>
             </button>
           );
         })}
       </div>
 
-      {/* Content Container */}
+      {/* Stakeholder Card Content (40px radius with 1px solid Ash border) */}
       <div
-        className="glass-card"
+        className="monad-card"
         style={{
-          padding: '40px',
-          borderRadius: '24px',
-          background: 'linear-gradient(180deg, rgba(14, 20, 36, 0.85) 0%, rgba(10, 15, 29, 0.95) 100%)',
-          border: '1px solid rgba(224, 26, 138, 0.25)',
-          boxShadow: '0 20px 50px -10px rgba(0, 0, 0, 0.7)',
+          backgroundColor: '#ffffff',
+          padding: '48px',
         }}
       >
-        {/* Core Question Callout */}
-        <div style={{ marginBottom: '32px' }}>
-          <div style={{ fontSize: '0.84rem', textTransform: 'uppercase', letterSpacing: '1.5px', color: '#E01A8A', fontWeight: 700, marginBottom: '8px' }}>
-            What you are evaluating
-          </div>
-          <h3 style={{ fontSize: '1.45rem', color: '#FFFFFF', fontWeight: 600, fontStyle: 'italic', marginBottom: '12px' }}>
-            {activeData.coreQuestion}
-          </h3>
-          <p style={{ fontSize: '1.05rem', color: '#CBD5E1', lineHeight: '1.7', maxWidth: '900px' }}>
-            {activeData.solutionPromise}
-          </p>
-        </div>
-
-        {/* 3 Key Points */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '24px',
-            marginBottom: '36px',
+            gridTemplateColumns: '1.2fr 1fr',
+            gap: '48px',
+            alignItems: 'center',
           }}
           className="audience-grid"
         >
-          {activeData.keyPoints.map((point, i) => (
-            <div
-              key={i}
+          {/* Left Column: Narrative & Focus */}
+          <div>
+            <div style={{ display: 'inline-flex', marginBottom: '14px' }}>
+              <span
+                style={{
+                  fontSize: '11px',
+                  fontFamily: 'var(--font-abc-diatype-mono)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '-0.02em',
+                  padding: '4px 12px',
+                  borderRadius: '9999px',
+                  backgroundColor: 'var(--color-periwinkle-mist)',
+                  color: 'var(--color-lake-blue)',
+                  fontWeight: 500,
+                }}
+              >
+                Audience Lens • {activeData.roleTitle}
+              </span>
+            </div>
+
+            <h3
               style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(255, 255, 255, 0.07)',
-                borderRadius: '16px',
-                padding: '24px',
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: 'clamp(24px, 3vw, 32px)',
+                fontWeight: 400,
+                color: 'var(--color-off-black)',
+                marginBottom: '16px',
+                lineHeight: 1.25,
+              }}
+            >
+              {activeData.coreQuestion}
+            </h3>
+
+            <p
+              style={{
+                fontFamily: 'var(--font-abc-diatype-mono)',
+                fontSize: '15px',
+                color: 'var(--color-graphite)',
+                lineHeight: 1.6,
+                marginBottom: '28px',
+              }}
+            >
+              {activeData.solutionPromise}
+            </p>
+
+            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+              <Link href={activeData.ctaLink} className="btn-primary" style={{ fontSize: '13px', padding: '12px 26px' }}>
+                <span>{activeData.ctaButtonText}</span>
+                <span className="arrow-glyph">▸</span>
+              </Link>
+              <Link href="/case-studies" className="btn-ghost" style={{ fontSize: '13px', padding: '12px 24px' }}>
+                <span>Review Technical Cases</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Column: Architectural Highlights & Proof Points */}
+          <div
+            style={{
+              backgroundColor: 'var(--color-parchment)',
+              border: '1px solid var(--color-ash)',
+              borderRadius: '24px',
+              padding: '32px',
+            }}
+          >
+            <div className="mono-helper" style={{ marginBottom: '16px' }}>
+              CORE TECHNICAL GUARANTEES
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {activeData.keyPoints.map((point, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                  <div style={{ color: 'var(--color-lake-blue)', marginTop: '2px', flexShrink: 0 }}>
+                    <CheckCircle2 size={16} />
+                  </div>
+                  <div>
+                    <div style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '16px', color: 'var(--color-off-black)', marginBottom: '2px' }}>
+                      {point.title}
+                    </div>
+                    <div style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '12.5px', color: 'var(--color-graphite)', lineHeight: 1.4 }}>
+                      {point.description}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Metric highlight banner */}
+            <div
+              style={{
+                marginTop: '24px',
+                paddingTop: '20px',
+                borderTop: '1px solid var(--color-ash)',
                 display: 'flex',
-                flexDirection: 'column',
+                alignItems: 'baseline',
                 justifyContent: 'space-between',
               }}
             >
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                  <span
-                    style={{
-                      fontSize: '0.75rem',
-                      fontWeight: 700,
-                      textTransform: 'uppercase',
-                      letterSpacing: '1px',
-                      padding: '4px 10px',
-                      borderRadius: '9999px',
-                      background: 'rgba(0, 102, 255, 0.15)',
-                      color: '#38BDF8',
-                      border: '1px solid rgba(0, 102, 255, 0.3)',
-                    }}
-                  >
-                    {point.tag}
-                  </span>
-                  <CheckCircle2 size={18} color="#00D2FF" />
-                </div>
-                <h4 style={{ fontSize: '1.05rem', color: '#FFFFFF', marginBottom: '8px', fontWeight: 600 }}>
-                  {point.title}
-                </h4>
-                <p style={{ fontSize: '0.9rem', color: '#94A3B8', lineHeight: '1.6' }}>
-                  {point.description}
-                </p>
-              </div>
+              <span className="mono-helper">VERIFIED ROI DELTA</span>
+              <span
+                style={{
+                  fontFamily: 'var(--font-abc-diatype-mono)',
+                  fontSize: '16px',
+                  fontWeight: 500,
+                  color: 'var(--color-lake-blue)',
+                }}
+              >
+                99.99% SLA • 3x Velocity
+              </span>
             </div>
-          ))}
-        </div>
-
-        {/* CTA Footer */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '16px',
-            paddingTop: '20px',
-            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-          }}
-        >
-          <div style={{ color: '#94A3B8', fontSize: '0.92rem' }}>
-            Want to discuss custom architecture specs for your team?
           </div>
-          <Link href={activeData.ctaLink} className="btn-primary" style={{ padding: '10px 22px', fontSize: '0.9rem' }}>
-            <span>{activeData.ctaButtonText}</span>
-            <ArrowRight size={16} />
-          </Link>
         </div>
       </div>
-
     </div>
   );
 }

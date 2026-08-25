@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
+import AtmosphericWash from '@/components/AtmosphericWash';
 import { securityStandards } from '@/data/securityStandards';
 import { 
   ShieldCheck, 
@@ -15,28 +16,58 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'Security, Compliance & Trust Center | Vamtech',
+  title: 'Security, Compliance & Trust Center — Vamtech Journal',
   description: 'Learn how Vamtech maintains zero-trust infrastructure, SOC 2 Type II alignment, TLS 1.3 encryption, and GDPR compliance.',
 };
 
 export default function SecurityPage() {
   return (
-    <div style={{ padding: '60px 0 100px', position: 'relative' }}>
-      <div className="glow-orb orb-blue" style={{ top: '80px', right: '-120px' }} />
-      <div className="glow-orb orb-pink" style={{ top: '700px', left: '-120px' }} />
+    <div style={{ padding: '60px 0 100px', position: 'relative', overflow: 'hidden' }}>
+      <AtmosphericWash variant="sky-mint" size={560} top="-80px" right="-100px" opacity={0.45} />
+      <AtmosphericWash variant="coral-sky" size={580} top="700px" left="-120px" opacity={0.4} />
 
-      <div className="container">
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Header */}
         <ScrollReveal animation="fade-up">
           <div style={{ textAlign: 'center', marginBottom: '72px' }}>
-            <div className="badge-pill brand" style={{ marginBottom: '16px' }}>
-              <ShieldCheck size={14} />
-              <span>Enterprise Trust & Architecture Integrity</span>
+            <div style={{ display: 'inline-flex', marginBottom: '16px' }}>
+              <span
+                style={{
+                  padding: '4px 12px',
+                  borderRadius: '9999px',
+                  backgroundColor: 'var(--color-periwinkle-mist)',
+                  color: 'var(--color-lake-blue)',
+                  fontSize: '11px',
+                  fontFamily: 'var(--font-abc-diatype-mono)',
+                  textTransform: 'uppercase',
+                  fontWeight: 500,
+                }}
+              >
+                Enterprise Trust & Architecture Integrity
+              </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.6rem)', marginBottom: '20px' }}>
-              Security & Compliance <span className="text-gradient">Trust Center</span>
+            <h1
+              style={{
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: 'clamp(36px, 5.2vw, 64px)',
+                fontWeight: 400,
+                color: 'var(--color-off-black)',
+                marginBottom: '20px',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              Security & Compliance Trust Center
             </h1>
-            <p style={{ color: '#94A3B8', fontSize: '1.15rem', maxWidth: '720px', margin: '0 auto', lineHeight: '1.6' }}>
+            <p
+              style={{
+                fontFamily: 'var(--font-abc-diatype-mono)',
+                color: 'var(--color-graphite)',
+                fontSize: '17px',
+                maxWidth: '720px',
+                margin: '0 auto',
+                lineHeight: 1.5,
+              }}
+            >
               Built for rigorous procurement audits. We engineer zero-trust foundations, automated compliance checks, and strict data residency across every project.
             </p>
           </div>
@@ -45,11 +76,11 @@ export default function SecurityPage() {
         {/* 4 Compliance Standards Pillars */}
         <div className="grid-2" style={{ gap: '32px', marginBottom: '72px' }}>
           {securityStandards.map((std, index) => (
-            <ScrollReveal key={std.id} animation="fade-up" delay={index * 120}>
+            <ScrollReveal key={std.id} animation="fade-up" delay={index * 100}>
               <div
-                className="glass-card"
+                className="monad-card"
                 style={{
-                  borderRadius: '24px',
+                  backgroundColor: '#ffffff',
                   padding: '40px',
                   display: 'flex',
                   flexDirection: 'column',
@@ -58,38 +89,55 @@ export default function SecurityPage() {
                 }}
               >
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                    <span style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', color: '#E01A8A', letterSpacing: '1px' }}>
-                      {std.category}
-                    </span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                    <div
+                      style={{
+                        padding: '10px',
+                        borderRadius: '12px',
+                        backgroundColor: 'var(--color-periwinkle-mist)',
+                        color: 'var(--color-lake-blue)',
+                      }}
+                    >
+                      <ShieldCheck size={20} />
+                    </div>
                     <span
                       style={{
-                        fontSize: '0.78rem',
-                        fontWeight: 700,
-                        padding: '4px 12px',
+                        padding: '4px 10px',
                         borderRadius: '9999px',
-                        background: 'rgba(74, 222, 128, 0.15)',
-                        color: '#4ADE80',
-                        border: '1px solid rgba(74, 222, 128, 0.3)',
+                        backgroundColor: 'var(--color-parchment)',
+                        border: '1px solid var(--color-ash)',
+                        fontSize: '11px',
+                        fontFamily: 'var(--font-abc-diatype-mono)',
+                        color: 'var(--color-off-black)',
                       }}
                     >
                       {std.statusBadge}
                     </span>
                   </div>
 
-                  <h2 style={{ fontSize: '1.4rem', color: '#FFFFFF', marginBottom: '12px' }}>
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-untitled-serif)',
+                      fontSize: '24px',
+                      fontWeight: 400,
+                      color: 'var(--color-off-black)',
+                      marginBottom: '12px',
+                    }}
+                  >
                     {std.title}
-                  </h2>
-                  <p style={{ fontSize: '0.94rem', color: '#94A3B8', lineHeight: '1.6', marginBottom: '24px' }}>
+                  </h3>
+
+                  <p style={{ fontSize: '14.5px', color: 'var(--color-graphite)', marginBottom: '24px', lineHeight: 1.6 }}>
                     {std.description}
                   </p>
 
-                  {/* Protocols Checklist */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    {std.protocols.map((protocol, i) => (
-                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem', color: '#E2E8F0' }}>
-                        <CheckCircle2 size={16} color="#00D2FF" style={{ flexShrink: 0 }} />
-                        <span>{protocol}</span>
+                    {std.protocols.map((ctrl, i) => (
+                      <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                        <CheckCircle2 size={15} color="var(--color-lake-blue)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                        <span style={{ fontSize: '13px', fontFamily: 'var(--font-abc-diatype-mono)', color: 'var(--color-off-black)' }}>
+                          {ctrl}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -99,38 +147,33 @@ export default function SecurityPage() {
           ))}
         </div>
 
-        {/* Procurement & Vendor Assessment Callout */}
-        <ScrollReveal animation="zoom-in" delay={150}>
+        {/* Security Audit CTA */}
+        <ScrollReveal animation="fade-up">
           <div
-            className="glass-card"
+            className="monad-card"
             style={{
+              backgroundColor: 'var(--color-parchment)',
               padding: '48px',
-              borderRadius: '24px',
-              background: 'linear-gradient(135deg, rgba(14, 20, 36, 0.9) 0%, rgba(10, 15, 29, 0.95) 100%)',
-              border: '1px solid rgba(0, 102, 255, 0.3)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap',
-              gap: '24px',
+              textAlign: 'center',
             }}
           >
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#38BDF8', fontSize: '0.88rem', fontWeight: 700, marginBottom: '8px' }}>
-                <FileCheck size={18} />
-                <span>Need a Completed Vendor Risk Assessment (VRA)?</span>
-              </div>
-              <h3 style={{ fontSize: '1.6rem', color: '#FFFFFF', marginBottom: '8px' }}>
-                Ready for Legal, InfoSec & Procurement Due Diligence
-              </h3>
-              <p style={{ color: '#94A3B8', fontSize: '0.96rem', maxWidth: '640px' }}>
-                We regularly execute mutual NDAs, complete SIG-Lite questionnaires, and provide verifiable architectural documentation for enterprise security teams.
-              </p>
-            </div>
-
-            <Link href="/contact?type=procurement" className="btn-primary" style={{ padding: '14px 28px' }}>
-              <span>Request Security Packet & NDA</span>
-              <ArrowRight size={16} />
+            <h3
+              style={{
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: '28px',
+                fontWeight: 400,
+                color: 'var(--color-off-black)',
+                marginBottom: '12px',
+              }}
+            >
+              Need Custom Vendor Security Questionnaire (CAIQ / SIG)?
+            </h3>
+            <p style={{ maxWidth: '640px', margin: '0 auto 28px', fontSize: '15px', color: 'var(--color-graphite)' }}>
+              Our compliance team provides completed security disclosures, DPA addendums, and SOC 2 Type II report summaries under NDA.
+            </p>
+            <Link href="/contact" className="btn-primary" style={{ fontSize: '13px', padding: '14px 32px' }}>
+              <span>Request Compliance Package</span>
+              <span className="arrow-glyph">▸</span>
             </Link>
           </div>
         </ScrollReveal>

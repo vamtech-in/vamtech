@@ -3,190 +3,223 @@ import Link from 'next/link';
 import Logo from './Logo';
 import { 
   Shield, 
-  Terminal, 
-  Cpu, 
-  Globe, 
-  Mail, 
   MapPin, 
+  Mail, 
   Phone, 
   ArrowUpRight, 
-  Lock 
+  ArrowRight
 } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer
       style={{
-        background: 'linear-gradient(180deg, #060913 0%, #03050A 100%)',
-        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+        backgroundColor: 'var(--color-parchment)',
+        borderTop: '1px solid var(--color-ash)',
         paddingTop: '80px',
-        paddingBottom: '40px',
+        paddingBottom: '48px',
         position: 'relative',
-        overflow: 'hidden',
+        zIndex: 10,
       }}
     >
-      {/* Background glow */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '-150px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '600px',
-          height: '250px',
-          background: 'radial-gradient(ellipse, rgba(224, 26, 138, 0.12) 0%, rgba(0, 102, 255, 0.05) 50%, transparent 70%)',
-          filter: 'blur(60px)',
-          pointerEvents: 'none',
-        }}
-      />
-
       <div className="container">
+        {/* Main 4-Column Grid */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1.5fr 1fr 1fr 1.2fr',
+            gridTemplateColumns: '1.6fr 1fr 1fr 1.2fr',
             gap: '48px',
             marginBottom: '64px',
           }}
           className="footer-grid"
         >
-          {/* Brand Col */}
+          {/* Brand & Editorial Mission */}
           <div>
             <Link href="/" style={{ display: 'inline-block', marginBottom: '20px' }}>
               <Logo size="md" showTagline={true} />
             </Link>
-            <p style={{ color: '#94A3B8', fontSize: '0.94rem', lineHeight: '1.7', marginBottom: '24px', maxWidth: '340px' }}>
-              Architecting high-concurrency enterprise software, autonomous AI systems, and cloud foundations for modern tech leaders and high-growth ventures.
+            <p
+              style={{
+                color: 'var(--color-graphite)',
+                fontSize: '14px',
+                lineHeight: '1.6',
+                marginBottom: '24px',
+                maxWidth: '340px',
+              }}
+            >
+              An editorial tech journal & engineering lab architecting high-concurrency software, zero-copy data pipelines, and autonomous AI systems.
             </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#38BDF8', fontSize: '0.85rem', fontWeight: 600 }}>
-              <Shield size={16} />
-              <span>SOC 2 Type II Aligned • Zero-Trust Engineering</span>
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '6px 14px',
+                borderRadius: '9999px',
+                border: '1px solid var(--color-ash)',
+                backgroundColor: '#ffffff',
+                fontSize: '12px',
+                color: 'var(--color-off-black)',
+                fontFamily: 'var(--font-abc-diatype-mono)',
+                textTransform: 'uppercase',
+              }}
+            >
+              <Shield size={13} color="var(--color-lake-blue)" />
+              <span>SOC 2 Type II Aligned</span>
             </div>
           </div>
 
-          {/* Engineering & Services */}
+          {/* Capabilities */}
           <div>
-            <h4 style={{ fontSize: '1rem', color: '#FFFFFF', fontWeight: 700, marginBottom: '20px', letterSpacing: '0.5px' }}>
+            <h4
+              style={{
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: '20px',
+                fontWeight: 400,
+                color: 'var(--color-off-black)',
+                marginBottom: '20px',
+              }}
+            >
               Capabilities
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <li>
-                <Link href="/services#custom-software" style={{ color: '#94A3B8', fontSize: '0.9rem', transition: 'color 0.2s' }} className="footer-link">
-                  Custom Enterprise Software
+                <Link href="/services#custom-software" className="text-link-arrow" style={{ fontSize: '13px' }}>
+                  Custom Software
                 </Link>
               </li>
               <li>
-                <Link href="/services#cloud-devops" style={{ color: '#94A3B8', fontSize: '0.9rem', transition: 'color 0.2s' }} className="footer-link">
-                  Cloud Modernization & DevOps
+                <Link href="/services#cloud-devops" className="text-link-arrow" style={{ fontSize: '13px' }}>
+                  Cloud & DevOps
                 </Link>
               </li>
               <li>
-                <Link href="/services#ai-automation" style={{ color: '#94A3B8', fontSize: '0.9rem', transition: 'color 0.2s' }} className="footer-link">
-                  AI & Agentic Automation
+                <Link href="/services#ai-automation" className="text-link-arrow" style={{ fontSize: '13px' }}>
+                  AI & RAG Pipelines
                 </Link>
               </li>
               <li>
-                <Link href="/services#web-mobile-apps" style={{ color: '#94A3B8', fontSize: '0.9rem', transition: 'color 0.2s' }} className="footer-link">
-                  High-Performance Web & Mobile
+                <Link href="/services#web-mobile-apps" className="text-link-arrow" style={{ fontSize: '13px' }}>
+                  Web Platforms
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" style={{ color: '#94A3B8', fontSize: '0.9rem', transition: 'color 0.2s' }} className="footer-link">
-                  Engagement Models & Sizing
+                <Link href="/pricing" className="text-link-arrow" style={{ fontSize: '13px' }}>
+                  Engagement Models
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Company & Trust */}
+          {/* Journal & Proof */}
           <div>
-            <h4 style={{ fontSize: '1rem', color: '#FFFFFF', fontWeight: 700, marginBottom: '20px', letterSpacing: '0.5px' }}>
-              Company & Proof
+            <h4
+              style={{
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: '20px',
+                fontWeight: 400,
+                color: 'var(--color-off-black)',
+                marginBottom: '20px',
+              }}
+            >
+              Journal & Proof
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <li>
-                <Link href="/about" style={{ color: '#94A3B8', fontSize: '0.9rem' }} className="footer-link">
-                  About & Engineering Story
+                <Link href="/about" className="text-link-arrow" style={{ fontSize: '13px' }}>
+                  Engineering Story
                 </Link>
               </li>
               <li>
-                <Link href="/case-studies" style={{ color: '#94A3B8', fontSize: '0.9rem' }} className="footer-link">
-                  Verified Case Studies
+                <Link href="/case-studies" className="text-link-arrow" style={{ fontSize: '13px' }}>
+                  Case Studies & ROI
                 </Link>
               </li>
               <li>
-                <Link href="/security" style={{ color: '#94A3B8', fontSize: '0.9rem' }} className="footer-link">
-                  Security & Compliance Hub
+                <Link href="/security" className="text-link-arrow" style={{ fontSize: '13px' }}>
+                  Trust Center
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" style={{ color: '#94A3B8', fontSize: '0.9rem' }} className="footer-link">
+                <Link href="/privacy" className="text-link-arrow" style={{ fontSize: '13px' }}>
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" style={{ color: '#94A3B8', fontSize: '0.9rem' }} className="footer-link">
+                <Link href="/terms" className="text-link-arrow" style={{ fontSize: '13px' }}>
                   Terms of Service
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact & Physical Address (Trust requirement in strategy doc) */}
+          {/* Direct Line & Inquiries */}
           <div>
-            <h4 style={{ fontSize: '1rem', color: '#FFFFFF', fontWeight: 700, marginBottom: '20px', letterSpacing: '0.5px' }}>
-              Direct Engineering Line
+            <h4
+              style={{
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: '20px',
+                fontWeight: 400,
+                color: 'var(--color-off-black)',
+                marginBottom: '20px',
+              }}
+            >
+              Engineering Desk
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '0.9rem', color: '#94A3B8' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <MapPin size={18} color="#FF5E3A" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <span>Tech Innovation Park, Suite 400<br />San Francisco, CA & Global Remote Pods</span>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '13px', color: 'var(--color-graphite)' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                <MapPin size={16} color="var(--color-lake-blue)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <span>San Francisco, CA & Global Pods</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Mail size={18} color="#E01A8A" style={{ flexShrink: 0 }} />
-                <a href="mailto:contact@vamtech.io" style={{ color: '#F8FAFC' }}>contact@vamtech.io</a>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Mail size={16} color="var(--color-lake-blue)" style={{ flexShrink: 0 }} />
+                <a href="mailto:contact@vamtech.io" style={{ color: 'var(--color-off-black)', textDecoration: 'underline' }}>
+                  contact@vamtech.io
+                </a>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Phone size={18} color="#0066FF" style={{ flexShrink: 0 }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Phone size={16} color="var(--color-lake-blue)" style={{ flexShrink: 0 }} />
                 <span>+1 (800) 582-VAMTECH</span>
               </div>
               <div style={{ marginTop: '10px' }}>
-                <Link href="/contact" className="btn-secondary" style={{ width: '100%', fontSize: '0.86rem', padding: '10px 18px' }}>
-                  <span>Request Custom Architecture Quote</span>
-                  <ArrowUpRight size={14} />
+                <Link href="/contact" className="btn-secondary" style={{ width: '100%', fontSize: '12px', padding: '10px 18px' }}>
+                  <span>Request Architecture Sizing</span>
+                  <ArrowUpRight size={13} />
                 </Link>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
+        {/* Bottom Bar separated by hairline Ash border */}
         <div
           style={{
-            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+            borderTop: '1px solid var(--color-ash)',
             paddingTop: '28px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             flexWrap: 'wrap',
             gap: '16px',
-            fontSize: '0.85rem',
-            color: '#64748B',
+            fontSize: '12px',
+            fontFamily: 'var(--font-abc-diatype-mono)',
+            color: 'var(--color-smoke)',
+            textTransform: 'uppercase',
+            letterSpacing: '-0.02em',
           }}
         >
           <div>
-            © {new Date().getFullYear()} Vamtech Technologies Inc. All rights reserved. Built for mission-critical software.
+            © {new Date().getFullYear()} Vamtech Technologies Inc. Typeset in Untitled Serif & Diatype Mono.
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <Link href="/privacy" style={{ color: '#64748B' }} className="footer-link">Privacy</Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <Link href="/privacy" style={{ color: 'var(--color-smoke)' }}>Privacy</Link>
             <span>•</span>
-            <Link href="/terms" style={{ color: '#64748B' }} className="footer-link">Terms</Link>
+            <Link href="/terms" style={{ color: 'var(--color-smoke)' }}>Terms</Link>
             <span>•</span>
-            <Link href="/security" style={{ color: '#64748B' }} className="footer-link">Security</Link>
+            <Link href="/security" style={{ color: 'var(--color-smoke)' }}>Security</Link>
           </div>
         </div>
       </div>
-
     </footer>
   );
 }

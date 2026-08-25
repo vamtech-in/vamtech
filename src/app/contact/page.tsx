@@ -1,134 +1,171 @@
 import React from 'react';
 import ContactForm from '@/components/ContactForm';
 import ScrollReveal from '@/components/ScrollReveal';
+import AtmosphericWash from '@/components/AtmosphericWash';
 import { 
   Mail, 
   MapPin, 
   Phone, 
   Clock, 
   ShieldCheck, 
-  MessageSquare, 
-  Sparkles, 
-  CheckCircle 
+  CheckCircle2, 
+  Sparkles,
+  ArrowUpRight
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'Contact Engineering & Get a Project Quote | Vamtech',
-  description: 'Submit your software engineering requirements, book an architecture review, or get an initial feasibility assessment from Vamtech.',
+  title: 'Direct Engineering Line & Sizing Intake — Vamtech Journal',
+  description: 'Initiate a direct architectural discovery call with Vamtech Principal Engineers. Transparent scope, zero junior handoffs, and rapid sprint execution.',
 };
 
 export default function ContactPage() {
   return (
-    <div style={{ padding: '60px 0 100px', position: 'relative' }}>
-      <div className="glow-orb orb-pink" style={{ top: '80px', left: '-120px' }} />
-      <div className="glow-orb orb-blue" style={{ top: '650px', right: '-120px' }} />
+    <div style={{ padding: '60px 0 100px', position: 'relative', overflow: 'hidden' }}>
+      <AtmosphericWash variant="coral-sky" size={560} top="-80px" left="-120px" opacity={0.45} />
+      <AtmosphericWash variant="sky-mint" size={600} top="650px" right="-120px" opacity={0.4} />
 
-      <div className="container">
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Header */}
         <ScrollReveal animation="fade-up">
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-            <div className="badge-pill brand" style={{ marginBottom: '16px' }}>
-              <MessageSquare size={14} />
-              <span>Direct Engineering Consultation</span>
+            <div style={{ display: 'inline-flex', marginBottom: '16px' }}>
+              <span
+                style={{
+                  padding: '4px 12px',
+                  borderRadius: '9999px',
+                  backgroundColor: 'var(--color-periwinkle-mist)',
+                  color: 'var(--color-lake-blue)',
+                  fontSize: '11px',
+                  fontFamily: 'var(--font-abc-diatype-mono)',
+                  textTransform: 'uppercase',
+                  fontWeight: 500,
+                }}
+              >
+                Sprint Intake & Discovery Line
+              </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.6rem)', marginBottom: '20px' }}>
-              Let&apos;s Build <span className="text-gradient">Something Exceptional</span>
+            <h1
+              style={{
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: 'clamp(36px, 5.2vw, 64px)',
+                fontWeight: 400,
+                color: 'var(--color-off-black)',
+                marginBottom: '20px',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              Start an Architectural Consultation
             </h1>
-            <p style={{ color: '#94A3B8', fontSize: '1.15rem', maxWidth: '680px', margin: '0 auto', lineHeight: '1.6' }}>
-              Whether you need a full-stack MVP sprint, cloud re-architecture, or senior engineering horsepower, our technical leads are ready.
+            <p
+              style={{
+                fontFamily: 'var(--font-abc-diatype-mono)',
+                color: 'var(--color-graphite)',
+                fontSize: '17px',
+                maxWidth: '720px',
+                margin: '0 auto',
+                lineHeight: 1.5,
+              }}
+            >
+              Connect directly with a Principal Systems Architect. We respond within 4 business hours with an honest technical feasibility assessment.
             </p>
           </div>
         </ScrollReveal>
 
-        {/* 2-Column Layout: Left Direct Info, Right Form */}
+        {/* 2-Column Grid: Form + Trust/Direct Contact Info */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1.6fr',
-            gap: '48px',
-            alignItems: 'flex-start',
+            gridTemplateColumns: '1.4fr 1fr',
+            gap: '40px',
+            alignItems: 'start',
           }}
           className="contact-layout-grid"
         >
-          {/* Direct Contacts & SLA */}
-          <ScrollReveal animation="fade-right" delay={150}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              <div className="glass-card" style={{ padding: '36px', borderRadius: '24px' }}>
-                <h3 style={{ fontSize: '1.35rem', color: '#FFFFFF', marginBottom: '20px' }}>
-                  Engineering Headquarters
-                </h3>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', color: '#94A3B8', fontSize: '0.94rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                    <MapPin size={20} color="#FF5E3A" style={{ flexShrink: 0, marginTop: '2px' }} />
-                    <div>
-                      <strong style={{ color: '#FFFFFF' }}>Main Office:</strong><br />
-                      Tech Innovation Center, 400 Howard Street<br />
-                      San Francisco, CA 94105
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                    <Mail size={20} color="#E01A8A" style={{ flexShrink: 0, marginTop: '2px' }} />
-                    <div>
-                      <strong style={{ color: '#FFFFFF' }}>Direct Inquiry:</strong><br />
-                      <a href="mailto:contact@vamtech.io" style={{ color: '#38BDF8' }}>contact@vamtech.io</a>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                    <Phone size={20} color="#0066FF" style={{ flexShrink: 0, marginTop: '2px' }} />
-                    <div>
-                      <strong style={{ color: '#FFFFFF' }}>Telephone:</strong><br />
-                      +1 (800) 582-VAMTECH
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                    <Clock size={20} color="#4ADE80" style={{ flexShrink: 0, marginTop: '2px' }} />
-                    <div>
-                      <strong style={{ color: '#FFFFFF' }}>Response Window:</strong><br />
-                      Guaranteed within 4 business hours
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* What to Expect Card */}
-              <div
-                style={{
-                  background: 'rgba(255, 255, 255, 0.02)',
-                  border: '1px solid rgba(255, 255, 255, 0.07)',
-                  borderRadius: '20px',
-                  padding: '28px',
-                }}
-              >
-                <h4 style={{ fontSize: '1.05rem', color: '#FFFFFF', marginBottom: '14px', fontWeight: 600 }}>
-                  What happens after you reach out:
-                </h4>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '0.88rem', color: '#CBD5E1' }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                    <CheckCircle size={16} color="#00D2FF" style={{ flexShrink: 0, marginTop: '2px' }} />
-                    <span>We sign a mutual non-disclosure agreement (NDA).</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                    <CheckCircle size={16} color="#00D2FF" style={{ flexShrink: 0, marginTop: '2px' }} />
-                    <span>A Technical Lead assesses architectural feasibility and tech stack options.</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                    <CheckCircle size={16} color="#00D2FF" style={{ flexShrink: 0, marginTop: '2px' }} />
-                    <span>You receive a granular milestone blueprint and budget estimate.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Left: Contact Form */}
+          <ScrollReveal animation="fade-up">
+            <ContactForm />
           </ScrollReveal>
 
-          {/* Interactive Form Component */}
-          <ScrollReveal animation="fade-left" delay={200}>
-            <div>
-              <ContactForm />
+          {/* Right: Direct Information & Commitments */}
+          <ScrollReveal animation="fade-up" delay={150}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              {/* Direct Line Card */}
+              <div
+                className="monad-card"
+                style={{
+                  backgroundColor: '#ffffff',
+                  padding: '36px',
+                }}
+              >
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-untitled-serif)',
+                    fontSize: '22px',
+                    fontWeight: 400,
+                    color: 'var(--color-off-black)',
+                    marginBottom: '20px',
+                  }}
+                >
+                  Direct Engineering Desk
+                </h3>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '13.5px', color: 'var(--color-graphite)' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                    <MapPin size={18} color="var(--color-lake-blue)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <span>Tech Innovation Park, Suite 400<br />San Francisco, CA & Global Remote Pods</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <Mail size={18} color="var(--color-lake-blue)" style={{ flexShrink: 0 }} />
+                    <a href="mailto:contact@vamtech.io" style={{ color: 'var(--color-off-black)', textDecoration: 'underline' }}>
+                      contact@vamtech.io
+                    </a>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <Phone size={18} color="var(--color-lake-blue)" style={{ flexShrink: 0 }} />
+                    <span>+1 (800) 582-VAMTECH</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <Clock size={18} color="var(--color-lake-blue)" style={{ flexShrink: 0 }} />
+                    <span>Guaranteed SLA Response: &lt; 4 Hours</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Guarantees Box (Periwinkle Mist #cfdaf5) */}
+              <div
+                className="monad-card-periwinkle"
+                style={{
+                  padding: '36px',
+                }}
+              >
+                <h4
+                  style={{
+                    fontFamily: 'var(--font-untitled-serif)',
+                    fontSize: '20px',
+                    fontWeight: 400,
+                    color: 'var(--color-off-black)',
+                    marginBottom: '16px',
+                  }}
+                >
+                  What Happens Next?
+                </h4>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {[
+                    'Mutual NDA exchanged prior to deep discovery',
+                    '30-minute technical scope & bottleneck review',
+                    'Formal Sprint Milestone & Sizing breakdown delivered in 48h',
+                    'Zero pressure, zero junior sales account reps',
+                  ].map((step, idx) => (
+                    <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                      <CheckCircle2 size={16} color="var(--color-lake-blue)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                      <span style={{ fontSize: '13px', fontFamily: 'var(--font-abc-diatype-mono)', color: 'var(--color-off-black)' }}>
+                        {step}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </ScrollReveal>
         </div>

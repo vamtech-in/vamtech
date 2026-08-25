@@ -1,30 +1,27 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
-  Terminal, 
   Copy, 
   Check, 
-  Play, 
   Cpu, 
   Database, 
-  Zap, 
-  Layers, 
+  Terminal, 
   Sparkles, 
+  ShieldCheck,
   ArrowRight,
-  ShieldCheck
+  Code2
 } from 'lucide-react';
 
 interface ArchitecturePattern {
   id: string;
   name: string;
   badge: string;
-  badgeColor: string;
   description: string;
   latencyBenchmark: string;
   throughputCapacity: string;
-  codeSnippet: string;
   fileExt: string;
+  codeSnippet: string;
   livePayload: {
     event: string;
     status: string;
@@ -37,8 +34,7 @@ const architecturePatterns: ArchitecturePattern[] = [
   {
     id: 'distributed-go',
     name: 'Event-Driven Go Microservice Mesh',
-    badge: 'Ultra-Low Latency',
-    badgeColor: '#FF5E3A',
+    badge: '1.2ms p99',
     description: 'High-throughput event sourcing utilizing Go channels, Apache Kafka message buses, and Raft consensus storage.',
     latencyBenchmark: '1.2ms p99',
     throughputCapacity: '120,000 req/sec',
@@ -79,8 +75,7 @@ func (s *LedgerService) ProcessTransaction(ctx context.Context, tx *Transaction)
   {
     id: 'ai-rag-pipeline',
     name: 'Vector RAG & Deterministic Agent Pipeline',
-    badge: 'Sub-Second Semantic Retrieval',
-    badgeColor: '#E01A8A',
+    badge: 'Sub-Second RAG',
     description: 'Hybrid dense/sparse vector embedding index with medical/legal entity guardrails and sub-second hallucination prevention.',
     latencyBenchmark: '420ms full pass',
     throughputCapacity: '2,500 qpm',
@@ -97,309 +92,289 @@ class ClinicalRAGEngine:
 
     async def query_with_grounding(self, query_str: str) -> AsyncGenerator[str, None]:
         # Perform hybrid BM25 + dense embedding cosine search
-        docs = await self.vector_engine.search_hybrid(
-            query=query_str, 
-            top_k=8, 
-            score_threshold=0.87
-        )
+        docs = await self.vector_engine.search_hybrid(query_str, top_k=5)
+        validated_ctx = self.guard.filter_hallucinatory_claims(docs)
         
-        # Verify strict medical entity constraints
-        verified_context = self.guard.validate_grounding(docs)
-        async for chunk in self.vector_engine.stream_response(query_str, verified_context):
-            yield chunk`,
+        async for token in self.stream_llm_response(query_str, validated_ctx):
+            yield token`,
     livePayload: {
-      event: 'SEMANTIC_QUERY_RESOLVED',
-      status: 'VERIFIED_GROUNDING [0.994 SCORE]',
-      routeTime: '38ms vector + 320ms LLM',
-      redundancy: 'VPC-Isolated Qdrant Cluster'
+      event: 'VECTOR_SIMILARITY_MATCH',
+      status: 'COSINE 0.942 [GND_PASS]',
+      routeTime: '312ms',
+      redundancy: 'Dual Model Fallback Ready'
     }
   },
   {
     id: 'cloud-iac',
-    name: 'Kubernetes GitOps & Terraform Mesh',
-    badge: 'Zero-Downtime Infrastructure',
-    badgeColor: '#0066FF',
-    description: 'Multi-region Infrastructure as Code with automated blue/green canary rollouts and dynamic cluster autoscaling.',
-    latencyBenchmark: '0ms downtime',
-    throughputCapacity: 'Autoscale to 200 Pods',
-    fileExt: 'main.tf',
-    codeSnippet: `module "eks_cluster" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "~> 20.0"
+    name: 'Zero-Trust Terraform & Multi-Region Mesh',
+    badge: 'Zero-Trust SRE',
+    description: 'Declarative immutable infrastructure spanning AWS & GCP with automated SOC 2 policy enforcement.',
+    latencyBenchmark: '99.999% SLA',
+    throughputCapacity: 'Multi-Region Active-Active',
+    fileExt: 'cluster.tf',
+    codeSnippet: `module "kubernetes_zero_trust_mesh" {
+  source = "github.com/vamtech/terraform-modules/k8s-mesh"
 
-  cluster_name    = "vamtech-production-mesh"
-  cluster_version = "1.30"
+  cluster_name         = "vamtech-prod-us-east-1"
+  enable_cilium_ebpf   = true
+  strict_mTLS_enforced = true
+  auto_failover_region = "us-west-2"
 
-  vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.vpc.private_subnets
-
-  eks_managed_node_groups = {
-    compute_pool = {
-      instance_types = ["c6i.2xlarge"]
-      min_size       = 3
-      max_size       = 48
-      desired_size   = 6
-
-      labels = {
-        Tier = "HighConcurrencyWorker"
-      }
-      
-      block_device_mappings = {
-        xvda = {
-          device_name = "/dev/xvda"
-          ebs = {
-            volume_size           = 120
-            volume_type           = "gp3"
-            iops                  = 6000
-            throughput            = 400
-            encrypted             = true
-            kms_key_id            = module.kms.key_arn
-          }
-        }
-      }
-    }
+  security_compliance = {
+    soc2_type_2_audit_logging = true
+    fips_140_2_encryption     = true
   }
 }`,
     livePayload: {
-      event: 'CLUSTER_SCALE_HEALTHY',
-      status: 'CANARY_VERIFIED [100% TRAFFIC]',
-      routeTime: 'TLS 1.3 End-to-End',
-      redundancy: 'Multi-AZ (us-east-1a/b/c)'
+      event: 'MTLS_ENCRYPTED_FLOW',
+      status: 'VERIFIED [SPIFFE_ID]',
+      routeTime: '0.12ms',
+      redundancy: 'Multi-AZ Active/Active'
     }
   }
 ];
 
 export default function SystemArchitectureVisualizer() {
-  const [activePattern, setActivePattern] = useState<string>('distributed-go');
-  const [copied, setCopied] = useState<boolean>(false);
-  const [simulatedLogs, setSimulatedLogs] = useState<string[]>([
-    '[SYSTEM] Initializing consensus node cluster...',
-    '[TELEMETRY] Prometheus metric exporter listening on :9090',
-    '[ROUTER] Inbound request from gateway [req_92f8a1]',
-    '[STORAGE] Write quorum acknowledged (3/3 nodes in 0.8ms)'
-  ]);
+  const [activePatternId, setActivePatternId] = useState('distributed-go');
+  const [copied, setCopied] = useState(false);
 
-  const current = architecturePatterns.find((p) => p.id === activePattern) || architecturePatterns[0];
+  const activePattern = architecturePatterns.find((p) => p.id === activePatternId) || architecturePatterns[0];
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(current.codeSnippet);
+    navigator.clipboard.writeText(activePattern.codeSnippet);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleTriggerSimulation = () => {
-    const newLog = `[SIMULATION ${new Date().toISOString().split('T')[1].slice(0, 8)}] Payload executed on ${current.name} -> Latency: ${current.latencyBenchmark}`;
-    setSimulatedLogs(prev => [newLog, ...prev.slice(0, 4)]);
-  };
-
   return (
     <div
-      className="glass-card"
+      className="monad-card"
       style={{
-        borderRadius: '24px',
-        padding: '36px',
-        background: 'linear-gradient(180deg, rgba(14, 20, 36, 0.95) 0%, rgba(6, 9, 19, 0.98) 100%)',
-        border: '1px solid rgba(255, 255, 255, 0.12)',
-        boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.8)',
+        backgroundColor: '#ffffff',
+        padding: '48px 40px',
       }}
     >
-      {/* Header bar */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px', marginBottom: '28px' }}>
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
-            <div style={{ padding: '6px', borderRadius: '8px', background: 'rgba(0, 102, 255, 0.15)', color: '#38BDF8' }}>
-              <Terminal size={18} />
-            </div>
-            <span className="badge-pill brand" style={{ fontSize: '0.8rem' }}>
-              <Sparkles size={13} />
-              <span>Interactive Architecture Spec</span>
-            </span>
-          </div>
-          <h3 style={{ fontSize: '1.6rem', color: '#FFFFFF', fontWeight: 700 }}>
-            Inspect Real Production Architecture Patterns
-          </h3>
+      {/* Section Header */}
+      <div style={{ textAlign: 'center', marginBottom: '36px' }}>
+        <div style={{ display: 'inline-flex', marginBottom: '12px' }}>
+          <span
+            style={{
+              padding: '4px 12px',
+              borderRadius: '9999px',
+              backgroundColor: 'var(--color-periwinkle-mist)',
+              color: 'var(--color-lake-blue)',
+              fontSize: '11px',
+              fontFamily: 'var(--font-abc-diatype-mono)',
+              textTransform: 'uppercase',
+              fontWeight: 500,
+            }}
+          >
+            Engineering Specification
+          </span>
         </div>
-
-        {/* Pattern Switchers */}
-        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          {architecturePatterns.map((pattern) => {
-            const isSelected = activePattern === pattern.id;
-            return (
-              <button
-                key={pattern.id}
-                onClick={() => setActivePattern(pattern.id)}
-                style={{
-                  padding: '8px 16px',
-                  borderRadius: '10px',
-                  fontSize: '0.86rem',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  background: isSelected ? 'rgba(255, 255, 255, 0.12)' : 'rgba(255, 255, 255, 0.03)',
-                  border: isSelected ? `1px solid ${pattern.badgeColor}` : '1px solid rgba(255, 255, 255, 0.08)',
-                  color: isSelected ? '#FFFFFF' : '#94A3B8',
-                  transition: 'all 0.2s',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                }}
-              >
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: pattern.badgeColor }} />
-                <span>{pattern.name.split(' ')[0]}</span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Code Editor Window */}
-      <div
-        style={{
-          borderRadius: '16px',
-          background: '#040711',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Terminal Title Bar */}
-        <div
+        <h3
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '12px 20px',
-            background: 'rgba(255, 255, 255, 0.02)',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
-            fontSize: '0.84rem',
-            fontFamily: 'var(--font-mono)',
-            color: '#94A3B8',
+            fontFamily: 'var(--font-untitled-serif)',
+            fontSize: 'clamp(24px, 3.2vw, 36px)',
+            fontWeight: 400,
+            color: 'var(--color-off-black)',
+            marginBottom: '12px',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#EF4444' }} />
-            <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#F59E0B' }} />
-            <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#10B981' }} />
-            <span style={{ marginLeft: '8px', color: '#CBD5E1', fontWeight: 600 }}>{current.fileExt}</span>
-          </div>
+          Production Architectural Blueprints
+        </h3>
+        <p style={{ maxWidth: '640px', margin: '0 auto', fontSize: '15px', color: 'var(--color-graphite)' }}>
+          Inspect our typed concurrency patterns, sub-second vector pipelines, and declarative cloud manifests.
+        </p>
+      </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <span style={{ color: '#38BDF8', fontSize: '0.8rem' }}>
-              Latency: {current.latencyBenchmark} • {current.throughputCapacity}
-            </span>
+      {/* Pattern Pill Tabs */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          gap: '10px',
+          marginBottom: '32px',
+        }}
+      >
+        {architecturePatterns.map((pat) => {
+          const isSelected = activePatternId === pat.id;
+          return (
+            <button
+              key={pat.id}
+              onClick={() => setActivePatternId(pat.id)}
+              className="pipeline-node-tag"
+              style={{
+                backgroundColor: isSelected ? 'var(--color-off-black)' : 'var(--color-parchment)',
+                color: isSelected ? '#ffffff' : 'var(--color-off-black)',
+                borderColor: isSelected ? 'var(--color-off-black)' : 'var(--color-ash)',
+                cursor: 'pointer',
+                padding: '10px 20px',
+                fontSize: '12.5px',
+              }}
+            >
+              <span>{pat.name}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Code & Telemetry Grid */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1.6fr 1fr',
+          gap: '24px',
+          alignItems: 'stretch',
+        }}
+        className="calculator-grid"
+      >
+        {/* Code Window (Warm Off-Black or Parchment Technical Terminal) */}
+        <div
+          style={{
+            backgroundColor: 'var(--color-off-black)',
+            color: '#f6f3f1',
+            borderRadius: '24px',
+            border: '1px solid rgba(0, 0, 0, 0.15)',
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          {/* File bar */}
+          <div
+            style={{
+              padding: '12px 20px',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              fontFamily: 'var(--font-abc-diatype-mono)',
+              fontSize: '12px',
+              color: '#c5c2c0',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Terminal size={14} color="#a0b5eb" />
+              <span>{activePattern.fileExt}</span>
+            </div>
+
             <button
               onClick={handleCopy}
               style={{
+                background: 'transparent',
+                border: 'none',
+                color: '#c5c2c0',
+                cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
-                background: 'rgba(255, 255, 255, 0.06)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                padding: '4px 10px',
-                borderRadius: '6px',
-                color: '#CBD5E1',
-                cursor: 'pointer',
-                fontSize: '0.78rem',
+                fontSize: '11px',
+                fontFamily: 'var(--font-abc-diatype-mono)',
+                textTransform: 'uppercase',
               }}
             >
-              {copied ? <Check size={14} color="#4ADE80" /> : <Copy size={14} />}
+              {copied ? <Check size={13} color="#a7fccd" /> : <Copy size={13} />}
               <span>{copied ? 'Copied' : 'Copy'}</span>
             </button>
           </div>
+
+          {/* Syntax block */}
+          <pre
+            style={{
+              padding: '20px',
+              overflowX: 'auto',
+              fontFamily: 'var(--font-abc-diatype-mono)',
+              fontSize: '12.5px',
+              lineHeight: '1.6',
+              color: '#f6f3f1',
+              margin: 0,
+              flex: 1,
+            }}
+          >
+            <code>{activePattern.codeSnippet}</code>
+          </pre>
         </div>
 
-        {/* Code Content */}
-        <pre
-          style={{
-            padding: '24px',
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.88rem',
-            lineHeight: '1.65',
-            color: '#E2E8F0',
-            overflowX: 'auto',
-            maxHeight: '340px',
-            margin: 0,
-          }}
-        >
-          <code>{current.codeSnippet}</code>
-        </pre>
-
-        {/* Live Diagnostics Telemetry Bar */}
+        {/* Telemetry Output Panel */}
         <div
           style={{
-            background: 'rgba(14, 20, 36, 0.9)',
-            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-            padding: '16px 20px',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '12px',
-            fontSize: '0.8rem',
+            backgroundColor: 'var(--color-parchment)',
+            border: '1px solid var(--color-ash)',
+            borderRadius: '24px',
+            padding: '32px 28px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
           }}
-          className="telemetry-bar"
         >
           <div>
-            <div style={{ color: '#64748B', textTransform: 'uppercase', fontSize: '0.7rem', fontWeight: 700 }}>Telemetry Event</div>
-            <div style={{ color: '#F8FAFC', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>{current.livePayload.event}</div>
+            <div className="mono-helper" style={{ marginBottom: '8px' }}>
+              PATTERN BENCHMARKS
+            </div>
+
+            <h4
+              style={{
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: '22px',
+                fontWeight: 400,
+                color: 'var(--color-off-black)',
+                marginBottom: '12px',
+              }}
+            >
+              {activePattern.name}
+            </h4>
+
+            <p style={{ fontSize: '13.5px', color: 'var(--color-graphite)', marginBottom: '24px', lineHeight: 1.5 }}>
+              {activePattern.description}
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', borderTop: '1px solid var(--color-ash)', paddingTop: '20px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
+                <span style={{ color: 'var(--color-graphite)' }}>Latency Target:</span>
+                <span className="mono-text" style={{ fontWeight: 500, color: 'var(--color-lake-blue)' }}>
+                  {activePattern.latencyBenchmark}
+                </span>
+              </div>
+
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
+                <span style={{ color: 'var(--color-graphite)' }}>Sustained Load:</span>
+                <span className="mono-text" style={{ fontWeight: 500, color: 'var(--color-off-black)' }}>
+                  {activePattern.throughputCapacity}
+                </span>
+              </div>
+
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
+                <span style={{ color: 'var(--color-graphite)' }}>Live Quorum:</span>
+                <span className="mono-text" style={{ fontWeight: 500, color: 'var(--color-off-black)' }}>
+                  {activePattern.livePayload.redundancy}
+                </span>
+              </div>
+            </div>
           </div>
-          <div>
-            <div style={{ color: '#64748B', textTransform: 'uppercase', fontSize: '0.7rem', fontWeight: 700 }}>Cluster Status</div>
-            <div style={{ color: '#4ADE80', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>{current.livePayload.status}</div>
-          </div>
-          <div>
-            <div style={{ color: '#64748B', textTransform: 'uppercase', fontSize: '0.7rem', fontWeight: 700 }}>Execution Latency</div>
-            <div style={{ color: '#38BDF8', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>{current.livePayload.routeTime}</div>
-          </div>
-          <div>
-            <div style={{ color: '#64748B', textTransform: 'uppercase', fontSize: '0.7rem', fontWeight: 700 }}>Fault Tolerance</div>
-            <div style={{ color: '#CBD5E1', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>{current.livePayload.redundancy}</div>
+
+          <div style={{ marginTop: '24px' }}>
+            <div
+              style={{
+                padding: '12px 16px',
+                borderRadius: '12px',
+                backgroundColor: '#ffffff',
+                border: '1px solid var(--color-ash)',
+                fontSize: '11.5px',
+                fontFamily: 'var(--font-abc-diatype-mono)',
+                color: 'var(--color-off-black)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}
+            >
+              <span style={{ color: 'var(--color-lake-blue)' }}>● SYNC_STATE:</span>
+              <span>{activePattern.livePayload.status}</span>
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Interactive Simulation Trigger */}
-      <div
-        style={{
-          marginTop: '20px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '12px',
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94A3B8', fontSize: '0.85rem' }}>
-          <ShieldCheck size={16} color="#4ADE80" />
-          <span>All architectures covered by 100% intellectual property transfer & 30-day warranty.</span>
-        </div>
-
-        <button
-          onClick={handleTriggerSimulation}
-          className="btn-secondary"
-          style={{ padding: '8px 18px', fontSize: '0.85rem' }}
-        >
-          <Play size={14} color="#00D2FF" />
-          <span>Simulate Load Test</span>
-        </button>
-      </div>
-
-      {/* Output Console Log */}
-      <div
-        style={{
-          marginTop: '16px',
-          background: 'rgba(0, 0, 0, 0.4)',
-          borderRadius: '10px',
-          padding: '12px 16px',
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.78rem',
-          color: '#38BDF8',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '4px',
-        }}
-      >
-        {simulatedLogs.map((log, i) => (
-          <div key={i} style={{ opacity: 1 - i * 0.18 }}>
-            {log}
-          </div>
-        ))}
       </div>
     </div>
   );
