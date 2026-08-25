@@ -751,3 +751,6 @@ body { background: var(--color-parchment) !important; }
 .startup-page .startup-cta p { color: #d7e5ff; }
 @media (max-width: 850px) { .startup-page .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 0; }.startup-page .stats-grid > div:nth-child(3) { padding-left: 0; border-left: 0; }.startup-page .service-grid, .startup-page .process-grid { grid-template-columns: 1fr; }.startup-page .trusted-inner, .startup-page .cta-inner { align-items: flex-start; flex-direction: column; }.startup-page .trusted-inner > div { justify-content: start; } }
 @media (max-width: 520px) { .startup-page .stats-grid strong { font-size: 34px; }.startup-page .stats-grid > div { padding: 0 16px; }.startup-page .section-intro h2, .startup-page .case-study-copy h2, .startup-page .cta-inner h2 { font-size: 39px !important; }.startup-page .case-study-visual { aspect-ratio: 1; } }
+.announcement-shell { min-height: 32px !important; padding: 5px 20px !important; }
+.announcement-shell .announcement-message { font-family: var(--font-sans) !important; font-size: 11px !important; }
+@media (max-width: 850px) { .announcement-shell .container { justify-content: center !important; }.announcement-shell .announcement-message { display: none; }.announcement-shell .btn-white-pill { padding: 5px 10px !important; font-size: 11px !important; } }
