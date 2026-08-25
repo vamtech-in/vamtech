@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Shield, ArrowLeft } from 'lucide-react';
 
 export const metadata = {
-  title: 'Privacy Policy — Vamtech Journal',
-  description: 'Vamtech Technologies Privacy Policy and data protection commitments.',
+  title: 'Privacy Policy & Data Safeguards — Vamtech Journal',
+  description: 'Vamtech Technologies Privacy Policy, client data protection commitments, and GDPR/CCPA compliance standards.',
 };
 
 export default function PrivacyPage() {
@@ -47,14 +47,24 @@ export default function PrivacyPage() {
               letterSpacing: '-0.02em',
             }}
           >
-            Privacy Policy
+            Privacy Policy & Data Safeguards
           </h1>
 
           <p className="mono-helper" style={{ marginBottom: '36px' }}>
             LAST REVISED: FEBRUARY 2026 • VAMTECH TECHNOLOGIES INC.
           </p>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '28px', color: 'var(--color-graphite)', lineHeight: 1.6, fontSize: '15px' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '28px',
+              color: 'var(--color-graphite)',
+              lineHeight: 1.65,
+              fontSize: '14.5px',
+              fontFamily: 'var(--font-abc-diatype-mono)',
+            }}
+          >
             <section>
               <h2 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '22px', fontWeight: 400, color: 'var(--color-off-black)', marginBottom: '10px' }}>
                 1. Overview & Scope

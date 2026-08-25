@@ -88,6 +88,8 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
+                    aria-expanded={servicesDropdownOpen}
+                    aria-haspopup="true"
                     style={{
                       display: 'flex',
                       alignItems: 'center',

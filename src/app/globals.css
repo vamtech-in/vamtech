@@ -618,15 +618,16 @@ a {
   .service-detail-grid,
   .study-grid,
   .about-story-grid,
-  .contact-layout-grid {
+  .contact-layout-grid,
+  .pipeline-grid {
     grid-template-columns: 1fr !important;
     gap: 32px !important;
   }
 }
 
 @media (max-width: 768px) {
-  .grid-2, .grid-3, .grid-4 {
-    grid-template-columns: 1fr;
+  .grid-2, .grid-3, .grid-4, .pipeline-grid {
+    grid-template-columns: 1fr !important;
   }
   .container {
     padding: 0 20px;

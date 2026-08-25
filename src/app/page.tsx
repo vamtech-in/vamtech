@@ -614,19 +614,38 @@ export default function HomePage() {
                 <div
                   key={index}
                   className="faq-accordion-item"
-                  onClick={() => setOpenFaqIndex(isOpen ? null : index)}
                 >
-                  <div className="faq-accordion-header">
-                    <div className="faq-question">
+                  <button
+                    type="button"
+                    id={`faq-trigger-${index}`}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${index}`}
+                    onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                    className="faq-accordion-header"
+                    style={{
+                      width: '100%',
+                      background: 'none',
+                      border: 'none',
+                      padding: 0,
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                    }}
+                  >
+                    <span className="faq-question">
                       {item.question}
-                    </div>
-                    <div className={`faq-chevron ${isOpen ? 'open' : ''}`}>
+                    </span>
+                    <span className={`faq-chevron ${isOpen ? 'open' : ''}`} aria-hidden="true">
                       ↓
-                    </div>
-                  </div>
+                    </span>
+                  </button>
 
                   {isOpen && (
-                    <div className="faq-answer">
+                    <div
+                      id={`faq-answer-${index}`}
+                      role="region"
+                      aria-labelledby={`faq-trigger-${index}`}
+                      className="faq-answer"
+                    >
                       {item.answer}
                     </div>
                   )}
