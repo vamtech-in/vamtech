@@ -31,10 +31,10 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Services', href: '/services', hasDropdown: true },
-    { name: 'Case Studies', href: '/case-studies' },
-    { name: 'Pricing & Sizing', href: '/pricing' },
-    { name: 'About & Labs', href: '/about' },
-    { name: 'Security Center', href: '/security' },
+    { name: 'Solutions', href: '/solutions' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'About', href: '/about' },
+    { name: 'Careers', href: '/careers' },
     { name: 'Contact', href: '/contact' },
   ];
 

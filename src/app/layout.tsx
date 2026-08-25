@@ -30,20 +30,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Vamtech — High-Concurrency Software & Autonomous Systems Journal',
-  description: 'An editorial tech journal and engineering lab typeset on warm parchment. Specializing in mission-critical distributed systems, cloud infrastructure, and autonomous AI architectures.',
+  title: 'VAM|Tech | Digital products and intelligent software',
+  description: 'VAM|Tech builds scalable digital products and intelligent software solutions through engineering, design, AI, and cloud expertise.',
   keywords: [
-    'Enterprise Software Architecture',
-    'High-Concurrency Distributed Systems',
-    'AI Engineering & Vector RAG',
-    'OCSF Data Pipelines',
-    'Zero-Trust Cloud DevOps',
-    'Technical Journal'
+    'Software Development',
+    'AI Automation',
+    'Cloud DevOps',
+    'Product Design',
+    'Digital Transformation'
   ],
   authors: [{ name: 'Vamtech Engineering Labs' }],
   openGraph: {
-    title: 'Vamtech — Editorial Tech Journal & Architecture Lab',
-    description: 'Transforming complex business logic into high-performance, resilient software systems.',
+    title: 'VAM|Tech | Digital products and intelligent software',
+    description: 'Transforming ideas into scalable digital products through engineering, design, AI, and cloud expertise.',
     url: 'https://vamtech.io',
     siteName: 'Vamtech Labs',
     type: 'website',
@@ -95,10 +94,10 @@ export default function RootLayout({
         }}
       >
         <AnnouncementBar
-          badge="JOURNAL v2.4"
-          message="In-Flight Data Transforms & Zero-Copy Pipeline Specs Published"
-          linkText="Read Journal"
-          linkHref="/case-studies"
+          badge="VAM|TECH / 2026"
+          message="Building technology that moves businesses forward"
+          linkText="Start a project"
+          linkHref="/contact"
         />
         <Navbar />
         <main
