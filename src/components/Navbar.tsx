@@ -230,8 +230,37 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right CTA */}
+        {/* Right CTA & Status */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          {/* Senior SLA Status Indicator */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '6px 14px',
+              borderRadius: '9999px',
+              background: 'rgba(74, 222, 128, 0.08)',
+              border: '1px solid rgba(74, 222, 128, 0.25)',
+              fontSize: '0.78rem',
+              color: '#4ADE80',
+              fontWeight: 600,
+            }}
+            className="desktop-nav"
+          >
+            <span
+              style={{
+                width: '7px',
+                height: '7px',
+                borderRadius: '50%',
+                background: '#4ADE80',
+                boxShadow: '0 0 8px #4ADE80',
+                display: 'inline-block',
+              }}
+            />
+            <span>All Systems 99.99% Operational</span>
+          </div>
+
           <Link href="/contact" className="btn-primary" style={{ padding: '10px 22px', fontSize: '0.9rem' }}>
             <span>Book a Call</span>
             <ArrowRight size={16} />

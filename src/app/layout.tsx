@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ParallaxGlow from '@/components/ParallaxGlow';
+import CommandPalette from '@/components/CommandPalette';
 
 export const metadata: Metadata = {
   title: 'Vamtech | Enterprise Software Development, Cloud & AI Engineering',
@@ -42,6 +43,7 @@ export default function RootLayout({
         <main style={{ minHeight: 'calc(100vh - 80px)', paddingTop: '80px' }}>
           {children}
         </main>
+        <CommandPalette />
         <Footer />
       </body>
     </html>

@@ -24,6 +24,8 @@ import {
 
 import AnimatedCounter from '@/components/AnimatedCounter';
 import TiltCard from '@/components/TiltCard';
+import SystemArchitectureVisualizer from '@/components/SystemArchitectureVisualizer';
+import TechEcosystemExplorer from '@/components/TechEcosystemExplorer';
 
 export default function HomePage() {
   const iconMap: Record<string, React.ReactNode> = {
@@ -326,6 +328,39 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+    {/* Senior Interactive Architecture Visualizer Section */}
+    <section style={{ padding: '80px 0', position: 'relative' }}>
+      <div className="container">
+        <ScrollReveal animation="fade-up">
+          <SystemArchitectureVisualizer />
+        </ScrollReveal>
+      </div>
+    </section>
+
+    {/* Senior Tech Ecosystem Explorer Section */}
+    <section style={{ padding: '80px 0', position: 'relative' }}>
+      <div className="container">
+        <ScrollReveal animation="fade-up">
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <div className="badge-pill cyan" style={{ marginBottom: '12px' }}>
+              <Code2 size={14} />
+              <span>Zero Black-Box Frameworks</span>
+            </div>
+            <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', marginBottom: '16px' }}>
+              The Vamtech Production Technology Matrix
+            </h2>
+            <p style={{ color: '#94A3B8', maxWidth: '650px', margin: '0 auto', fontSize: '1.02rem' }}>
+              We build with strictly typed, memory-efficient runtimes and open-source standards designed for multi-year enterprise stability.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal animation="fade-up" delay={200}>
+          <TechEcosystemExplorer />
+        </ScrollReveal>
+      </div>
+    </section>
 
       {/* Featured Case Studies */}
       <section style={{ padding: '80px 0', position: 'relative' }}>
