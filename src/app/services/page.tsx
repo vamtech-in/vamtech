@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import AtmosphericWash from '@/components/AtmosphericWash';
+import SwissDeliveryJourney from '@/components/SwissDeliveryJourney';
 import { servicesData } from '@/data/services';
 import { 
   Code2, 
@@ -19,8 +20,8 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'Engineering Services & Capabilities — Vamtech Journal',
-  description: 'Deep architectural dive into Vamtech services: Custom Software, Cloud DevOps, AI & RAG Automation, and Next.js Web Applications.',
+  title: 'Engineering Services & Delivery Models — Vamtech Journal',
+  description: 'Deep architectural dive into Vamtech delivery models: Autonomous Pods, High-Velocity Sprints, 4-Stage Delivery Journey, and Empirical SLAs.',
 };
 
 export default function ServicesPage() {
@@ -40,21 +41,22 @@ export default function ServicesPage() {
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Editorial Header */}
         <ScrollReveal animation="fade-up">
-          <div style={{ textAlign: 'center', marginBottom: '72px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
             <div style={{ display: 'inline-flex', marginBottom: '16px' }}>
               <span
                 style={{
-                  padding: '4px 12px',
+                  padding: '4px 14px',
                   borderRadius: '9999px',
                   backgroundColor: 'var(--color-periwinkle-mist)',
                   color: 'var(--color-lake-blue)',
                   fontSize: '11px',
                   fontFamily: 'var(--font-abc-diatype-mono)',
                   textTransform: 'uppercase',
-                  fontWeight: 500,
+                  fontWeight: 600,
+                  letterSpacing: '0.04em',
                 }}
               >
-                Architecture & Engineering Services
+                Delivery Models & Engineering Services
               </span>
             </div>
             <h1
@@ -65,21 +67,73 @@ export default function ServicesPage() {
                 color: 'var(--color-off-black)',
                 marginBottom: '20px',
                 letterSpacing: '-0.02em',
+                lineHeight: 1.12,
               }}
             >
-              Enterprise Engineering Capabilities
+              Elevating Engineering. <br />
+              Deterministic Solutions for Global Leaders.
             </h1>
             <p
               style={{
-                fontFamily: 'var(--font-abc-diatype-mono)',
+                fontFamily: 'var(--font-untitled-sans)',
                 color: 'var(--color-graphite)',
-                fontSize: '17px',
-                maxWidth: '720px',
-                margin: '0 auto',
+                fontSize: '18px',
+                maxWidth: '680px',
+                margin: '0 auto 28px',
                 lineHeight: 1.5,
               }}
             >
-              We translate complex technical challenges into resilient, maintainable, and high-performance digital infrastructure.
+              Bespoke Swiss architecture paired with autonomous delivery pods, transparent milestones, and contractually backed SLAs.
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
+              <Link href="/contact" className="btn-primary">
+                <span>Discuss Your Vision</span>
+                <span className="arrow-glyph">▸</span>
+              </Link>
+              <Link href="/case-studies" className="btn-secondary">
+                <span>Explore Architectural Blueprints</span>
+              </Link>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* Concept B: Swiss Editorial Delivery Journey & SLAs */}
+        <ScrollReveal animation="fade-up" delay={100}>
+          <SwissDeliveryJourney />
+        </ScrollReveal>
+
+        {/* Section Divider & Heading */}
+        <ScrollReveal animation="fade-up">
+          <div style={{ textAlign: 'center', margin: '72px 0 40px' }}>
+            <div style={{ display: 'inline-flex', marginBottom: '12px' }}>
+              <span
+                style={{
+                  padding: '4px 12px',
+                  borderRadius: '9999px',
+                  backgroundColor: 'var(--color-periwinkle-mist)',
+                  color: 'var(--color-lake-blue)',
+                  fontSize: '11px',
+                  fontFamily: 'var(--font-abc-diatype-mono)',
+                  textTransform: 'uppercase',
+                  fontWeight: 600,
+                }}
+              >
+                Deep Capabilities
+              </span>
+            </div>
+            <h2
+              style={{
+                fontFamily: 'var(--font-untitled-serif)',
+                fontSize: 'clamp(28px, 4vw, 44px)',
+                fontWeight: 400,
+                color: 'var(--color-off-black)',
+                marginBottom: '12px',
+              }}
+            >
+              Specialized Engineering Domains
+            </h2>
+            <p style={{ maxWidth: '600px', margin: '0 auto', fontSize: '15px', color: 'var(--color-graphite)' }}>
+              Core competencies designed to replace legacy debt with ultra-low latency, fault-tolerant infrastructure.
             </p>
           </div>
         </ScrollReveal>
@@ -242,3 +296,4 @@ export default function ServicesPage() {
     </div>
   );
 }
+

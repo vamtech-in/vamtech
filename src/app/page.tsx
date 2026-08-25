@@ -8,6 +8,7 @@ import MonadPipelineDiagram from '@/components/MonadPipelineDiagram';
 import AudienceLens from '@/components/AudienceLens';
 import SystemArchitectureVisualizer from '@/components/SystemArchitectureVisualizer';
 import TechEcosystemExplorer from '@/components/TechEcosystemExplorer';
+import SwissDeliveryJourney from '@/components/SwissDeliveryJourney';
 import ProjectCostEstimator from '@/components/ProjectCostEstimator';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -548,7 +549,18 @@ export default function HomePage() {
       </section>
 
       {/* ====================================================================
-          6. Architecture Visualizer & Tech Ecosystem
+          6. Concept B: Swiss Editorial Delivery Journey & SLAs
+          ==================================================================== */}
+      <section style={{ padding: '40px 0 80px', position: 'relative', zIndex: 1 }}>
+        <div className="container">
+          <ScrollReveal animation="fade-up">
+            <SwissDeliveryJourney />
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ====================================================================
+          7. Architecture Visualizer & Tech Ecosystem
           ==================================================================== */}
       <section style={{ padding: '40px 0 80px', position: 'relative', zIndex: 1 }}>
         <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
