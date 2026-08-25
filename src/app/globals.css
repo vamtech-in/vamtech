@@ -771,3 +771,43 @@ body { background: var(--color-parchment) !important; }
 .footer-shell > .container > div:last-child a { color: #aeb8b3 !important; }
 @media (max-width: 700px) { .footer-shell { padding-top: 58px !important; }.footer-shell .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 38px 24px !important; }.footer-shell .footer-grid > div:first-child { grid-column: 1 / -1; } }
 @media (max-width: 480px) { .footer-shell .footer-grid { grid-template-columns: 1fr !important; }.footer-shell .footer-grid > div:first-child { grid-column: auto; } }
+
+/* One type family across every route */
+body,
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body p,
+body a,
+body button,
+body input,
+body textarea,
+body select,
+body label,
+body span,
+body li,
+body small,
+body strong,
+body em {
+  font-family: var(--font-sans) !important;
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 { font-weight: 600 !important; letter-spacing: -.045em !important; }
+.mono-text,
+.mono-uppercase,
+.mono-helper,
+.eyebrow,
+.kicker,
+.card-number,
+.dashboard-kicker,
+.window-url,
+.live-label,
+.announcement-badge { font-family: var(--font-sans) !important; letter-spacing: .03em !important; }
