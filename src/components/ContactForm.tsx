@@ -395,7 +395,7 @@ export default function ContactForm() {
                   Discovery Call Confirmed
                 </h4>
                 <p style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '13px', color: 'var(--color-graphite)', marginBottom: '24px', lineHeight: 1.5 }}>
-                  We'll follow up to schedule your call for <strong>{selectedDate}</strong>. Check your email for confirmation details.
+                  We&apos;ll follow up to schedule your call for <strong>{selectedDate}</strong>. Check your email for confirmation details.
                 </p>
                 <button
                   onClick={() => setShowCalendarModal(false)}
@@ -415,7 +415,7 @@ export default function ContactForm() {
                 </div>
 
                 <p style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '13px', color: 'var(--color-graphite)', marginBottom: '20px' }}>
-                  Select a preferred 30-minute window and we'll confirm via email.
+                  Select a preferred 30-minute window and we&apos;ll confirm via email.
                 </p>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>

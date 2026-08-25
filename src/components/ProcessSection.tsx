@@ -5,7 +5,7 @@ import { processStepsData } from '@/data/process';
 import { 
   Compass, 
   Network, 
-  Figma, 
+  Layout, 
   Code2, 
   Rocket, 
   CheckCircle2, 
@@ -16,7 +16,7 @@ import {
 const iconMap: Record<string, React.ReactNode> = {
   Compass: <Compass size={22} />,
   Network: <Network size={22} />,
-  Figma: <Figma size={22} />,
+  Figma: <Layout size={22} />,
   Code2: <Code2 size={22} />,
   Rocket: <Rocket size={22} />,
 };
