@@ -4,21 +4,11 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from './Logo';
-import { 
-  Menu, 
-  X, 
-  ChevronDown, 
-  Code2, 
-  CloudCog, 
-  Sparkles, 
-  Layers,
-  ArrowRight
-} from 'lucide-react';
+import { Menu, X, ArrowRight, MessageSquare, ChevronDown } from 'lucide-react';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -29,8 +19,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
   const navLinks = [
-    { name: 'Services', href: '/services', hasDropdown: true },
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services' },
     { name: 'Solutions', href: '/solutions' },
     { name: 'Projects', href: '/projects' },
     { name: 'About', href: '/about' },
@@ -40,366 +36,183 @@ export default function Navbar() {
 
   return (
     <header
-      className="site-navbar"
       style={{
         position: 'sticky',
         top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 100,
+        zIndex: 50,
         transition: 'all 0.25s ease',
-        backgroundColor: isScrolled ? 'rgba(246, 243, 241, 0.95)' : 'var(--color-parchment)',
-        backdropFilter: isScrolled ? 'blur(12px)' : 'none',
-        borderBottom: isScrolled ? '1px solid var(--color-ash)' : '1px solid transparent',
+        backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.94)' : 'rgba(248, 250, 252, 0.85)',
+        backdropFilter: 'blur(12px)',
+        borderBottom: isScrolled ? '1px solid #e2e8f0' : '1px solid transparent',
+        boxShadow: isScrolled ? '0 4px 20px -2px rgba(15, 23, 42, 0.05)' : 'none',
       }}
     >
-      <div
-        className="container"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          height: '80px',
-        }}
-      >
-        {/* Brand Logo with Dot */}
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-          <Logo size="md" showTagline={true} />
-        </Link>
-
-        {/* Desktop Nav in ABC Diatype Mono 18px / 14px Uppercase */}
-        <nav
+      <div className="container">
+        <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '28px',
+            justifyContent: 'space-between',
+            height: '76px',
           }}
-          className="desktop-nav"
         >
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+          {/* Logo */}
+          <Link href="/" style={{ display: 'inline-flex', alignItems: 'center' }}>
+            <Logo size="md" />
+          </Link>
 
-            if (link.hasDropdown) {
+          {/* Desktop Navigation */}
+          <nav
+            style={{
+              display: 'none',
+              alignItems: 'center',
+              gap: '32px',
+            }}
+            className="desktop-nav"
+          >
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
               return (
-                <div
+                <Link
                   key={link.name}
-                  style={{ position: 'relative' }}
-                  onMouseEnter={() => setServicesDropdownOpen(true)}
-                  onMouseLeave={() => setServicesDropdownOpen(false)}
+                  href={link.href}
+                  style={{
+                    fontSize: '14.5px',
+                    fontWeight: isActive ? 600 : 500,
+                    color: isActive ? 'var(--color-brand-blue)' : 'var(--text-muted)',
+                    transition: 'color 0.2s ease',
+                    position: 'relative',
+                    padding: '6px 0',
+                  }}
+                  className="nav-link-item"
                 >
-                  <Link
-                    href={link.href}
-                    aria-expanded={servicesDropdownOpen}
-                    aria-haspopup="true"
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '4px',
-                      fontFamily: 'var(--font-abc-diatype-mono)',
-                      fontSize: '14px',
-                      fontWeight: 500,
-                      textTransform: 'uppercase',
-                      letterSpacing: '-0.025em',
-                      color: isActive ? 'var(--color-lake-blue)' : 'var(--color-off-black)',
-                      padding: '8px 0',
-                      whiteSpace: 'nowrap',
-                      transition: 'color 0.2s ease',
-                    }}
-                  >
-                    <span>{link.name}</span>
-                    <ChevronDown
-                      size={14}
-                      style={{
-                        transition: 'transform 0.2s',
-                        transform: servicesDropdownOpen ? 'rotate(180deg)' : 'none',
-                      }}
-                    />
-                  </Link>
-
-                  {/* Dropdown Menu — Parchment with 1px Ash border */}
-                  {servicesDropdownOpen && (
-                    <div
+                  {link.name}
+                  {isActive && (
+                    <span
                       style={{
                         position: 'absolute',
-                        top: '100%',
-                        left: '-20px',
-                        width: '340px',
-                        backgroundColor: '#ffffff',
-                        border: '1px solid var(--color-ash)',
-                        borderRadius: '24px',
-                        padding: '16px',
-                        boxShadow: '0 12px 32px rgba(0, 0, 0, 0.08)',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '6px',
-                        zIndex: 110,
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: '2px',
+                        backgroundColor: 'var(--color-brand-blue)',
+                        borderRadius: '2px',
                       }}
-                    >
-                      <Link
-                        href="/services#custom-software"
-                        style={{
-                          display: 'flex',
-                          alignItems: 'flex-start',
-                          gap: '12px',
-                          padding: '10px 14px',
-                          borderRadius: '16px',
-                          transition: 'background 0.2s',
-                        }}
-                        className="dropdown-item"
-                      >
-                        <div
-                          style={{
-                            padding: '8px',
-                            borderRadius: '10px',
-                            backgroundColor: 'rgba(43, 89, 209, 0.1)',
-                            color: 'var(--color-lake-blue)',
-                          }}
-                        >
-                          <Code2 size={16} />
-                        </div>
-                        <div>
-                          <div style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '16px', color: 'var(--color-off-black)' }}>
-                            Custom Enterprise Software
-                          </div>
-                          <div style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '11px', color: 'var(--color-graphite)' }}>
-                            High-concurrency microservices & APIs
-                          </div>
-                        </div>
-                      </Link>
-
-                      <Link
-                        href="/services#cloud-devops"
-                        style={{
-                          display: 'flex',
-                          alignItems: 'flex-start',
-                          gap: '12px',
-                          padding: '10px 14px',
-                          borderRadius: '16px',
-                          transition: 'background 0.2s',
-                        }}
-                        className="dropdown-item"
-                      >
-                        <div
-                          style={{
-                            padding: '8px',
-                            borderRadius: '10px',
-                            backgroundColor: 'rgba(160, 181, 235, 0.25)',
-                            color: '#1a3e9c',
-                          }}
-                        >
-                          <CloudCog size={16} />
-                        </div>
-                        <div>
-                          <div style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '16px', color: 'var(--color-off-black)' }}>
-                            Cloud & Zero-Trust DevOps
-                          </div>
-                          <div style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '11px', color: 'var(--color-graphite)' }}>
-                            Multi-region Kubernetes & Terraform
-                          </div>
-                        </div>
-                      </Link>
-
-                      <Link
-                        href="/services#ai-automation"
-                        style={{
-                          display: 'flex',
-                          alignItems: 'flex-start',
-                          gap: '12px',
-                          padding: '10px 14px',
-                          borderRadius: '16px',
-                          transition: 'background 0.2s',
-                        }}
-                        className="dropdown-item"
-                      >
-                        <div
-                          style={{
-                            padding: '8px',
-                            borderRadius: '10px',
-                            backgroundColor: 'rgba(167, 252, 205, 0.35)',
-                            color: '#0b5930',
-                          }}
-                        >
-                          <Sparkles size={16} />
-                        </div>
-                        <div>
-                          <div style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '16px', color: 'var(--color-off-black)' }}>
-                            AI & Agentic Workflows
-                          </div>
-                          <div style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '11px', color: 'var(--color-graphite)' }}>
-                            Vector RAG & deterministic guardrails
-                          </div>
-                        </div>
-                      </Link>
-
-                      <Link
-                        href="/services#web-mobile-apps"
-                        style={{
-                          display: 'flex',
-                          alignItems: 'flex-start',
-                          gap: '12px',
-                          padding: '10px 14px',
-                          borderRadius: '16px',
-                          transition: 'background 0.2s',
-                        }}
-                        className="dropdown-item"
-                      >
-                        <div
-                          style={{
-                            padding: '8px',
-                            borderRadius: '10px',
-                            backgroundColor: 'rgba(255, 148, 115, 0.25)',
-                            color: '#9e2d0f',
-                          }}
-                        >
-                          <Layers size={16} />
-                        </div>
-                        <div>
-                          <div style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '16px', color: 'var(--color-off-black)' }}>
-                            High-Performance Web Apps
-                          </div>
-                          <div style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '11px', color: 'var(--color-graphite)' }}>
-                            Next.js React Server Components & Edge
-                          </div>
-                        </div>
-                      </Link>
-                    </div>
+                    />
                   )}
-                </div>
+                </Link>
               );
-            }
+            })}
+          </nav>
 
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                style={{
-                  fontFamily: 'var(--font-abc-diatype-mono)',
-                  fontSize: '14px',
-                  fontWeight: 500,
-                  textTransform: 'uppercase',
-                  letterSpacing: '-0.025em',
-                  color: isActive ? 'var(--color-lake-blue)' : 'var(--color-off-black)',
-                  padding: '6px 0',
-                  whiteSpace: 'nowrap',
-                  position: 'relative',
-                  transition: 'color 0.2s ease',
-                }}
-              >
-                <span>{link.name}</span>
-                {isActive && (
-                  <span
-                    style={{
-                      position: 'absolute',
-                      bottom: -4,
-                      left: 0,
-                      right: 0,
-                      height: '1.5px',
-                      backgroundColor: 'var(--color-lake-blue)',
-                    }}
-                  />
-                )}
-              </Link>
-            );
-          })}
-        </nav>
+          {/* Desktop CTA Button */}
+          <div style={{ display: 'none', alignItems: 'center', gap: '16px' }} className="desktop-nav">
+            <Link
+              href="/contact"
+              className="btn-primary"
+              style={{
+                padding: '10px 22px',
+                fontSize: '14px',
+                borderRadius: '8px',
+              }}
+            >
+              <span>Let&apos;s Talk</span>
+              <ArrowRight size={15} />
+            </Link>
+          </div>
 
-        {/* Action Buttons: Ghost Pill (Login) + Lake Blue Pill (Get a Demo ▸) */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
-          <Link
-            href="/security"
-            className="btn-ghost"
-            style={{
-              padding: '10px 20px',
-              fontSize: '13px',
-              display: 'none',
-            }}
-          >
-            Trust Center
-          </Link>
-
-          {/* Single saturated primary action button per screen */}
-          <Link
-            href="/contact"
-            className="btn-primary navbar-cta"
-            style={{
-              padding: '11px 24px',
-              fontSize: '13px',
-            }}
-          >
-            <span>Get a Demo</span>
-            <span className="arrow-glyph" aria-hidden="true">▸</span>
-          </Link>
-
-          {/* Mobile Menu Trigger */}
+          {/* Mobile Hamburger Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             style={{
-              display: 'none',
-              background: 'transparent',
-              border: 'none',
-              color: 'var(--color-off-black)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '42px',
+              height: '42px',
+              borderRadius: '8px',
+              border: '1px solid #e2e8f0',
+              backgroundColor: '#ffffff',
+              color: 'var(--text-main)',
               cursor: 'pointer',
-              padding: '8px',
             }}
-            className="mobile-trigger"
-            aria-label="Toggle Navigation"
+            className="mobile-hamburger-btn"
+            aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div
-          className="mobile-drawer"
           style={{
-            position: 'fixed',
-            top: 'var(--navbar-offset, 80px)',
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'var(--color-parchment)',
-            borderTop: '1px solid var(--color-ash)',
-            padding: '32px 24px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px',
-            zIndex: 99,
+            backgroundColor: '#ffffff',
+            borderBottom: '1px solid #e2e8f0',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+            padding: '24px',
+            animation: 'fadeIn 0.2s ease-out',
           }}
+          className="mobile-drawer-container"
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              style={{
-                fontFamily: 'var(--font-abc-diatype-mono)',
-                fontSize: '16px',
-                fontWeight: 500,
-                textTransform: 'uppercase',
-                letterSpacing: '-0.02em',
-                color: pathname === link.href ? 'var(--color-lake-blue)' : 'var(--color-off-black)',
-                padding: '12px 0',
-                borderBottom: '1px solid var(--color-ash)',
-              }}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <div style={{ marginTop: '24px' }}>
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="btn-primary"
-              style={{ width: '100%', textAlign: 'center' }}
-            >
-              <span>Get a Demo</span>
-              <span className="arrow-glyph">▸</span>
-            </Link>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  style={{
+                    fontSize: '16px',
+                    fontWeight: isActive ? 700 : 500,
+                    color: isActive ? 'var(--color-brand-blue)' : 'var(--text-main)',
+                    padding: '8px 12px',
+                    borderRadius: '6px',
+                    backgroundColor: isActive ? 'rgba(37, 99, 235, 0.08)' : 'transparent',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <span>{link.name}</span>
+                  {isActive && <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--color-brand-blue)' }} />}
+                </Link>
+              );
+            })}
+
+            <div style={{ paddingTop: '16px', borderTop: '1px solid #f1f5f9' }}>
+              <Link
+                href="/contact"
+                className="btn-primary"
+                style={{ width: '100%', padding: '14px', justifyContent: 'center' }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span>Let&apos;s Talk</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
         </div>
       )}
+
+      <style jsx>{`
+        @media (min-width: 1024px) {
+          .desktop-nav {
+            display: flex !important;
+          }
+          .mobile-hamburger-btn {
+            display: none !important;
+          }
+          .mobile-drawer-container {
+            display: none !important;
+          }
+        }
+        .nav-link-item:hover {
+          color: var(--color-brand-blue) !important;
+        }
+      `}</style>
     </header>
   );
 }
