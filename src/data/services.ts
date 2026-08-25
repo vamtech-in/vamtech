@@ -1,102 +1,278 @@
-export interface Service {
+export interface ServiceItem {
   id: string;
   title: string;
   slug: string;
-  tagline: string;
-  iconName: string;
-  colorAccent: string;
-  problemSolved: string;
-  engineeringApproach: string;
-  businessBenefit: string;
-  keyDeliverables: string[];
+  shortDescription: string;
+  fullDescription: string;
+  icon: string;
+  accentColor: string;
+  subOfferings: {
+    title: string;
+    description: string;
+  }[];
+  capabilities: string[];
   techStack: string[];
-  timelineAvg: string;
-  metricsHighlight: string;
+  deliverables: string[];
+  idealFor: string;
 }
 
-export const servicesData: Service[] = [
+export const servicesData: ServiceItem[] = [
   {
-    id: 'custom-software',
-    title: 'Custom Enterprise Software',
-    slug: 'custom-software',
-    tagline: 'High-performance backend systems, distributed microservices, and specialized domain workflows.',
-    iconName: 'Code2',
-    colorAccent: '#FF5E3A',
-    problemSolved: 'Off-the-shelf software imposes rigid constraints, high licensing overhead, and inability to handle proprietary core business logic.',
-    engineeringApproach: 'We architect decoupled, event-driven domain systems using clean architecture, strict typing, and high-throughput data pipelines.',
-    businessBenefit: 'Full IP ownership, zero licensing lock-in, and 10x scalability tailored directly to your operational processes.',
-    keyDeliverables: [
-      'Resilient Microservices & Event Meshes',
-      'High-Throughput REST & GraphQL APIs',
-      'Database Modeling & Sharding (PostgreSQL, ClickHouse)',
-      'Automated Test Suites (Unit, E2E, Load Testing)',
-      'Comprehensive Architecture & System Documentation'
+    id: 'software-development',
+    title: 'Software Development',
+    slug: 'software-development',
+    shortDescription:
+      'Engineered custom software, robust web applications, and enterprise platforms tailored to your business logic.',
+    fullDescription:
+      'We architect, build, and deploy mission-critical software systems designed for high availability, security, and performance. From scalable web backends to complex enterprise portals, our engineering team brings industry-grade craftsmanship to every project.',
+    icon: 'Code2',
+    accentColor: '#2563eb',
+    subOfferings: [
+      {
+        title: 'Web Applications',
+        description:
+          'High-performance, responsive web portals and SaaS platforms built with modern architectures.',
+      },
+      {
+        title: 'Enterprise Applications',
+        description:
+          'Scalable ERPs, internal tools, dashboard consoles, and data pipelines built for enterprise workflows.',
+      },
+      {
+        title: 'Custom Software',
+        description:
+          'Bespoke algorithms, business logic engines, and custom integrations tailored to specific operational needs.',
+      },
     ],
-    techStack: ['TypeScript', 'Go', 'Python', 'PostgreSQL', 'Redis', 'Kafka', 'Docker'],
-    timelineAvg: '8–14 Weeks MVP',
-    metricsHighlight: '99.99% Reliability'
+    capabilities: [
+      'Microservices & Monolithic Architecture',
+      'REST & GraphQL API Design',
+      'Role-Based Access Control (RBAC) & OAuth',
+      'Real-time Data Streaming (WebSockets, SSE)',
+      'Database Optimization & Caching Strategies',
+    ],
+    techStack: ['TypeScript', 'Node.js', 'Python', 'React', 'PostgreSQL', 'Redis'],
+    deliverables: [
+      'Full Source Code & 100% IP Ownership',
+      'Interactive Swagger / OpenAPI Documentation',
+      'Automated Test Suites (Jest, Playwright)',
+      'CI/CD Pipeline Configurations',
+    ],
+    idealFor: 'Startups building MVP-to-scale platforms and enterprises modernizing core toolsets.',
   },
   {
-    id: 'cloud-devops',
-    title: 'Cloud Modernization & DevOps',
-    slug: 'cloud-devops',
-    tagline: 'Zero-downtime CI/CD pipelines, Kubernetes orchestration, and cost-optimized cloud infrastructure.',
-    iconName: 'CloudCog',
-    colorAccent: '#0066FF',
-    problemSolved: 'Fragile deployments, slow release cycles, cloud bill inflation, and unmonitored infrastructure downtime.',
-    engineeringApproach: 'Infrastructure as Code (Terraform), GitOps deployment workflows, and proactive observability telemetry (Prometheus, Grafana, OpenTelemetry).',
-    businessBenefit: 'Ship features 4x faster with automated rollbacks, 40%+ cloud cost reductions, and ironclad 99.99% system availability.',
-    keyDeliverables: [
-      'Terraform / OpenTofu Multi-Environment IaC',
-      'Kubernetes (EKS/GKE) Cluster Orchestration',
-      'Automated GitOps CI/CD Pipelines (GitHub Actions/ArgoCD)',
-      'Disaster Recovery & Automated Failover Protocols',
-      'SOC2 / ISO 27001 Cloud Hardening'
+    id: 'web-mobile-development',
+    title: 'Web & Mobile Development',
+    slug: 'web-mobile-development',
+    shortDescription:
+      'Fluid web interfaces and cross-platform mobile apps built with React, Next.js, and modern frameworks.',
+    fullDescription:
+      'Deliver seamless user experiences across web, iOS, and Android. We utilize the latest frontend standards with server-side rendering, edge caching, and responsive native UI paradigms to create delightful digital products.',
+    icon: 'Smartphone',
+    accentColor: '#06b6d4',
+    subOfferings: [
+      {
+        title: 'React & Next.js Platforms',
+        description:
+          'Blazing fast, SEO-optimized web apps with Server Components, dynamic routing, and instant page transitions.',
+      },
+      {
+        title: 'Mobile Applications',
+        description:
+          'Native-feel iOS and Android apps with cross-platform codebases, offline sync, and push notifications.',
+      },
+      {
+        title: 'Progressive Web Apps (PWA)',
+        description:
+          'Installable web applications with offline capabilities, background sync, and app-like performance.',
+      },
     ],
-    techStack: ['AWS', 'GCP', 'Kubernetes', 'Terraform', 'Docker', 'GitHub Actions', 'Datadog'],
-    timelineAvg: '4–8 Weeks Setup',
-    metricsHighlight: '42% Cloud Cost Savings'
+    capabilities: [
+      'Server-Side Rendering (SSR) & Static Site Generation (SSG)',
+      'Cross-Platform Mobile Architecture (React Native)',
+      'Native Device API Integration (Camera, Biometrics, GPS)',
+      'State Management & Optimistic UI Updates',
+      'Core Web Vitals & Performance Tuning',
+    ],
+    techStack: ['React', 'Next.js', 'React Native', 'Tailwind CSS', 'TypeScript', 'Expo'],
+    deliverables: [
+      'App Store & Play Store Ready Packages',
+      'Responsive Web Application Deployment',
+      'Component Storybook & UI Documentation',
+      'Analytics & Crash Reporting Integration',
+    ],
+    idealFor: 'Consumer brands, SaaS products, and mobile-first tech startups.',
   },
   {
     id: 'ai-automation',
-    title: 'AI Engineering & Agentic Automation',
+    title: 'AI & Automation',
     slug: 'ai-automation',
-    tagline: 'Custom LLM fine-tuning, RAG enterprise search engines, and multi-agent workflow automations.',
-    iconName: 'Sparkles',
-    colorAccent: '#E01A8A',
-    problemSolved: 'Manual cognitive bottlenecks, siloed internal knowledge, and repetitive business operations draining engineering bandwidth.',
-    engineeringApproach: 'Production-ready Vector RAG pipelines, deterministic agent tool-calling frameworks, local model quantization, and strict evaluation guardrails.',
-    businessBenefit: 'Automate 60%+ of document review, customer inquiry triage, and internal analytics workflows with verifiable output precision.',
-    keyDeliverables: [
-      'Enterprise Knowledge RAG Systems',
-      'Custom Autonomous Agent Workflows',
-      'LLM Guardrails, Hallucination Prevention & Prompt Eval',
-      'Local & Private Model Hosting (Ollama, vLLM)',
-      'Vector Search Indexing (Pinecone, Qdrant, pgvector)'
+    shortDescription:
+      'Intelligent applications, custom LLM pipelines, and automated workflows that drive efficiency and insight.',
+    fullDescription:
+      'Leverage modern artificial intelligence to unlock automation and business intelligence. We build custom RAG pipelines, fine-tuned agentic workflows, semantic search, and autonomous business process automation.',
+    icon: 'Bot',
+    accentColor: '#8b5cf6',
+    subOfferings: [
+      {
+        title: 'AI-Powered Applications',
+        description:
+          'Smart recommendation engines, natural language interfaces, and generative AI features embedded in your apps.',
+      },
+      {
+        title: 'LLM Integrations & RAG',
+        description:
+          'Retrieval-Augmented Generation systems using OpenAI, Anthropic, or open-source models grounded in your proprietary data.',
+      },
+      {
+        title: 'Workflow Automation',
+        description:
+          'Automated data extraction, automated document processing, and multi-step webhook/API automations.',
+      },
     ],
-    techStack: ['Python', 'PyTorch', 'LangChain', 'FastAPI', 'Qdrant', 'OpenAI', 'Anthropic'],
-    timelineAvg: '6–10 Weeks Rollout',
-    metricsHighlight: '65% Task Time Reduction'
+    capabilities: [
+      'Vector Search & Embeddings (Pinecone, pgvector)',
+      'LangChain & LlamaIndex Agentic Workflows',
+      'Prompt Engineering & Guardrails Integration',
+      'OCR & Computer Vision Document Ingestion',
+      'Fine-Tuning & Model Evaluation Frameworks',
+    ],
+    techStack: ['Python', 'OpenAI API', 'LangChain', 'LlamaIndex', 'FastAPI', 'pgvector'],
+    deliverables: [
+      'Custom AI Agent / Pipeline Codebase',
+      'Vector Database Setup & Ingestion Scripts',
+      'API Security & Rate-Limiting Gateways',
+      'Hallucination Testing & Accuracy Benchmarks',
+    ],
+    idealFor: 'Businesses aiming to automate labor-intensive operations and add AI intelligence to products.',
   },
   {
-    id: 'web-mobile-apps',
-    title: 'High-Performance Web & Mobile Apps',
-    slug: 'web-mobile-apps',
-    tagline: 'Ultra-fast Next.js web applications, cross-platform mobile apps, and fluid responsive portals.',
-    iconName: 'Layout',
-    colorAccent: '#7B2CBF',
-    problemSolved: 'Sluggish UI, high user bounce rates, poor mobile conversion, and inconsistent multi-platform user experiences.',
-    engineeringApproach: 'Next.js App Router with Server Components, React Native / Flutter cross-platform architecture, and optimized responsive micro-animations.',
-    businessBenefit: 'Sub-second page loads (Lighthouse 95+), flawless mobile experience, and conversion-optimized B2B workflows.',
-    keyDeliverables: [
-      'Ultra-Fast Next.js Web Platforms',
-      'iOS & Android Cross-Platform Mobile Apps',
-      'Design System & Accessible Component Libraries',
-      'Offline-First Sync & Local Caching',
-      'Real-Time WebSocket Collaboration Tools'
+    id: 'cloud-devops',
+    title: 'Cloud & DevOps',
+    slug: 'cloud-devops',
+    shortDescription:
+      'Resilient cloud infrastructure, automated CI/CD pipelines, containerization, and zero-downtime deployments.',
+    fullDescription:
+      'Ensure 99.99% uptime, rapid release cycles, and enterprise security with our Cloud & DevOps engineering. We implement Infrastructure as Code (IaC), container orchestration with Docker/Kubernetes, and automated cloud monitoring.',
+    icon: 'Cloud',
+    accentColor: '#3b82f6',
+    subOfferings: [
+      {
+        title: 'Cloud Architecture',
+        description:
+          'Multi-region, auto-scaling cloud foundations on AWS, GCP, or Azure with cost optimization.',
+      },
+      {
+        title: 'CI/CD Pipelines',
+        description:
+          'Automated build, test, and release pipelines using GitHub Actions, GitLab CI, and deployment triggers.',
+      },
+      {
+        title: 'Deployment & Infrastructure',
+        description:
+          'Terraform/IaC scripts, Docker containerization, Kubernetes clusters, and serverless architectures.',
+      },
     ],
-    techStack: ['Next.js', 'React', 'React Native', 'Flutter', 'TypeScript', 'Tailwind', 'Node.js'],
-    timelineAvg: '6–12 Weeks MVP',
-    metricsHighlight: '<800ms Time-to-Interactive'
-  }
+    capabilities: [
+      'Infrastructure as Code (Terraform, CloudFormation)',
+      'Zero-Downtime Blue-Green & Canary Deployments',
+      'Cloud Security Hardening & IAM Best Practices',
+      'Observability (Datadog, Prometheus, Grafana)',
+      'Cost Governance & Cloud Resource Audits',
+    ],
+    techStack: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions', 'Linux'],
+    deliverables: [
+      'Reproducible Infrastructure as Code Repositories',
+      'Automated CI/CD Workflows',
+      'Real-Time Health Monitoring & Alerting Dashboards',
+      'Disaster Recovery & Backup Runbooks',
+    ],
+    idealFor: 'Growing companies scaling user traffic and engineering teams requiring rock-solid deployment pipelines.',
+  },
+  {
+    id: 'ui-ux-design',
+    title: 'UI/UX & Product Design',
+    slug: 'ui-ux-design',
+    shortDescription:
+      'Intuitive user interfaces, comprehensive design systems, and user journeys designed for engagement and conversion.',
+    fullDescription:
+      'We combine human-centered design principles with clean technical aesthetics. From user research and wireframing to pixel-perfect Figma design systems and interactive prototypes, we ensure your product looks and feels world-class.',
+    icon: 'Palette',
+    accentColor: '#ec4899',
+    subOfferings: [
+      {
+        title: 'Product Design',
+        description:
+          'Full-cycle product design from concept validation to interactive high-fidelity clickable prototypes.',
+      },
+      {
+        title: 'Design Systems',
+        description:
+          'Scalable UI component libraries, typography tokens, color systems, and developer handoff guidelines.',
+      },
+      {
+        title: 'User Experience (UX) Strategy',
+        description:
+          'User persona mapping, information architecture, usability testing, and funnel optimization.',
+      },
+    ],
+    capabilities: [
+      'Interactive Figma Prototyping & Motion Specs',
+      'Component Tokenization & Atomic Design Systems',
+      'Accessibility (WCAG 2.1 AA) Compliance',
+      'UX Friction Audits & Usability Testing',
+      'Responsive Mobile & Desktop Viewport System',
+    ],
+    techStack: ['Figma', 'Adobe CC', 'Design Tokens', 'Tailwind UI', 'Framer'],
+    deliverables: [
+      'Organized Figma Files with Auto-Layout Components',
+      'Complete Design System & Token Documentation',
+      'Interactive Clickable Prototype',
+      'Developer Asset Export & Handoff Specs',
+    ],
+    idealFor: 'New ventures needing an iconic brand presence and existing products undergoing UI modernization.',
+  },
+  {
+    id: 'digital-transformation',
+    title: 'Digital Transformation',
+    slug: 'digital-transformation',
+    shortDescription:
+      'Strategic technology modernization, legacy migration, workflow automation, and technical advisory.',
+    fullDescription:
+      'Modernize legacy systems, eliminate technical debt, and transform manual business operations into automated digital workflows. We provide senior architectural consulting to guide your technology roadmaps.',
+    icon: 'TrendingUp',
+    accentColor: '#10b981',
+    subOfferings: [
+      {
+        title: 'Legacy Modernization',
+        description:
+          'Migrate monolithic legacy codebases to agile microservices, cloud-native frameworks, and modern databases.',
+      },
+      {
+        title: 'Business Automation',
+        description:
+          'Eliminate manual operational bottlenecks through custom internal tools, integrations, and automated reporting.',
+      },
+      {
+        title: 'Technology Consulting',
+        description:
+          'CTO-level technical audits, architecture roadmapping, vendor evaluations, and scalability assessments.',
+      },
+    ],
+    capabilities: [
+      'Legacy Code Audit & Refactoring Strategies',
+      'Database Migration with Zero Data Loss',
+      'Third-Party API & ERP Ecosystem Integrations',
+      'Compliance & Security Risk Mitigation',
+      'Technical Due Diligence & Roadmap Formulation',
+    ],
+    techStack: ['Microservices', 'GraphQL', 'PostgreSQL', 'Docker', 'AWS', 'Python'],
+    deliverables: [
+      'Technical Architecture Blueprint & Modernization Plan',
+      'Phased Migration Roadmap with Zero Downtime',
+      'System Security & Performance Audit Report',
+      'Knowledge Transfer & Executive Briefings',
+    ],
+    idealFor: 'Established businesses and enterprises seeking to unlock modern agility and reduce operational overhead.',
+  },
 ];
