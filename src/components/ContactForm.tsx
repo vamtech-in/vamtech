@@ -11,7 +11,9 @@ import {
   Mail, 
   User, 
   Building2, 
-  MessageSquare
+  MessageSquare,
+  AlertCircle,
+  Check
 } from 'lucide-react';
 
 export default function ContactForm() {
@@ -27,35 +29,63 @@ export default function ContactForm() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [leadRefId, setLeadRefId] = useState<string>('');
+  
   const [showCalendarModal, setShowCalendarModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState<string>('Tomorrow, 2:00 PM EST');
+  const [bookingConfirmed, setBookingConfirmed] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage(null);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to transmit architecture scope.');
+      }
+
+      setLeadRefId(data.leadId || `LEAD-${Date.now().toString().slice(-6)}`);
       setSubmitted(true);
 
       // Trigger celebratory confetti using Monad palette
       try {
         confetti({
-          particleCount: 70,
-          spread: 60,
+          particleCount: 80,
+          spread: 70,
           origin: { y: 0.6 },
           colors: ['#2b59d1', '#a0b5eb', '#ff9473', '#a7fccd', '#242424'],
         });
       } catch (err) {
         // Fallback
       }
-    }, 800);
+    } catch (err: any) {
+      setErrorMessage(err.message || 'An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleBookMeeting = () => {
-    setShowCalendarModal(false);
-    alert(`Meeting scheduled with Vamtech Principal Architect for: ${selectedDate}! An invitation has been dispatched.`);
+    setBookingConfirmed(true);
+    try {
+      confetti({
+        particleCount: 50,
+        spread: 60,
+        origin: { y: 0.5 },
+        colors: ['#2b59d1', '#a7fccd'],
+      });
+    } catch (e) {}
   };
 
   return (
@@ -84,6 +114,23 @@ export default function ContactForm() {
             <CheckCircle2 size={32} />
           </div>
 
+          <span
+            style={{
+              display: 'inline-block',
+              padding: '4px 12px',
+              borderRadius: '9999px',
+              backgroundColor: 'var(--color-parchment)',
+              border: '1px solid var(--color-ash)',
+              fontSize: '11px',
+              fontFamily: 'var(--font-abc-diatype-mono)',
+              color: 'var(--color-lake-blue)',
+              marginBottom: '16px',
+              textTransform: 'uppercase',
+            }}
+          >
+            Ref: {leadRefId} • NDA Active
+          </span>
+
           <h3
             style={{
               fontFamily: 'var(--font-untitled-serif)',
@@ -101,17 +148,20 @@ export default function ContactForm() {
               fontFamily: 'var(--font-abc-diatype-mono)',
               fontSize: '15px',
               color: 'var(--color-graphite)',
-              maxWidth: '520px',
+              maxWidth: '540px',
               margin: '0 auto 32px',
               lineHeight: 1.6,
             }}
           >
-            Thank you, <strong>{formData.name || 'Partner'}</strong>. A Principal Systems Architect is reviewing your requirements and will reply within 4 business hours.
+            Thank you, <strong>{formData.name || 'Partner'}</strong>. A Principal Systems Architect is reviewing your technical requirements and will dispatch an architecture evaluation within 4 business hours.
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
             <button
-              onClick={() => setShowCalendarModal(true)}
+              onClick={() => {
+                setBookingConfirmed(false);
+                setShowCalendarModal(true);
+              }}
               className="btn-primary"
               style={{ fontSize: '13px' }}
             >
@@ -119,7 +169,19 @@ export default function ContactForm() {
               <span className="arrow-glyph">▸</span>
             </button>
             <button
-              onClick={() => setSubmitted(false)}
+              onClick={() => {
+                setSubmitted(false);
+                setFormData({
+                  name: '',
+                  email: '',
+                  company: '',
+                  role: '',
+                  serviceInterest: 'Custom Enterprise Software',
+                  budgetRange: '$20k – $50k',
+                  timeline: 'Within 1–2 Months',
+                  message: '',
+                });
+              }}
               className="btn-ghost"
               style={{ fontSize: '13px' }}
             >
@@ -129,6 +191,26 @@ export default function ContactForm() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          {errorMessage && (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                padding: '14px 18px',
+                borderRadius: '16px',
+                backgroundColor: 'rgba(243, 122, 10, 0.12)',
+                border: '1px solid var(--color-crimson)',
+                color: '#993a00',
+                fontSize: '13px',
+                fontFamily: 'var(--font-abc-diatype-mono)',
+              }}
+            >
+              <AlertCircle size={18} color="var(--color-crimson)" style={{ flexShrink: 0 }} />
+              <span>{errorMessage}</span>
+            </div>
+          )}
+
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }} className="form-grid">
             <div>
               <label className="monad-label">Your Name *</label>
@@ -256,7 +338,7 @@ export default function ContactForm() {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(36, 36, 36, 0.5)',
+            backgroundColor: 'rgba(36, 36, 36, 0.55)',
             backdropFilter: 'blur(8px)',
             zIndex: 300,
             display: 'flex',
@@ -278,62 +360,98 @@ export default function ContactForm() {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-              <Calendar size={20} color="var(--color-lake-blue)" />
-              <h4 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '22px', fontWeight: 400 }}>
-                Select Architecture Discovery Slot
-              </h4>
-            </div>
-
-            <p style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '13px', color: 'var(--color-graphite)', marginBottom: '20px' }}>
-              Select a 30-minute window for a technical consultation with our Principal Distributed Systems Architect.
-            </p>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
-              {[
-                'Tomorrow, 10:00 AM EST',
-                'Tomorrow, 2:00 PM EST',
-                'Thursday, 11:30 AM EST',
-                'Thursday, 4:00 PM EST',
-              ].map((slot) => (
-                <button
-                  key={slot}
-                  onClick={() => setSelectedDate(slot)}
-                  className="pipeline-node-tag"
+            {bookingConfirmed ? (
+              <div style={{ textAlign: 'center', padding: '20px 0' }}>
+                <div
                   style={{
-                    width: '100%',
-                    justifyContent: 'space-between',
-                    backgroundColor: selectedDate === slot ? 'var(--color-off-black)' : 'var(--color-parchment)',
-                    color: selectedDate === slot ? '#ffffff' : 'var(--color-off-black)',
-                    borderColor: selectedDate === slot ? 'var(--color-off-black)' : 'var(--color-ash)',
-                    cursor: 'pointer',
-                    padding: '12px 18px',
-                    fontSize: '13px',
+                    width: '56px',
+                    height: '56px',
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(167, 252, 205, 0.3)',
+                    color: '#0b5930',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 20px',
                   }}
                 >
-                  <span>{slot}</span>
-                  {selectedDate === slot && <span style={{ color: 'var(--color-mint)' }}>✓</span>}
+                  <Check size={28} />
+                </div>
+                <h4 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '24px', fontWeight: 400, marginBottom: '8px' }}>
+                  Discovery Call Confirmed
+                </h4>
+                <p style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '13px', color: 'var(--color-graphite)', marginBottom: '24px', lineHeight: 1.5 }}>
+                  Calendar invite dispatched for <strong>{selectedDate}</strong>. A Principal Architect has received your scope overview.
+                </p>
+                <button
+                  onClick={() => setShowCalendarModal(false)}
+                  className="btn-primary"
+                  style={{ width: '100%', fontSize: '13px' }}
+                >
+                  <span>Close Window</span>
                 </button>
-              ))}
-            </div>
+              </div>
+            ) : (
+              <>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+                  <Calendar size={20} color="var(--color-lake-blue)" />
+                  <h4 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '22px', fontWeight: 400 }}>
+                    Select Architecture Discovery Slot
+                  </h4>
+                </div>
 
-            <div style={{ display: 'flex', gap: '12px' }}>
-              <button
-                onClick={handleBookMeeting}
-                className="btn-primary"
-                style={{ flex: 1, fontSize: '13px' }}
-              >
-                <span>Confirm Invitation</span>
-                <span className="arrow-glyph">▸</span>
-              </button>
-              <button
-                onClick={() => setShowCalendarModal(false)}
-                className="btn-ghost"
-                style={{ fontSize: '13px' }}
-              >
-                Cancel
-              </button>
-            </div>
+                <p style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '13px', color: 'var(--color-graphite)', marginBottom: '20px' }}>
+                  Select a 30-minute window for a technical consultation with our Principal Distributed Systems Architect.
+                </p>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
+                  {[
+                    'Tomorrow, 10:00 AM EST',
+                    'Tomorrow, 2:00 PM EST',
+                    'Thursday, 11:30 AM EST',
+                    'Thursday, 4:00 PM EST',
+                  ].map((slot) => (
+                    <button
+                      key={slot}
+                      type="button"
+                      onClick={() => setSelectedDate(slot)}
+                      className="pipeline-node-tag"
+                      style={{
+                        width: '100%',
+                        justifyContent: 'space-between',
+                        backgroundColor: selectedDate === slot ? 'var(--color-off-black)' : 'var(--color-parchment)',
+                        color: selectedDate === slot ? '#ffffff' : 'var(--color-off-black)',
+                        borderColor: selectedDate === slot ? 'var(--color-off-black)' : 'var(--color-ash)',
+                        cursor: 'pointer',
+                        padding: '12px 18px',
+                        fontSize: '13px',
+                      }}
+                    >
+                      <span>{slot}</span>
+                      {selectedDate === slot && <span style={{ color: 'var(--color-mint)' }}>✓</span>}
+                    </button>
+                  ))}
+                </div>
+
+                <div style={{ display: 'flex', gap: '12px' }}>
+                  <button
+                    onClick={handleBookMeeting}
+                    className="btn-primary"
+                    style={{ flex: 1, fontSize: '13px' }}
+                  >
+                    <span>Confirm Invitation</span>
+                    <span className="arrow-glyph">▸</span>
+                  </button>
+                  <button
+                    onClick={() => setShowCalendarModal(false)}
+                    className="btn-ghost"
+                    style={{ fontSize: '13px' }}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}
