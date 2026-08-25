@@ -40,6 +40,7 @@ export default function Navbar() {
 
   return (
     <header
+      className="site-navbar"
       style={{
         position: 'sticky',
         top: 0,
@@ -319,7 +320,7 @@ export default function Navbar() {
           {/* Single saturated primary action button per screen */}
           <Link
             href="/contact"
-            className="btn-primary"
+            className="btn-primary navbar-cta"
             style={{
               padding: '11px 24px',
               fontSize: '13px',
@@ -351,9 +352,10 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div
+          className="mobile-drawer"
           style={{
             position: 'fixed',
-            top: '80px',
+            top: 'var(--navbar-offset, 80px)',
             left: 0,
             right: 0,
             bottom: 0,

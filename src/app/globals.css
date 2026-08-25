@@ -811,3 +811,7 @@ body h6 { font-weight: 600 !important; letter-spacing: -.045em !important; }
 .window-url,
 .live-label,
 .announcement-badge { font-family: var(--font-sans) !important; letter-spacing: .03em !important; }
+.site-navbar { background: rgba(247,248,244,.92) !important; }
+.site-navbar .navbar-cta { font-family: var(--font-sans) !important; text-transform: none !important; letter-spacing: 0 !important; border-radius: 8px !important; }
+.mobile-drawer { background: var(--color-parchment) !important; }
+@media (max-width: 1080px) { .site-navbar .navbar-cta { display: none !important; } .mobile-drawer { top: 80px !important; } }
