@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 interface ScrollRevealProps {
   children: React.ReactNode;
-  animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'zoom-in' | 'blur-in';
+  animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'zoom-in' | 'blur-in' | '3d-flip';
   delay?: number; // in ms
   duration?: number; // in ms
   threshold?: number;
@@ -16,8 +16,8 @@ export default function ScrollReveal({
   children,
   animation = 'fade-up',
   delay = 0,
-  duration = 700,
-  threshold = 0.12,
+  duration = 850,
+  threshold = 0.1,
   className = '',
   style = {},
 }: ScrollRevealProps) {
@@ -34,7 +34,7 @@ export default function ScrollReveal({
       },
       {
         threshold,
-        rootMargin: '0px 0px -50px 0px',
+        rootMargin: '0px 0px -40px 0px',
       }
     );
 
@@ -54,25 +54,25 @@ export default function ScrollReveal({
     if (isVisible) return 'none';
     switch (animation) {
       case 'fade-up':
-        return 'translateY(36px)';
+        return 'translate3d(0, 48px, 0) scale(0.96)';
       case 'fade-down':
-        return 'translateY(-36px)';
+        return 'translate3d(0, -48px, 0) scale(0.96)';
       case 'fade-left':
-        return 'translateX(40px)';
+        return 'translate3d(50px, 0, 0) scale(0.98)';
       case 'fade-right':
-        return 'translateX(-40px)';
+        return 'translate3d(-50px, 0, 0) scale(0.98)';
       case 'zoom-in':
-        return 'scale(0.92)';
+        return 'scale3d(0.88, 0.88, 1)';
+      case '3d-flip':
+        return 'perspective(1000px) rotateX(16deg) translate3d(0, 50px, -30px)';
       default:
-        return 'translateY(24px)';
+        return 'translate3d(0, 30px, 0)';
     }
   };
 
   const getFilter = () => {
-    if (animation === 'blur-in') {
-      return isVisible ? 'blur(0px)' : 'blur(10px)';
-    }
-    return 'none';
+    if (isVisible) return 'blur(0px)';
+    return 'blur(8px)';
   };
 
   return (
@@ -85,7 +85,7 @@ export default function ScrollReveal({
         transform: getTransform(),
         filter: getFilter(),
         transition: `opacity ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, filter ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
-        willChange: 'opacity, transform',
+        willChange: 'opacity, transform, filter',
       }}
     >
       {children}

@@ -22,6 +22,9 @@ import {
   CloudCog
 } from 'lucide-react';
 
+import AnimatedCounter from '@/components/AnimatedCounter';
+import TiltCard from '@/components/TiltCard';
+
 export default function HomePage() {
   const iconMap: Record<string, React.ReactNode> = {
     Code2: <Code2 size={24} />,
@@ -32,11 +35,6 @@ export default function HomePage() {
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden' }}>
-      {/* Background glowing orbs */}
-      <div className="glow-orb orb-pink" style={{ top: '100px', left: '-100px' }} />
-      <div className="glow-orb orb-blue" style={{ top: '350px', right: '-100px' }} />
-      <div className="glow-orb orb-orange" style={{ top: '1200px', left: '20%' }} />
-
       {/* Hero Section */}
       <section style={{ padding: '80px 0 100px', position: 'relative' }}>
         <div className="container" style={{ textAlign: 'center' }}>
@@ -103,8 +101,8 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
 
-          {/* Verified Stats Band (Social Proof Requirement) */}
-          <ScrollReveal animation="zoom-in" delay={450}>
+          {/* Verified Stats Band with Smooth Scroll Counter */}
+          <ScrollReveal animation="3d-flip" delay={450}>
             <div
               className="glass-card"
               style={{
@@ -112,7 +110,9 @@ export default function HomePage() {
                 margin: '0 auto',
                 padding: '32px 40px',
                 borderRadius: '20px',
-                background: 'rgba(14, 20, 36, 0.65)',
+                background: 'rgba(14, 20, 36, 0.75)',
+                border: '1px solid rgba(224, 26, 138, 0.3)',
+                boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 30px rgba(224, 26, 138, 0.15)',
               }}
             >
               <div
@@ -125,7 +125,9 @@ export default function HomePage() {
               >
                 <div>
                   <div style={{ fontSize: '2.4rem', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-display)' }}>
-                    <span className="text-gradient">99.99%</span>
+                    <span className="text-gradient">
+                      <AnimatedCounter end={99.99} decimals={2} suffix="%" />
+                    </span>
                   </div>
                   <div style={{ fontSize: '0.85rem', color: '#94A3B8', marginTop: '4px', fontWeight: 600 }}>
                     Production SLA Delivered
@@ -134,7 +136,9 @@ export default function HomePage() {
 
                 <div>
                   <div style={{ fontSize: '2.4rem', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-display)' }}>
-                    <span style={{ color: '#38BDF8' }}>40+</span>
+                    <span style={{ color: '#38BDF8' }}>
+                      <AnimatedCounter end={40} suffix="+" />
+                    </span>
                   </div>
                   <div style={{ fontSize: '0.85rem', color: '#94A3B8', marginTop: '4px', fontWeight: 600 }}>
                     Enterprise Systems Shipped
@@ -143,7 +147,9 @@ export default function HomePage() {
 
                 <div>
                   <div style={{ fontSize: '2.4rem', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-display)' }}>
-                    <span style={{ color: '#F472B6' }}>4.2x</span>
+                    <span style={{ color: '#F472B6' }}>
+                      <AnimatedCounter end={4.2} decimals={1} suffix="x" />
+                    </span>
                   </div>
                   <div style={{ fontSize: '0.85rem', color: '#94A3B8', marginTop: '4px', fontWeight: 600 }}>
                     Avg Client Velocity Boost
@@ -152,7 +158,9 @@ export default function HomePage() {
 
                 <div>
                   <div style={{ fontSize: '2.4rem', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-display)' }}>
-                    <span style={{ color: '#4ADE80' }}>$32M+</span>
+                    <span style={{ color: '#4ADE80' }}>
+                      <AnimatedCounter end={32} prefix="$" suffix="M+" />
+                    </span>
                   </div>
                   <div style={{ fontSize: '0.85rem', color: '#94A3B8', marginTop: '4px', fontWeight: 600 }}>
                     Value & Savings Created
@@ -217,100 +225,102 @@ export default function HomePage() {
           <div className="grid-2">
             {servicesData.map((service, index) => (
               <ScrollReveal key={service.id} animation="fade-up" delay={index * 120}>
-                <div
-                  className="glass-card"
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    borderTop: `2px solid ${service.colorAccent}`,
-                    height: '100%',
-                  }}
-                >
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
-                      <div
-                        style={{
-                          padding: '12px',
-                          borderRadius: '14px',
-                          background: `rgba(255, 255, 255, 0.05)`,
-                          color: service.colorAccent,
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        {iconMap[service.iconName]}
-                      </div>
-                      <span
-                        style={{
-                          fontSize: '0.8rem',
-                          fontWeight: 700,
-                          padding: '4px 12px',
-                          borderRadius: '9999px',
-                          background: 'rgba(255, 255, 255, 0.05)',
-                          color: '#CBD5E1',
-                        }}
-                      >
-                        {service.metricsHighlight}
-                      </span>
-                    </div>
-
-                    <h3 style={{ fontSize: '1.4rem', color: '#FFFFFF', marginBottom: '10px' }}>
-                      {service.title}
-                    </h3>
-                    <p style={{ color: '#94A3B8', fontSize: '0.94rem', lineHeight: '1.6', marginBottom: '20px' }}>
-                      {service.tagline}
-                    </p>
-
-                    {/* Key Deliverables Bullet Points */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px' }}>
-                      {service.keyDeliverables.slice(0, 3).map((item, i) => (
-                        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#CBD5E1' }}>
-                          <CheckCircle2 size={16} color={service.colorAccent} style={{ flexShrink: 0 }} />
-                          <span>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    {/* Tech stack pills */}
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
-                      {service.techStack.map((tech) => (
-                        <span
-                          key={tech}
+                <TiltCard style={{ height: '100%' }}>
+                  <div
+                    className="glass-card"
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      borderTop: `2px solid ${service.colorAccent}`,
+                      height: '100%',
+                    }}
+                  >
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
+                        <div
                           style={{
-                            fontSize: '0.75rem',
-                            fontFamily: 'var(--font-mono)',
-                            padding: '3px 8px',
-                            borderRadius: '6px',
-                            background: 'rgba(255, 255, 255, 0.04)',
-                            color: '#94A3B8',
-                            border: '1px solid rgba(255, 255, 255, 0.06)',
+                            padding: '12px',
+                            borderRadius: '14px',
+                            background: `rgba(255, 255, 255, 0.05)`,
+                            color: service.colorAccent,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
                           }}
                         >
-                          {tech}
+                          {iconMap[service.iconName]}
+                        </div>
+                        <span
+                          style={{
+                            fontSize: '0.8rem',
+                            fontWeight: 700,
+                            padding: '4px 12px',
+                            borderRadius: '9999px',
+                            background: 'rgba(255, 255, 255, 0.05)',
+                            color: '#CBD5E1',
+                          }}
+                        >
+                          {service.metricsHighlight}
                         </span>
-                      ))}
+                      </div>
+
+                      <h3 style={{ fontSize: '1.4rem', color: '#FFFFFF', marginBottom: '10px' }}>
+                        {service.title}
+                      </h3>
+                      <p style={{ color: '#94A3B8', fontSize: '0.94rem', lineHeight: '1.6', marginBottom: '20px' }}>
+                        {service.tagline}
+                      </p>
+
+                      {/* Key Deliverables Bullet Points */}
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px' }}>
+                        {service.keyDeliverables.slice(0, 3).map((item, i) => (
+                          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#CBD5E1' }}>
+                            <CheckCircle2 size={16} color={service.colorAccent} style={{ flexShrink: 0 }} />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
 
-                    <Link
-                      href={`/services#${service.slug}`}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        fontSize: '0.9rem',
-                        fontWeight: 600,
-                        color: service.colorAccent,
-                      }}
-                    >
-                      <span>Read Architecture Blueprint</span>
-                      <ChevronRight size={16} />
-                    </Link>
+                    <div>
+                      {/* Tech stack pills */}
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
+                        {service.techStack.map((tech) => (
+                          <span
+                            key={tech}
+                            style={{
+                              fontSize: '0.75rem',
+                              fontFamily: 'var(--font-mono)',
+                              padding: '3px 8px',
+                              borderRadius: '6px',
+                              background: 'rgba(255, 255, 255, 0.04)',
+                              color: '#94A3B8',
+                              border: '1px solid rgba(255, 255, 255, 0.06)',
+                            }}
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      <Link
+                        href={`/services#${service.slug}`}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          fontSize: '0.9rem',
+                          fontWeight: 600,
+                          color: service.colorAccent,
+                        }}
+                      >
+                        <span>Read Architecture Blueprint</span>
+                        <ChevronRight size={16} />
+                      </Link>
+                    </div>
                   </div>
-                </div>
+                </TiltCard>
               </ScrollReveal>
             ))}
           </div>
@@ -338,66 +348,68 @@ export default function HomePage() {
           <div className="grid-3" style={{ marginBottom: '40px' }}>
             {caseStudiesData.map((study, index) => (
               <ScrollReveal key={study.id} animation="fade-up" delay={index * 140}>
-                <div
-                  className="glass-card"
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    height: '100%',
-                  }}
-                >
-                  <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-                      <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                        {study.industry}
-                      </span>
-                      <span style={{ fontSize: '0.75rem', color: '#64748B' }}>
-                        {study.duration}
-                      </span>
-                    </div>
-
-                    <h3 style={{ fontSize: '1.25rem', color: '#FFFFFF', marginBottom: '12px', lineHeight: '1.3' }}>
-                      {study.title}
-                    </h3>
-                    <p style={{ fontSize: '0.9rem', color: '#94A3B8', marginBottom: '20px', lineHeight: '1.6' }}>
-                      {study.summary}
-                    </p>
-
-                    {/* Highlights Metric Callout */}
-                    <div
-                      style={{
-                        background: 'rgba(0, 102, 255, 0.08)',
-                        border: '1px solid rgba(0, 102, 255, 0.2)',
-                        borderRadius: '12px',
-                        padding: '14px',
-                        marginBottom: '20px',
-                      }}
-                    >
-                      <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#FFFFFF' }}>
-                        <span className="text-gradient">{study.metrics[0].value}</span>
-                      </div>
-                      <div style={{ fontSize: '0.82rem', color: '#CBD5E1', fontWeight: 600 }}>
-                        {study.metrics[0].label}
-                      </div>
-                    </div>
-                  </div>
-
-                  <Link
-                    href={`/case-studies#${study.slug}`}
+                <TiltCard style={{ height: '100%' }}>
+                  <div
+                    className="glass-card"
                     style={{
                       display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      fontSize: '0.9rem',
-                      fontWeight: 600,
-                      color: '#38BDF8',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      height: '100%',
                     }}
                   >
-                    <span>View Problem $\rightarrow$ Solution Breakdown</span>
-                    <ChevronRight size={16} />
-                  </Link>
-                </div>
+                    <div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+                        <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                          {study.industry}
+                        </span>
+                        <span style={{ fontSize: '0.75rem', color: '#64748B' }}>
+                          {study.duration}
+                        </span>
+                      </div>
+
+                      <h3 style={{ fontSize: '1.25rem', color: '#FFFFFF', marginBottom: '12px', lineHeight: '1.3' }}>
+                        {study.title}
+                      </h3>
+                      <p style={{ fontSize: '0.9rem', color: '#94A3B8', marginBottom: '20px', lineHeight: '1.6' }}>
+                        {study.summary}
+                      </p>
+
+                      {/* Highlights Metric Callout */}
+                      <div
+                        style={{
+                          background: 'rgba(0, 102, 255, 0.08)',
+                          border: '1px solid rgba(0, 102, 255, 0.2)',
+                          borderRadius: '12px',
+                          padding: '14px',
+                          marginBottom: '20px',
+                        }}
+                      >
+                        <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#FFFFFF' }}>
+                          <span className="text-gradient">{study.metrics[0].value}</span>
+                        </div>
+                        <div style={{ fontSize: '0.82rem', color: '#CBD5E1', fontWeight: 600 }}>
+                          {study.metrics[0].label}
+                        </div>
+                      </div>
+                    </div>
+
+                    <Link
+                      href={`/case-studies#${study.slug}`}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        fontSize: '0.9rem',
+                        fontWeight: 600,
+                        color: '#38BDF8',
+                      }}
+                    >
+                      <span>View Problem $\rightarrow$ Solution Breakdown</span>
+                      <ChevronRight size={16} />
+                    </Link>
+                  </div>
+                </TiltCard>
               </ScrollReveal>
             ))}
           </div>
