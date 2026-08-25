@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import AnnouncementBar from '@/components/AnnouncementBar';
 import CommandPalette from '@/components/CommandPalette';
 import ParallaxGlow from '@/components/ParallaxGlow';
+import ScrollProgressBar from '@/components/ScrollProgressBar';
 
 const ebGaramond = EB_Garamond({
   subsets: ['latin'],
@@ -93,6 +94,7 @@ export default function RootLayout({
           fontFamily: 'var(--font-abc-diatype-mono)',
         }}
       >
+        <ScrollProgressBar />
         <AnnouncementBar
           badge="VAM|TECH / 2026"
           message="Building technology that moves businesses forward"
