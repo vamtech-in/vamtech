@@ -13,6 +13,7 @@ import {
 export default function Footer() {
   return (
     <footer
+      className="footer-shell"
       style={{
         backgroundColor: 'var(--color-parchment)',
         borderTop: '1px solid var(--color-ash)',
