@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Shield, ArrowLeft } from 'lucide-react';
 
 export const metadata = {
-  title: 'Privacy Policy & Data Safeguards — Vamtech Journal',
-  description: 'Vamtech Technologies Privacy Policy, client data protection commitments, and GDPR/CCPA compliance standards.',
+  title: 'Privacy Policy & Data Safeguards — VAM|Tech',
+  description: 'VAM|Tech Technologies Privacy Policy, client data protection commitments, and GDPR/CCPA compliance standards.',
 };
 
 export default function PrivacyPage() {
@@ -13,24 +13,24 @@ export default function PrivacyPage() {
       <div className="container" style={{ maxWidth: '880px' }}>
         <Link
           href="/"
-          className="text-link-arrow"
-          style={{ fontSize: '13px', marginBottom: '32px', display: 'inline-block' }}
+          className="btn-secondary"
+          style={{ fontSize: '13px', marginBottom: '28px', padding: '8px 16px', display: 'inline-flex' }}
         >
           <span>← Back to Home</span>
         </Link>
 
-        <article className="monad-card" style={{ backgroundColor: '#ffffff', padding: '48px 40px' }}>
+        <article className="corporate-card" style={{ backgroundColor: '#ffffff', padding: '48px 40px' }}>
           <div style={{ display: 'inline-flex', marginBottom: '16px' }}>
             <span
               style={{
                 padding: '4px 12px',
                 borderRadius: '9999px',
-                backgroundColor: 'var(--color-periwinkle-mist)',
-                color: 'var(--color-lake-blue)',
+                backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                color: 'var(--color-brand-blue)',
                 fontSize: '11px',
-                fontFamily: 'var(--font-abc-diatype-mono)',
+                fontFamily: 'var(--font-mono)',
                 textTransform: 'uppercase',
-                fontWeight: 500,
+                fontWeight: 600,
               }}
             >
               Data Protection & Privacy Policy
@@ -39,10 +39,9 @@ export default function PrivacyPage() {
 
           <h1
             style={{
-              fontFamily: 'var(--font-untitled-serif)',
-              fontSize: 'clamp(32px, 4vw, 44px)',
-              fontWeight: 400,
-              color: 'var(--color-off-black)',
+              fontSize: 'clamp(30px, 4vw, 40px)',
+              fontWeight: 800,
+              color: 'var(--text-main)',
               marginBottom: '12px',
               letterSpacing: '-0.02em',
             }}
@@ -50,8 +49,8 @@ export default function PrivacyPage() {
             Privacy Policy & Data Safeguards
           </h1>
 
-          <p className="mono-helper" style={{ marginBottom: '36px' }}>
-            LAST REVISED: FEBRUARY 2026 • VAMTECH TECHNOLOGIES INC.
+          <p style={{ marginBottom: '32px', fontSize: '12px', fontFamily: 'var(--font-mono)', color: '#64748b' }}>
+            LAST REVISED: FEBRUARY 2026 • VAM|TECH TECHNOLOGIES INC.
           </p>
 
           <div
@@ -59,14 +58,13 @@ export default function PrivacyPage() {
               display: 'flex',
               flexDirection: 'column',
               gap: '28px',
-              color: 'var(--color-graphite)',
-              lineHeight: 1.65,
-              fontSize: '14.5px',
-              fontFamily: 'var(--font-abc-diatype-mono)',
+              color: 'var(--text-muted)',
+              lineHeight: 1.7,
+              fontSize: '15px',
             }}
           >
             <section>
-              <h2 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '22px', fontWeight: 400, color: 'var(--color-off-black)', marginBottom: '10px' }}>
+              <h2 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--text-main)', marginBottom: '10px' }}>
                 1. Overview & Scope
               </h2>
               <p>
@@ -75,7 +73,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '22px', fontWeight: 400, color: 'var(--color-off-black)', marginBottom: '10px' }}>
+              <h2 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--text-main)', marginBottom: '10px' }}>
                 2. Data Collection & Usage
               </h2>
               <p>
@@ -84,7 +82,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '22px', fontWeight: 400, color: 'var(--color-off-black)', marginBottom: '10px' }}>
+              <h2 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--text-main)', marginBottom: '10px' }}>
                 3. Zero Third-Party Monetization
               </h2>
               <p>
@@ -93,7 +91,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '22px', fontWeight: 400, color: 'var(--color-off-black)', marginBottom: '10px' }}>
+              <h2 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--text-main)', marginBottom: '10px' }}>
                 4. Security Standards & Encryption
               </h2>
               <p>
@@ -102,12 +100,12 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '22px', fontWeight: 400, color: 'var(--color-off-black)', marginBottom: '10px' }}>
+              <h2 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--text-main)', marginBottom: '10px' }}>
                 5. Contacting the Data Protection Officer
               </h2>
               <p>
                 For inquiries regarding data deletion, access requests, or regulatory disclosures, contact our team at{' '}
-                <a href="mailto:privacy@vamtech.io" style={{ color: 'var(--color-lake-blue)', textDecoration: 'underline' }}>
+                <a href="mailto:privacy@vamtech.io" style={{ color: 'var(--color-brand-blue)', textDecoration: 'underline' }}>
                   privacy@vamtech.io
                 </a>.
               </p>

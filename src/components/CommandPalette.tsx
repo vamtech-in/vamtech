@@ -175,7 +175,7 @@ export default function CommandPalette() {
                   textAlign: 'left',
                   transition: 'background 0.15s ease',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-parchment)')}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f1f5f9')}
                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -183,18 +183,18 @@ export default function CommandPalette() {
                     style={{
                       padding: '6px',
                       borderRadius: '8px',
-                      backgroundColor: 'var(--color-periwinkle-mist)',
-                      color: 'var(--color-lake-blue)',
+                      backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                      color: 'var(--color-brand-blue)',
                     }}
                   >
                     {cmd.icon}
                   </div>
                   <span
                     style={{
-                      fontFamily: 'var(--font-untitled-serif)',
-                      fontSize: '16px',
-                      fontWeight: 400,
-                      color: 'var(--color-off-black)',
+                      fontFamily: 'var(--font-sans)',
+                      fontSize: '15px',
+                      fontWeight: 600,
+                      color: 'var(--text-main)',
                     }}
                   >
                     {cmd.title}
@@ -205,17 +205,17 @@ export default function CommandPalette() {
                   <span
                     style={{
                       fontSize: '10.5px',
-                      fontFamily: 'var(--font-abc-diatype-mono)',
+                      fontFamily: 'var(--font-mono)',
                       padding: '3px 8px',
                       borderRadius: '9999px',
-                      border: '1px solid var(--color-ash)',
-                      color: 'var(--color-smoke)',
+                      border: '1px solid #e2e8f0',
+                      color: '#64748b',
                       textTransform: 'uppercase',
                     }}
                   >
                     {cmd.category}
                   </span>
-                  <ArrowRight size={14} color="var(--color-lake-blue)" />
+                  <ArrowRight size={14} color="var(--color-brand-blue)" />
                 </div>
               </button>
             ))
