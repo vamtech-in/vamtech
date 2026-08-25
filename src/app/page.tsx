@@ -1,30 +1,51 @@
-import Link from 'next/link';
-import { ArrowUpRight, Bot, Check, Code2, Layers3, Rocket, ShieldCheck, Sparkles, Zap } from 'lucide-react';
+import React from 'react';
+import Hero from '@/components/Hero';
+import Stats from '@/components/Stats';
+import ServicesSection from '@/components/ServicesSection';
+import WhyVamTech from '@/components/WhyVamTech';
+import TechStackSection from '@/components/TechStackSection';
+import IndustriesSection from '@/components/IndustriesSection';
+import ProcessSection from '@/components/ProcessSection';
+import FeaturedProjects from '@/components/FeaturedProjects';
+import AboutSection from '@/components/AboutSection';
+import CTASection from '@/components/CTASection';
+import ContactSection from '@/components/ContactSection';
 
 export default function HomePage() {
   return (
-    <div className="startup-page">
-      <section className="startup-hero">
-        <div className="container startup-hero-grid">
-          <div className="startup-hero-copy">
-            <div className="eyebrow"><span className="status-dot" /> VAMTECH / PRODUCT ENGINEERING STUDIO</div>
-            <h1>Build what your market has been waiting for.</h1>
-            <p className="startup-lede">We turn ambitious ideas into fast, intelligent software products that are ready for real customers, real scale, and what comes next.</p>
-            <div className="hero-actions"><Link href="/contact" className="btn-primary">Start a conversation <ArrowUpRight size={17} /></Link><Link href="/projects" className="btn-text">See our work <ArrowUpRight size={16} /></Link></div>
-            <div className="hero-proof"><span><Check size={15} /> Senior-led teams</span><span><Check size={15} /> 4-8 week launches</span><span><Check size={15} /> Full IP ownership</span></div>
-          </div>
-          <div className="product-window" aria-label="Vamtech product engineering dashboard preview">
-            <div className="window-top"><span className="window-dots"><i /><i /><i /></span><span className="window-url">app.vamtech.io / command-center</span><span className="live-label"><span className="status-dot" /> LIVE</span></div>
-            <div className="window-body"><div className="window-sidebar"><div className="mini-logo">V</div><span className="active"><Layers3 size={16} /></span><span><Bot size={16} /></span><span><Code2 size={16} /></span><span><ShieldCheck size={16} /></span></div><div className="dashboard"><div className="dashboard-heading"><div><span className="dashboard-kicker">OPERATIONS / OVERVIEW</span><h3>Product pulse</h3></div><span className="date-chip">This week <ArrowUpRight size={13} /></span></div><div className="metric-row"><div><span>ACTIVE USERS</span><strong>24,891</strong><em>+18.4%</em></div><div><span>REVENUE RUN RATE</span><strong>$184k</strong><em>+12.8%</em></div></div><div className="chart"><div className="chart-labels"><span>Growth velocity</span><strong>82.4%</strong></div><div className="chart-bars">{[32, 44, 38, 55, 48, 68, 62, 78, 73, 92, 84, 100].map((height, index) => <i key={index} style={{ height: `${height}%` }} />)}</div></div><div className="dashboard-footer"><span><span className="status-dot" /> All systems operational</span><span>Last synced 2m ago</span></div></div></div>
-          </div>
-        </div>
-      </section>
-      <section className="trusted-strip"><div className="container trusted-inner"><span>TRUSTED BY TEAMS BUILDING THE NEXT CATEGORY</span><div><b>northstar</b><b>orbit health</b><b>FINFORM</b><b>parcelly</b><b>meshworks</b></div></div></section>
-      <section className="startup-section"><div className="container"><div className="section-intro"><span className="eyebrow">WHAT WE DO</span><h2>From first sketch to first traction.</h2><p>One senior team for the product decisions, design craft, and engineering depth it takes to move quickly without creating a mess.</p></div><div className="service-grid"><article><div className="service-icon orange"><Rocket size={21} /></div><span className="card-number">01 / PRODUCT</span><h3>Launch a product</h3><p>Validate the sharpest version of your idea with a focused MVP that feels ready, not rushed.</p><Link href="/services#web-mobile-apps" className="btn-text">Explore product builds <ArrowUpRight size={15} /></Link></article><article><div className="service-icon blue"><Zap size={21} /></div><span className="card-number">02 / PLATFORM</span><h3>Scale your engine</h3><p>Modernize the systems behind your growth with reliable APIs, cloud infrastructure, and data foundations.</p><Link href="/services#custom-software" className="btn-text">Explore platforms <ArrowUpRight size={15} /></Link></article><article><div className="service-icon green"><Sparkles size={21} /></div><span className="card-number">03 / INTELLIGENCE</span><h3>Make AI useful</h3><p>Put intelligent workflows into the hands of your team with practical automation and measurable outcomes.</p><Link href="/services#ai-automation" className="btn-text">Explore AI systems <ArrowUpRight size={15} /></Link></article></div></div></section>
-      <section className="stats-band"><div className="container stats-grid"><div><strong>42+</strong><span>products shipped</span></div><div><strong>3.2x</strong><span>faster time to market</span></div><div><strong>99.99%</strong><span>platform uptime</span></div><div><strong>8 yrs</strong><span>average team experience</span></div></div></section>
-      <section className="startup-section case-study-section"><div className="container case-study-grid"><div className="case-study-visual"><div className="case-badge">CASE STUDY / FINTECH</div><div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="case-core"><span>FINFORM</span><strong>+38%</strong><small>conversion after launch</small></div></div><div className="case-study-copy"><span className="eyebrow">A QUICK LOOK AT THE WORK</span><h2>A calmer way to manage business money.</h2><p>Finform came to us with a complex financial workflow and a simple ambition: make it feel effortless. We shaped the product, built the platform, and launched a new experience in 10 weeks.</p><div className="case-result"><span><Check size={16} /> 10-week launch</span><span><Check size={16} /> 4.8/5 customer rating</span><span><Check size={16} /> 38% more conversions</span></div><Link href="/case-studies" className="btn-secondary">Read the full story <ArrowUpRight size={16} /></Link></div></div></section>
-      <section className="startup-section process-section"><div className="container"><div className="section-intro"><span className="eyebrow">HOW WE WORK</span><h2>Small team. Serious momentum.</h2></div><div className="process-grid"><div><span>01</span><h3>Find the signal</h3><p>We turn a big, fuzzy ambition into a focused product brief with a clear first win.</p></div><div><span>02</span><h3>Make it tangible</h3><p>Design and engineering move together, so every week ends with something you can use.</p></div><div><span>03</span><h3>Launch with confidence</h3><p>We leave you with a durable product, an empowered team, and a roadmap that earns its next chapter.</p></div></div></div></section>
-      <section className="startup-cta"><div className="container cta-inner"><div><span className="eyebrow">YOUR NEXT BIG THING STARTS HERE</span><h2>Let&apos;s make it real.</h2><p>Tell us where you want to go. We&apos;ll help you figure out the smartest way to get there.</p></div><Link href="/contact" className="btn-light">Book a discovery call <ArrowUpRight size={17} /></Link></div></section>
-    </div>
+    <>
+      {/* 1. Hero Section */}
+      <Hero />
+
+      {/* 2. Stats Section */}
+      <Stats />
+
+      {/* 3. Services Section */}
+      <ServicesSection />
+
+      {/* 4. Why VAM|Tech Section */}
+      <WhyVamTech />
+
+      {/* 5. Technology Stack Section */}
+      <TechStackSection />
+
+      {/* 6. Solutions / Industries Section */}
+      <IndustriesSection />
+
+      {/* 7. Process Section */}
+      <ProcessSection />
+
+      {/* 8. Featured Projects Section */}
+      <FeaturedProjects />
+
+      {/* 9. About Section */}
+      <AboutSection />
+
+      {/* 10. Final CTA Section */}
+      <CTASection />
+
+      {/* 11. Interactive Contact Section */}
+      <ContactSection />
+    </>
   );
 }

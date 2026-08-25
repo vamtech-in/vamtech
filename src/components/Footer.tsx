@@ -1,225 +1,260 @@
 import React from 'react';
 import Link from 'next/link';
 import Logo from './Logo';
+import { companyData } from '@/data/company';
 import { 
-  Shield, 
-  MapPin, 
   Mail, 
   Phone, 
-  ArrowUpRight
+  MapPin, 
+  ArrowUpRight, 
+  Github, 
+  Linkedin, 
+  Twitter 
 } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer
-      className="footer-shell"
       style={{
-        backgroundColor: 'var(--color-parchment)',
-        borderTop: '1px solid var(--color-ash)',
+        backgroundColor: 'var(--bg-dark)',
+        color: '#ffffff',
+        borderTop: '1px solid var(--border-dark)',
         paddingTop: '80px',
-        paddingBottom: '48px',
-        position: 'relative',
-        zIndex: 10,
+        paddingBottom: '40px',
       }}
     >
       <div className="container">
-        {/* Main 4-Column Grid */}
+        {/* Main Footer Grid */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1.6fr 1fr 1fr 1.2fr',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
             gap: '48px',
             marginBottom: '64px',
           }}
           className="footer-grid"
         >
-          {/* Brand & Editorial Mission */}
-          <div>
+          {/* Col 1: Brand Info */}
+          <div style={{ maxWidth: '340px' }}>
             <Link href="/" style={{ display: 'inline-block', marginBottom: '20px' }}>
-              <Logo size="md" showTagline={true} />
+              <Logo size="md" inverted={true} />
             </Link>
-            <p
-              style={{
-                color: 'var(--color-graphite)',
-                fontSize: '14px',
-                lineHeight: '1.6',
-                marginBottom: '24px',
-                maxWidth: '340px',
-              }}
-            >
-              VAM|Tech builds reliable software, intelligent digital products, and scalable technology solutions for ambitious teams.
+            <p style={{ fontSize: '14px', lineHeight: 1.6, color: '#94a3b8', marginBottom: '24px' }}>
+              {companyData.shortDescription}
             </p>
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '6px 14px',
-                borderRadius: '9999px',
-                border: '1px solid var(--color-ash)',
-                backgroundColor: '#ffffff',
-                fontSize: '12px',
-                color: 'var(--color-off-black)',
-                fontFamily: 'var(--font-abc-diatype-mono)',
-                textTransform: 'uppercase',
-              }}
-            >
-              <Shield size={13} color="var(--color-lake-blue)" />
-              <span>Technology partners for what is next</span>
+
+            {/* Social Icons */}
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <a
+                href={companyData.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '8px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                  color: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'background 0.2s ease',
+                }}
+                aria-label="GitHub"
+              >
+                <Github size={18} />
+              </a>
+              <a
+                href={companyData.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '8px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                  color: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'background 0.2s ease',
+                }}
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={18} />
+              </a>
+              <a
+                href={companyData.social.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '8px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                  color: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'background 0.2s ease',
+                }}
+                aria-label="Twitter"
+              >
+                <Twitter size={18} />
+              </a>
             </div>
           </div>
 
-          {/* Capabilities */}
+          {/* Col 2: Services */}
           <div>
-            <h4
-              style={{
-                fontFamily: 'var(--font-untitled-serif)',
-                fontSize: '20px',
-                fontWeight: 400,
-                color: 'var(--color-off-black)',
-                marginBottom: '20px',
-              }}
-            >
-              Capabilities
+            <h4 style={{ fontSize: '15px', fontWeight: 700, color: '#ffffff', marginBottom: '20px' }}>
+              Services
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <li>
-                <Link href="/services#custom-software" className="text-link-arrow" style={{ fontSize: '13px' }}>
-                  Custom Software
+                <Link href="/services#software-development" style={{ fontSize: '14px', color: '#94a3b8' }} className="footer-link">
+                  Software Development
                 </Link>
               </li>
               <li>
-                <Link href="/services#cloud-devops" className="text-link-arrow" style={{ fontSize: '13px' }}>
-                  Cloud & DevOps
+                <Link href="/services#web-mobile-development" style={{ fontSize: '14px', color: '#94a3b8' }} className="footer-link">
+                  Web &amp; Mobile Development
                 </Link>
               </li>
               <li>
-                <Link href="/services#ai-automation" className="text-link-arrow" style={{ fontSize: '13px' }}>
-                  AI & RAG Pipelines
+                <Link href="/services#ai-automation" style={{ fontSize: '14px', color: '#94a3b8' }} className="footer-link">
+                  AI &amp; Automation
                 </Link>
               </li>
               <li>
-                <Link href="/services#web-mobile-apps" className="text-link-arrow" style={{ fontSize: '13px' }}>
-                  Web Platforms
+                <Link href="/services#cloud-devops" style={{ fontSize: '14px', color: '#94a3b8' }} className="footer-link">
+                  Cloud &amp; DevOps
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="text-link-arrow" style={{ fontSize: '13px' }}>
-                  Engagement Models
+                <Link href="/services#ui-ux-design" style={{ fontSize: '14px', color: '#94a3b8' }} className="footer-link">
+                  UI/UX &amp; Product Design
+                </Link>
+              </li>
+              <li>
+                <Link href="/services#digital-transformation" style={{ fontSize: '14px', color: '#94a3b8' }} className="footer-link">
+                  Digital Transformation
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Col 3: Company & Resources */}
           <div>
-            <h4
-              style={{
-                fontFamily: 'var(--font-untitled-serif)',
-                fontSize: '20px',
-                fontWeight: 400,
-                color: 'var(--color-off-black)',
-                marginBottom: '20px',
-              }}
-            >
-              Company
+            <h4 style={{ fontSize: '15px', fontWeight: 700, color: '#ffffff', marginBottom: '20px' }}>
+              Company &amp; Solutions
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <li>
-                <Link href="/about" className="text-link-arrow" style={{ fontSize: '13px' }}>
+                <Link href="/about" style={{ fontSize: '14px', color: '#94a3b8' }} className="footer-link">
                   About VAM|Tech
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className="text-link-arrow" style={{ fontSize: '13px' }}>
-                  Projects
+                <Link href="/solutions" style={{ fontSize: '14px', color: '#94a3b8' }} className="footer-link">
+                  Industry Solutions
                 </Link>
               </li>
               <li>
-                <Link href="/careers" className="text-link-arrow" style={{ fontSize: '13px' }}>
-                  Careers
+                <Link href="/projects" style={{ fontSize: '14px', color: '#94a3b8' }} className="footer-link">
+                  Featured Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="text-link-arrow" style={{ fontSize: '13px' }}>
+                <Link href="/careers" style={{ fontSize: '14px', color: '#94a3b8' }} className="footer-link">
+                  Careers &amp; Culture
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" style={{ fontSize: '14px', color: '#94a3b8' }} className="footer-link">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-link-arrow" style={{ fontSize: '13px' }}>
+                <Link href="/terms" style={{ fontSize: '14px', color: '#94a3b8' }} className="footer-link">
                   Terms of Service
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Direct Line & Inquiries */}
+          {/* Col 4: Contact Info */}
           <div>
-            <h4
-              style={{
-                fontFamily: 'var(--font-untitled-serif)',
-                fontSize: '20px',
-                fontWeight: 400,
-                color: 'var(--color-off-black)',
-                marginBottom: '20px',
-              }}
-            >
-              Engineering Desk
+            <h4 style={{ fontSize: '15px', fontWeight: 700, color: '#ffffff', marginBottom: '20px' }}>
+              Get In Touch
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '13px', color: 'var(--color-graphite)' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                <MapPin size={16} color="var(--color-lake-blue)" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <span style={{ color: '#aeb8b3' }}>San Francisco, CA & Global Pods</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Mail size={16} color="var(--color-lake-blue)" style={{ flexShrink: 0 }} />
-                <a href="mailto:contact@vamtech.io" style={{ color: '#aeb8b3', textDecoration: 'underline' }}>
-                  contact@vamtech.io
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '13.5px', color: '#94a3b8' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                <Mail size={16} color="var(--color-brand-cyan)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                <a href={`mailto:${companyData.contact.email}`} style={{ color: '#ffffff', textDecoration: 'underline' }}>
+                  {companyData.contact.email}
                 </a>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Phone size={16} color="var(--color-lake-blue)" style={{ flexShrink: 0 }} />
-                <span style={{ color: '#aeb8b3' }}>+1 (800) VAM-TECH</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Phone size={16} color="var(--color-brand-cyan)" style={{ flexShrink: 0 }} />
+                <span>{companyData.contact.phone}</span>
               </div>
-              <div style={{ marginTop: '10px' }}>
-                <Link href="/contact" className="btn-secondary" style={{ width: '100%', fontSize: '12px', padding: '10px 18px' }}>
-                  <span>Request Architecture Sizing</span>
-                  <ArrowUpRight size={13} />
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                <MapPin size={16} color="var(--color-brand-cyan)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                <span>{companyData.contact.address}</span>
+              </div>
+
+              <div style={{ marginTop: '12px' }}>
+                <Link
+                  href="/contact"
+                  className="btn-primary"
+                  style={{ width: '100%', padding: '10px', fontSize: '13px', justifyContent: 'center' }}
+                >
+                  <span>Start a Project</span>
+                  <ArrowUpRight size={14} />
                 </Link>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar separated by hairline Ash border */}
+        {/* Copyright Bottom Bar */}
         <div
           style={{
-            borderTop: '1px solid var(--color-ash)',
-            paddingTop: '28px',
+            paddingTop: '32px',
+            borderTop: '1px solid var(--border-dark)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             flexWrap: 'wrap',
             gap: '16px',
-            fontSize: '12px',
-            fontFamily: 'var(--font-abc-diatype-mono)',
-            color: 'var(--color-smoke)',
-            textTransform: 'uppercase',
-            letterSpacing: '-0.02em',
+            fontSize: '13px',
+            color: '#64748b',
           }}
         >
           <div>
-            © {new Date().getFullYear()} Vamtech Technologies Inc. Typeset in EB Garamond & JetBrains Mono.
+            © {new Date().getFullYear()} {companyData.legalName} All rights reserved.
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <Link href="/privacy" style={{ color: 'var(--color-smoke)' }}>Privacy</Link>
-            <span>•</span>
-            <Link href="/terms" style={{ color: 'var(--color-smoke)' }}>Terms</Link>
-            <span>•</span>
-            <Link href="/security" style={{ color: 'var(--color-smoke)' }}>Security</Link>
+          <div style={{ display: 'flex', gap: '20px' }}>
+            <Link href="/privacy" style={{ color: '#94a3b8' }} className="footer-link">
+              Privacy
+            </Link>
+            <Link href="/terms" style={{ color: '#94a3b8' }} className="footer-link">
+              Terms
+            </Link>
+            <Link href="/contact" style={{ color: '#94a3b8' }} className="footer-link">
+              Contact
+            </Link>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .footer-link:hover {
+          color: #ffffff !important;
+          transition: color 0.2s ease;
+        }
+      `}</style>
     </footer>
   );
 }
