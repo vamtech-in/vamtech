@@ -3,7 +3,6 @@ import { EB_Garamond, JetBrains_Mono, Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import AnnouncementBar from '@/components/AnnouncementBar';
 import CommandPalette from '@/components/CommandPalette';
 import ParallaxGlow from '@/components/ParallaxGlow';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
@@ -95,12 +94,6 @@ export default function RootLayout({
         }}
       >
         <ScrollProgressBar />
-        <AnnouncementBar
-          badge="VAM|TECH / 2026"
-          message="Building technology that moves businesses forward"
-          linkText="Start a project"
-          linkHref="/contact"
-        />
         <Navbar />
         <main
           style={{
