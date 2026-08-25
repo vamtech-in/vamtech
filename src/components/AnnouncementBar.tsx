@@ -25,6 +25,7 @@ export default function AnnouncementBar({
     <aside
       role="banner"
       aria-label="System Announcement"
+      className="announcement-shell"
       style={{
         width: '100%',
         backgroundColor: 'var(--color-ink)',
@@ -54,6 +55,7 @@ export default function AnnouncementBar({
         {/* Left / Center announcement string */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
           <span
+            className="announcement-badge"
             style={{
               padding: '2px 8px',
               borderRadius: '9999px',
@@ -67,7 +69,7 @@ export default function AnnouncementBar({
           >
             {badge}
           </span>
-          <span style={{ color: 'var(--color-parchment)', opacity: 0.95 }}>
+          <span className="announcement-message" style={{ color: 'var(--color-parchment)', opacity: 0.95 }}>
             {message}
           </span>
         </div>
