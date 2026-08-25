@@ -131,12 +131,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/case-studies" className="text-link-arrow" style={{ fontSize: '13px' }}>
+                <Link href="/projects" className="text-link-arrow" style={{ fontSize: '13px' }}>
                   Projects
                 </Link>
               </li>
               <li>
-                <Link href="/security" className="text-link-arrow" style={{ fontSize: '13px' }}>
+                <Link href="/careers" className="text-link-arrow" style={{ fontSize: '13px' }}>
                   Careers
                 </Link>
               </li>
