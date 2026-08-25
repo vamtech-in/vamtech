@@ -1,275 +1,164 @@
 import React from 'react';
 import Link from 'next/link';
-import ScrollReveal from '@/components/ScrollReveal';
-import AtmosphericWash from '@/components/AtmosphericWash';
-import SwissDeliveryJourney from '@/components/SwissDeliveryJourney';
 import { servicesData } from '@/data/services';
 import { 
   Code2, 
-  CloudCog, 
-  Sparkles, 
-  Layers, 
-  CheckCircle2, 
-  ArrowRight, 
-  Terminal, 
-  Cpu, 
-  Server, 
+  Smartphone, 
+  Bot, 
+  Cloud, 
+  Palette, 
+  TrendingUp, 
+  Check, 
   ShieldCheck, 
-  Zap,
-  Activity
+  ArrowRight, 
+  Layers, 
+  Zap, 
+  Users 
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'Engineering Services & Delivery Models — Vamtech Journal',
-  description: 'Deep architectural dive into Vamtech delivery models: Autonomous Pods, High-Velocity Sprints, 4-Stage Delivery Journey, and Empirical SLAs.',
+  title: 'Engineering Services & Technology Offerings — VAM|Tech',
+  description:
+    'Explore VAM|Tech’s full spectrum of software development, web & mobile engineering, AI automation, cloud devops, and digital transformation services.',
+};
+
+const iconMap: Record<string, React.ReactNode> = {
+  Code2: <Code2 size={24} />,
+  Smartphone: <Smartphone size={24} />,
+  Bot: <Bot size={24} />,
+  Cloud: <Cloud size={24} />,
+  Palette: <Palette size={24} />,
+  TrendingUp: <TrendingUp size={24} />,
 };
 
 export default function ServicesPage() {
-  const iconMap: Record<string, React.ReactNode> = {
-    Code2: <Code2 size={24} />,
-    CloudCog: <CloudCog size={24} />,
-    Sparkles: <Sparkles size={24} />,
-    Layout: <Layers size={24} />,
-  };
-
   return (
-    <div style={{ padding: '60px 0 100px', position: 'relative', overflow: 'hidden' }}>
-      {/* Background Pastel Atmospheric Washes */}
-      <AtmosphericWash variant="coral-sky" size={560} top="-100px" right="-120px" opacity={0.45} />
-      <AtmosphericWash variant="sky-mint" size={620} top="800px" left="-140px" opacity={0.4} />
+    <div style={{ backgroundColor: 'var(--bg-page)' }}>
+      {/* Services Hero Header */}
+      <section
+        style={{
+          paddingTop: '80px',
+          paddingBottom: '72px',
+          backgroundColor: '#ffffff',
+          borderBottom: '1px solid #e2e8f0',
+        }}
+        className="tech-grid-pattern"
+      >
+        <div className="container" style={{ maxWidth: '960px', textAlign: 'center' }}>
+          <div className="section-badge">Comprehensive Offerings</div>
+          <h1
+            style={{
+              fontSize: 'clamp(36px, 5vw, 56px)',
+              fontWeight: 800,
+              color: 'var(--text-main)',
+              letterSpacing: '-0.03em',
+              marginBottom: '20px',
+            }}
+          >
+            End-to-End Technology Engineering Services
+          </h1>
+          <p
+            style={{
+              fontSize: 'clamp(17px, 2vw, 20px)',
+              lineHeight: 1.6,
+              color: 'var(--text-muted)',
+              maxWidth: '740px',
+              margin: '0 auto',
+            }}
+          >
+            From concept prototyping to multi-region cloud deployment and AI automation, we engineer software that drives real business results.
+          </p>
+        </div>
+      </section>
 
-      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        {/* Editorial Header */}
-        <ScrollReveal animation="fade-up">
-          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
-            <div style={{ display: 'inline-flex', marginBottom: '16px' }}>
-              <span
-                style={{
-                  padding: '4px 14px',
-                  borderRadius: '9999px',
-                  backgroundColor: 'var(--color-periwinkle-mist)',
-                  color: 'var(--color-lake-blue)',
-                  fontSize: '11px',
-                  fontFamily: 'var(--font-abc-diatype-mono)',
-                  textTransform: 'uppercase',
-                  fontWeight: 600,
-                  letterSpacing: '0.04em',
-                }}
-              >
-                Delivery Models & Engineering Services
-              </span>
-            </div>
-            <h1
-              style={{
-                fontFamily: 'var(--font-untitled-serif)',
-                fontSize: 'clamp(36px, 5.2vw, 64px)',
-                fontWeight: 400,
-                color: 'var(--color-off-black)',
-                marginBottom: '20px',
-                letterSpacing: '-0.02em',
-                lineHeight: 1.12,
-              }}
-            >
-              Elevating Engineering. <br />
-              Deterministic Solutions for Global Leaders.
-            </h1>
-            <p
-              style={{
-                fontFamily: 'var(--font-untitled-sans)',
-                color: 'var(--color-graphite)',
-                fontSize: '18px',
-                maxWidth: '680px',
-                margin: '0 auto 28px',
-                lineHeight: 1.5,
-              }}
-            >
-              Bespoke Swiss architecture paired with autonomous delivery pods, transparent milestones, and contractually backed SLAs.
-            </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
-              <Link href="/contact" className="btn-primary">
-                <span>Discuss Your Vision</span>
-                <span className="arrow-glyph">▸</span>
-              </Link>
-              <Link href="/case-studies" className="btn-secondary">
-                <span>Explore Architectural Blueprints</span>
-              </Link>
-            </div>
-          </div>
-        </ScrollReveal>
-
-        {/* Concept B: Swiss Editorial Delivery Journey & SLAs */}
-        <ScrollReveal animation="fade-up" delay={100}>
-          <SwissDeliveryJourney />
-        </ScrollReveal>
-
-        {/* Section Divider & Heading */}
-        <ScrollReveal animation="fade-up">
-          <div style={{ textAlign: 'center', margin: '72px 0 40px' }}>
-            <div style={{ display: 'inline-flex', marginBottom: '12px' }}>
-              <span
-                style={{
-                  padding: '4px 12px',
-                  borderRadius: '9999px',
-                  backgroundColor: 'var(--color-periwinkle-mist)',
-                  color: 'var(--color-lake-blue)',
-                  fontSize: '11px',
-                  fontFamily: 'var(--font-abc-diatype-mono)',
-                  textTransform: 'uppercase',
-                  fontWeight: 600,
-                }}
-              >
-                Deep Capabilities
-              </span>
-            </div>
-            <h2
-              style={{
-                fontFamily: 'var(--font-untitled-serif)',
-                fontSize: 'clamp(28px, 4vw, 44px)',
-                fontWeight: 400,
-                color: 'var(--color-off-black)',
-                marginBottom: '12px',
-              }}
-            >
-              Specialized Engineering Domains
-            </h2>
-            <p style={{ maxWidth: '600px', margin: '0 auto', fontSize: '15px', color: 'var(--color-graphite)' }}>
-              Core competencies designed to replace legacy debt with ultra-low latency, fault-tolerant infrastructure.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        {/* Detailed Services Sections */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
-          {servicesData.map((service, index) => (
-            <ScrollReveal key={service.id} animation="fade-up" delay={index * 80}>
-              <section
+      {/* 6 Services In-Depth Sections */}
+      <section className="section-py">
+        <div className="container">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', marginBottom: '80px' }}>
+            {servicesData.map((service, index) => (
+              <div
+                key={service.id}
                 id={service.slug}
-                className="monad-card"
+                className="corporate-card"
                 style={{
-                  backgroundColor: index === 0 ? 'var(--color-periwinkle-mist)' : '#ffffff',
-                  padding: '48px 40px',
-                  scrollMarginTop: '100px',
+                  padding: '44px',
+                  backgroundColor: '#ffffff',
                 }}
               >
                 <div
                   style={{
                     display: 'grid',
-                    gridTemplateColumns: '1.2fr 1fr',
-                    gap: '48px',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                    gap: '40px',
                     alignItems: 'start',
                   }}
-                  className="service-detail-grid"
                 >
-                  {/* Left Column: Scope & Methodology */}
+                  {/* Left: Info */}
                   <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '18px' }}>
                       <div
                         style={{
-                          padding: '12px',
-                          borderRadius: '16px',
-                          backgroundColor: '#ffffff',
-                          border: '1px solid var(--color-ash)',
-                          color: 'var(--color-lake-blue)',
+                          width: '48px',
+                          height: '48px',
+                          borderRadius: '12px',
+                          backgroundColor: `${service.accentColor}15`,
+                          color: service.accentColor,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
                         }}
                       >
-                        {iconMap[service.iconName] || <Code2 size={24} />}
+                        {iconMap[service.icon] || <Code2 size={24} />}
                       </div>
                       <div>
-                        <span className="mono-helper">{service.tagline}</span>
-                        <h2
-                          style={{
-                            fontFamily: 'var(--font-untitled-serif)',
-                            fontSize: 'clamp(26px, 3vw, 36px)',
-                            fontWeight: 400,
-                            color: 'var(--color-off-black)',
-                            margin: 0,
-                          }}
-                        >
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: '#64748b', fontWeight: 600 }}>
+                          SERVICE 0{index + 1}
+                        </span>
+                        <h2 style={{ fontSize: '26px', fontWeight: 800, color: 'var(--text-main)' }}>
                           {service.title}
                         </h2>
                       </div>
                     </div>
 
-                    <div style={{ marginBottom: '20px' }}>
-                      <div className="mono-helper" style={{ marginBottom: '6px' }}>PROBLEM STATEMENT</div>
-                      <p style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '14.5px', color: 'var(--color-off-black)', lineHeight: 1.5, marginBottom: '14px' }}>
-                        {service.problemSolved}
-                      </p>
-                      <div className="mono-helper" style={{ marginBottom: '6px' }}>ENGINEERING APPROACH</div>
-                      <p style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '14.5px', color: 'var(--color-graphite)', lineHeight: 1.5 }}>
-                        {service.engineeringApproach}
-                      </p>
-                    </div>
+                    <p style={{ fontSize: '15.5px', lineHeight: 1.65, color: 'var(--text-muted)', marginBottom: '24px' }}>
+                      {service.fullDescription}
+                    </p>
 
-                    <div style={{ marginBottom: '28px' }}>
-                      <div className="mono-helper" style={{ marginBottom: '12px' }}>
-                        KEY DELIVERABLES
-                      </div>
+                    <div style={{ marginBottom: '24px' }}>
+                      <h4 style={{ fontSize: '14.5px', fontWeight: 700, marginBottom: '12px', color: 'var(--text-main)' }}>
+                        Key Sub-Offerings:
+                      </h4>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                        {service.keyDeliverables.map((item, i) => (
-                          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                            <CheckCircle2 size={16} color="var(--color-lake-blue)" style={{ marginTop: '2px', flexShrink: 0 }} />
-                            <span style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '13.5px', color: 'var(--color-graphite)' }}>
-                              {item}
+                        {service.subOfferings.map((sub, i) => (
+                          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '14px' }}>
+                            <span style={{ color: service.accentColor, marginTop: '2px' }}>
+                              <Check size={16} />
                             </span>
+                            <div>
+                              <strong style={{ color: 'var(--text-main)' }}>{sub.title}:</strong>{' '}
+                              <span style={{ color: 'var(--text-muted)' }}>{sub.description}</span>
+                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <Link href="/contact" className="btn-primary" style={{ fontSize: '13px', padding: '12px 28px' }}>
-                      <span>Schedule {service.title.split(' ')[0]} Discovery</span>
-                      <span className="arrow-glyph">▸</span>
-                    </Link>
-                  </div>
-
-                  {/* Right Column: Architectural Benchmarks & Tech Stack */}
-                  <div
-                    style={{
-                      backgroundColor: index === 0 ? '#ffffff' : 'var(--color-parchment)',
-                      border: '1px solid var(--color-ash)',
-                      borderRadius: '24px',
-                      padding: '32px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '24px',
-                    }}
-                  >
                     <div>
-                      <div className="mono-helper" style={{ marginBottom: '8px' }}>
-                        PRODUCTION METRIC DELTA
-                      </div>
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-untitled-serif)',
-                          fontSize: '32px',
-                          fontWeight: 400,
-                          color: 'var(--color-lake-blue)',
-                        }}
-                      >
-                        {service.metricsHighlight}
-                      </div>
-                      <div style={{ fontSize: '12.5px', color: 'var(--color-smoke)', fontFamily: 'var(--font-abc-diatype-mono)', marginTop: '4px' }}>
-                        {service.businessBenefit}
-                      </div>
-                    </div>
-
-                    <div style={{ borderTop: '1px solid var(--color-ash)', paddingTop: '16px' }}>
-                      <div className="mono-helper" style={{ marginBottom: '10px' }}>
-                        PREFERRED STACK & PROTOCOLS
-                      </div>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                        {service.techStack.map((tech) => (
+                      <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: '#64748b', fontWeight: 600, display: 'block', marginBottom: '8px' }}>
+                        TECHNOLOGY STACK
+                      </span>
+                      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                        {service.techStack.map((tech, i) => (
                           <span
-                            key={tech}
+                            key={i}
                             style={{
+                              fontFamily: 'var(--font-mono)',
+                              fontSize: '12px',
                               padding: '4px 10px',
-                              borderRadius: '9999px',
-                              backgroundColor: index === 0 ? 'var(--color-parchment)' : '#ffffff',
-                              border: '1px solid var(--color-ash)',
-                              fontSize: '11px',
-                              fontFamily: 'var(--font-abc-diatype-mono)',
-                              color: 'var(--color-off-black)',
+                              borderRadius: '6px',
+                              backgroundColor: '#f1f5f9',
+                              color: '#334155',
+                              fontWeight: 500,
                             }}
                           >
                             {tech}
@@ -277,23 +166,122 @@ export default function ServicesPage() {
                         ))}
                       </div>
                     </div>
+                  </div>
 
-                    <div style={{ borderTop: '1px solid var(--color-ash)', paddingTop: '16px' }}>
-                      <div className="mono-helper" style={{ marginBottom: '6px' }}>
-                        TYPICAL SPRINT TIMELINE
-                      </div>
-                      <div style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '13px', color: 'var(--color-off-black)' }}>
-                        {service.timelineAvg} • Fixed-Scope Milestones
-                      </div>
+                  {/* Right: Deliverables & Specs Box */}
+                  <div
+                    style={{
+                      padding: '32px',
+                      borderRadius: '12px',
+                      backgroundColor: '#f8fafc',
+                      border: '1px solid #e2e8f0',
+                    }}
+                  >
+                    <h4 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '16px', color: 'var(--text-main)' }}>
+                      Architectural Capabilities
+                    </h4>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px' }}>
+                      {service.capabilities.map((cap, i) => (
+                        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13.5px', color: 'var(--text-muted)' }}>
+                          <Check size={14} color="var(--color-brand-blue)" />
+                          <span>{cap}</span>
+                        </div>
+                      ))}
                     </div>
+
+                    <h4 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '16px', color: 'var(--text-main)' }}>
+                      Included Deliverables
+                    </h4>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '28px' }}>
+                      {service.deliverables.map((del, i) => (
+                        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13.5px', color: 'var(--text-muted)' }}>
+                          <ShieldCheck size={14} color="#10b981" />
+                          <span>{del}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <Link
+                      href="/contact"
+                      className="btn-primary"
+                      style={{ width: '100%', justifyContent: 'center' }}
+                    >
+                      <span>Inquire About {service.title}</span>
+                      <ArrowRight size={15} />
+                    </Link>
                   </div>
                 </div>
-              </section>
-            </ScrollReveal>
-          ))}
+              </div>
+            ))}
+          </div>
+
+          {/* Engagement Models Band */}
+          <div style={{ padding: '48px', borderRadius: '16px', backgroundColor: 'var(--bg-dark)', color: '#ffffff' }}>
+            <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 40px' }}>
+              <div className="section-badge section-badge-dark">Flexible Collaboration</div>
+              <h3 style={{ fontSize: '28px', fontWeight: 800, color: '#ffffff', marginBottom: '12px' }}>
+                How We Partner with You
+              </h3>
+              <p style={{ fontSize: '15px', color: '#94a3b8' }}>
+                Choose the collaboration model that fits your operational needs, project scope, and timeline.
+              </p>
+            </div>
+
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: '24px',
+              }}
+            >
+              <div className="corporate-card-dark" style={{ padding: '28px' }}>
+                <div style={{ color: 'var(--color-brand-cyan)', marginBottom: '14px' }}>
+                  <Users size={24} />
+                </div>
+                <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#ffffff', marginBottom: '8px' }}>
+                  Dedicated Engineering Pod
+                </h4>
+                <p style={{ fontSize: '13.5px', lineHeight: 1.6, color: '#94a3b8', marginBottom: '16px' }}>
+                  An autonomous team of senior full-stack engineers, architects, and designers integrated directly with your workflow.
+                </p>
+                <div style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--color-brand-cyan)' }}>
+                  Best for: Ongoing product evolution &amp; scale
+                </div>
+              </div>
+
+              <div className="corporate-card-dark" style={{ padding: '28px' }}>
+                <div style={{ color: 'var(--color-brand-blue)', marginBottom: '14px' }}>
+                  <Layers size={24} />
+                </div>
+                <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#ffffff', marginBottom: '8px' }}>
+                  Fixed-Scope Project Delivery
+                </h4>
+                <p style={{ fontSize: '13.5px', lineHeight: 1.6, color: '#94a3b8', marginBottom: '16px' }}>
+                  Clearly defined milestones, deliverables, and upfront pricing for MVPs, major feature rollouts, and refactors.
+                </p>
+                <div style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--color-brand-cyan)' }}>
+                  Best for: MVPs, redesigns &amp; defined releases
+                </div>
+              </div>
+
+              <div className="corporate-card-dark" style={{ padding: '28px' }}>
+                <div style={{ color: '#10b981', marginBottom: '14px' }}>
+                  <Zap size={24} />
+                </div>
+                <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#ffffff', marginBottom: '8px' }}>
+                  Architecture &amp; CTO Advisory
+                </h4>
+                <p style={{ fontSize: '13.5px', lineHeight: 1.6, color: '#94a3b8', marginBottom: '16px' }}>
+                  Senior technical guidance on cloud migration, security audits, AI integration, and high-level system blueprints.
+                </p>
+                <div style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--color-brand-cyan)' }}>
+                  Best for: Technical audits &amp; architectural oversight
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
-

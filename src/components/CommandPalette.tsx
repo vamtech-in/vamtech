@@ -38,16 +38,17 @@ export default function CommandPalette() {
   }, []);
 
   const commands = [
-    { title: 'Custom Enterprise Software', category: 'Services', icon: <Code2 size={16} />, href: '/services#custom-software' },
-    { title: 'Cloud Modernization & DevOps', category: 'Services', icon: <CloudCog size={16} />, href: '/services#cloud-devops' },
-    { title: 'AI Engineering & Agentic Automation', category: 'Services', icon: <Sparkles size={16} />, href: '/services#ai-automation' },
-    { title: 'High-Performance Web & Mobile Apps', category: 'Services', icon: <Layers size={16} />, href: '/services#web-mobile-apps' },
-    { title: 'Interactive Investment Estimator', category: 'Tools', icon: <Calculator size={16} />, href: '/pricing#estimator' },
-    { title: 'Verified Case Studies & ROI', category: 'Journal', icon: <FileText size={16} />, href: '/case-studies' },
-    { title: 'Security & SOC 2 Trust Center', category: 'Security', icon: <ShieldCheck size={16} />, href: '/security' },
-    { title: 'Schedule 30-Min Architecture Discovery', category: 'Action', icon: <Calendar size={16} />, href: '/contact' },
-    { title: 'Engagement Models & Sizing', category: 'Pricing', icon: <Command size={16} />, href: '/pricing' },
-    { title: 'Engineering Story & Culture', category: 'About', icon: <FileText size={16} />, href: '/about' },
+    { title: 'Software Development', category: 'Services', icon: <Code2 size={16} />, href: '/services#software-development' },
+    { title: 'Web & Mobile Development', category: 'Services', icon: <Layers size={16} />, href: '/services#web-mobile-development' },
+    { title: 'AI & Automation Engineering', category: 'Services', icon: <Sparkles size={16} />, href: '/services#ai-automation' },
+    { title: 'Cloud Architecture & DevOps', category: 'Services', icon: <CloudCog size={16} />, href: '/services#cloud-devops' },
+    { title: 'UI/UX & Product Design', category: 'Services', icon: <Layers size={16} />, href: '/services#ui-ux-design' },
+    { title: 'Digital Transformation', category: 'Services', icon: <Code2 size={16} />, href: '/services#digital-transformation' },
+    { title: 'Industry Solutions', category: 'Solutions', icon: <FileText size={16} />, href: '/solutions' },
+    { title: 'Featured Case Studies & Portfolio', category: 'Work', icon: <FileText size={16} />, href: '/projects' },
+    { title: 'About VAM|Tech & Mission', category: 'About', icon: <FileText size={16} />, href: '/about' },
+    { title: 'Careers & Open Engineering Positions', category: 'Careers', icon: <Command size={16} />, href: '/careers' },
+    { title: 'Schedule Architecture Consultation', category: 'Contact', icon: <Calendar size={16} />, href: '/contact' },
   ];
 
   const filteredCommands = commands.filter((c) =>
@@ -101,10 +102,10 @@ export default function CommandPalette() {
             borderBottom: '1px solid var(--color-ash)',
           }}
         >
-          <Search size={18} color="var(--color-lake-blue)" />
+          <Search size={18} color="var(--color-brand-blue)" />
           <input
             type="text"
-            placeholder="Search journal, capabilities, models (e.g. Go, RAG, pricing)..."
+            placeholder="Search capabilities, case studies, technologies, or services..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             autoFocus
@@ -113,19 +114,19 @@ export default function CommandPalette() {
               background: 'transparent',
               border: 'none',
               outline: 'none',
-              fontFamily: 'var(--font-abc-diatype-mono)',
+              fontFamily: 'var(--font-sans)',
               fontSize: '15px',
-              color: 'var(--color-off-black)',
+              color: 'var(--text-main)',
             }}
           />
           <span
             style={{
               padding: '4px 10px',
               borderRadius: '6px',
-              border: '1px solid var(--color-ash)',
+              border: '1px solid #e2e8f0',
               fontSize: '11px',
-              fontFamily: 'var(--font-abc-diatype-mono)',
-              color: 'var(--color-smoke)',
+              fontFamily: 'var(--font-mono)',
+              color: '#64748b',
               textTransform: 'uppercase',
             }}
           >

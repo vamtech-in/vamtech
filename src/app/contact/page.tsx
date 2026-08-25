@@ -1,175 +1,149 @@
-import React from 'react';
-import ContactForm from '@/components/ContactForm';
-import ScrollReveal from '@/components/ScrollReveal';
-import AtmosphericWash from '@/components/AtmosphericWash';
+'use client';
+
+import React, { useState } from 'react';
+import ContactSection from '@/components/ContactSection';
 import { 
-  Mail, 
-  MapPin, 
-  Phone, 
-  Clock, 
+  ChevronDown, 
+  HelpCircle, 
   ShieldCheck, 
-  CheckCircle2, 
-  Sparkles,
-  ArrowUpRight
+  Clock, 
+  Code2, 
+  FileCheck 
 } from 'lucide-react';
 
-export const metadata = {
-  title: 'Direct Engineering Line & Sizing Intake — Vamtech Journal',
-  description: 'Initiate a direct architectural discovery call with Vamtech Principal Engineers. Transparent scope, zero junior handoffs, and rapid sprint execution.',
-};
+const faqs = [
+  {
+    q: 'What is your typical project kickoff timeline?',
+    a: 'Following our initial technical discovery call and architecture scope sign-off, we typically assemble and deploy our dedicated engineering pod within 5 to 7 business days.',
+  },
+  {
+    q: 'Do you provide full source code and IP ownership?',
+    a: 'Yes, 100%. Upon completion and invoice settlement of each sprint milestone, all repositories, custom codebases, design files, and cloud infrastructure scripts belong entirely to your company.',
+  },
+  {
+    q: 'How do you handle project communication and tracking?',
+    a: 'We establish a direct Slack/Teams shared channel for daily collaboration and conduct weekly live sprint demos. All tasks are transparently tracked on Jira or Linear with real-time GitHub visibility.',
+  },
+  {
+    q: 'What engagement models do you offer?',
+    a: 'We offer Dedicated Engineering Pods for ongoing product scaling, Fixed-Scope Milestones for defined MVPs/refactors, and Architecture Retainers for CTO-level oversight.',
+  },
+  {
+    q: 'Can you work with our existing in-house team?',
+    a: 'Absolutely. Our senior developers seamlessly integrate with existing Git workflows, CI/CD pipelines, and design systems to augment your team velocity.',
+  },
+];
 
 export default function ContactPage() {
-  return (
-    <div style={{ padding: '60px 0 100px', position: 'relative', overflow: 'hidden' }}>
-      <AtmosphericWash variant="coral-sky" size={560} top="-80px" left="-120px" opacity={0.45} />
-      <AtmosphericWash variant="sky-mint" size={600} top="650px" right="-120px" opacity={0.4} />
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        {/* Header */}
-        <ScrollReveal animation="fade-up">
-          <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-            <div style={{ display: 'inline-flex', marginBottom: '16px' }}>
-              <span
-                style={{
-                  padding: '4px 12px',
-                  borderRadius: '9999px',
-                  backgroundColor: 'var(--color-periwinkle-mist)',
-                  color: 'var(--color-lake-blue)',
-                  fontSize: '11px',
-                  fontFamily: 'var(--font-abc-diatype-mono)',
-                  textTransform: 'uppercase',
-                  fontWeight: 500,
-                }}
-              >
-                Sprint Intake & Discovery Line
-              </span>
-            </div>
-            <h1
-              style={{
-                fontFamily: 'var(--font-untitled-serif)',
-                fontSize: 'clamp(36px, 5.2vw, 64px)',
-                fontWeight: 400,
-                color: 'var(--color-off-black)',
-                marginBottom: '20px',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Start an Architectural Consultation
-            </h1>
-            <p
-              style={{
-                fontFamily: 'var(--font-abc-diatype-mono)',
-                color: 'var(--color-graphite)',
-                fontSize: '17px',
-                maxWidth: '720px',
-                margin: '0 auto',
-                lineHeight: 1.5,
-              }}
-            >
-              Connect directly with our team. We respond within 1 business day with an honest technical feasibility assessment.
+  return (
+    <div style={{ backgroundColor: 'var(--bg-page)' }}>
+      {/* Contact Hero Header */}
+      <section
+        style={{
+          paddingTop: '80px',
+          paddingBottom: '72px',
+          backgroundColor: '#ffffff',
+          borderBottom: '1px solid #e2e8f0',
+        }}
+        className="tech-grid-pattern"
+      >
+        <div className="container" style={{ maxWidth: '960px', textAlign: 'center' }}>
+          <div className="section-badge">Direct Access</div>
+          <h1
+            style={{
+              fontSize: 'clamp(36px, 5vw, 56px)',
+              fontWeight: 800,
+              color: 'var(--text-main)',
+              letterSpacing: '-0.03em',
+              marginBottom: '20px',
+            }}
+          >
+            Start a Conversation with Our Technical Leads
+          </h1>
+          <p
+            style={{
+              fontSize: 'clamp(17px, 2vw, 20px)',
+              lineHeight: 1.6,
+              color: 'var(--text-muted)',
+              maxWidth: '740px',
+              margin: '0 auto',
+            }}
+          >
+            Connect directly with senior engineers and architects. We respond within 1 business day with an honest technical feasibility assessment.
+          </p>
+        </div>
+      </section>
+
+      {/* Main Interactive Contact Section */}
+      <ContactSection />
+
+      {/* FAQ Accordion Section */}
+      <section className="section-py" style={{ backgroundColor: '#ffffff', borderTop: '1px solid #e2e8f0' }}>
+        <div className="container" style={{ maxWidth: '840px' }}>
+          <div className="section-header">
+            <div className="section-badge">Frequently Asked Questions</div>
+            <h2 className="section-title">Everything You Need to Know</h2>
+            <p className="section-subtitle">
+              Common questions about our engineering sprints, contracts, IP ownership, and communication workflows.
             </p>
           </div>
-        </ScrollReveal>
 
-        {/* 2-Column Grid: Form + Trust/Direct Contact Info */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1.4fr 1fr',
-            gap: '40px',
-            alignItems: 'start',
-          }}
-          className="contact-layout-grid"
-        >
-          {/* Left: Contact Form */}
-          <ScrollReveal animation="fade-up">
-            <ContactForm />
-          </ScrollReveal>
-
-          {/* Right: Direct Information & Commitments */}
-          <ScrollReveal animation="fade-up" delay={150}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              {/* Direct Line Card */}
-              <div
-                className="monad-card"
-                style={{
-                  backgroundColor: '#ffffff',
-                  padding: '36px',
-                }}
-              >
-                <h3
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
                   style={{
-                    fontFamily: 'var(--font-untitled-serif)',
-                    fontSize: '22px',
-                    fontWeight: 400,
-                    color: 'var(--color-off-black)',
-                    marginBottom: '20px',
+                    borderRadius: '12px',
+                    border: '1px solid #e2e8f0',
+                    backgroundColor: isOpen ? '#f8fafc' : '#ffffff',
+                    overflow: 'hidden',
+                    transition: 'all 0.2s ease',
                   }}
                 >
-                  Direct Engineering Desk
-                </h3>
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    style={{
+                      width: '100%',
+                      padding: '20px 24px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      color: 'var(--text-main)',
+                    }}
+                  >
+                    <span>{faq.q}</span>
+                    <ChevronDown
+                      size={18}
+                      style={{
+                        transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                        transition: 'transform 0.2s ease',
+                        color: 'var(--color-brand-blue)',
+                        flexShrink: 0,
+                      }}
+                    />
+                  </button>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '13.5px', color: 'var(--color-graphite)' }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                    <MapPin size={18} color="var(--color-lake-blue)" style={{ flexShrink: 0, marginTop: '2px' }} />
-                    <span>Tech Innovation Park, Suite 400<br />San Francisco, CA & Global Remote Pods</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <Mail size={18} color="var(--color-lake-blue)" style={{ flexShrink: 0 }} />
-                    <a href="mailto:contact@vamtech.io" style={{ color: 'var(--color-off-black)', textDecoration: 'underline' }}>
-                      contact@vamtech.io
-                    </a>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <Phone size={18} color="var(--color-lake-blue)" style={{ flexShrink: 0 }} />
-                    <span>+1 (800) VAM-TECH</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <Clock size={18} color="var(--color-lake-blue)" style={{ flexShrink: 0 }} />
-                    <span>Response Time: Within 1 Business Day</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Guarantees Box (Periwinkle Mist #cfdaf5) */}
-              <div
-                className="monad-card-periwinkle"
-                style={{
-                  padding: '36px',
-                }}
-              >
-                <h4
-                  style={{
-                    fontFamily: 'var(--font-untitled-serif)',
-                    fontSize: '20px',
-                    fontWeight: 400,
-                    color: 'var(--color-off-black)',
-                    marginBottom: '16px',
-                  }}
-                >
-                  What Happens Next?
-                </h4>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  {[
-                    'Mutual NDA exchanged prior to deep discovery',
-                    '30-minute technical scope & bottleneck review',
-                    'Formal Sprint Milestone & Sizing breakdown delivered in 48h',
-                    'Zero pressure, zero junior sales account reps',
-                  ].map((step, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                      <CheckCircle2 size={16} color="var(--color-lake-blue)" style={{ marginTop: '2px', flexShrink: 0 }} />
-                      <span style={{ fontSize: '13px', fontFamily: 'var(--font-abc-diatype-mono)', color: 'var(--color-off-black)' }}>
-                        {step}
-                      </span>
+                  {isOpen && (
+                    <div style={{ padding: '0 24px 20px', fontSize: '14.5px', lineHeight: 1.65, color: 'var(--text-muted)' }}>
+                      {faq.a}
                     </div>
-                  ))}
+                  )}
                 </div>
-              </div>
-            </div>
-          </ScrollReveal>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

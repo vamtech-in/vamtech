@@ -30,21 +30,25 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'VAM|Tech | Digital products and intelligent software',
-  description: 'VAM|Tech builds scalable digital products and intelligent software solutions through engineering, design, AI, and cloud expertise.',
+  title: 'VAM|Tech — IT Services, Cloud & Intelligent Software Solutions',
+  description:
+    'VAM|Tech builds scalable digital products, custom enterprise software, AI automation, and cloud platforms for ambitious startups and businesses.',
   keywords: [
+    'VAM Tech',
     'Software Development',
     'AI Automation',
+    'Web & Mobile Development',
     'Cloud DevOps',
-    'Product Design',
-    'Digital Transformation'
+    'UI/UX Product Design',
+    'Digital Transformation',
   ],
-  authors: [{ name: 'Vamtech Engineering Labs' }],
+  authors: [{ name: 'VAM|Tech Technologies Inc.' }],
   openGraph: {
-    title: 'VAM|Tech | Digital products and intelligent software',
-    description: 'Transforming ideas into scalable digital products through engineering, design, AI, and cloud expertise.',
+    title: 'VAM|Tech — Building Technology That Moves Businesses Forward',
+    description:
+      'Transform ideas into scalable digital products through software engineering, AI, cloud, and modern technology solutions.',
     url: 'https://vamtech.io',
-    siteName: 'Vamtech Labs',
+    siteName: 'VAM|Tech',
     type: 'website',
   },
 };
@@ -86,8 +90,8 @@ export default function RootLayout({
       </head>
       <body
         style={{
-          backgroundColor: '#f6f3f1',
-          color: '#242424',
+          backgroundColor: '#f8fafc',
+          color: '#0f172a',
           minHeight: '100vh',
           margin: 0,
         }}

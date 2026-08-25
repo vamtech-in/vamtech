@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, company, role, serviceInterest, budgetRange, timeline, message } = body;
+    const { name, email, company, role, phone, serviceInterest, budgetRange, timeline, message } = body;
 
     if (!name || !email || !serviceInterest) {
       return NextResponse.json(
@@ -33,12 +33,13 @@ export async function POST(request: Request) {
       name,
       email,
       company: company || 'Confidential',
+      phone: phone || 'Not provided',
       role: role || 'Engineering Lead',
       serviceInterest,
       budgetRange: budgetRange || 'Standard Tier',
       timeline: timeline || 'Immediate',
       message: message || 'No custom notes provided',
-      status: 'DISPATCHED_TO_PRINCIPAL_ARCHITECT'
+      status: 'INQUIRY_RECEIVED'
     };
 
     return NextResponse.json(
