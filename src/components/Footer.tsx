@@ -47,7 +47,7 @@ export default function Footer() {
                 maxWidth: '340px',
               }}
             >
-              An editorial tech journal & engineering lab architecting high-concurrency software, zero-copy data pipelines, and autonomous AI systems.
+              VAM|Tech builds reliable software, intelligent digital products, and scalable technology solutions for ambitious teams.
             </p>
             <div
               style={{
@@ -65,7 +65,7 @@ export default function Footer() {
               }}
             >
               <Shield size={13} color="var(--color-lake-blue)" />
-              <span>SOC 2 Type II Aligned</span>
+              <span>Technology partners for what is next</span>
             </div>
           </div>
 
@@ -111,7 +111,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Journal & Proof */}
+          {/* Company */}
           <div>
             <h4
               style={{
@@ -122,22 +122,22 @@ export default function Footer() {
                 marginBottom: '20px',
               }}
             >
-              Journal & Proof
+              Company
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <li>
                 <Link href="/about" className="text-link-arrow" style={{ fontSize: '13px' }}>
-                  Engineering Story
+                  About VAM|Tech
                 </Link>
               </li>
               <li>
                 <Link href="/case-studies" className="text-link-arrow" style={{ fontSize: '13px' }}>
-                  Case Studies & ROI
+                  Projects
                 </Link>
               </li>
               <li>
                 <Link href="/security" className="text-link-arrow" style={{ fontSize: '13px' }}>
-                  Trust Center
+                  Careers
                 </Link>
               </li>
               <li>
