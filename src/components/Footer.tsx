@@ -95,10 +95,28 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* SEO Topical Keyword Strip */}
+        <div style={{ padding: '24px 0', borderTop: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', flexWrap: 'wrap', gap: '8px 16px', fontSize: '12px', color: '#64748b' }}>
+          <span style={{ color: '#94a3b8', fontWeight: 600 }}>POPULAR INQUIRIES:</span>
+          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Custom Software Development Lucknow</Link>
+          <span>•</span>
+          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Web Application Development</Link>
+          <span>•</span>
+          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Mobile App Development India</Link>
+          <span>•</span>
+          <Link href="/pricing" style={{ color: '#94a3b8', textDecoration: 'none' }}>Rapid MVP Development (₹24,999)</Link>
+          <span>•</span>
+          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>AI Automation &amp; Custom LLMs</Link>
+          <span>•</span>
+          <Link href="/contact" style={{ color: '#94a3b8', textDecoration: 'none' }}>Hire Dedicated Next.js Developers</Link>
+          <span>•</span>
+          <Link href="/solutions" style={{ color: '#94a3b8', textDecoration: 'none' }}>SaaS Architecture Blueprints</Link>
+        </div>
+
         {/* Exact Bottom Copyright Bar from Reference */}
         <div className="footer-bottom-bar">
           <p className="copyright-text">
-            © All Rights Reserved By <strong>VAMTech LLC</strong> 2024-2026 | Design under justt.production By <em>Justt</em>
+            © All Rights Reserved By <strong>VAMTech LLC</strong> 2024-2026 | Custom Software &amp; AI Engineering
           </p>
 
           <div className="footer-legal-links">
