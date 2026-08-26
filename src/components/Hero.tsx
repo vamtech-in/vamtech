@@ -210,6 +210,7 @@ export default function Hero() {
                     <h4>24/7 Founder Sync</h4>
                     <p>Direct Slack, WhatsApp &amp; Calls</p>
                   </div>
+                </div>
               </div>
             </div>
           </div>
@@ -218,6 +219,7 @@ export default function Hero() {
     </section>
   );
 }
+
 
 
 
