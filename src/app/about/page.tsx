@@ -155,12 +155,12 @@ export default function AboutPage() {
               </span>
 
               <h3 style={{ fontSize: '28px', fontWeight: 800, marginBottom: '20px', color: 'var(--text-main)' }}>
-                Why We Built VAM|Tech
+                Why We Built VAMTech
               </h3>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', fontSize: '16px', lineHeight: 1.7, color: 'var(--text-muted)' }}>
                 <p>
-                  In the traditional IT services industry, clients often face bloated scopes, opaque delivery timelines, junior developer handoffs, and architectures that buckle under scale. We founded VAM|Tech to rewrite that dynamic.
+                  In the traditional IT services industry, clients often face bloated scopes, opaque delivery timelines, junior developer handoffs, and architectures that buckle under scale. We founded VAMTech to rewrite that dynamic.
                 </p>
                 <p>
                   We operate as a high-velocity, senior engineering consultancy. Every client project is staffed by seasoned engineers, architects, and product designers who have battle-tested experience building high-throughput systems, cloud-native pipelines, and production AI models.
