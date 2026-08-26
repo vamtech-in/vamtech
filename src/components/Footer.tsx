@@ -8,7 +8,9 @@ import {
   Mail, 
   Phone, 
   MapPin, 
-  ArrowUpRight 
+  ArrowUpRight,
+  Shield,
+  ArrowRight
 } from 'lucide-react';
 
 export default function Footer() {
@@ -199,17 +201,17 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '13.5px', color: '#94a3b8' }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                 <Mail size={16} color="var(--color-brand-cyan)" style={{ marginTop: '2px', flexShrink: 0 }} />
-                <a href={`mailto:${companyData.contact.email}`} style={{ color: '#ffffff', textDecoration: 'underline' }}>
-                  {companyData.contact.email}
+                <a href="mailto:vamtech.in@gmail.com" style={{ color: '#ffffff', textDecoration: 'underline' }}>
+                  vamtech.in@gmail.com
                 </a>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Phone size={16} color="var(--color-brand-cyan)" style={{ flexShrink: 0 }} />
-                <span>{companyData.contact.phone}</span>
+                <span>+1 (800) 582-VAMTECH</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                 <MapPin size={16} color="var(--color-brand-cyan)" style={{ marginTop: '2px', flexShrink: 0 }} />
-                <span>{companyData.contact.address}</span>
+                <span>Tiwariganj, Lucknow (226028)</span>
               </div>
 
               <div style={{ marginTop: '12px' }}>
@@ -243,16 +245,14 @@ export default function Footer() {
           <div>
             © {new Date().getFullYear()} {companyData.legalName} All rights reserved.
           </div>
-          <div style={{ display: 'flex', gap: '20px' }}>
-            <Link href="/privacy" style={{ color: '#94a3b8' }} className="footer-link">
-              Privacy
-            </Link>
-            <Link href="/terms" style={{ color: '#94a3b8' }} className="footer-link">
-              Terms
-            </Link>
-            <Link href="/contact" style={{ color: '#94a3b8' }} className="footer-link">
-              Contact
-            </Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <Link href="/privacy" style={{ color: '#94a3b8' }} className="footer-link">Privacy</Link>
+            <span>•</span>
+            <Link href="/terms" style={{ color: '#94a3b8' }} className="footer-link">Terms</Link>
+            <span>•</span>
+            <Link href="/contact" style={{ color: '#94a3b8' }} className="footer-link">Contact</Link>
+            <span>•</span>
+            <Link href="/admin/leads" style={{ color: 'var(--color-brand-cyan)', fontWeight: 500 }} className="footer-link">Form Inbox 📥</Link>
           </div>
         </div>
       </div>
