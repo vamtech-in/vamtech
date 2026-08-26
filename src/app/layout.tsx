@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import CommandPalette from '@/components/CommandPalette';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 
-const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const gaMeasurementId = 'G-253YX57JZ7';
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
