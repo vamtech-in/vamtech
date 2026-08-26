@@ -44,7 +44,7 @@ export default function AboutPage() {
         className="tech-grid-pattern"
       >
         <div className="container" style={{ maxWidth: '960px', textAlign: 'center' }}>
-          <div className="section-badge">About VAM|Tech</div>
+          <div className="section-badge">About VAMTech</div>
           <h1
             style={{
               fontSize: 'clamp(36px, 5vw, 56px)',
