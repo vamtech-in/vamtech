@@ -1,253 +1,128 @@
 'use client';
 
 import React, { useState } from 'react';
+import FeaturedProjects from '@/components/FeaturedProjects';
+import CTASection from '@/components/CTASection';
 import { projectsData, ProjectItem } from '@/data/projects';
 import CaseStudyModal from '@/components/CaseStudyModal';
-import { ArrowRight, ArrowUpRight, CheckCircle2, Layers } from 'lucide-react';
-import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
-  const [selectedFilter, setSelectedFilter] = useState('All');
-
-  const filters = ['All', 'Web & Mobile / SaaS', 'AI & Automation', 'Headless Commerce', 'Enterprise / Cloud'];
-
-  const filteredProjects =
-    selectedFilter === 'All'
-      ? projectsData
-      : projectsData.filter((p) => p.category.includes(selectedFilter) || selectedFilter.includes(p.category));
 
   return (
-    <div style={{ backgroundColor: 'var(--bg-page)' }}>
-      {/* Hero Header */}
+    <div style={{ backgroundColor: 'var(--bg-canvas)' }}>
+      {/* Portfolio Header */}
       <section
         style={{
-          paddingTop: '80px',
-          paddingBottom: '72px',
-          backgroundColor: '#ffffff',
-          borderBottom: '1px solid #e2e8f0',
+          paddingTop: '60px',
+          paddingBottom: '20px',
+          textAlign: 'center',
+          position: 'relative',
         }}
-        className="tech-grid-pattern"
       >
-        <div className="container" style={{ maxWidth: '960px', textAlign: 'center' }}>
-          <div className="section-badge">Client Case Studies</div>
+        <div className="container" style={{ maxWidth: '840px' }}>
+          <span className="section-kicker">OUR ARCHIVE</span>
           <h1
             style={{
-              fontSize: 'clamp(36px, 5vw, 56px)',
-              fontWeight: 800,
+              fontSize: 'clamp(40px, 5.5vw, 64px)',
+              fontWeight: 900,
               color: 'var(--text-main)',
-              letterSpacing: '-0.03em',
-              marginBottom: '20px',
+              letterSpacing: '-0.04em',
+              marginBottom: '16px',
             }}
           >
-            Engineering Portfolio &amp; Digital Solutions
+            Portfo<span className="highlight-pill">lio</span>
           </h1>
           <p
             style={{
-              fontSize: 'clamp(17px, 2vw, 20px)',
+              fontSize: 'clamp(16px, 1.8vw, 19px)',
               lineHeight: 1.6,
               color: 'var(--text-muted)',
-              maxWidth: '740px',
+              maxWidth: '620px',
               margin: '0 auto',
             }}
           >
-            Explore our featured client deliverables across custom web applications, AI copilots, high-volume e-commerce, and enterprise ERP systems.
+            A curated collection of web apps, mobile products, cloud platforms, and AI automation engines delivered for our global clients.
           </p>
         </div>
       </section>
 
-      {/* Projects Showcase */}
-      <section className="section-py">
+      {/* Main Reference Portfolio Component with 2x2 Grid + Detailed Phone/Monitor Showcases */}
+      <FeaturedProjects />
+
+      {/* Additional Case Studies Grid */}
+      <section className="section-py" style={{ paddingTop: '20px' }}>
         <div className="container">
-          {/* Category Filter Pills */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              flexWrap: 'wrap',
-              marginBottom: '48px',
-            }}
-          >
-            {filters.map((filter) => {
-              const isActive = selectedFilter === filter;
-              return (
-                <button
-                  key={filter}
-                  onClick={() => setSelectedFilter(filter)}
-                  style={{
-                    padding: '8px 18px',
-                    borderRadius: '9999px',
-                    fontSize: '13.5px',
-                    fontWeight: 600,
-                    border: isActive ? '1px solid var(--color-brand-blue)' : '1px solid #e2e8f0',
-                    backgroundColor: isActive ? 'var(--color-brand-blue)' : '#ffffff',
-                    color: isActive ? '#ffffff' : 'var(--text-muted)',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
-                  }}
-                >
-                  {filter}
-                </button>
-              );
-            })}
+          <div style={{ marginBottom: '32px' }}>
+            <span className="section-kicker">ENGINEERING SPECS</span>
+            <h2 className="section-title-ref">
+              Extended Case <span className="highlight-pill">Studies</span>
+            </h2>
           </div>
 
-          {/* Grid of Projects */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-              gap: '32px',
-              marginBottom: '64px',
-            }}
-          >
-            {filteredProjects.map((project) => (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+            {projectsData.map((project) => (
               <div
                 key={project.id}
-                className="corporate-card"
-                style={{
-                  padding: '0',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                }}
+                className="ref-card-white"
+                style={{ padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
               >
-                {/* Visual Header */}
-                <div
-                  style={{
-                    padding: '36px 32px',
-                    backgroundColor: 'var(--bg-dark)',
-                    color: '#ffffff',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
-                    <span
-                      style={{
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '11px',
-                        padding: '4px 10px',
-                        borderRadius: '4px',
-                        backgroundColor: 'rgba(37, 99, 235, 0.3)',
-                        color: 'var(--color-brand-cyan)',
-                        fontWeight: 600,
-                        textTransform: 'uppercase',
-                      }}
-                    >
-                      {project.category}
-                    </span>
+                <div>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 800, color: '#ff5722', textTransform: 'uppercase' }}>
+                    {project.category}
+                  </span>
 
-                    <span style={{ fontSize: '11px', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
-                      Production Ready
-                    </span>
-                  </div>
-
-                  <h3 style={{ fontSize: '22px', fontWeight: 800, color: '#ffffff', marginBottom: '6px' }}>
+                  <h3 style={{ fontSize: '22px', fontWeight: 900, color: 'var(--text-main)', margin: '8px 0 10px' }}>
                     {project.title}
                   </h3>
-                  <p style={{ fontSize: '13.5px', color: '#cbd5e1', lineHeight: 1.5 }}>
-                    {project.tagline}
+
+                  <p style={{ fontSize: '14px', lineHeight: 1.6, color: 'var(--text-muted)', marginBottom: '20px' }}>
+                    {project.description}
                   </p>
+
+                  <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '24px' }}>
+                    {project.technologies.map((t, i) => (
+                      <span
+                        key={i}
+                        style={{
+                          fontFamily: 'var(--font-mono)',
+                          fontSize: '11px',
+                          padding: '3px 8px',
+                          borderRadius: '4px',
+                          backgroundColor: '#f1f5f9',
+                          color: '#334155',
+                          fontWeight: 600,
+                        }}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Body */}
-                <div style={{ padding: '32px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
-                  <div>
-                    <p style={{ fontSize: '14.5px', lineHeight: 1.6, color: 'var(--text-muted)', marginBottom: '24px' }}>
-                      {project.description}
-                    </p>
-
-                    {/* Metrics Grid */}
-                    <div
-                      style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(3, 1fr)',
-                        gap: '8px',
-                        padding: '14px',
-                        borderRadius: '8px',
-                        backgroundColor: '#f8fafc',
-                        border: '1px solid #e2e8f0',
-                        marginBottom: '24px',
-                        textAlign: 'center',
-                      }}
-                    >
-                      {project.impactMetrics.map((metric, i) => (
-                        <div key={i}>
-                          <div style={{ fontSize: '16px', fontWeight: 800, color: 'var(--color-brand-blue)' }}>
-                            {metric.value}
-                          </div>
-                          <div style={{ fontSize: '11px', color: '#64748b', fontWeight: 500 }}>
-                            {metric.label}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Tech Chips */}
-                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '24px' }}>
-                      {project.technologies.map((tech, i) => (
-                        <span
-                          key={i}
-                          style={{
-                            fontFamily: 'var(--font-mono)',
-                            fontSize: '11.5px',
-                            padding: '3px 8px',
-                            borderRadius: '4px',
-                            backgroundColor: '#f1f5f9',
-                            color: '#334155',
-                            fontWeight: 500,
-                          }}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Action */}
-                  <div style={{ paddingTop: '20px', borderTop: '1px solid #f1f5f9' }}>
-                    <button
-                      onClick={() => setSelectedProject(project)}
-                      className="btn-primary"
-                      style={{ width: '100%', justifyContent: 'center', fontSize: '14px' }}
-                    >
-                      <span>View Full Case Study</span>
-                      <ArrowRight size={15} />
-                    </button>
-                  </div>
+                <div style={{ paddingTop: '16px', borderTop: '1px solid #eef2f6' }}>
+                  <button
+                    onClick={() => setSelectedProject(project)}
+                    className="btn-dark-pill"
+                    style={{ width: '100%', justifyContent: 'center', padding: '10px 18px', fontSize: '13px', cursor: 'pointer' }}
+                  >
+                    <span>View Architecture Specs</span>
+                    <ArrowRight size={14} />
+                  </button>
                 </div>
               </div>
             ))}
           </div>
-
-          {/* Bottom Custom Project Callout */}
-          <div
-            style={{
-              padding: '48px',
-              borderRadius: '16px',
-              backgroundColor: 'var(--bg-dark)',
-              color: '#ffffff',
-              textAlign: 'center',
-            }}
-          >
-            <h3 style={{ fontSize: '26px', fontWeight: 800, marginBottom: '12px', color: '#ffffff' }}>
-              Have a Custom System to Build?
-            </h3>
-            <p style={{ fontSize: '15px', color: '#94a3b8', maxWidth: '560px', margin: '0 auto 28px' }}>
-              We architect bespoke digital products tailored to your technical constraints and growth milestones.
-            </p>
-            <Link href="/contact" className="btn-light-accent">
-              <span>Request Custom Proposal</span>
-              <ArrowRight size={16} />
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Case Study Modal */}
+      {/* Pre-Footer CTA */}
+      <CTASection />
+
+      {/* Modal */}
       <CaseStudyModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </div>
   );
 }
+
