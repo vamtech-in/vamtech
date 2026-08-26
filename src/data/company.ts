@@ -32,40 +32,40 @@ export interface CompanyInfo {
 
 export const companyData: CompanyInfo = {
   name: 'VAMTech',
-  legalName: 'VAMTech Technologies Inc.',
-  tagline: 'Technology • Solutions • Innovation',
+  legalName: 'VAMTech Technologies',
+  tagline: 'Software • Transform • Accelerate',
   shortDescription:
-    'A modern technology company that builds scalable digital products, cloud platforms, and intelligent software solutions for ambitious businesses.',
-  heroHeadline: 'Building Technology That Moves Businesses Forward.',
+    'An agile software technology startup building scalable web applications, mobile platforms, and AI workflows for modern businesses and creators.',
+  heroHeadline: 'Software • Transform • Accelerate',
   heroSupportingText:
-    'VAMTech helps businesses transform ideas into scalable digital products through software engineering, AI, cloud, and modern technology solutions.',
+    'VAMTech turns bold ideas into production-ready software through rapid sprint delivery, modern tech stacks, and direct developer collaboration.',
   stats: [
     {
-      label: 'Projects Delivered',
-      value: '10+',
-      subtext: 'High-impact enterprise & startup products',
-    },
-    {
-      label: 'Technologies Mastered',
-      value: '5+',
-      subtext: 'Core modern stacks & cloud ecosystems',
-    },
-    {
-      label: 'Client Focus',
+      label: 'Developer Access',
       value: '100%',
-      subtext: 'Dedicated engineering & transparent delivery',
+      subtext: 'Direct collaboration with engineers',
     },
     {
-      label: 'Innovation & Agility',
-      value: '24/7',
-      subtext: 'Continuous architecture & rapid iteration',
+      label: 'MVP Velocity',
+      value: '2-4 Wk',
+      subtext: 'Rapid sprints from idea to launch',
+    },
+    {
+      label: 'IP Ownership',
+      value: '100%',
+      subtext: 'Full source code & asset transfer',
+    },
+    {
+      label: 'Modern Stacks',
+      value: 'Zero Debt',
+      subtext: 'Next.js, TypeScript, AI & Cloud',
     },
   ],
   contact: {
     email: 'vamtech.in@gmail.com',
     phone: '+91 7237900686 / +91 7307386706 / +91 6394770500',
     address: 'Tiwariganj, Lucknow (226028)',
-    hours: 'Monday – Saturday, 9:00 AM – 7:00 PM IST',
+    hours: 'Monday – Saturday, 9:00 AM – 8:00 PM IST',
   },
   social: {
     github: 'https://github.com/vamtech-in',
@@ -73,39 +73,40 @@ export const companyData: CompanyInfo = {
     twitter: 'https://twitter.com/vamtech_io',
   },
   mission:
-    'To empower businesses of all sizes with resilient, scalable, and intelligent digital products engineered with craftsmanship and modern software architecture.',
+    'To help founders and growing businesses launch and scale world-class software products through rapid iteration, modern architecture, and radical transparency.',
   vision:
-    'To become the world’s most trusted engineering partner for digital innovation, cloud transformation, and enterprise AI adoption.',
+    'To build an enduring, globally recognized tech innovation lab known for elite software craftsmanship and product velocity.',
   coreValues: [
     {
-      title: 'Engineering Excellence',
+      title: 'Direct Technical Collaboration',
       description:
-        'We uphold rigorous coding standards, automated testing, and clean architecture across every deliverable.',
+        'You talk directly to the engineers building your product. Zero non-technical middlemen or bloated management layers.',
       icon: 'Cpu',
     },
     {
-      title: 'Client-Centric Transparency',
+      title: 'Speed with Quality',
       description:
-        'Zero jargon, honest delivery timelines, and direct collaboration with senior technical architects.',
-      icon: 'ShieldCheck',
-    },
-    {
-      title: 'Innovation with Purpose',
-      description:
-        'We integrate cutting-edge AI and cloud capabilities only where they create measurable business ROI.',
+        'We believe in rapid iterative releases with automated tests, type safety, and clean scalable code from day one.',
       icon: 'Zap',
     },
     {
-      title: 'Scalability by Design',
+      title: 'Complete Transparency & IP Transfer',
       description:
-        'Every line of code is structured to scale seamlessly from thousands to millions of active users.',
+        'Full GitHub repository access, daily standups, and 100% intellectual property ownership transferred to you upon completion.',
+      icon: 'ShieldCheck',
+    },
+    {
+      title: 'Modern Cloud & AI First',
+      description:
+        'We leverage Next.js, React, Node, Python, and cutting-edge AI toolchains so your product is built for the future.',
       icon: 'Layers',
     },
     {
-      title: 'Long-Term Partnership',
+      title: 'Founder-Centric Partnership',
       description:
-        'We invest in the long-term success of our clients, offering post-launch evolution, monitoring, and support.',
+        'We treat every project as if it were our own flagship product, ensuring cost-efficient architecture and high ROI.',
       icon: 'Handshake',
     },
   ],
 };
+

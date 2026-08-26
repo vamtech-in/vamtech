@@ -4,24 +4,25 @@ import React from 'react';
 
 const statsData = [
   {
-    number: '382+',
-    label: 'Projects Done',
-    detail: 'Across 20+ global regions',
+    number: '100%',
+    label: 'Direct Developer Access',
+    detail: 'No middlemen or junior handoffs',
     shape: 'circle',
   },
   {
-    number: '14+',
-    label: 'Years Exp',
-    detail: 'Enterprise architecture & UX',
+    number: '2-4 Wk',
+    label: 'Rapid MVP Sprints',
+    detail: 'From concept to live production URL',
     shape: 'diamond',
   },
   {
-    number: '180+',
-    label: 'Satisfied Clients',
-    detail: '99.4% retention & satisfaction',
+    number: '100%',
+    label: 'IP & Code Ownership',
+    detail: 'Full source code & asset transfer',
     shape: 'flag',
   },
 ];
+
 
 export default function Stats() {
   return (

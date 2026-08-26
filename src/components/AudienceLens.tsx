@@ -6,36 +6,37 @@ import { ArrowRight } from 'lucide-react';
 
 const audienceSegments = [
   {
-    id: 'enterprises',
-    title: 'Enterprises',
-    description:
-      'We engineer resilient, audit-compliant custom software, modernize legacy infrastructures, and scale mission-critical cloud pipelines with strict SLA guarantees.',
-    tags: ['Legacy Modernization', 'Cloud Scale', 'SOC2 / HIPAA'],
-    badgeArt: 'SME',
-    badgeSub: 'ENTERPRISE SCALE',
-    artColor: '#38bdf8',
-  },
-  {
     id: 'startups',
-    title: 'Startups',
+    title: 'Founders & Startups',
     description:
-      'Turn bold product ideas into tested MVPs in weeks. We help high-growth founders validate fast, achieve product-market fit, and scale from Seed to Series B.',
-    tags: ['Rapid MVP Sprint', 'Full-Stack Pod', 'Fractional CTO'],
+      'Turn bold ideas into tested MVPs in 2-4 weeks. We help early-stage founders validate fast, launch clean web apps, and build scalable architectures ready for growth.',
+    tags: ['Rapid MVP Sprint', 'Full-Stack Next.js', 'Direct Developer Access'],
     badgeArt: 'START UP',
     badgeSub: 'RAPID VELOCITY',
     artColor: '#facc15',
   },
   {
-    id: 'agencies',
-    title: 'Agencies',
+    id: 'smes',
+    title: 'Growing Businesses',
     description:
-      'White-label software engineering pods and technical execution for top design and marketing agencies needing seamless, on-time client deliverables.',
-    tags: ['White-Label Delivery', 'Staff Augmentation', 'High Concurrency'],
+      'Custom management portals, client dashboards, automated billing workflows, and modern web platforms engineered to eliminate manual busywork and boost operational efficiency.',
+    tags: ['Custom Portals', 'Automated Workflows', 'Cloud Backends'],
+    badgeArt: 'BUSINESS',
+    badgeSub: 'DIGITAL SCALE',
+    artColor: '#38bdf8',
+  },
+  {
+    id: 'agencies',
+    title: 'Agencies & Creators',
+    description:
+      'Technical execution partner for digital agencies and creators who need fast, reliable, pixel-perfect software engineering for client web and mobile projects.',
+    tags: ['Fast Turnaround', 'Clean Codebases', 'Direct Slack Sync'],
     badgeArt: 'AGENCY',
-    badgeSub: 'ELITE PARTNERSHIP',
+    badgeSub: 'TECH PARTNER',
     artColor: '#a855f7',
   },
 ];
+
 
 export default function AudienceLens() {
   return (

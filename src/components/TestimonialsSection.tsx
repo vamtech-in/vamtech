@@ -3,36 +3,36 @@
 import React from 'react';
 import { Star } from 'lucide-react';
 
-const testimonials = [
+const commitments = [
   {
     id: 1,
+    title: 'Direct Senior Developer Access',
     quote:
-      'VAMTech transformed our legacy portal into a high-concurrency cloud architecture with zero downtime. Their velocity and code quality are unmatched.',
-    author: 'Sarah Jenkins',
-    role: 'VP of Engineering',
-    company: 'Fintech Scaleup',
-    rating: 5,
-    avatar: 'SJ',
+      'You collaborate directly with the engineers writing your code. Zero bureaucratic middlemen, zero account managers, and zero lost-in-translation requirements.',
+    author: 'Direct Communication',
+    role: 'Shared Slack & Discord',
+    tag: 'NO MIDDLEMEN',
+    icon: '⚡',
   },
   {
     id: 2,
+    title: 'Modern Stack & Clean Code',
     quote:
-      'The engineering pod delivered our entire AI copilot and RAG pipeline 3 weeks ahead of schedule. Truly elite software craftsmanship.',
-    author: 'Marcus Vance',
-    role: 'Co-Founder & CTO',
-    company: 'Nexus Intelligence',
-    rating: 5,
-    avatar: 'MV',
+      'We build exclusively with high-performance modern stacks: Next.js, React, TypeScript, Node.js, and serverless cloud. Zero bloated legacy code or fragile templates.',
+    author: 'Clean Architecture',
+    role: 'Production-Hardened',
+    tag: 'MODERN TECH',
+    icon: '🛡️',
   },
   {
     id: 3,
+    title: 'Milestone-Based & 100% IP Transfer',
     quote:
-      'Working with VAMTech feels like having a world-class in-house tech team. Transparent sprint demos, zero fluff, and pristine codebases.',
-    author: 'Elena Rostova',
-    role: 'Head of Product',
-    company: 'HyperCommerce LLC',
-    rating: 5,
-    avatar: 'ER',
+      'Transparent milestone billing with no hidden surprises. All GitHub repositories, custom code, and deployment scripts belong 100% to you from day one.',
+    author: 'Complete Ownership',
+    role: 'Full Source Code',
+    tag: '100% IP OWNERSHIP',
+    icon: '🚀',
   },
 ];
 
@@ -46,39 +46,42 @@ export default function TestimonialsSection() {
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         {/* Section Header */}
         <div className="testimonials-header">
-          <span className="section-kicker">TESTIMONIALS</span>
+          <span className="section-kicker">OUR COMMITMENT</span>
           <h2 className="section-title-ref">
-            Community love <span className="highlight-pill">us</span>
+            Why build with <span className="highlight-pill">us</span>
           </h2>
           <p className="testimonials-subtitle">
-            What technical founders, CTOs, and product leaders say about collaborating with our engineering team.
+            What makes our focused, high-velocity engineering lab the ideal partner for launching your digital product.
           </p>
         </div>
 
         {/* 3 White Cards Grid */}
         <div className="testimonials-grid">
-          {testimonials.map((t) => (
-            <div key={t.id} className="testimonial-card">
-              {/* Orange Quote Mark Icon */}
-              <div className="quote-icon">“</div>
-
-              {/* Star Rating */}
-              <div className="testimonial-stars">
-                {[...Array(t.rating)].map((_, i) => (
-                  <Star key={i} size={15} fill="#ff5722" color="#ff5722" />
-                ))}
+          {commitments.map((item) => (
+            <div key={item.id} className="testimonial-card">
+              {/* Top Tag & Icon */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+                <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', fontWeight: 800, color: '#ff5722', letterSpacing: '0.08em' }}>
+                  {item.tag}
+                </span>
+                <span style={{ fontSize: '20px' }}>{item.icon}</span>
               </div>
 
-              {/* Quote Text */}
-              <p className="testimonial-text">&ldquo;{t.quote}&rdquo;</p>
+              {/* Title */}
+              <h3 style={{ fontSize: '19px', fontWeight: 900, color: '#0c0e12', marginBottom: '10px', letterSpacing: '-0.02em' }}>
+                {item.title}
+              </h3>
 
-              {/* Author Info */}
+              {/* Description */}
+              <p className="testimonial-text">&ldquo;{item.quote}&rdquo;</p>
+
+              {/* Pillar Info */}
               <div className="testimonial-author">
-                <div className="author-avatar">{t.avatar}</div>
+                <div className="author-avatar">{item.icon}</div>
                 <div>
-                  <h4 className="author-name">{t.author}</h4>
+                  <h4 className="author-name">{item.author}</h4>
                   <p className="author-role">
-                    {t.role} • <span style={{ color: '#ff5722' }}>{t.company}</span>
+                    <span style={{ color: '#ff5722' }}>{item.role}</span>
                   </p>
                 </div>
               </div>

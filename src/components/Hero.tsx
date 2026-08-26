@@ -4,13 +4,13 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, Sparkles, Shield, Zap, Globe, Cpu } from 'lucide-react';
 
-const clientLogos = [
-  { name: 'Amazon', symbol: 'amazon' },
-  { name: 'Google', symbol: 'google' },
-  { name: 'Microsoft', symbol: 'microsoft' },
-  { name: 'Spotify', symbol: 'spotify' },
-  { name: 'Shopify', symbol: 'shopify' },
-  { name: 'Apple', symbol: 'apple' },
+const techStacks = [
+  { name: 'Next.js & React', icon: '⚡' },
+  { name: 'TypeScript', icon: '🔷' },
+  { name: 'Node & Python', icon: '🟢' },
+  { name: 'AI & Automation', icon: '🤖' },
+  { name: 'Cloud & DevOps', icon: '☁️' },
+  { name: 'Mobile Apps', icon: '📱' },
 ];
 
 export default function Hero() {
@@ -30,15 +30,15 @@ export default function Hero() {
           </h1>
 
           <p className="hero-subtitle">
-            Empower your business with cutting-edge digital solutions &amp; high-performance software engineering.
+            An ambitious tech startup building scalable web applications, mobile platforms, and AI workflows for modern founders and growing businesses.
           </p>
 
-          {/* Client Logos / Tech Strip */}
+          {/* Tech Stack Strip */}
           <div className="hero-clients-strip">
-            {clientLogos.map((client) => (
-              <div key={client.name} className="hero-client-item">
+            {techStacks.map((tech) => (
+              <div key={tech.name} className="hero-client-item">
                 <span className="client-dot" />
-                <span>{client.name}</span>
+                <span>{tech.name}</span>
               </div>
             ))}
           </div>
@@ -47,7 +47,7 @@ export default function Hero() {
         {/* Large Rounded Visual Showcase Card from Reference */}
         <div className="hero-showcase-frame">
           <div className="hero-image-backdrop">
-            {/* Architectural Cityscape / Office View Silhouette Graphic */}
+            {/* Architectural Grid & Innovation Lines */}
             <div className="cityscape-overlay">
               <div className="window-frame-lines">
                 <div className="window-pillar" />
@@ -60,17 +60,17 @@ export default function Hero() {
             <div className="hero-overlay-card">
               <div className="overlay-badge">
                 <span className="badge-pulse" />
-                <span>INNOVATION SQUAD</span>
+                <span>STARTUP ENGINEERING LAB</span>
               </div>
               <h3 className="overlay-title">
-                Architecting high-scale digital solutions for global industry leaders.
+                Turning bold product ideas into production-ready software.
               </h3>
               <p className="overlay-desc">
-                From high-throughput cloud backends to immersive mobile interfaces, we build software products that scale effortlessly.
+                From napkin sketches to scalable cloud backends, we build full-stack digital products with speed, clean code, and zero technical debt.
               </p>
               <div style={{ marginTop: '20px' }}>
                 <Link href="/projects" className="btn-white-pill">
-                  <span>Explore Work</span>
+                  <span>Explore Product Demos</span>
                   <ArrowRight size={15} color="#ff5722" />
                 </Link>
               </div>
