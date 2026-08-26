@@ -93,7 +93,7 @@ export default function Hero() {
                 </div>
 
                 <div className="terminal-content">
-                  <p className="t-comment">// Launching next-gen web &amp; AI platform</p>
+                  <p className="t-comment">{'// Launching next-gen web & AI platform'}</p>
                   <p className="t-code">
                     <span className="t-kw">const</span> <span className="t-var">project</span> = <span className="t-fn">createMVP</span>({'{'}
                   </p>
