@@ -107,7 +107,7 @@ export default function Hero() {
                 maxWidth: '580px',
               }}
             >
-              VAM|Tech helps businesses transform ideas into scalable digital products through software engineering, AI, cloud, and modern technology solutions.
+              VAMTech helps businesses transform ideas into scalable digital products through software engineering, AI, cloud, and modern technology solutions.
             </p>
 
             {/* CTA Buttons */}
