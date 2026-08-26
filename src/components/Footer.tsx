@@ -75,7 +75,7 @@ export default function Footer() {
             <div className="footer-contact-items">
               <div>
                 <span>Email:</span>
-                <a href="mailto:vamtech.in@gmail.com">vamtech.in@gmail.com</a>
+                <a href="mailto:contactvamtech@gmail.com">contactvamtech@gmail.com</a>
               </div>
               <div>
                 <span>Phone:</span>

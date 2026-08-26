@@ -70,8 +70,8 @@ export default function ContactSection() {
                   <div className="contact-icon">
                     <Mail size={16} />
                   </div>
-                  <a href="mailto:vamtech.in@gmail.com" className="contact-detail-text">
-                    vamtech.in@gmail.com
+                  <a href="mailto:contactvamtech@gmail.com" className="contact-detail-text">
+                    contactvamtech@gmail.com
                   </a>
                 </div>
 

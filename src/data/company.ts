@@ -62,7 +62,7 @@ export const companyData: CompanyInfo = {
     },
   ],
   contact: {
-    email: 'vamtech.in@gmail.com',
+    email: 'contactvamtech@gmail.com',
     phone: '+91 7237900686 / +91 7307386706 / +91 6394770500',
     address: 'Tiwariganj, Lucknow (226028)',
     hours: 'Monday – Saturday, 9:00 AM – 8:00 PM IST',
