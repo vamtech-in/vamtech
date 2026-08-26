@@ -46,7 +46,7 @@ export default function CommandPalette() {
     { title: 'Digital Transformation', category: 'Services', icon: <Code2 size={16} />, href: '/services#digital-transformation' },
     { title: 'Industry Solutions', category: 'Solutions', icon: <FileText size={16} />, href: '/solutions' },
     { title: 'Featured Case Studies & Portfolio', category: 'Work', icon: <FileText size={16} />, href: '/projects' },
-    { title: 'About VAM|Tech & Mission', category: 'About', icon: <FileText size={16} />, href: '/about' },
+    { title: 'About VAMTech & Mission', category: 'About', icon: <FileText size={16} />, href: '/about' },
     { title: 'Careers & Open Engineering Positions', category: 'Careers', icon: <Command size={16} />, href: '/careers' },
     { title: 'Schedule Architecture Consultation', category: 'Contact', icon: <Calendar size={16} />, href: '/contact' },
   ];
