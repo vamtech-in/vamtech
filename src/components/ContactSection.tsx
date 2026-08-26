@@ -75,13 +75,15 @@ export default function ContactSection() {
                   </a>
                 </div>
 
-                <div className="contact-detail-row">
-                  <div className="contact-icon">
+                <div className="contact-detail-row" style={{ alignItems: 'flex-start' }}>
+                  <div className="contact-icon" style={{ marginTop: '2px' }}>
                     <Phone size={16} />
                   </div>
-                  <span className="contact-detail-text">
-                    (+91) 72379 00686
-                  </span>
+                  <div className="contact-detail-text" style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                    <a href="tel:+917237900686" style={{ color: 'inherit' }}>(+91) 72379 00686</a>
+                    <a href="tel:+917307386706" style={{ color: 'inherit' }}>(+91) 73073 86706</a>
+                    <a href="tel:+916394770500" style={{ color: 'inherit' }}>(+91) 63947 70500</a>
+                  </div>
                 </div>
 
                 <div className="contact-detail-row">

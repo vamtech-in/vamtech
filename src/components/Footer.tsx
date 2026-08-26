@@ -79,7 +79,11 @@ export default function Footer() {
               </div>
               <div>
                 <span>Phone:</span>
-                <p>(+91) 72379 00686</p>
+                <p>
+                  <a href="tel:+917237900686" style={{ color: 'inherit' }}>(+91) 72379 00686</a><br />
+                  <a href="tel:+917307386706" style={{ color: 'inherit' }}>(+91) 73073 86706</a><br />
+                  <a href="tel:+916394770500" style={{ color: 'inherit' }}>(+91) 63947 70500</a>
+                </p>
               </div>
               <div>
                 <span>Location:</span>
