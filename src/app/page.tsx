@@ -23,7 +23,7 @@ export default function HomePage() {
       {/* 3. Services Section */}
       <ServicesSection />
 
-      {/* 4. Why VAM|Tech Section */}
+      {/* 4. Why VAMTech Section */}
       <WhyVamTech />
 
       {/* 5. Technology Stack Section */}

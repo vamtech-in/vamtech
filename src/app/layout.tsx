@@ -30,11 +30,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'VAM|Tech — IT Services, Cloud & Intelligent Software Solutions',
+  title: 'VAMTech — IT Services, Cloud & Intelligent Software Solutions',
   description:
-    'VAM|Tech builds scalable digital products, custom enterprise software, AI automation, and cloud platforms for ambitious startups and businesses.',
+    'VAMTech builds scalable digital products, custom enterprise software, AI automation, and cloud platforms for ambitious startups and businesses.',
   keywords: [
-    'VAM Tech',
+    'VAMTech',
     'Software Development',
     'AI Automation',
     'Web & Mobile Development',
@@ -42,13 +42,13 @@ export const metadata: Metadata = {
     'UI/UX Product Design',
     'Digital Transformation',
   ],
-  authors: [{ name: 'VAM|Tech Technologies Inc.' }],
+  authors: [{ name: 'VAMTech Technologies Inc.' }],
   openGraph: {
-    title: 'VAM|Tech — Building Technology That Moves Businesses Forward',
+    title: 'VAMTech — Building Technology That Moves Businesses Forward',
     description:
       'Transform ideas into scalable digital products through software engineering, AI, cloud, and modern technology solutions.',
     url: 'https://vamtech.io',
-    siteName: 'VAM|Tech',
+    siteName: 'VAMTech',
     type: 'website',
   },
 };

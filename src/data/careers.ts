@@ -12,7 +12,7 @@ export interface JobPosition {
 }
 
 export const careersData = {
-  headline: 'Build the Next Generation of Intelligent Software with VAM|Tech',
+  headline: 'Build the Next Generation of Intelligent Software with VAMTech',
   subheading:
     'Join an engineering-first culture that values deep technical craftsmanship, autonomous ownership, and continuous innovation.',
   perks: [

@@ -17,9 +17,9 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'About VAM|Tech — Mission, Vision & Engineering Culture',
+  title: 'About VAMTech — Mission, Vision & Engineering Culture',
   description:
-    'Learn about VAM|Tech, our mission to build resilient digital products, our core engineering values, and leadership principles.',
+    'Learn about VAMTech, our mission to build resilient digital products, our core engineering values, and leadership principles.',
 };
 
 const iconMap: Record<string, React.ReactNode> = {

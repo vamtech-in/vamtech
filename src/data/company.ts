@@ -31,14 +31,14 @@ export interface CompanyInfo {
 }
 
 export const companyData: CompanyInfo = {
-  name: 'VAM|Tech',
-  legalName: 'VAM|Tech Technologies Inc.',
+  name: 'VAMTech',
+  legalName: 'VAMTech Technologies Inc.',
   tagline: 'Technology • Solutions • Innovation',
   shortDescription:
     'A modern technology company that builds scalable digital products, cloud platforms, and intelligent software solutions for ambitious businesses.',
   heroHeadline: 'Building Technology That Moves Businesses Forward.',
   heroSupportingText:
-    'VAM|Tech helps businesses transform ideas into scalable digital products through software engineering, AI, cloud, and modern technology solutions.',
+    'VAMTech helps businesses transform ideas into scalable digital products through software engineering, AI, cloud, and modern technology solutions.',
   stats: [
     {
       label: 'Projects Delivered',
