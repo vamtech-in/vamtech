@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from './Logo';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,13 +25,10 @@ export default function Navbar() {
   }, [pathname]);
 
   const navLinks = [
-    { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
-    { name: 'Solutions', href: '/solutions' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'About', href: '/about' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Portfolio', href: '/projects' },
+    { name: 'Pricing', href: '/pricing' },
   ];
 
   return (
@@ -41,10 +38,9 @@ export default function Navbar() {
         top: 0,
         zIndex: 50,
         transition: 'all 0.25s ease',
-        backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.94)' : 'rgba(250, 253, 255, 0.76)',
-        backdropFilter: 'blur(16px)',
-        borderBottom: isScrolled ? '1px solid #dfe7f2' : '1px solid rgba(223, 231, 242, 0.64)',
-        boxShadow: isScrolled ? '0 10px 28px rgba(8, 27, 58, 0.06)' : 'none',
+        backgroundColor: isScrolled ? 'rgba(215, 226, 230, 0.88)' : 'transparent',
+        backdropFilter: isScrolled ? 'blur(16px)' : 'none',
+        borderBottom: isScrolled ? '1px solid rgba(0, 0, 0, 0.06)' : '1px solid transparent',
       }}
     >
       <div className="container">
@@ -53,7 +49,7 @@ export default function Navbar() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            height: '80px',
+            height: '84px',
           }}
         >
           {/* Logo */}
@@ -61,12 +57,12 @@ export default function Navbar() {
             <Logo size="md" />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation Links */}
           <nav
             style={{
               display: 'none',
               alignItems: 'center',
-              gap: '27px',
+              gap: '36px',
             }}
             className="desktop-nav"
           >
@@ -78,9 +74,9 @@ export default function Navbar() {
                   href={link.href}
                   style={{
                     fontSize: '14.5px',
-                    fontWeight: isActive ? 600 : 500,
-                    color: isActive ? 'var(--color-brand-blue)' : '#3f526d',
-                    transition: 'color 0.2s ease',
+                    fontWeight: isActive ? 700 : 600,
+                    color: isActive ? 'var(--color-orange)' : '#1e242c',
+                    transition: 'all 0.2s ease',
                     position: 'relative',
                     padding: '6px 0',
                   }}
@@ -91,12 +87,12 @@ export default function Navbar() {
                     <span
                       style={{
                         position: 'absolute',
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        height: '2px',
-                        backgroundColor: 'var(--color-brand-blue)',
-                        borderRadius: '2px',
+                        top: '-3px',
+                        right: '-8px',
+                        width: '5px',
+                        height: '5px',
+                        borderRadius: '50%',
+                        backgroundColor: 'var(--color-orange)',
                       }}
                     />
                   )}
@@ -105,19 +101,11 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Desktop CTA Button */}
-          <div style={{ display: 'none', alignItems: 'center', gap: '16px' }} className="desktop-nav">
-            <Link
-              href="/contact"
-              className="btn-primary"
-              style={{
-                padding: '10px 22px',
-                fontSize: '14px',
-                borderRadius: '10px',
-              }}
-            >
-              <span>Let&apos;s Talk</span>
-              <ArrowRight size={15} />
+          {/* Desktop "Hire Us Now" Pill Button */}
+          <div style={{ display: 'none', alignItems: 'center' }} className="desktop-nav">
+            <Link href="/contact" className="btn-hire-now">
+              <span className="status-dot" />
+              <span>Hire Us Now</span>
             </Link>
           </div>
 
@@ -130,8 +118,8 @@ export default function Navbar() {
               justifyContent: 'center',
               width: '42px',
               height: '42px',
-              borderRadius: '10px',
-              border: '1px solid #dbe6f3',
+              borderRadius: '50%',
+              border: '1px solid rgba(0, 0, 0, 0.1)',
               backgroundColor: '#ffffff',
               color: 'var(--text-main)',
               cursor: 'pointer',
@@ -139,7 +127,7 @@ export default function Navbar() {
             className="mobile-hamburger-btn"
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
@@ -149,14 +137,26 @@ export default function Navbar() {
         <div
           style={{
             backgroundColor: '#ffffff',
-            borderBottom: '1px solid #e2e8f0',
-            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+            borderBottom: '1px solid #d7e2e6',
+            boxShadow: '0 20px 30px rgba(0, 0, 0, 0.12)',
             padding: '24px',
             animation: 'fadeIn 0.2s ease-out',
           }}
           className="mobile-drawer-container"
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <Link
+              href="/"
+              style={{
+                fontSize: '16px',
+                fontWeight: pathname === '/' ? 800 : 600,
+                color: pathname === '/' ? 'var(--color-orange)' : 'var(--text-main)',
+                padding: '8px 12px',
+              }}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Home
+            </Link>
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -165,32 +165,28 @@ export default function Navbar() {
                   href={link.href}
                   style={{
                     fontSize: '16px',
-                    fontWeight: isActive ? 700 : 500,
-                    color: isActive ? 'var(--color-brand-blue)' : 'var(--text-main)',
+                    fontWeight: isActive ? 800 : 600,
+                    color: isActive ? 'var(--color-orange)' : 'var(--text-main)',
                     padding: '8px 12px',
-                    borderRadius: '6px',
-                    backgroundColor: isActive ? 'rgba(37, 99, 235, 0.08)' : 'transparent',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
+                    borderRadius: '8px',
+                    backgroundColor: isActive ? 'rgba(255, 87, 34, 0.08)' : 'transparent',
                   }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <span>{link.name}</span>
-                  {isActive && <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--color-brand-blue)' }} />}
+                  {link.name}
                 </Link>
               );
             })}
 
-            <div style={{ paddingTop: '16px', borderTop: '1px solid #f1f5f9' }}>
+            <div style={{ paddingTop: '16px', borderTop: '1px solid #edf2f5' }}>
               <Link
                 href="/contact"
-                className="btn-primary"
-                style={{ width: '100%', padding: '14px', justifyContent: 'center' }}
+                className="btn-hire-now"
+                style={{ width: '100%', justifyContent: 'center', padding: '14px' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <span>Let&apos;s Talk</span>
-                <ArrowRight size={16} />
+                <span className="status-dot" />
+                <span>Hire Us Now</span>
               </Link>
             </div>
           </div>
@@ -198,7 +194,7 @@ export default function Navbar() {
       )}
 
       <style jsx>{`
-        @media (min-width: 1024px) {
+        @media (min-width: 900px) {
           .desktop-nav {
             display: flex !important;
           }
@@ -210,9 +206,10 @@ export default function Navbar() {
           }
         }
         .nav-link-item:hover {
-          color: var(--color-brand-blue) !important;
+          color: var(--color-orange) !important;
         }
       `}</style>
     </header>
   );
 }
+
