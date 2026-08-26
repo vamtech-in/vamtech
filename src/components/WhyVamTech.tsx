@@ -26,7 +26,7 @@ export default function WhyVamTech() {
         {/* Section Header */}
         <div className="section-header">
           <div className="section-badge section-badge-dark">Engineering Standards</div>
-          <h2 className="section-title section-title-dark">Why High-Growth Companies Choose VAM|Tech</h2>
+          <h2 className="section-title section-title-dark">Why High-Growth Companies Choose VAMTech</h2>
           <p className="section-subtitle section-subtitle-dark">
             We operate as your dedicated technical arm, delivering enterprise-grade code craftsmanship, scalable cloud architectures, and transparent communication.
           </p>
