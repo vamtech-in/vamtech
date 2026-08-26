@@ -35,8 +35,18 @@ function saveLeads(leads: any[]) {
   }
 }
 
-// GET: Retrieve all form submissions
-export async function GET() {
+const ADMIN_PASSCODE = process.env.ADMIN_PASSWORD || 'vamtech2026';
+
+function isAuthorizedAdmin(request: Request) {
+  const adminKey = request.headers.get('x-admin-key');
+  return adminKey === ADMIN_PASSCODE;
+}
+
+// GET: Retrieve all form submissions (Admin Protected)
+export async function GET(request: Request) {
+  if (!isAuthorizedAdmin(request)) {
+    return NextResponse.json({ success: false, error: 'Unauthorized access. Valid Admin Passcode required.' }, { status: 401 });
+  }
   const leads = readLeads();
   return NextResponse.json({ success: true, count: leads.length, leads }, { status: 200 });
 }
@@ -212,8 +222,11 @@ export async function POST(request: Request) {
   }
 }
 
-// DELETE: Delete a specific lead or clear submissions
+// DELETE: Delete a specific lead or clear submissions (Admin Protected)
 export async function DELETE(request: Request) {
+  if (!isAuthorizedAdmin(request)) {
+    return NextResponse.json({ success: false, error: 'Unauthorized access. Valid Admin Passcode required.' }, { status: 401 });
+  }
   try {
     const { searchParams } = new URL(request.url);
     const leadId = searchParams.get('id');

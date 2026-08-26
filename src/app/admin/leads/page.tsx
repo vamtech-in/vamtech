@@ -15,7 +15,11 @@ import {
   DollarSign, 
   Clock, 
   CheckCircle2,
-  FileText
+  FileText,
+  Lock,
+  KeyRound,
+  ShieldAlert,
+  LogOut
 } from 'lucide-react';
 
 interface Lead {
@@ -33,39 +37,75 @@ interface Lead {
 }
 
 export default function AdminLeadsPage() {
+  const [passcode, setPasscode] = useState('');
+  const [inputPasscode, setInputPasscode] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authError, setAuthError] = useState<string | null>(null);
+
   const [leads, setLeads] = useState<Lead[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
 
-  const fetchLeads = async () => {
+  // Check saved session on mount
+  useEffect(() => {
+    const savedKey = typeof window !== 'undefined' ? sessionStorage.getItem('vamtech_admin_key') : null;
+    if (savedKey) {
+      setPasscode(savedKey);
+      fetchLeadsWithKey(savedKey);
+    }
+  }, []);
+
+  const fetchLeadsWithKey = async (keyToUse: string) => {
     setIsLoading(true);
+    setAuthError(null);
     try {
-      const res = await fetch('/api/contact');
+      const res = await fetch('/api/contact', {
+        headers: { 'x-admin-key': keyToUse }
+      });
       const data = await res.json();
-      if (data.success) {
+      if (res.status === 401 || !data.success) {
+        setIsAuthenticated(false);
+        setAuthError(data.error || 'Access Denied: Invalid Admin Passcode.');
+        sessionStorage.removeItem('vamtech_admin_key');
+      } else {
+        setIsAuthenticated(true);
         setLeads(data.leads || []);
+        sessionStorage.setItem('vamtech_admin_key', keyToUse);
       }
     } catch (err) {
-      console.error('Failed to fetch leads:', err);
+      setAuthError('Connection error. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
 
-  useEffect(() => {
-    fetchLeads();
-  }, []);
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!inputPasscode.trim()) return;
+    setPasscode(inputPasscode.trim());
+    fetchLeadsWithKey(inputPasscode.trim());
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setPasscode('');
+    setInputPasscode('');
+    sessionStorage.removeItem('vamtech_admin_key');
+  };
 
   const handleDelete = async (id?: string) => {
     if (!confirm(id ? 'Delete this lead entry?' : 'Clear ALL received leads?')) return;
     try {
       const url = id ? `/api/contact?id=${id}` : '/api/contact';
-      await fetch(url, { method: 'DELETE' });
+      await fetch(url, { 
+        method: 'DELETE',
+        headers: { 'x-admin-key': passcode }
+      });
       if (selectedLead && (selectedLead.id === id || !id)) {
         setSelectedLead(null);
       }
-      fetchLeads();
+      fetchLeadsWithKey(passcode);
     } catch (err) {
       console.error('Delete error:', err);
     }
@@ -105,6 +145,94 @@ export default function AdminLeadsPage() {
     l.id.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // If NOT Authenticated: Render Secure Admin Login Gate Screen
+  if (!isAuthenticated) {
+    return (
+      <div style={{ padding: '80px 0 120px', position: 'relative', minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
+        <AtmosphericWash variant="coral-sky" size={540} top="-60px" left="-80px" opacity={0.4} />
+
+        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '440px' }}>
+          <div className="monad-card" style={{ backgroundColor: '#ffffff', padding: '40px 32px', textAlign: 'center' }}>
+            <div
+              style={{
+                width: '64px',
+                height: '64px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(0, 102, 255, 0.1)',
+                color: 'var(--color-lake-blue)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 20px',
+              }}
+            >
+              <Lock size={28} />
+            </div>
+
+            <h2 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '26px', fontWeight: 400, color: 'var(--color-off-black)', marginBottom: '8px' }}>
+              Restricted Admin Inbox
+            </h2>
+
+            <p style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '13px', color: 'var(--color-graphite)', marginBottom: '24px', lineHeight: 1.5 }}>
+              This portal contains confidential client inquiries and form submissions. Please enter your Admin Passcode to authenticate.
+            </p>
+
+            {authError && (
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '12px 14px',
+                  borderRadius: '12px',
+                  backgroundColor: 'rgba(243, 122, 10, 0.12)',
+                  border: '1px solid var(--color-crimson)',
+                  color: '#993a00',
+                  fontSize: '12.5px',
+                  fontFamily: 'var(--font-abc-diatype-mono)',
+                  marginBottom: '20px',
+                  textAlign: 'left'
+                }}
+              >
+                <ShieldAlert size={16} color="var(--color-crimson)" style={{ flexShrink: 0 }} />
+                <span>{authError}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div>
+                <label className="monad-label" style={{ textAlign: 'left' }}>Admin Passcode *</label>
+                <div style={{ position: 'relative' }}>
+                  <KeyRound size={16} color="var(--color-smoke)" style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)' }} />
+                  <input
+                    type="password"
+                    required
+                    placeholder="Enter Admin Passcode..."
+                    value={inputPasscode}
+                    onChange={(e) => setInputPasscode(e.target.value)}
+                    className="monad-input"
+                    style={{ paddingLeft: '40px', fontSize: '14px' }}
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="btn-primary"
+                style={{ width: '100%', fontSize: '13.5px', padding: '12px', justifyContent: 'center' }}
+              >
+                <span>{isLoading ? 'Verifying Passcode...' : 'Unlock Admin Inbox'}</span>
+                <span className="arrow-glyph">▸</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Authenticated Admin View
   return (
     <div style={{ padding: '40px 0 100px', position: 'relative', minHeight: '85vh' }}>
       <AtmosphericWash variant="coral-sky" size={600} top="-100px" left="-100px" opacity={0.35} />
@@ -118,6 +246,9 @@ export default function AdminLeadsPage() {
               <h1 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '32px', fontWeight: 400 }}>
                 Form Submissions Inbox
               </h1>
+              <span style={{ fontSize: '11px', fontFamily: 'var(--font-abc-diatype-mono)', padding: '2px 8px', borderRadius: '9999px', backgroundColor: 'rgba(167, 252, 205, 0.4)', color: '#0b5930', fontWeight: 600 }}>
+                AUTHENTICATED ADMIN
+              </span>
             </div>
             <p style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '14px', color: 'var(--color-graphite)' }}>
               All client intake messages submitted directly via the website contact form.
@@ -125,7 +256,7 @@ export default function AdminLeadsPage() {
           </div>
 
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-            <button onClick={fetchLeads} className="btn-ghost" style={{ fontSize: '13px', padding: '10px 16px' }}>
+            <button onClick={() => fetchLeadsWithKey(passcode)} className="btn-ghost" style={{ fontSize: '13px', padding: '10px 16px' }}>
               <RefreshCw size={14} className={isLoading ? 'animate-spin' : ''} />
               <span>Refresh</span>
             </button>
@@ -136,6 +267,10 @@ export default function AdminLeadsPage() {
             <button onClick={() => handleDelete()} disabled={leads.length === 0} className="btn-ghost" style={{ fontSize: '13px', padding: '10px 16px', color: 'var(--color-crimson)' }}>
               <Trash2 size={14} />
               <span>Clear All</span>
+            </button>
+            <button onClick={handleLogout} className="btn-ghost" style={{ fontSize: '13px', padding: '10px 14px' }} title="Lock Admin Portal">
+              <LogOut size={14} />
+              <span>Lock Portal</span>
             </button>
           </div>
         </div>
