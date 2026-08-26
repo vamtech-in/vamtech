@@ -41,6 +41,9 @@ export const metadata: Metadata = {
     'Digital Transformation',
   ],
   authors: [{ name: 'VAMTech Technologies Inc.' }],
+  verification: {
+    google: 'bsvWlgXxqFFkRu7Q0Tuqd5SDjB-ctvgNL4hgM8Eooqk',
+  },
   openGraph: {
     title: 'VAMTech — Software • Transform • Accelerate',
     description:
@@ -64,6 +67,10 @@ export default function RootLayout({
     >
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="google-site-verification"
+          content="bsvWlgXxqFFkRu7Q0Tuqd5SDjB-ctvgNL4hgM8Eooqk"
+        />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <script
           dangerouslySetInnerHTML={{
