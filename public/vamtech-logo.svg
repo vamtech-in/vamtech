@@ -1,82 +1,94 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 135" width="100%" height="100%">
   <defs>
-    <!-- Gradient for V -->
-    <linearGradient id="vamVGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FF7A00"/>
-      <stop offset="100%" stop-color="#FF2E54"/>
+    <!-- Gradient for V: Bright Orange to Coral Pink -->
+    <linearGradient id="vamV" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B00" />
+      <stop offset="60%" stop-color="#FF334B" />
+      <stop offset="100%" stop-color="#FF1E62" />
     </linearGradient>
 
-    <!-- Gradient for A -->
-    <linearGradient id="vamAGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FF1E6D"/>
-      <stop offset="100%" stop-color="#9B00E8"/>
+    <!-- Gradient for A: Hot Pink/Magenta to Violet -->
+    <linearGradient id="vamA" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FA006E" />
+      <stop offset="65%" stop-color="#C800A1" />
+      <stop offset="100%" stop-color="#8A2BE2" />
     </linearGradient>
 
-    <!-- Gradient for M -->
-    <linearGradient id="vamMGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#8B1FE8"/>
-      <stop offset="100%" stop-color="#0066FF"/>
-    </linearGradient>
-
-    <!-- Gradient for Tech -->
-    <linearGradient id="techGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0055FF"/>
-      <stop offset="100%" stop-color="#0066FF"/>
+    <!-- Gradient for M: Violet/Purple to Electric Royal Blue -->
+    <linearGradient id="vamM" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8338EC" />
+      <stop offset="50%" stop-color="#5E43F3" />
+      <stop offset="100%" stop-color="#0062FF" />
     </linearGradient>
   </defs>
 
   <g id="VAMTechLogo">
     <!-- Letter V -->
-    <path d="M 24 45 L 52 90 Q 56 96 62 96 Q 68 96 72 90 L 100 45" 
-          fill="none" 
-          stroke="url(#vamVGrad)" 
-          stroke-width="16" 
-          stroke-linecap="round" 
-          stroke-linejoin="round"/>
+    <path
+      d="M 22 36 L 56 90 C 58 94 66 94 68 90 L 102 36"
+      fill="none"
+      stroke="url(#vamV)"
+      stroke-width="15"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
 
     <!-- Letter A -->
-    <path d="M 98 90 L 126 45 Q 131 38 138 38 Q 145 38 150 45 L 178 90" 
-          fill="none" 
-          stroke="url(#vamAGrad)" 
-          stroke-width="16" 
-          stroke-linecap="round" 
-          stroke-linejoin="round"/>
-    <!-- Dot in A -->
-    <circle cx="138" cy="80" r="10" fill="#FF4400"/>
+    <path
+      d="M 112 90 L 144 36 C 146 32 154 32 156 36 L 188 90"
+      fill="none"
+      stroke="url(#vamA)"
+      stroke-width="15"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <!-- Center Circle in A -->
+    <circle cx="150" cy="78" r="9.5" fill="#FF4400" />
 
     <!-- Letter M -->
-    <path d="M 188 90 L 188 46 Q 188 38 196 38 Q 204 38 209 46 L 223 68 Q 227 74 231 68 L 245 46 Q 250 38 258 38 Q 266 38 266 46 L 266 90" 
-          fill="none" 
-          stroke="url(#vamMGrad)" 
-          stroke-width="15" 
-          stroke-linecap="round" 
-          stroke-linejoin="round"/>
+    <path
+      d="M 200 90 L 200 40 C 200 33 209 33 213 40 L 229 64 C 231 67 235 67 237 64 L 253 40 C 257 33 266 33 266 40 L 266 90"
+      fill="none"
+      stroke="url(#vamM)"
+      stroke-width="14.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
 
-    <!-- Divider Bar -->
-    <line x1="288" y1="36" x2="288" y2="94" stroke="#0066FF" stroke-width="3" stroke-linecap="round"/>
+    <!-- Vertical Separator Divider -->
+    <line
+      x1="285"
+      y1="28"
+      x2="285"
+      y2="98"
+      stroke="#0062FF"
+      stroke-width="2.8"
+      stroke-linecap="round"
+    />
 
-    <!-- Word Tech -->
-    <!-- T -->
-    <path d="M 304 46 L 334 46 M 319 46 L 319 90" stroke="#0055FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-    
-    <!-- e -->
-    <path d="M 340 70 L 364 70 C 364 58 340 58 340 70 C 340 84 364 84 364 78" fill="none" stroke="#0055FF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Wordmark: Tech -->
+    <text
+      x="298"
+      y="92"
+      font-family="'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif"
+      font-size="68"
+      font-weight="500"
+      fill="#0062FF"
+      letter-spacing="-0.5px"
+    >Tech</text>
 
-    <!-- c -->
-    <path d="M 390 64 C 384 56 370 58 370 70 C 370 82 384 84 390 76" fill="none" stroke="#0055FF" stroke-width="7" stroke-linecap="round"/>
-
-    <!-- h -->
-    <path d="M 396 46 L 396 90 M 396 66 C 400 58 416 58 416 68 L 416 90" fill="none" stroke="#0055FF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-
-    <!-- Subtitle: TECHNOLOGY • SOLUTIONS • INNOVATION -->
-    <text x="210" y="114" 
-          font-family="'ABC Diatype Mono', 'JetBrains Mono', 'Segoe UI', monospace" 
-          font-size="11" 
-          font-weight="600" 
-          letter-spacing="3.5" 
-          text-anchor="middle" 
-          fill="#333333">
-      TECHNOLOGY <tspan fill="#FF7A00">•</tspan> SOLUTIONS <tspan fill="#E5007D">•</tspan> INNOVATION
+    <!-- Subtitle / Tagline -->
+    <text
+      x="230"
+      y="126"
+      font-family="'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif"
+      font-size="11.5"
+      font-weight="600"
+      letter-spacing="3.4px"
+      text-anchor="middle"
+      fill="#475569"
+    >
+      TECHNOLOGY <tspan fill="#FF6B00" font-weight="700"> • </tspan> SOLUTIONS <tspan fill="#FA006E" font-weight="700"> • </tspan> INNOVATION
     </text>
   </g>
 </svg>
