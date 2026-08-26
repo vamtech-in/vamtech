@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Shield, ArrowLeft } from 'lucide-react';
 
 export const metadata = {
-  title: 'Privacy Policy & Data Safeguards — VAM|Tech',
-  description: 'VAM|Tech Technologies Privacy Policy, client data protection commitments, and GDPR/CCPA compliance standards.',
+  title: 'Privacy Policy & Data Safeguards — VAMTech',
+  description: 'VAMTech Technologies Privacy Policy, client data protection commitments, and GDPR/CCPA compliance standards.',
 };
 
 export default function PrivacyPage() {
@@ -50,7 +50,7 @@ export default function PrivacyPage() {
           </h1>
 
           <p style={{ marginBottom: '32px', fontSize: '12px', fontFamily: 'var(--font-mono)', color: '#64748b' }}>
-            LAST REVISED: FEBRUARY 2026 • VAM|TECH TECHNOLOGIES INC.
+            LAST REVISED: FEBRUARY 2026 • VAMTECH TECHNOLOGIES INC.
           </p>
 
           <div
