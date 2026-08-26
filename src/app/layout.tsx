@@ -61,6 +61,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${ebGaramond.variable} ${jetbrainsMono.variable} ${inter.variable}`}
     >
       <head>
@@ -89,6 +90,7 @@ export default function RootLayout({
         />
       </head>
       <body
+        suppressHydrationWarning
         style={{
           backgroundColor: '#f8fafc',
           color: '#0f172a',
