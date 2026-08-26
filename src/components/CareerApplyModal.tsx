@@ -166,11 +166,11 @@ export default function CareerApplyModal({ position, onClose }: CareerApplyModal
               </div>
 
               <div>
-                <label className="corporate-label">Why VAM|Tech? (Short Note) *</label>
+                <label className="corporate-label">Why VAMTech? (Short Note) *</label>
                 <textarea
                   required
                   rows={3}
-                  placeholder="Tell us about a technical challenge you solved and why you'd like to build with VAM|Tech..."
+                  placeholder="Tell us about a technical challenge you solved and why you'd like to build with VAMTech..."
                   value={formData.coverNote}
                   onChange={(e) => setFormData({ ...formData, coverNote: e.target.value })}
                   className="corporate-textarea"
