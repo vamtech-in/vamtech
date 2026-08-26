@@ -110,7 +110,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
 
             <div style={{ padding: '18px', borderRadius: '10px', backgroundColor: '#ffffff', border: '1px solid #e2e8f0' }}>
               <h4 style={{ fontSize: '15px', fontWeight: 700, color: '#10b981', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span>VAM|Tech Architectural Solution</span>
+                <span>VAMTech Architectural Solution</span>
               </h4>
               <p style={{ fontSize: '14px', lineHeight: 1.6, color: 'var(--text-muted)' }}>
                 {project.solution}
