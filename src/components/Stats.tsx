@@ -1,32 +1,132 @@
 'use client';
 
 import React from 'react';
-import { companyData } from '@/data/company';
+
+const statsData = [
+  {
+    number: '382+',
+    label: 'Projects Done',
+    detail: 'Across 20+ global regions',
+    shape: 'circle',
+  },
+  {
+    number: '14+',
+    label: 'Years Exp',
+    detail: 'Enterprise architecture & UX',
+    shape: 'diamond',
+  },
+  {
+    number: '180+',
+    label: 'Satisfied Clients',
+    detail: '99.4% retention & satisfaction',
+    shape: 'flag',
+  },
+];
 
 export default function Stats() {
   return (
-    <section className="stats-shell">
+    <section className="stats-ref-section">
       <div className="container">
-        <div className="stats-intro"><span>Built for outcomes</span><p>Strategy, design and engineering working as one delivery team.</p></div>
-        <div className="stats-grid">
-          {companyData.stats.map((stat, index) => (
-            <div className="stats-item" key={stat.label}>
-              <span className="stats-index">0{index + 1}</span>
-              <strong>{stat.value}</strong>
-              <h3>{stat.label}</h3>
-              <p>{stat.subtext}</p>
+        <div className="stats-ref-grid">
+          {statsData.map((stat, idx) => (
+            <div key={idx} className="stat-ref-card">
+              <div className={`stat-geometric-badge shape-${stat.shape}`}>
+                <span className="stat-number">{stat.number}</span>
+              </div>
+              <h3 className="stat-label">{stat.label}</h3>
+              <p className="stat-detail">{stat.detail}</p>
             </div>
           ))}
         </div>
       </div>
+
       <style jsx>{`
-        .stats-shell { position: relative; z-index: 2; margin-top: -1px; padding: 0 0 34px; background: #f6f8fc; }
-        .stats-shell > :global(.container) { display: grid; grid-template-columns: .92fr 2.1fr; overflow: hidden; border: 1px solid #164176; border-radius: 18px; background: linear-gradient(120deg, #071a3b, #0b2e67); box-shadow: 0 20px 38px rgba(7,26,59,.13); }
-        .stats-intro { display: flex; flex-direction: column; justify-content: center; padding: 28px; border-right: 1px solid rgba(168,205,255,.18); background: rgba(0,13,37,.17); }.stats-intro span { margin-bottom: 8px; color: #83c2ff; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }.stats-intro p { color: #e4f0ff; font-size: 14px; font-weight: 600; line-height: 1.45; }
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }.stats-item { position: relative; min-height: 160px; padding: 28px 23px 24px; border-right: 1px solid rgba(168,205,255,.14); }.stats-item:last-child { border-right: 0; }.stats-index { position: absolute; top: 16px; right: 17px; color: rgba(157,205,255,.44); font-family: var(--font-mono); font-size: 10px; }.stats-item strong { display: block; margin-bottom: 11px; color: #fff; font-size: clamp(28px, 2.5vw, 39px); font-weight: 800; letter-spacing: -.06em; }.stats-item h3 { margin-bottom: 4px; color: #a2ceff; font-size: 13px; letter-spacing: -.01em; }.stats-item p { color: #9fb5d3; font-size: 11px; line-height: 1.45; }
-        @media (max-width: 1020px) { .stats-shell > :global(.container) { grid-template-columns: 1fr; }.stats-intro { border-right: 0; border-bottom: 1px solid rgba(168,205,255,.18); }.stats-grid { grid-template-columns: repeat(4, 1fr); } }
-        @media (max-width: 650px) { .stats-shell { padding-bottom: 18px; }.stats-shell > :global(.container) { border-radius: 14px; }.stats-grid { grid-template-columns: repeat(2, 1fr); }.stats-item { min-height: 135px; padding: 23px 16px; border-bottom: 1px solid rgba(168,205,255,.14); }.stats-item:nth-child(2n) { border-right: 0; }.stats-item:nth-last-child(-n+2) { border-bottom: 0; }.stats-intro { padding: 22px 18px; } }
+        .stats-ref-section {
+          padding: 60px 0;
+          position: relative;
+        }
+
+        .stats-ref-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 32px;
+          align-items: center;
+          text-align: center;
+        }
+
+        .stat-ref-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 16px;
+        }
+
+        .stat-geometric-badge {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, #ff6b3d 0%, #ff5722 100%);
+          color: #ffffff;
+          box-shadow: 0 14px 34px rgba(255, 87, 34, 0.38);
+          margin-bottom: 18px;
+          transition: transform 0.25s ease;
+        }
+
+        .stat-geometric-badge:hover {
+          transform: scale(1.05) rotate(2deg);
+        }
+
+        .shape-circle {
+          width: 104px;
+          height: 104px;
+          border-radius: 50% 50% 50% 12px;
+        }
+
+        .shape-diamond {
+          width: 96px;
+          height: 96px;
+          border-radius: 20px;
+          transform: rotate(10deg);
+        }
+
+        .shape-diamond .stat-number {
+          transform: rotate(-10deg);
+        }
+
+        .shape-flag {
+          width: 104px;
+          height: 104px;
+          border-radius: 14px 50% 50% 50%;
+        }
+
+        .stat-number {
+          font-size: clamp(26px, 3vw, 34px);
+          font-weight: 900;
+          letter-spacing: -0.04em;
+          color: #ffffff;
+        }
+
+        .stat-label {
+          font-size: 19px;
+          font-weight: 900;
+          color: #0c0e12;
+          margin-bottom: 4px;
+          letter-spacing: -0.02em;
+        }
+
+        .stat-detail {
+          font-size: 13.5px;
+          color: #5f7082;
+        }
+
+        @media (max-width: 768px) {
+          .stats-ref-grid {
+            grid-template-columns: 1fr;
+            gap: 28px;
+          }
+        }
       `}</style>
     </section>
   );
 }
+

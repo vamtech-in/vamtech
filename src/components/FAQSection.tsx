@@ -1,0 +1,360 @@
+'use client';
+
+import React, { useState } from 'react';
+import { ChevronDown, Send, Sparkles, HelpCircle, CheckCircle } from 'lucide-react';
+
+const faqs = [
+  {
+    q: 'What is your typical project kickoff timeline?',
+    a: 'Following our initial technical discovery call and scope sign-off, we typically assemble and deploy our dedicated engineering pod within 5 to 7 business days.',
+  },
+  {
+    q: 'Do you provide full source code and 100% IP ownership?',
+    a: 'Yes, absolutely. Upon completion of each sprint milestone, all repositories, custom codebases, design assets, and cloud infrastructure scripts belong entirely to your company.',
+  },
+  {
+    q: 'How do you handle project communication and tracking?',
+    a: 'We establish a direct Slack or Teams shared channel for daily communication and conduct weekly live sprint demos. All tasks are transparently tracked on Jira or Linear with real-time GitHub visibility.',
+  },
+  {
+    q: 'What engagement models do you offer?',
+    a: 'We offer Dedicated Engineering Pods for ongoing product scaling, Fixed-Scope Milestones for defined MVPs, and Fractional CTO Retainers for architectural leadership.',
+  },
+  {
+    q: 'Can you work with our existing in-house tech team?',
+    a: 'Yes. Our senior developers seamlessly integrate with existing Git workflows, CI/CD pipelines, and design systems to immediately accelerate engineering velocity.',
+  },
+];
+
+export default function FAQSection() {
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [quickEmail, setQuickEmail] = useState('');
+  const [sent, setSent] = useState(false);
+
+  const handleQuickSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (quickEmail) {
+      setSent(true);
+      setTimeout(() => setSent(false), 4000);
+      setQuickEmail('');
+    }
+  };
+
+  return (
+    <section className="section-py" id="faq">
+      <div className="container">
+        {/* Section Header */}
+        <div className="faq-header">
+          <span className="section-kicker">COMMON QUESTIONS</span>
+          <h2 className="section-title-ref">
+            Community&apos;s <span className="highlight-pill">questions</span>
+          </h2>
+          <p className="faq-subtitle">
+            Answers to common questions regarding our engineering sprints, IP ownership, and technical workflows.
+          </p>
+        </div>
+
+        {/* 2-Column Split: Character Graphic & Inquire Box vs Dark Accordion */}
+        <div className="faq-split-grid">
+          {/* Left Column: Graphic & Quick Ask Box */}
+          <div className="faq-left-col">
+            {/* 3D Character Illustration Mockup from Reference */}
+            <div className="faq-character-card">
+              <div className="character-bubble">
+                <span className="char-badge">💡 Got questions?</span>
+                <p>Our lead architects are ready to answer your technical questions.</p>
+              </div>
+              <div className="character-avatar-circle">
+                <div className="avatar-art">👨‍💻</div>
+                <div className="floating-question-mark q-1">?</div>
+                <div className="floating-question-mark q-2">?</div>
+              </div>
+            </div>
+
+            {/* Dark Quick Inquire Card from Reference */}
+            <div className="quick-inquire-box">
+              <h4>Quick Technical Inquiry</h4>
+              <p>Leave your email and our CTO will send you a tailored capability deck.</p>
+
+              {sent ? (
+                <div className="sent-badge">
+                  <CheckCircle size={16} />
+                  <span>Inquiry received! We&apos;ll be in touch.</span>
+                </div>
+              ) : (
+                <form onSubmit={handleQuickSubmit} className="quick-form">
+                  <input
+                    type="email"
+                    required
+                    placeholder="Enter your email..."
+                    value={quickEmail}
+                    onChange={(e) => setQuickEmail(e.target.value)}
+                    className="quick-input"
+                  />
+                  <button type="submit" className="btn-orange quick-submit-btn">
+                    <span>Send</span>
+                    <Send size={14} />
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+
+          {/* Right Column: Dark Accordion FAQ List from Reference */}
+          <div className="faq-accordion-col">
+            {faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className={`faq-accordion-item ${isOpen ? 'item-open' : ''}`}
+                >
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    className="faq-toggle-btn"
+                  >
+                    <span className="faq-question-text">{faq.q}</span>
+                    <div className="faq-chevron-icon">
+                      <ChevronDown
+                        size={18}
+                        style={{
+                          transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                          transition: 'transform 0.25s ease',
+                        }}
+                      />
+                    </div>
+                  </button>
+
+                  {isOpen && (
+                    <div className="faq-answer-content">
+                      <p>{faq.a}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <style jsx>{`
+        .faq-header {
+          margin-bottom: 48px;
+          text-align: left;
+        }
+
+        .faq-subtitle {
+          font-size: 16px;
+          color: #556375;
+          max-width: 520px;
+          line-height: 1.55;
+        }
+
+        .faq-split-grid {
+          display: grid;
+          grid-template-columns: 0.85fr 1.15fr;
+          gap: 40px;
+          align-items: start;
+        }
+
+        .faq-left-col {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        .faq-character-card {
+          background-color: #ffffff;
+          border-radius: 20px;
+          padding: 28px;
+          border: 1px solid rgba(255, 255, 255, 0.9);
+          box-shadow: 0 10px 30px rgba(10, 25, 45, 0.05);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .char-badge {
+          display: inline-block;
+          font-size: 12px;
+          font-weight: 800;
+          color: #ff5722;
+          margin-bottom: 4px;
+        }
+
+        .character-bubble p {
+          font-size: 13.5px;
+          color: #505d6e;
+          line-height: 1.45;
+          max-width: 190px;
+        }
+
+        .character-avatar-circle {
+          position: relative;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #edf4ff, #d8e5ff);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .avatar-art {
+          font-size: 40px;
+        }
+
+        .floating-question-mark {
+          position: absolute;
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          background-color: #ff5722;
+          color: #ffffff;
+          font-size: 13px;
+          font-weight: 900;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 10px rgba(255, 87, 34, 0.4);
+        }
+
+        .q-1 {
+          top: -4px;
+          right: -4px;
+        }
+
+        .q-2 {
+          bottom: 0px;
+          left: -4px;
+          background-color: #2f54eb;
+        }
+
+        .quick-inquire-box {
+          background-color: #0c0e12;
+          color: #ffffff;
+          border-radius: 20px;
+          padding: 28px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .quick-inquire-box h4 {
+          font-size: 18px;
+          font-weight: 900;
+          color: #ffffff;
+          margin-bottom: 6px;
+        }
+
+        .quick-inquire-box p {
+          font-size: 13px;
+          color: #9aa8b8;
+          margin-bottom: 18px;
+          line-height: 1.45;
+        }
+
+        .quick-form {
+          display: flex;
+          gap: 8px;
+        }
+
+        .quick-input {
+          flex: 1;
+          background: #191d26;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          border-radius: 10px;
+          padding: 10px 14px;
+          color: #ffffff;
+          font-size: 13px;
+          outline: none;
+        }
+
+        .quick-input:focus {
+          border-color: #ff5722;
+        }
+
+        .quick-submit-btn {
+          padding: 10px 18px;
+          font-size: 13px;
+          border-radius: 10px;
+        }
+
+        .sent-badge {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 14px;
+          border-radius: 10px;
+          background-color: rgba(16, 185, 129, 0.15);
+          color: #10b981;
+          font-size: 13px;
+          font-weight: 600;
+        }
+
+        /* Right Accordion */
+        .faq-accordion-col {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        .faq-accordion-item {
+          background-color: #0c0e12;
+          border-radius: 16px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          overflow: hidden;
+          transition: all 0.22s ease;
+        }
+
+        .faq-accordion-item:hover {
+          border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .faq-accordion-item.item-open {
+          border-color: rgba(255, 87, 34, 0.4);
+          background-color: #11141b;
+        }
+
+        .faq-toggle-btn {
+          width: 100%;
+          padding: 20px 24px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          text-align: left;
+        }
+
+        .faq-question-text {
+          font-size: 16px;
+          font-weight: 800;
+          color: #ffffff;
+          letter-spacing: -0.02em;
+        }
+
+        .faq-chevron-icon {
+          color: #ff5722;
+          flex-shrink: 0;
+        }
+
+        .faq-answer-content {
+          padding: 0 24px 22px;
+          font-size: 14px;
+          line-height: 1.6;
+          color: #a4b3c4;
+        }
+
+        @media (max-width: 900px) {
+          .faq-split-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+    </section>
+  );
+}
