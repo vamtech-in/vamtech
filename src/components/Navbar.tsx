@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from './Logo';
-import { Menu, X, ArrowRight, MessageSquare, ChevronDown } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,10 +41,10 @@ export default function Navbar() {
         top: 0,
         zIndex: 50,
         transition: 'all 0.25s ease',
-        backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.94)' : 'rgba(248, 250, 252, 0.85)',
-        backdropFilter: 'blur(12px)',
-        borderBottom: isScrolled ? '1px solid #e2e8f0' : '1px solid transparent',
-        boxShadow: isScrolled ? '0 4px 20px -2px rgba(15, 23, 42, 0.05)' : 'none',
+        backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.94)' : 'rgba(250, 253, 255, 0.76)',
+        backdropFilter: 'blur(16px)',
+        borderBottom: isScrolled ? '1px solid #dfe7f2' : '1px solid rgba(223, 231, 242, 0.64)',
+        boxShadow: isScrolled ? '0 10px 28px rgba(8, 27, 58, 0.06)' : 'none',
       }}
     >
       <div className="container">
@@ -53,7 +53,7 @@ export default function Navbar() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            height: '76px',
+            height: '80px',
           }}
         >
           {/* Logo */}
@@ -66,7 +66,7 @@ export default function Navbar() {
             style={{
               display: 'none',
               alignItems: 'center',
-              gap: '32px',
+              gap: '27px',
             }}
             className="desktop-nav"
           >
@@ -79,7 +79,7 @@ export default function Navbar() {
                   style={{
                     fontSize: '14.5px',
                     fontWeight: isActive ? 600 : 500,
-                    color: isActive ? 'var(--color-brand-blue)' : 'var(--text-muted)',
+                    color: isActive ? 'var(--color-brand-blue)' : '#3f526d',
                     transition: 'color 0.2s ease',
                     position: 'relative',
                     padding: '6px 0',
@@ -113,7 +113,7 @@ export default function Navbar() {
               style={{
                 padding: '10px 22px',
                 fontSize: '14px',
-                borderRadius: '8px',
+                borderRadius: '10px',
               }}
             >
               <span>Let&apos;s Talk</span>
@@ -130,8 +130,8 @@ export default function Navbar() {
               justifyContent: 'center',
               width: '42px',
               height: '42px',
-              borderRadius: '8px',
-              border: '1px solid #e2e8f0',
+              borderRadius: '10px',
+              border: '1px solid #dbe6f3',
               backgroundColor: '#ffffff',
               color: 'var(--text-main)',
               cursor: 'pointer',

@@ -92,8 +92,8 @@ export default function RootLayout({
       <body
         suppressHydrationWarning
         style={{
-          backgroundColor: '#f8fafc',
-          color: '#0f172a',
+          backgroundColor: 'var(--bg-page)',
+          color: 'var(--text-main)',
           minHeight: '100vh',
           margin: 0,
         }}
