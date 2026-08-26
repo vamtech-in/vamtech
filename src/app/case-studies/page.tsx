@@ -14,9 +14,28 @@ import {
   ShieldCheck 
 } from 'lucide-react';
 
-export const metadata = {
-  title: 'Engineering Case Studies & Production Track Record — Vamtech Journal',
-  description: 'Explore quantifiable outcomes and software engineering case studies delivered by Vamtech across FinTech, Logistics, and HealthTech.',
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Software Engineering Case Studies & Client ROI Track Record',
+  description:
+    'Explore real-world software engineering case studies, system architecture optimizations, and quantifiable business ROI delivered by VAMTech across FinTech, Logistics, and HealthTech.',
+  keywords: [
+    'Software Case Studies',
+    'FinTech App Architecture Case Study',
+    'Scalable Web App Performance Outcomes',
+    'Software Engineering ROI',
+    'VAMTech Case Studies',
+  ],
+  alternates: {
+    canonical: 'https://vamtech.io/case-studies',
+  },
+  openGraph: {
+    title: 'Software Engineering Case Studies | VAMTech',
+    description:
+      'Quantifiable engineering outcomes: 99.99% uptime, 4x latency reductions, and rapid market launch.',
+    url: 'https://vamtech.io/case-studies',
+  },
 };
 
 export default function CaseStudiesPage() {

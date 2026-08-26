@@ -27,7 +27,7 @@ export default function Hero() {
             {/* Top Startup Kicker Badge */}
             <div className="hero-kicker-badge">
               <span className="kicker-pulse" />
-              <span>AMBITIOUS SOFTWARE COMPANY• LUCKNOW</span>
+              <span>CUSTOM SOFTWARE &amp; MVP DEVELOPMENT • LUCKNOW &amp; GLOBAL</span>
             </div>
 
             {/* Main Display Title */}
@@ -38,7 +38,7 @@ export default function Hero() {
             </h1>
 
             <p className="hero-subtitle">
-              We help founders and growing businesses turn bold ideas into high-performance web applications, mobile platforms, and AI automations.
+              We help founders, startups, and growing enterprises turn bold ideas into high-performance web applications, mobile apps, SaaS MVPs, and AI automations in 2–4 weeks with 100% source code ownership.
             </p>
 
             {/* Primary & Secondary Action CTAs */}
