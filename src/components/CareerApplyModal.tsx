@@ -26,13 +26,45 @@ export default function CareerApplyModal({ position, onClose }: CareerApplyModal
 
   if (!position) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || 'Not provided',
+          company: `Job Applicant for ${position.title}`,
+          role: `Applicant (${position.department})`,
+          serviceInterest: `Career Application: ${position.title}`,
+          budgetRange: `Salary: ${position.location || position.type}`,
+          timeline: `Available: Immediate`,
+          message: `JOB APPLICATION FOR: ${position.title} (${position.department})
+Portfolio/GitHub: ${formData.portfolioUrl}
+LinkedIn: ${formData.linkedinUrl || 'N/A'}
+
+Cover Note:
+${formData.coverNote}`,
+        }),
+      });
+
+      let data: any = {};
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        data = { success: response.ok };
+      }
+
+      if (!response.ok || (data.success === false)) {
+        throw new Error(data.error || 'Failed to submit application.');
+      }
+
       setIsSubmitted(true);
       if (typeof window !== 'undefined') {
         confetti({
@@ -41,7 +73,11 @@ export default function CareerApplyModal({ position, onClose }: CareerApplyModal
           origin: { y: 0.6 },
         });
       }
-    }, 800);
+    } catch (err: any) {
+      setError(err.message || 'An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
