@@ -72,7 +72,7 @@ export default function AboutSection() {
               </h3>
 
               <p style={{ fontSize: '15.5px', lineHeight: 1.7, color: 'var(--text-muted)', marginBottom: '16px' }}>
-                VAM|Tech is a technology-driven company focused on building reliable software, intelligent digital products, and scalable technology solutions. We combine engineering, design, and emerging technologies to help businesses turn ideas into real-world products.
+                VAMTech is a technology-driven company focused on building reliable software, intelligent digital products, and scalable technology solutions. We combine engineering, design, and emerging technologies to help businesses turn ideas into real-world products.
               </p>
 
               <p style={{ fontSize: '14.5px', lineHeight: 1.65, color: 'var(--text-muted)' }}>
