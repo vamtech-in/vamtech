@@ -27,7 +27,7 @@ export default function Hero() {
             {/* Top Startup Kicker Badge */}
             <div className="hero-kicker-badge">
               <span className="kicker-pulse" />
-              <span>AMBITIOUS SOFTWARE STARTUP • LUCKNOW</span>
+              <span>AMBITIOUS SOFTWARE COMPANY• LUCKNOW</span>
             </div>
 
             {/* Main Display Title */}
