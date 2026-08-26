@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CommandPalette from '@/components/CommandPalette';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
+import JsonLd from '@/components/JsonLd';
 
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-253YX57JZ7';
 const gtmContainerId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-XXXXXXX';
@@ -32,30 +33,89 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'VAMTech — Software • Transform • Accelerate',
+  metadataBase: new URL('https://vamtech.io'),
+  title: {
+    default: 'VAMTech — Custom Software Development & AI Agency | Lucknow & Global',
+    template: '%s | VAMTech Software & AI',
+  },
   description:
-    'VAMTech builds scalable digital products, custom enterprise software, AI automation, and cloud platforms for ambitious startups and businesses.',
+    'VAMTech is a top custom software development company in Lucknow, India. We build high-performance web apps, mobile apps, SaaS MVPs in 2–4 weeks, AI automation, and cloud platforms with 100% source code ownership. Packages start at ₹24,999.',
   keywords: [
     'VAMTech',
-    'Software Development',
-    'AI Automation',
-    'Web & Mobile Development',
-    'Cloud DevOps',
-    'UI/UX Product Design',
-    'Digital Transformation',
+    'Custom Software Development Company',
+    'Software Development Company in Lucknow',
+    'Hire Software Developers India',
+    'Web Application Development Services',
+    'Mobile App Development Lucknow',
+    'SaaS MVP Development Agency',
+    'Rapid MVP Development 2-4 Weeks',
+    'Next.js Web Development Agency',
+    'React Native App Developers',
+    'AI Automation Agency',
+    'Custom AI Agents Development',
+    'LLM Integration Services',
+    'Cloud DevOps Consulting',
+    'AWS Cloud Architecture',
+    'UI UX Product Design Company',
+    'Affordable Software Development Services',
+    'Software Startup Lucknow',
+    'Full Stack Developers for Hire',
+    'IT Solutions Company Tiwariganj Lucknow',
+    'Software Development Uttar Pradesh India',
+    'Digital Transformation Agency',
+    'Bespoke Enterprise Software',
+    'Next.js 15 TypeScript Developers',
+    'Hire Dedicated Developers',
+    'Software Development Cost India',
   ],
-  authors: [{ name: 'VAMTech Technologies Inc.' }],
+  authors: [{ name: 'VAMTech Technologies', url: 'https://vamtech.io' }],
+  creator: 'VAMTech Technologies',
+  publisher: 'VAMTech Technologies',
+  applicationName: 'VAMTech',
+  alternates: {
+    canonical: 'https://vamtech.io',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   verification: {
     google: 'bsvWlgXxqFFkRu7Q0Tuqd5SDjB-ctvgNL4hgM8Eooqk',
   },
   openGraph: {
-    title: 'VAMTech — Software • Transform • Accelerate',
+    title: 'VAMTech — Custom Software Development & AI Agency | Lucknow & Global',
     description:
-      'Empower your business with cutting-edge digital solutions & custom software engineering.',
+      'Turn your vision into high-performance web applications, mobile apps, AI automations, and scalable software. 2–4 week MVP sprints, starting at ₹24,999. 100% IP ownership.',
     url: 'https://vamtech.io',
     siteName: 'VAMTech',
+    locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/favicon.svg',
+        width: 800,
+        height: 800,
+        alt: 'VAMTech — Custom Software & AI Development Company',
+      },
+    ],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'VAMTech — Custom Software Development & AI Agency',
+    description:
+      'We engineer web apps, mobile apps, SaaS MVPs, and AI automations for ambitious startups and businesses. Starting at ₹24,999.',
+    site: '@vamtech_io',
+    creator: '@vamtech_io',
+    images: ['/favicon.svg'],
+  },
+  category: 'technology',
 };
 
 export default function RootLayout({
@@ -75,6 +135,11 @@ export default function RootLayout({
           name="google-site-verification"
           content="bsvWlgXxqFFkRu7Q0Tuqd5SDjB-ctvgNL4hgM8Eooqk"
         />
+        <meta name="geo.region" content="IN-UP" />
+        <meta name="geo.placename" content="Lucknow" />
+        <meta name="geo.position" content="26.8927;81.0422" />
+        <meta name="ICBM" content="26.8927, 81.0422" />
+        <JsonLd />
         {gaMeasurementId ? (
           <>
             <Script

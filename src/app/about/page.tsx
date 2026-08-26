@@ -5,10 +5,29 @@ import { Target, Compass, Cpu, ShieldCheck, Zap, Layers, Handshake, ArrowRight }
 import CTASection from '@/components/CTASection';
 import Stats from '@/components/Stats';
 
-export const metadata = {
-  title: 'About VAMTech — Mission, Vision & Engineering Culture',
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About VAMTech — Custom Software Engineering Lab & Team in Lucknow',
   description:
-    'Learn about VAMTech, our mission to build resilient digital products, our core engineering values, and leadership principles.',
+    'Learn about VAMTech, our software engineering culture, mission, leadership, and proven track record delivering web applications, mobile platforms, and AI systems worldwide with 100% transparent delivery.',
+  keywords: [
+    'About VAMTech',
+    'Software Company in Lucknow',
+    'Software Engineering Lab India',
+    'Full Stack Software Development Team',
+    'VAMTech Founders and Culture',
+    'Tiwariganj Lucknow Tech Startup',
+  ],
+  alternates: {
+    canonical: 'https://vamtech.io/about',
+  },
+  openGraph: {
+    title: 'About VAMTech — Software Engineering Lab & Culture',
+    description:
+      'Engineering high-performance software with radical transparency, milestone sprint models, and 100% IP transfer.',
+    url: 'https://vamtech.io/about',
+  },
 };
 
 const iconMap: Record<string, React.ReactNode> = {

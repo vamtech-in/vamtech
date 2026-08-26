@@ -6,10 +6,34 @@ import { servicesData } from '@/data/services';
 import { Code2, Check, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'Engineering Services & Technology Offerings — VAMTech',
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Software Development & AI Automation Services',
   description:
-    'Explore VAMTech’s full spectrum of software development, web & mobile engineering, AI automation, cloud devops, and digital transformation services.',
+    'Explore VAMTech’s full-stack software development, custom web applications, React Native mobile apps, AI automation agents, Cloud DevOps, and UI/UX product design services. Get high-velocity delivery with 100% IP ownership.',
+  keywords: [
+    'Custom Software Development Services',
+    'Web Application Development Company',
+    'Mobile App Development Lucknow',
+    'React Native App Developers',
+    'AI Automation Agency',
+    'Custom LLM Integration',
+    'Cloud DevOps Consulting AWS',
+    'UI UX Product Design Services',
+    'Full Stack Engineering Services',
+    'Software Modernization Services',
+    'Hire Dedicated Software Developers',
+  ],
+  alternates: {
+    canonical: 'https://vamtech.io/services',
+  },
+  openGraph: {
+    title: 'Software Development & AI Automation Services | VAMTech',
+    description:
+      'Architect, build, and deploy custom software, web platforms, mobile apps, and AI workflows. Fixed-sprint delivery starting at ₹24,999.',
+    url: 'https://vamtech.io/services',
+  },
 };
 
 export default function ServicesPage() {

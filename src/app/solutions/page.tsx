@@ -17,10 +17,30 @@ import {
   Cpu 
 } from 'lucide-react';
 
-export const metadata = {
-  title: 'Industry Solutions & Architecture Blueprints — VAMTech',
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Industry Software Solutions — FinTech, HealthTech, E-Commerce & SaaS',
   description:
-    'Discover VAMTech’s specialized industry solutions for FinTech, Healthcare, E-Commerce, SaaS, EdTech, and Enterprise digital platforms.',
+    'Tailored enterprise software blueprints and compliant digital platforms for FinTech, Healthcare, E-Commerce, EdTech, Real Estate, and SaaS startups.',
+  keywords: [
+    'FinTech Software Development',
+    'HealthTech App Development',
+    'E-Commerce Platform Development',
+    'EdTech Software Engineering',
+    'Custom CRM ERP Development',
+    'SaaS Architecture Blueprints',
+    'Enterprise Software Solutions',
+  ],
+  alternates: {
+    canonical: 'https://vamtech.io/solutions',
+  },
+  openGraph: {
+    title: 'Industry Software Solutions & Blueprints | VAMTech',
+    description:
+      'Domain-specific software engineering adhering to regulatory compliance and scalable multi-tenant cloud architecture.',
+    url: 'https://vamtech.io/solutions',
+  },
 };
 
 const iconMap: Record<string, React.ReactNode> = {

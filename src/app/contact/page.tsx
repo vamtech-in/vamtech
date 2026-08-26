@@ -1,8 +1,32 @@
-'use client';
-
 import React from 'react';
+import type { Metadata } from 'next';
 import ContactSection from '@/components/ContactSection';
 import FAQSection from '@/components/FAQSection';
+
+export const metadata: Metadata = {
+  title: 'Contact Us — Start a Project & Get Free Estimation | Lucknow & Global',
+  description:
+    'Contact VAMTech software engineering team. Get a free project architecture consultation and cost estimate for custom web apps, mobile apps, or AI automation. WhatsApp / Call: +91 7237900686.',
+  keywords: [
+    'Contact VAMTech',
+    'Hire Software Developers in Lucknow',
+    'Software Development Free Quote',
+    'Get MVP Estimation',
+    'Hire Dedicated Full-Stack Developers',
+    'Custom Software Company Contact',
+    'Tiwariganj Lucknow Software Office',
+    'Start Software Project India',
+  ],
+  alternates: {
+    canonical: 'https://vamtech.io/contact',
+  },
+  openGraph: {
+    title: 'Contact VAMTech — Start Your Software Project Today',
+    description:
+      'Connect directly with our engineering team in Lucknow & remote global pods. Fast 1-day project review and milestone quote.',
+    url: 'https://vamtech.io/contact',
+  },
+};
 
 export default function ContactPage() {
   return (
@@ -38,12 +62,12 @@ export default function ContactPage() {
               margin: '0 auto',
             }}
           >
-            Connect directly with our senior engineers and architects. We review every project brief within 1 business day.
+            Connect directly with our senior engineers and architects in Lucknow &amp; worldwide. We review every project brief within 1 business day.
           </p>
         </div>
       </section>
 
-      {/* Main Interactive Contact Section (Matching Image 1) */}
+      {/* Main Interactive Contact Section */}
       <ContactSection />
 
       {/* FAQ Section */}
@@ -51,4 +75,3 @@ export default function ContactPage() {
     </div>
   );
 }
-
