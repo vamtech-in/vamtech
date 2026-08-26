@@ -205,9 +205,9 @@ export default function Footer() {
                   vamtech.in@gmail.com
                 </a>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Phone size={16} color="var(--color-brand-cyan)" style={{ flexShrink: 0 }} />
-                <span>+1 (800) 582-VAMTECH</span>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                <Phone size={16} color="var(--color-brand-cyan)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <span>+91 7237900686<br />+91 7307386706<br />+91 6394770500</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                 <MapPin size={16} color="var(--color-brand-cyan)" style={{ marginTop: '2px', flexShrink: 0 }} />

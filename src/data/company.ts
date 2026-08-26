@@ -62,10 +62,10 @@ export const companyData: CompanyInfo = {
     },
   ],
   contact: {
-    email: 'contact@vamtech.io',
-    phone: '+1 (800) VAM-TECH',
-    address: 'San Francisco, CA & Global Engineering Pods',
-    hours: 'Monday – Friday, 9:00 AM – 6:00 PM PST',
+    email: 'vamtech.in@gmail.com',
+    phone: '+91 7237900686 / +91 7307386706 / +91 6394770500',
+    address: 'Tiwariganj, Lucknow (226028)',
+    hours: 'Monday – Saturday, 9:00 AM – 7:00 PM IST',
   },
   social: {
     github: 'https://github.com/vamtech-in',
