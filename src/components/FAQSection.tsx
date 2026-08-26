@@ -5,24 +5,28 @@ import { ChevronDown, Send, Sparkles, HelpCircle, CheckCircle } from 'lucide-rea
 
 const faqs = [
   {
-    q: 'What is your typical project kickoff timeline?',
-    a: 'Following our initial technical discovery call and scope sign-off, we typically assemble and deploy our dedicated engineering pod within 5 to 7 business days.',
+    q: 'What is the cost of custom software or MVP development at VAMTech?',
+    a: 'We offer fixed-scope MVP sprint packages starting at ₹24,999 for startups and growing businesses. For enterprise software, custom platforms, and dedicated full-stack engineering pods ($3,500/mo), we provide clear milestone-based pricing with zero hidden fees.',
   },
   {
-    q: 'Do you provide full source code and 100% IP ownership?',
-    a: 'Yes, absolutely. Upon completion of each sprint milestone, all repositories, custom codebases, design assets, and cloud infrastructure scripts belong entirely to your company.',
+    q: 'How fast can VAMTech deliver our web app, mobile app, or MVP?',
+    a: 'Our rapid MVP sprint timeline is typically 2 to 4 weeks from architecture design to production release. Dedicated engineering pods can be assembled and deployed within 3 to 5 business days.',
   },
   {
-    q: 'How do you handle project communication and tracking?',
-    a: 'We establish a direct Slack or Teams shared channel for daily communication and conduct weekly live sprint demos. All tasks are transparently tracked on Jira or Linear with real-time GitHub visibility.',
+    q: 'Do you provide full source code and 100% intellectual property (IP) ownership?',
+    a: 'Yes, 100%. Upon milestone completion, all GitHub repositories, source code, database architectures, Figma UI designs, and cloud infrastructure scripts belong entirely to your company under mutual NDA protection.',
   },
   {
-    q: 'What engagement models do you offer?',
-    a: 'We offer Dedicated Engineering Pods for ongoing product scaling, Fixed-Scope Milestones for defined MVPs, and Fractional CTO Retainers for architectural leadership.',
+    q: 'Is VAMTech based in Lucknow, and do you work with remote/global clients?',
+    a: 'Yes! VAMTech is headquartered in Tiwariganj, Lucknow (Uttar Pradesh, India). We work directly with founders and companies across Lucknow, Delhi NCR, Bengaluru, Mumbai, as well as global clients in the US, UK, Middle East, and beyond with seamless async and live sync.',
   },
   {
-    q: 'Can you work with our existing in-house tech team?',
-    a: 'Yes. Our senior developers seamlessly integrate with existing Git workflows, CI/CD pipelines, and design systems to immediately accelerate engineering velocity.',
+    q: 'What technologies and frameworks do your developers specialize in?',
+    a: 'Our core stack includes Next.js 15, React, React Native, TypeScript, Node.js, Python, FastAPI, PostgreSQL, Redis, Docker, AWS Cloud, LangChain, and OpenAI/Anthropic AI integrations.',
+  },
+  {
+    q: 'How do you handle communication and milestone tracking during development?',
+    a: 'You get direct access to senior developers via dedicated WhatsApp and Slack channels. We conduct weekly live sprint demos, maintain clear Kanban boards on Jira/Linear, and provide real-time GitHub commit visibility.',
   },
 ];
 
