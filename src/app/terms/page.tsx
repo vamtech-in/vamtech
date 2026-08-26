@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Terms of Service & Master Services Agreement — VAM|Tech',
-  description: 'VAM|Tech Technologies Terms of Service, 100% IP ownership guarantees, and Master Services Agreement provisions.',
+  title: 'Terms of Service & Master Services Agreement — VAMTech',
+  description: 'VAMTech Technologies Terms of Service, 100% IP ownership guarantees, and Master Services Agreement provisions.',
 };
 
 export default function TermsPage() {
@@ -49,7 +49,7 @@ export default function TermsPage() {
           </h1>
 
           <p style={{ marginBottom: '32px', fontSize: '12px', fontFamily: 'var(--font-mono)', color: '#64748b' }}>
-            LAST REVISED: FEBRUARY 2026 • VAM|TECH TECHNOLOGIES INC.
+            LAST REVISED: FEBRUARY 2026 • VAMTECH TECHNOLOGIES INC.
           </p>
 
           <div
@@ -67,7 +67,7 @@ export default function TermsPage() {
                 1. Acceptance of Terms
               </h2>
               <p>
-                By accessing this website or engaging VAM|Tech Technologies Inc. (&ldquo;VAM|Tech&rdquo;) for custom software engineering, cloud infrastructure, or AI architecture services, you agree to be bound by these Terms of Service.
+                By accessing this website or engaging VAMTech Technologies Inc. (&ldquo;VAMTech&rdquo;) for custom software engineering, cloud infrastructure, or AI architecture services, you agree to be bound by these Terms of Service.
               </p>
             </section>
 
@@ -76,7 +76,7 @@ export default function TermsPage() {
                 2. Intellectual Property &amp; Code Ownership
               </h2>
               <p>
-                Unless explicitly stated in an active Statement of Work (SOW), all custom software, bespoke scripts, and architectural deliverables authored by VAM|Tech during paid client engagements transfer 100% to the client upon final sprint invoice settlement.
+                Unless explicitly stated in an active Statement of Work (SOW), all custom software, bespoke scripts, and architectural deliverables authored by VAMTech during paid client engagements transfer 100% to the client upon final sprint invoice settlement.
               </p>
             </section>
 
@@ -94,7 +94,7 @@ export default function TermsPage() {
                 4. Warranties &amp; SLA Commitments
               </h2>
               <p>
-                VAM|Tech warrants that all deliverables will conform to the mutually agreed technical specifications in the SOW and pass automated unit/integration test suites without high-severity CVEs or memory vulnerabilities at delivery.
+                VAMTech warrants that all deliverables will conform to the mutually agreed technical specifications in the SOW and pass automated unit/integration test suites without high-severity CVEs or memory vulnerabilities at delivery.
               </p>
             </section>
 
