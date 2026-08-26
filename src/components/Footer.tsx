@@ -160,7 +160,7 @@ export default function Footer() {
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <li>
                 <Link href="/about" style={{ fontSize: '14px', color: '#94a3b8' }} className="footer-link">
-                  About VAM|Tech
+                  About VAMTech
                 </Link>
               </li>
               <li>
