@@ -35,11 +35,10 @@ function saveLeads(leads: any[]) {
   }
 }
 
-const ADMIN_PASSCODE = process.env.ADMIN_PASSWORD || 'vamtech2026';
-
 function isAuthorizedAdmin(request: Request) {
-  const adminKey = request.headers.get('x-admin-key');
-  return adminKey === ADMIN_PASSCODE;
+  const adminKey = (request.headers.get('x-admin-key') || '').trim();
+  const expectedKey = (process.env.ADMIN_PASSWORD || 'vamtech2026').trim();
+  return adminKey.toLowerCase() === expectedKey.toLowerCase();
 }
 
 // GET: Retrieve all form submissions (Admin Protected)
