@@ -13,19 +13,19 @@ export default function Logo({
   showTagline = true,
   inverted = false,
 }: LogoProps) {
-  // Dimensions for different sizes
+  // Balanced dimensions for each size tier
   const dimensions = {
-    sm: { width: 140, height: showTagline ? 41 : 30 },
-    md: { width: 184, height: showTagline ? 54 : 40 },
-    lg: { width: 230, height: showTagline ? 67 : 50 },
-    xl: { width: 290, height: showTagline ? 85 : 63 },
+    sm: { width: 145, height: showTagline ? 42 : 32 },
+    md: { width: 190, height: showTagline ? 55 : 42 },
+    lg: { width: 245, height: showTagline ? 71 : 54 },
+    xl: { width: 310, height: showTagline ? 90 : 68 },
   }[size];
 
-  const taglineColor = inverted ? 'rgba(255, 255, 255, 0.75)' : '#475569';
+  const taglineColor = inverted ? 'rgba(255, 255, 255, 0.72)' : '#475569';
   const dividerColor = inverted ? 'rgba(255, 255, 255, 0.85)' : '#0062FF';
   const techColor = inverted ? '#ffffff' : '#0062FF';
 
-  const viewBox = showTagline ? '0 0 460 135' : '0 0 460 102';
+  const viewBox = showTagline ? '0 0 460 136' : '0 0 460 102';
 
   return (
     <div
@@ -42,76 +42,75 @@ export default function Logo({
         viewBox={viewBox}
         width={dimensions.width}
         height={dimensions.height}
-        style={{ display: 'block', overflow: 'visible', maxWidth: '100%', height: 'auto' }}
+        style={{
+          display: 'block',
+          overflow: 'visible',
+          maxWidth: '100%',
+          height: 'auto',
+        }}
         aria-label="VAMTech — Technology • Solutions • Innovation"
       >
         <defs>
-          {/* Gradient for V: Bright Orange to Coral Pink */}
+          {/* Gradient for V: Warm Orange to Red-Pink */}
           <linearGradient id="vamV" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#FF6B00" />
-            <stop offset="60%" stopColor="#FF334B" />
-            <stop offset="100%" stopColor="#FF1E62" />
+            <stop offset="55%" stopColor="#FF2E4C" />
+            <stop offset="100%" stopColor="#FF185D" />
           </linearGradient>
 
-          {/* Gradient for A: Hot Pink/Magenta to Violet */}
+          {/* Gradient for A: Hot Magenta-Pink to Royal Violet */}
           <linearGradient id="vamA" x1="0%" y1="100%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#FA006E" />
-            <stop offset="65%" stopColor="#C800A1" />
-            <stop offset="100%" stopColor="#8A2BE2" />
+            <stop offset="60%" stopColor="#B500B8" />
+            <stop offset="100%" stopColor="#872CE2" />
           </linearGradient>
 
-          {/* Gradient for M: Violet/Purple to Electric Royal Blue */}
+          {/* Gradient for M: Vivid Purple to Electric Royal Blue */}
           <linearGradient id="vamM" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#8338EC" />
-            <stop offset="50%" stopColor="#5E43F3" />
+            <stop offset="45%" stopColor="#5B45F5" />
             <stop offset="100%" stopColor="#0062FF" />
-          </linearGradient>
-
-          {/* Tech Gradient */}
-          <linearGradient id="vamTech" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#0052FF" />
-            <stop offset="100%" stopColor="#0066FF" />
           </linearGradient>
         </defs>
 
         <g>
           {/* Letter V */}
           <path
-            d="M 22 36 L 56 90 C 58 94 66 94 68 90 L 102 36"
+            d="M 22 35 L 56 91 C 58.5 95 65.5 95 68 91 L 102 35"
             fill="none"
             stroke="url(#vamV)"
-            strokeWidth="15"
+            strokeWidth="14"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
 
           {/* Letter A */}
           <path
-            d="M 112 90 L 144 36 C 146 32 154 32 156 36 L 188 90"
+            d="M 112 91 L 144 35 C 146.5 31 153.5 31 156 35 L 188 91"
             fill="none"
             stroke="url(#vamA)"
-            strokeWidth="15"
+            strokeWidth="14"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
           {/* Center Circle in A */}
-          <circle cx="150" cy="78" r="9.5" fill="#FF4400" />
+          <circle cx="150" cy="78" r="9" fill="#FF4400" />
 
           {/* Letter M */}
           <path
-            d="M 200 90 L 200 40 C 200 33 209 33 213 40 L 229 64 C 231 67 235 67 237 64 L 253 40 C 257 33 266 33 266 40 L 266 90"
+            d="M 200 91 L 200 39 C 200 32 209 32 213 39 L 230 65 C 232 68 236 68 238 65 L 255 39 C 259 32 268 32 268 39 L 268 91"
             fill="none"
             stroke="url(#vamM)"
-            strokeWidth="14.5"
+            strokeWidth="14"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
 
           {/* Vertical Separator Divider */}
           <line
-            x1="285"
-            y1="28"
-            x2="285"
+            x1="288"
+            y1="26"
+            x2="288"
             y2="98"
             stroke={dividerColor}
             strokeWidth="2.8"
@@ -120,10 +119,10 @@ export default function Logo({
 
           {/* Wordmark: Tech */}
           <text
-            x="298"
-            y="92"
+            x="302"
+            y="91"
             fontFamily="var(--font-sans), 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-            fontSize="68"
+            fontSize="70"
             fontWeight="500"
             fill={techColor}
             letterSpacing="-0.5px"
@@ -131,15 +130,15 @@ export default function Logo({
             Tech
           </text>
 
-          {/* Subtitle / Tagline */}
+          {/* Subtitle / Tagline: TECHNOLOGY • SOLUTIONS • INNOVATION */}
           {showTagline && (
             <text
               x="230"
-              y="126"
+              y="127"
               fontFamily="var(--font-sans), 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
               fontSize="11.5"
               fontWeight="600"
-              letterSpacing="3.4px"
+              letterSpacing="4.2px"
               textAnchor="middle"
               fill={taglineColor}
             >
