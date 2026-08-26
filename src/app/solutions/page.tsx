@@ -18,9 +18,9 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'Industry Solutions & Architecture Blueprints — VAM|Tech',
+  title: 'Industry Solutions & Architecture Blueprints — VAMTech',
   description:
-    'Discover VAM|Tech’s specialized industry solutions for FinTech, Healthcare, E-Commerce, SaaS, EdTech, and Enterprise digital platforms.',
+    'Discover VAMTech’s specialized industry solutions for FinTech, Healthcare, E-Commerce, SaaS, EdTech, and Enterprise digital platforms.',
 };
 
 const iconMap: Record<string, React.ReactNode> = {
