@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface LogoProps {
   className?: string;
@@ -20,7 +21,7 @@ export default function Logo({ className = '', size = 'md', inverted = false }: 
         ...(inverted ? { backgroundColor: '#ffffff', borderRadius: '8px', padding: '7px 9px' } : {}),
       }}
     >
-      <img
+      <Image
         src="/vamtech-logo-new.png"
         alt="VAMTech"
         width={width}
