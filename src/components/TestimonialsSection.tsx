@@ -39,7 +39,7 @@ const commitments = [
 export default function TestimonialsSection() {
   return (
     <section className="section-py testimonials-ref-section" id="testimonials">
-      {/* Giant Decorative Quote Watermarks from Reference */}
+      {/* Giant Decorative Quote Watermarks */}
       <div className="quote-watermark watermark-left">“</div>
       <div className="quote-watermark watermark-right">”</div>
 
@@ -58,7 +58,8 @@ export default function TestimonialsSection() {
         {/* 3 White Cards Grid */}
         <div className="testimonials-grid">
           {commitments.map((item) => (
-            <div key={item.id} className="testi              {/* Top Tag & Icon */}
+            <div key={item.id} className="testimonial-card">
+              {/* Top Tag & Icon */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
                 <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', fontWeight: 800, color: '#0055ff', letterSpacing: '0.08em' }}>
                   {item.tag}
@@ -85,7 +86,7 @@ export default function TestimonialsSection() {
                 </div>
               </div>
 
-              {/* Bottom Blue Corner Accent from Reference */}
+              {/* Bottom Blue Corner Accent */}
               <div className="corner-accent" />
             </div>
           ))}
@@ -220,7 +221,6 @@ export default function TestimonialsSection() {
           height: 24px;
           background: linear-gradient(135deg, transparent 50%, #0055ff 50%);
           border-bottom-right-radius: 20px;
-        }0px;
         }
 
         @media (max-width: 900px) {
