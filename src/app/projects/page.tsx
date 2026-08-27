@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     'AI Automation Projects',
   ],
   alternates: {
-    canonical: 'https://vamtech.io/projects',
+    canonical: 'https://www.vamtech.in/projects',
   },
   openGraph: {
     title: 'Software Development & AI Portfolio | VAMTech',
     description:
       'Curated collection of high-performance web apps, mobile products, and AI workflows built with clean architecture.',
-    url: 'https://vamtech.io/projects',
+    url: 'https://www.vamtech.in/projects',
   },
 };
 
