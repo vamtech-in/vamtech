@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     'Start Software Project India',
   ],
   alternates: {
-    canonical: 'https://vamtech.io/contact',
+    canonical: 'https://www.vamtech.in/contact',
   },
   openGraph: {
     title: 'Contact VAMTech — Start Your Software Project Today',
     description:
       'Connect directly with our engineering team in Lucknow & remote global pods. Fast 1-day project review and milestone quote.',
-    url: 'https://vamtech.io/contact',
+    url: 'https://www.vamtech.in/contact',
   },
 };
 

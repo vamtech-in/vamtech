@@ -33,13 +33,13 @@ export const metadata: Metadata = {
     'Enterprise Software Solutions',
   ],
   alternates: {
-    canonical: 'https://vamtech.io/solutions',
+    canonical: 'https://www.vamtech.in/solutions',
   },
   openGraph: {
-    title: 'Industry Software Solutions & Blueprints | VAMTech',
+    title: 'Industry Software Solutions | VAMTech',
     description:
-      'Domain-specific software engineering adhering to regulatory compliance and scalable multi-tenant cloud architecture.',
-    url: 'https://vamtech.io/solutions',
+      'Compliant, scalable architecture blueprints engineered for FinTech, Healthcare, E-Commerce, and SaaS startups.',
+    url: 'https://www.vamtech.in/solutions',
   },
 };
 

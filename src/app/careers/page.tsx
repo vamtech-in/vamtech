@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     'VAMTech Careers',
   ],
   alternates: {
-    canonical: 'https://vamtech.io/careers',
+    canonical: 'https://www.vamtech.in/careers',
   },
   openGraph: {
     title: 'Careers at VAMTech — Engineering & Product Roles',
     description:
       'Join our team of software craftspeople building modern web and AI applications.',
-    url: 'https://vamtech.io/careers',
+    url: 'https://www.vamtech.in/careers',
   },
 };
 

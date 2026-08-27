@@ -28,13 +28,13 @@ export const metadata: Metadata = {
     'VAMTech Case Studies',
   ],
   alternates: {
-    canonical: 'https://vamtech.io/case-studies',
+    canonical: 'https://www.vamtech.in/case-studies',
   },
   openGraph: {
     title: 'Software Engineering Case Studies | VAMTech',
     description:
-      'Quantifiable engineering outcomes: 99.99% uptime, 4x latency reductions, and rapid market launch.',
-    url: 'https://vamtech.io/case-studies',
+      'Proven technical case studies across SaaS platforms, AI automation engines, and high-concurrency systems.',
+    url: 'https://www.vamtech.in/case-studies',
   },
 };
 
