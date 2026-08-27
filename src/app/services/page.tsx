@@ -93,7 +93,7 @@ export default function ServicesPage() {
               <div key={service.id} className="ref-card-white" style={{ padding: '36px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 800, color: '#ff5722' }}>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 800, color: '#0055ff' }}>
                       SERVICE 0{index + 1}
                     </span>
                   </div>
@@ -109,7 +109,7 @@ export default function ServicesPage() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px' }}>
                     {service.capabilities.slice(0, 3).map((cap, i) => (
                       <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#2b3542' }}>
-                        <span style={{ color: '#ff5722', fontWeight: 900 }}>✓</span>
+                        <span style={{ color: '#0055ff', fontWeight: 900 }}>✓</span>
                         <span>{cap}</span>
                       </div>
                     ))}
