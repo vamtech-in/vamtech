@@ -199,7 +199,7 @@ export async function POST(request: Request) {
             subject: `[Vamtech Lead] ${cleanName} from ${leadRecord.company} (${cleanService})`,
             html: `
               <div style="font-family: Arial, sans-serif; max-width: 600px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
-                <h2 style="color: #ff5722; margin-top: 0;">🚀 New Project Intake Inquiry</h2>
+                <h2 style="color: #0055ff; margin-top: 0;">🚀 New Project Intake Inquiry</h2>
                 <p><strong>Reference ID:</strong> ${leadRecord.id}</p>
                 <hr style="border: 0; border-top: 1px solid #eee;" />
                 <p><strong>Client Name:</strong> ${cleanName}</p>
@@ -210,7 +210,7 @@ export async function POST(request: Request) {
                 <p><strong>Budget Tier:</strong> ${cleanBudget}</p>
                 <p><strong>Target Timeline:</strong> ${cleanTimeline}</p>
                 <p><strong>Architecture Brief / Message:</strong></p>
-                <blockquote style="background: #f9f9f9; padding: 12px; border-left: 4px solid #ff5722; margin: 0;">
+                <blockquote style="background: #f9f9f9; padding: 12px; border-left: 4px solid #0055ff; margin: 0;">
                   ${cleanMessage}
                 </blockquote>
                 <hr style="border: 0; border-top: 1px solid #eee; margin-top: 20px;" />

@@ -118,11 +118,11 @@ export default function ServicesSection() {
 
                 <div className="server-screen-content">
                   <div className="pulsing-grid-circle">
-                    <Radio size={28} color="#2f54eb" />
+                    <Radio size={28} color="#0055ff" />
                   </div>
                   <div className="server-metric-text">
-                    <strong>99.98%</strong>
-                    <span>Operational Uptime</span>
+                    <strong>120ms</strong>
+                    <span>AVG API LATENCY</span>
                   </div>
                 </div>
 
@@ -138,7 +138,7 @@ export default function ServicesSection() {
               <div className="diagram-node-orbital">
                 <div className="orbit-circle-dashed" />
                 <div className="floating-satellite satellite-1">
-                  <Cloud size={16} color="#2f54eb" />
+                  <Cloud size={16} color="#0055ff" />
                   <span>Cloud Edge</span>
                 </div>
                 <div className="floating-satellite satellite-2">
