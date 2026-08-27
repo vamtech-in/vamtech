@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   description:
     'VAMTech maintains zero-trust infrastructure, SOC 2 Type II alignment, TLS 1.3 encryption, GDPR compliance, and rigorous code audits for enterprise deployments.',
   alternates: {
-    canonical: 'https://vamtech.io/security',
+    canonical: 'https://www.vamtech.in/security',
   },
 };
 
