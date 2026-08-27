@@ -182,7 +182,7 @@ export async function POST(request: Request) {
 
     // Optional Resend API Email Integration
     const resendApiKey = process.env.RESEND_API_KEY;
-    const recipientEmail = process.env.NOTIFICATION_EMAIL || process.env.CONTACT_EMAIL || 'contact@vamtech.io';
+    const recipientEmail = process.env.NOTIFICATION_EMAIL || process.env.CONTACT_EMAIL || 'contactvamtech@gmail.com';
 
     if (resendApiKey) {
       try {

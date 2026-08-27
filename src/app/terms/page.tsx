@@ -104,8 +104,8 @@ export default function TermsPage() {
               </h2>
               <p>
                 For questions regarding Master Service Agreements (MSA) or custom contracting terms, contact{' '}
-                <a href="mailto:legal@vamtech.io" style={{ color: 'var(--color-brand-blue)', textDecoration: 'underline' }}>
-                  legal@vamtech.io
+                <a href="mailto:contactvamtech@gmail.com" style={{ color: 'var(--color-brand-blue)', textDecoration: 'underline' }}>
+                  contactvamtech@gmail.com
                 </a>.
               </p>
             </section>
