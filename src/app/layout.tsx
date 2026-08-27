@@ -39,7 +39,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://vamtech.io'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.vamtech.in'),
   title: {
     default: 'VAMTech — Best Software Development Company in Lucknow | Custom Software & AI',
     template: '%s | VAMTech — Software Company in Lucknow',
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     'SaaS Development Agency India',
     'VAMTech',
   ],
-  authors: [{ name: 'VAMTech Technologies', url: 'https://vamtech.io' }],
+  authors: [{ name: 'VAMTech Technologies', url: 'https://www.vamtech.in' }],
   creator: 'VAMTech Technologies',
   publisher: 'VAMTech Technologies',
   formatDetection: {
@@ -77,12 +77,12 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: 'https://vamtech.io',
+    canonical: 'https://www.vamtech.in',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://vamtech.io',
+    url: 'https://www.vamtech.in',
     siteName: 'VAMTech Software & AI Technologies',
     title: 'Best Software Development Company in Lucknow | VAMTech',
     description:

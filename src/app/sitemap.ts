@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://vamtech.io';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.vamtech.in';
   const currentDate = new Date();
 
   return [

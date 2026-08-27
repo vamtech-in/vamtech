@@ -4,11 +4,11 @@ export default function JsonLd() {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    '@id': 'https://vamtech.io/#organization',
+    '@id': 'https://www.vamtech.in/#organization',
     name: 'VAMTech Technologies',
     alternateName: ['VAMTech', 'VAMTech LLC', 'VAMTech Software'],
-    url: 'https://vamtech.io',
-    logo: 'https://vamtech.io/favicon.svg',
+    url: 'https://www.vamtech.in',
+    logo: 'https://www.vamtech.in/favicon.svg',
     description:
       'VAMTech is a premier custom software development, mobile app development, and AI automation company based in Lucknow, India, delivering rapid MVP sprints and enterprise engineering globally.',
     email: 'contactvamtech@gmail.com',
@@ -41,7 +41,7 @@ export default function JsonLd() {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'ProfessionalService'],
-    '@id': 'https://vamtech.io/#localbusiness',
+    '@id': 'https://www.vamtech.in/#localbusiness',
     name: 'VAMTech — Best Software Development Company in Lucknow',
     alternateName: [
       'VAMTech Technologies',
@@ -49,8 +49,8 @@ export default function JsonLd() {
       'VAMTech Web & Mobile App Development',
       'VAMTech Tiwariganj',
     ],
-    image: 'https://vamtech.io/favicon.svg',
-    url: 'https://vamtech.io',
+    image: 'https://www.vamtech.in/favicon.svg',
+    url: 'https://www.vamtech.in',
     telephone: '+917237900686',
     priceRange: '₹24,999 - ₹2,50,000+',
     hasMap: 'https://maps.google.com/?q=VAMTech+Tiwariganj+Faizabad+Road+Lucknow+226028',
@@ -158,11 +158,11 @@ export default function JsonLd() {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': 'https://vamtech.io/#website',
-    url: 'https://vamtech.io',
+    '@id': 'https://www.vamtech.in/#website',
+    url: 'https://www.vamtech.in',
     name: 'VAMTech Software Technologies',
     publisher: {
-      '@id': 'https://vamtech.io/#organization',
+      '@id': 'https://www.vamtech.in/#organization',
     },
     inLanguage: 'en-US',
   };

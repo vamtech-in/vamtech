@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     'Tiwariganj Lucknow Tech Startup',
   ],
   alternates: {
-    canonical: 'https://vamtech.io/about',
+    canonical: 'https://www.vamtech.in/about',
   },
   openGraph: {
     title: 'About VAMTech — Software Engineering Lab & Culture',
     description:
       'Engineering high-performance software with radical transparency, milestone sprint models, and 100% IP transfer.',
-    url: 'https://vamtech.io/about',
+    url: 'https://www.vamtech.in/about',
   },
 };
 
