@@ -17,6 +17,58 @@ export interface ProjectItem {
 
 export const projectsData: ProjectItem[] = [
   {
+    id: 'gift-customizer-app',
+    title: 'Gift Customization Mobile App',
+    category: 'Mobile & E-Commerce',
+    tagline: 'On-Demand Personalized Gifting & Instant Laser Engraving Engine',
+    description:
+      'A cross-platform React Native iOS & Android application allowing consumers to design, customize, and order bespoke personalized gifts with real-time 3D engraving previews.',
+    challenge:
+      'Rendering real-time multi-color and typography texture previews on mobile devices without lag, while routing complex fulfillment orders directly to specialized artisan manufacturers.',
+    solution:
+      'Engineered a native OpenGL canvas rendering pipeline for instant custom engraving previews, connected to an automated order fulfillment queue that dispatches laser-ready vector files to regional print hubs.',
+    impactMetrics: [
+      { label: 'Mobile Store Rating', value: '4.8 ★' },
+      { label: 'Order Processing Time', value: '< 2 mins' },
+      { label: 'Conversion Lift', value: '+42%' },
+      { label: 'Active App Users', value: '88,000+' },
+    ],
+    technologies: ['React Native', 'TypeScript', 'Node.js', 'PostgreSQL', 'AWS S3', 'Stripe'],
+    features: [
+      'Real-Time Live 3D Font & Monogram Customizer',
+      'Automated Vector File Generation for Laser Cutters',
+      'One-Click Express Apple Pay & Google Pay',
+      'End-to-End Push Notification Delivery Tracking',
+    ],
+    gradientTheme: 'from-pink-500 to-rose-600',
+  },
+  {
+    id: 'amz-analytics-app',
+    title: 'AMZ Multi-Store Marketplace Analytics',
+    category: 'Enterprise Cloud & Analytics',
+    tagline: 'Real-Time Inventory Reconciliation & Algorithmic Repricing Engine',
+    description:
+      'A high-throughput cloud web application empowering high-volume Amazon and Shopify merchants to monitor multi-warehouse inventory, automate repricing, and analyze profit margins across global storefronts.',
+    challenge:
+      'Aggregating hundreds of thousands of asynchronous Amazon SP-API events and currency exchanges per minute while keeping database latency below 200ms.',
+    solution:
+      'Architected a distributed microservices pipeline using Go and Node.js with Redis stream buffering, timescale time-series metrics storage, and automated blue/green Kubernetes deployments.',
+    impactMetrics: [
+      { label: 'Ingestion Throughput', value: '12.4k req/s' },
+      { label: 'Query Latency', value: '< 180ms' },
+      { label: 'Stockout Reduction', value: '78%' },
+      { label: 'Gross Volume Tracked', value: '$120M+' },
+    ],
+    technologies: ['Next.js', 'Go', 'TypeScript', 'PostgreSQL', 'TimescaleDB', 'Redis', 'Docker', 'AWS'],
+    features: [
+      'Sub-200ms Multi-Region SKU Search & Profit Calculations',
+      'Automated Algorithmic Buy-Box Repricing Rules',
+      'Automated VAT/GST Calculation & Financial Export',
+      'Role-Based Granular Access Control (RBAC)',
+    ],
+    gradientTheme: 'from-slate-800 to-slate-950',
+  },
+  {
     id: 'social-media-platform',
     title: 'Social Media Management Platform',
     category: 'Web & Mobile / SaaS',

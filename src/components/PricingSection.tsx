@@ -37,15 +37,32 @@ const plans = [
       'Direct WhatsApp, Slack, or Discord collaboration',
       'Weekly live sprint demos & milestone releases',
       'API integrations, AI automations & database optimization',
-      'Flexible month-to-month engagement (zero long lock-in)',
+      'Flexible month-to-month engagement (zero lock-in)',
       '100% complete IP & code ownership from Day 1',
     ],
     ctaText: 'Hire Dedicated Developer',
     ctaLink: '/contact',
   },
+  {
+    id: 'custom-architecture',
+    isDark: true,
+    badge: 'ENTERPRISE / AI',
+    title: 'Custom Product Build',
+    subtitle: 'Bespoke multi-tenant SaaS architecture, cross-platform mobile apps, or custom AI agent pipelines.',
+    price: 'Custom Quote',
+    period: '/milestone',
+    features: [
+      'Custom Web + Cross-Platform Mobile Architecture',
+      'Tailored AI Agent & Automation Pipelines',
+      'Multi-Tenant Cloud & Database Infrastructure',
+      'Direct Architecture Advisory & Milestone Sign-offs',
+      'Complete Deployment, CI/CD, & Documentation',
+      '30-Day Post-Launch Maintenance & Support',
+    ],
+    ctaText: 'Request Custom Quote',
+    ctaLink: '/contact',
+  },
 ];
-
-
 
 export default function PricingSection() {
   return (
@@ -62,7 +79,7 @@ export default function PricingSection() {
           </p>
         </div>
 
-        {/* 2 Side-by-Side Pricing Cards from Reference */}
+        {/* 3-Column Pricing Cards Grid */}
         <div className="pricing-cards-grid">
           {plans.map((plan) => (
             <div
@@ -128,8 +145,14 @@ export default function PricingSection() {
 
         .pricing-cards-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 32px;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+        }
+
+        @media (max-width: 1040px) {
+          .pricing-cards-grid {
+            grid-template-columns: 1fr;
+          }
         }
 
         .pricing-ref-card {

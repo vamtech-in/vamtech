@@ -86,7 +86,7 @@ export default function ContactForm() {
     }
   };
 
-  const handleBookMeeting = () => {
+  const handleBookMeeting = async () => {
     setBookingConfirmed(true);
     try {
       confetti({
@@ -95,6 +95,22 @@ export default function ContactForm() {
         origin: { y: 0.5 },
         colors: ['#2b59d1', '#a7fccd'],
       });
+      if (formData.email) {
+        await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.name || 'Client',
+            email: formData.email,
+            company: formData.company,
+            role: formData.role,
+            serviceInterest: `Discovery Call Booking: ${selectedDate}`,
+            budgetRange: formData.budgetRange,
+            timeline: formData.timeline,
+            message: `Client booked discovery call window for: ${selectedDate}. Ref ID: ${leadRefId}`,
+          }),
+        });
+      }
     } catch (e) {}
   };
 
@@ -178,13 +194,6 @@ export default function ContactForm() {
               <span>Instant Schedule Discovery Call</span>
               <span className="arrow-glyph">▸</span>
             </button>
-            <a
-              href="/admin/leads"
-              className="btn-secondary"
-              style={{ fontSize: '13px', textDecoration: 'none' }}
-            >
-              View Form Submissions Inbox 📥
-            </a>
             <button
               onClick={() => {
                 setSubmitted(false);

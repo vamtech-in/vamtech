@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import { Plus_Jakarta_Sans, JetBrains_Mono, Inter } from 'next/font/google';
 import './globals.css';
@@ -9,7 +9,13 @@ import ScrollProgressBar from '@/components/ScrollProgressBar';
 import JsonLd from '@/components/JsonLd';
 
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-253YX57JZ7';
-const gtmContainerId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-XXXXXXX';
+const gtmContainerId = (process.env.NEXT_PUBLIC_GTM_ID && process.env.NEXT_PUBLIC_GTM_ID !== 'GTM-XXXXXXX') ? process.env.NEXT_PUBLIC_GTM_ID : null;
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#ff5722',
+};
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -130,7 +136,6 @@ export default function RootLayout({
       className={`${plusJakarta.variable} ${jetbrainsMono.variable} ${inter.variable}`}
     >
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="google-site-verification"
           content="bsvWlgXxqFFkRu7Q0Tuqd5SDjB-ctvgNL4hgM8Eooqk"

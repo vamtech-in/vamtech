@@ -6,7 +6,7 @@ import { ChevronDown, Send, Sparkles, HelpCircle, CheckCircle } from 'lucide-rea
 const faqs = [
   {
     q: 'What is the cost of custom software or MVP development at VAMTech?',
-    a: 'We offer fixed-scope MVP sprint packages starting at ₹24,999 for startups and growing businesses. For enterprise software, custom platforms, and dedicated full-stack engineering pods ($3,500/mo), we provide clear milestone-based pricing with zero hidden fees.',
+    a: 'We offer fixed-scope MVP sprint packages starting at ₹24,999 for startups and growing businesses. For enterprise software, custom platforms, and dedicated full-stack engineering pods (₹49,999/mo / $3,500/mo for global engagements), we provide clear milestone-based pricing with zero hidden fees.',
   },
   {
     q: 'How fast can VAMTech deliver our web app, mobile app, or MVP?',
@@ -33,14 +33,38 @@ const faqs = [
 export default function FAQSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [quickEmail, setQuickEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleQuickSubmit = (e: React.FormEvent) => {
+  const handleQuickSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (quickEmail) {
+    if (!quickEmail.trim()) return;
+    setIsSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Quick Deck Inquirer',
+          email: quickEmail.trim(),
+          serviceInterest: 'Capability Deck & Architecture Inquiry',
+          message: 'Requested tailored capability deck and technical overview via FAQ Quick Inquiry widget.',
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Failed to send inquiry.');
+      }
       setSent(true);
-      setTimeout(() => setSent(false), 4000);
       setQuickEmail('');
+      setTimeout(() => setSent(false), 5000);
+    } catch (err: any) {
+      setError(err.message || 'Something went wrong. Please try again.');
+      setTimeout(() => setError(null), 4000);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -78,28 +102,31 @@ export default function FAQSection() {
             {/* Dark Quick Inquire Card from Reference */}
             <div className="quick-inquire-box">
               <h4>Quick Technical Inquiry</h4>
-              <p>Leave your email and our CTO will send you a tailored capability deck.</p>
+              <p>Leave your email and our lead team will send you our capability deck and blueprint.</p>
 
               {sent ? (
                 <div className="sent-badge">
                   <CheckCircle size={16} />
-                  <span>Inquiry received! We&apos;ll be in touch.</span>
+                  <span>Inquiry received! We&apos;ll be in touch within 1 business day.</span>
                 </div>
               ) : (
                 <form onSubmit={handleQuickSubmit} className="quick-form">
                   <input
                     type="email"
                     required
-                    placeholder="Enter your email..."
+                    placeholder="Enter your work email..."
                     value={quickEmail}
                     onChange={(e) => setQuickEmail(e.target.value)}
                     className="quick-input"
                   />
-                  <button type="submit" className="btn-orange quick-submit-btn">
-                    <span>Send</span>
+                  <button type="submit" disabled={isSubmitting} className="btn-orange quick-submit-btn">
+                    <span>{isSubmitting ? 'Sending...' : 'Send'}</span>
                     <Send size={14} />
                   </button>
                 </form>
+              )}
+              {error && (
+                <p style={{ color: '#ef4444', fontSize: '12px', marginTop: '8px' }}>{error}</p>
               )}
             </div>
           </div>

@@ -8,7 +8,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Affordable Software Development Pricing & MVP Packages (Starting ₹24,999)',
   description:
-    'Transparent software development pricing: Rapid 2–4 Week MVP sprints starting at ₹24,999 and Dedicated Engineering Squads ($3,500/mo). Zero hidden fees, milestone approvals, and 100% IP ownership.',
+    'Transparent software development pricing: Rapid 2–4 Week MVP sprints starting at ₹24,999 and Dedicated Engineering Pods (₹49,999/mo / $3,500/mo). Zero hidden fees, milestone approvals, and 100% IP ownership.',
   keywords: [
     'Software Development Cost India',
     'MVP Development Pricing ₹24,999',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Affordable Software Development & MVP Pricing | VAMTech',
     description:
-      'Predictable sprint budgeting starting at ₹24,999 for MVPs. 100% source code ownership and milestone-based payments.',
+      'Predictable sprint budgeting starting at ₹24,999 for MVPs and ₹49,999/mo for dedicated developers. 100% source code ownership and milestone-based payments.',
     url: 'https://vamtech.io/pricing',
   },
 };

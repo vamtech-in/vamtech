@@ -27,6 +27,7 @@ interface Lead {
   receivedAt: string;
   name: string;
   email: string;
+  phone?: string;
   company: string;
   role: string;
   serviceInterest: string;
@@ -113,21 +114,23 @@ export default function AdminLeadsPage() {
 
   const exportCSV = () => {
     if (leads.length === 0) return;
-    const headers = ['ID', 'Date', 'Name', 'Email', 'Company', 'Role', 'Service', 'Budget', 'Timeline', 'Message'];
+    const escapeCsv = (str: string | undefined | null) => `"${String(str || '').replace(/"/g, '""')}"`;
+    const headers = ['ID', 'Date', 'Name', 'Email', 'Phone', 'Company', 'Role', 'Service', 'Budget', 'Timeline', 'Message'];
     const rows = leads.map(l => [
-      l.id,
-      new Date(l.receivedAt).toLocaleString(),
-      `"${l.name}"`,
-      `"${l.email}"`,
-      `"${l.company}"`,
-      `"${l.role}"`,
-      `"${l.serviceInterest}"`,
-      `"${l.budgetRange}"`,
-      `"${l.timeline}"`,
-      `"${(l.message || '').replace(/"/g, '""')}"`
+      escapeCsv(l.id),
+      escapeCsv(new Date(l.receivedAt).toLocaleString()),
+      escapeCsv(l.name),
+      escapeCsv(l.email),
+      escapeCsv(l.phone || 'Not provided'),
+      escapeCsv(l.company),
+      escapeCsv(l.role),
+      escapeCsv(l.serviceInterest),
+      escapeCsv(l.budgetRange),
+      escapeCsv(l.timeline),
+      escapeCsv(l.message)
     ]);
 
-    const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+    const csvContent = 'data:text/csv;charset=utf-8,\uFEFF' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
@@ -140,6 +143,7 @@ export default function AdminLeadsPage() {
   const filteredLeads = leads.filter(l => 
     l.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     l.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (l.phone && l.phone.toLowerCase().includes(searchTerm.toLowerCase())) ||
     l.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
     l.serviceInterest.toLowerCase().includes(searchTerm.toLowerCase()) ||
     l.id.toLowerCase().includes(searchTerm.toLowerCase())
@@ -295,7 +299,7 @@ export default function AdminLeadsPage() {
         </div>
 
         {/* Grid Layout: Submissions List + Detail Viewer */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '24px', alignItems: 'start' }}>
+        <div className="admin-leads-grid">
           {/* Left Column: Form Submissions List */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {isLoading ? (
@@ -304,7 +308,7 @@ export default function AdminLeadsPage() {
               </div>
             ) : filteredLeads.length === 0 ? (
               <div className="monad-card" style={{ padding: '40px', textAlign: 'center', backgroundColor: '#ffffff' }}>
-                <Inbox size={36} color="var(--color-ash)" style={{ margin: '0 auto 12px' }} />
+                <Inbox size={36} color="var(--color-smoke)" style={{ margin: '0 auto 12px' }} />
                 <h3 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '20px', fontWeight: 400, marginBottom: '6px' }}>No Messages Found</h3>
                 <p style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '13px', color: 'var(--color-smoke)' }}>
                   {searchTerm ? 'No form messages match your search filter.' : 'When visitors submit the contact form, their messages will appear here.'}
@@ -337,7 +341,7 @@ export default function AdminLeadsPage() {
                     {lead.name}
                   </h3>
                   <div style={{ fontSize: '12.5px', fontFamily: 'var(--font-abc-diatype-mono)', color: 'var(--color-lake-blue)', marginBottom: '8px' }}>
-                    {lead.email} {lead.company ? `• ${lead.company}` : ''}
+                    {lead.email} {lead.company ? `• ${lead.company}` : ''} {lead.phone && lead.phone !== 'Not provided' ? `• 📞 ${lead.phone}` : ''}
                   </div>
 
                   <p style={{ fontSize: '13px', fontFamily: 'var(--font-abc-diatype-mono)', color: 'var(--color-graphite)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', lineHeight: 1.4 }}>
@@ -358,7 +362,7 @@ export default function AdminLeadsPage() {
           </div>
 
           {/* Right Column: Selected Message Detail View */}
-          <div style={{ position: 'sticky', top: '100px' }}>
+          <div className="admin-detail-column">
             {selectedLead ? (
               <div className="monad-card" style={{ backgroundColor: '#ffffff', padding: '32px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
@@ -376,15 +380,21 @@ export default function AdminLeadsPage() {
                 <h2 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '26px', fontWeight: 400, marginBottom: '6px' }}>
                   {selectedLead.name}
                 </h2>
-                <div style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '14px', color: 'var(--color-lake-blue)', marginBottom: '20px' }}>
+                <div style={{ fontFamily: 'var(--font-abc-diatype-mono)', fontSize: '14px', color: 'var(--color-lake-blue)', marginBottom: '20px', display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
                   <a href={`mailto:${selectedLead.email}`} style={{ textDecoration: 'underline', color: 'inherit' }}>
-                    {selectedLead.email}
+                    ✉️ {selectedLead.email}
                   </a>
+                  {selectedLead.phone && selectedLead.phone !== 'Not provided' && (
+                    <a href={`tel:${selectedLead.phone}`} style={{ textDecoration: 'underline', color: 'inherit' }}>
+                      📞 {selectedLead.phone}
+                    </a>
+                  )}
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '16px', borderRadius: '12px', backgroundColor: 'var(--color-parchment)', marginBottom: '24px', fontSize: '13px', fontFamily: 'var(--font-abc-diatype-mono)' }}>
                   <div><strong>Company:</strong> {selectedLead.company || 'N/A'}</div>
                   <div><strong>Role:</strong> {selectedLead.role || 'N/A'}</div>
+                  <div><strong>Phone:</strong> {selectedLead.phone || 'Not provided'}</div>
                   <div><strong>Service Required:</strong> {selectedLead.serviceInterest}</div>
                   <div><strong>Estimated Budget:</strong> {selectedLead.budgetRange}</div>
                   <div><strong>Target Timeline:</strong> {selectedLead.timeline}</div>
@@ -392,7 +402,7 @@ export default function AdminLeadsPage() {
                 </div>
 
                 <h4 style={{ fontFamily: 'var(--font-untitled-serif)', fontSize: '18px', fontWeight: 400, marginBottom: '10px' }}>
-                  Message & Scope Description:
+                  Message &amp; Scope Description:
                 </h4>
                 <div style={{ padding: '16px', borderRadius: '12px', border: '1px solid var(--color-ash)', backgroundColor: '#fafafa', fontSize: '14px', lineHeight: 1.6, whiteSpace: 'pre-wrap', fontFamily: 'var(--font-abc-diatype-mono)', color: 'var(--color-off-black)' }}>
                   {selectedLead.message}
@@ -406,6 +416,17 @@ export default function AdminLeadsPage() {
                   >
                     <span>Reply via Email</span>
                   </a>
+                  {selectedLead.phone && selectedLead.phone !== 'Not provided' && (
+                    <a
+                      href={`https://wa.me/${selectedLead.phone.replace(/[^0-9]/g, '')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-secondary"
+                      style={{ fontSize: '13px', textAlign: 'center', textDecoration: 'none' }}
+                    >
+                      <span>WhatsApp</span>
+                    </a>
+                  )}
                 </div>
               </div>
             ) : (
@@ -421,6 +442,27 @@ export default function AdminLeadsPage() {
             )}
           </div>
         </div>
+
+        <style jsx>{`
+          .admin-leads-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 24px;
+            align-items: start;
+          }
+          .admin-detail-column {
+            position: sticky;
+            top: 100px;
+          }
+          @media (max-width: 900px) {
+            .admin-leads-grid {
+              grid-template-columns: 1fr;
+            }
+            .admin-detail-column {
+              position: static;
+            }
+          }
+        `}</style>
       </div>
     </div>
   );

@@ -108,7 +108,7 @@ export default function FeaturedProjects() {
               </ul>
               <div style={{ marginTop: '28px' }}>
                 <button
-                  onClick={() => setSelectedProject(projectsData[0])}
+                  onClick={() => setSelectedProject(projectsData.find(p => p.id === 'gift-customizer-app') || projectsData[0])}
                   className="btn-dark-pill"
                 >
                   <span>View Full Case Study</span>
@@ -125,7 +125,7 @@ export default function FeaturedProjects() {
                   <div className="phone-app-header">
                     <div className="app-header-left">
                       <strong>Pen - With customize name</strong>
-                      <div className="app-rating">★★★★☆ <span>4.8 (88,43 reviews)</span></div>
+                      <div className="app-rating">★★★★☆ <span>4.8 (8,843 reviews)</span></div>
                     </div>
                     <div className="app-badge-pill">Same Day Delivery</div>
                   </div>
@@ -210,7 +210,7 @@ export default function FeaturedProjects() {
               </ul>
               <div style={{ marginTop: '28px' }}>
                 <button
-                  onClick={() => setSelectedProject(projectsData[1])}
+                  onClick={() => setSelectedProject(projectsData.find(p => p.id === 'amz-analytics-app') || projectsData[1])}
                   className="btn-white-pill"
                 >
                   <span>Explore Architecture</span>

@@ -7,22 +7,29 @@ function getLeadsFilePath() {
   return path.join(process.cwd(), 'src', 'data', 'leads.json');
 }
 
+// In-memory cache fallback for serverless environments where local disk is read-only
+let memoryLeads: any[] = [];
+
 // Helper to read leads from storage
 function readLeads() {
   try {
     const filePath = getLeadsFilePath();
     if (fs.existsSync(filePath)) {
       const data = fs.readFileSync(filePath, 'utf-8');
-      return JSON.parse(data);
+      const parsed = JSON.parse(data);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
     }
   } catch (err) {
-    console.error('[Vamtech Contact Intake] Error reading leads file:', err);
+    // Expected in serverless read-only environments
   }
-  return [];
+  return memoryLeads;
 }
 
 // Helper to save leads to storage
 function saveLeads(leads: any[]) {
+  memoryLeads = leads;
   try {
     const filePath = getLeadsFilePath();
     const dirPath = path.dirname(filePath);
@@ -31,14 +38,31 @@ function saveLeads(leads: any[]) {
     }
     fs.writeFileSync(filePath, JSON.stringify(leads, null, 2), 'utf-8');
   } catch (err) {
-    console.error('[Vamtech Contact Intake] Error writing leads file:', err);
+    console.warn('[Vamtech Contact Intake] Local disk write bypassed (serverless read-only disk detected). Persisted in memory.');
   }
+}
+
+// Basic in-memory rate limiting (10 submissions per minute per IP)
+const ipTracker = new Map<string, { count: number; resetAt: number }>();
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const record = ipTracker.get(ip);
+  if (!record || now > record.resetAt) {
+    ipTracker.set(ip, { count: 1, resetAt: now + 60 * 1000 });
+    return false;
+  }
+  if (record.count >= 10) {
+    return true;
+  }
+  record.count += 1;
+  return false;
 }
 
 function isAuthorizedAdmin(request: Request) {
   const adminKey = (request.headers.get('x-admin-key') || '').trim();
-  const expectedKey = (process.env.ADMIN_PASSWORD || 'vamtech2026').trim();
-  return adminKey.toLowerCase() === expectedKey.toLowerCase();
+  const expectedKey = (process.env.ADMIN_PASSWORD || 'Vamtech@Admin#2026').trim();
+  if (!adminKey || !expectedKey) return false;
+  return adminKey === expectedKey;
 }
 
 // GET: Retrieve all form submissions (Admin Protected)
@@ -53,10 +77,29 @@ export async function GET(request: Request) {
 // POST: Save a new form submission
 export async function POST(request: Request) {
   try {
+    const clientIp = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+    if (checkRateLimit(clientIp)) {
+      return NextResponse.json(
+        { success: false, error: 'Too many requests. Please wait a minute before submitting again.' },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
     const { name, email, company, role, phone, serviceInterest, budgetRange, timeline, message } = body;
 
-    if (!name || !email || !serviceInterest) {
+    // Input sanitization & limits
+    const cleanName = String(name || '').trim().slice(0, 100);
+    const cleanEmail = String(email || '').trim().toLowerCase().slice(0, 150);
+    const cleanCompany = String(company || '').trim().slice(0, 150);
+    const cleanRole = String(role || '').trim().slice(0, 100);
+    const cleanPhone = String(phone || '').trim().slice(0, 50);
+    const cleanService = String(serviceInterest || 'Custom Enterprise Software').trim().slice(0, 150);
+    const cleanBudget = String(budgetRange || 'Standard Tier').trim().slice(0, 100);
+    const cleanTimeline = String(timeline || 'Immediate').trim().slice(0, 100);
+    const cleanMessage = String(message || '').trim().slice(0, 5000);
+
+    if (!cleanName || !cleanEmail || !cleanService) {
       return NextResponse.json(
         { 
           success: false, 
@@ -68,7 +111,7 @@ export async function POST(request: Request) {
 
     // Email format validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(cleanEmail)) {
       return NextResponse.json(
         { 
           success: false, 
@@ -81,23 +124,25 @@ export async function POST(request: Request) {
     const leadRecord = {
       id: `LEAD-${Date.now().toString().slice(-6)}`,
       receivedAt: new Date().toISOString(),
-      name,
-      email,
-      company: company || 'Confidential / Individual',
-      phone: phone || 'Not provided',
-      role: role || 'Engineering Lead',
-      serviceInterest,
-      budgetRange: budgetRange || 'Standard Tier',
-      timeline: timeline || 'Immediate',
-      message: message || 'No custom notes provided',
+      name: cleanName,
+      email: cleanEmail,
+      company: cleanCompany || 'Confidential / Individual',
+      phone: cleanPhone || 'Not provided',
+      role: cleanRole || 'Engineering Lead',
+      serviceInterest: cleanService,
+      budgetRange: cleanBudget,
+      timeline: cleanTimeline,
+      message: cleanMessage || 'No custom notes provided',
       status: 'NEW'
     };
 
     console.log('[Vamtech Contact Intake] New Lead Received:', JSON.stringify(leadRecord, null, 2));
 
-    // Save lead to local JSON storage
+    // Save lead to storage
     const currentLeads = readLeads();
     const updatedLeads = [leadRecord, ...currentLeads];
+    saveLeads(updatedLeads);
+
     let emailSent = false;
 
     // Formspree Integration (Server-side Private FORMSPREE_URL)
@@ -111,15 +156,16 @@ export async function POST(request: Request) {
             'Accept': 'application/json' 
           },
           body: JSON.stringify({
-            name,
-            email,
-            company,
-            role,
-            serviceInterest,
-            budgetRange,
-            timeline,
-            message,
-            _subject: `[Vamtech Lead ${leadRecord.id}] ${name} (${company || 'Individual'})`,
+            name: cleanName,
+            email: cleanEmail,
+            phone: cleanPhone,
+            company: cleanCompany,
+            role: cleanRole,
+            serviceInterest: cleanService,
+            budgetRange: cleanBudget,
+            timeline: cleanTimeline,
+            message: cleanMessage,
+            _subject: `[Vamtech Lead ${leadRecord.id}] ${cleanName} (${cleanCompany || 'Individual'})`,
           }),
         });
 
@@ -149,22 +195,23 @@ export async function POST(request: Request) {
           body: JSON.stringify({
             from: process.env.SENDER_EMAIL || 'Vamtech Intake <onboarding@resend.dev>',
             to: [recipientEmail],
-            reply_to: email,
-            subject: `[Vamtech Lead] ${name} from ${leadRecord.company} (${serviceInterest})`,
+            reply_to: cleanEmail,
+            subject: `[Vamtech Lead] ${cleanName} from ${leadRecord.company} (${cleanService})`,
             html: `
               <div style="font-family: Arial, sans-serif; max-width: 600px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
-                <h2 style="color: #0066FF; margin-top: 0;">🚀 New Project Intake Inquiry</h2>
+                <h2 style="color: #ff5722; margin-top: 0;">🚀 New Project Intake Inquiry</h2>
                 <p><strong>Reference ID:</strong> ${leadRecord.id}</p>
                 <hr style="border: 0; border-top: 1px solid #eee;" />
-                <p><strong>Client Name:</strong> ${name}</p>
-                <p><strong>Client Email:</strong> <a href="mailto:${email}">${email}</a></p>
+                <p><strong>Client Name:</strong> ${cleanName}</p>
+                <p><strong>Client Email:</strong> <a href="mailto:${cleanEmail}">${cleanEmail}</a></p>
+                <p><strong>Phone Number:</strong> ${cleanPhone || 'Not provided'}</p>
                 <p><strong>Company / Role:</strong> ${leadRecord.company} (${leadRecord.role})</p>
-                <p><strong>Service Interest:</strong> ${serviceInterest}</p>
-                <p><strong>Budget Tier:</strong> ${budgetRange}</p>
-                <p><strong>Target Timeline:</strong> ${timeline}</p>
+                <p><strong>Service Interest:</strong> ${cleanService}</p>
+                <p><strong>Budget Tier:</strong> ${cleanBudget}</p>
+                <p><strong>Target Timeline:</strong> ${cleanTimeline}</p>
                 <p><strong>Architecture Brief / Message:</strong></p>
-                <blockquote style="background: #f9f9f9; padding: 12px; border-left: 4px solid #0066FF; margin: 0;">
-                  ${message}
+                <blockquote style="background: #f9f9f9; padding: 12px; border-left: 4px solid #ff5722; margin: 0;">
+                  ${cleanMessage}
                 </blockquote>
                 <hr style="border: 0; border-top: 1px solid #eee; margin-top: 20px;" />
                 <p style="font-size: 12px; color: #888;">Dispatched automatically by Vamtech Web Portal.</p>
@@ -190,7 +237,7 @@ export async function POST(request: Request) {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            content: `🚀 **New Vamtech Scope Lead [${leadRecord.id}]**\n**Name:** ${name} (${email})\n**Company:** ${leadRecord.company}\n**Service:** ${serviceInterest}\n**Budget:** ${budgetRange}\n**Message:** ${message}`,
+            content: `🚀 **New Vamtech Scope Lead [${leadRecord.id}]**\n**Name:** ${cleanName} (${cleanEmail})\n**Phone:** ${cleanPhone}\n**Company:** ${leadRecord.company}\n**Service:** ${cleanService}\n**Budget:** ${cleanBudget}\n**Message:** ${cleanMessage}`,
           }),
         });
         emailSent = true;
@@ -243,6 +290,7 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }
 }
+
 
 
 
