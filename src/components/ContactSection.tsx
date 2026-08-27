@@ -268,12 +268,12 @@ export default function ContactSection() {
                 <span />
                 <span />
               </div>
+            </div>
 
-              <div className="badge-100-position">
-                <div className="badge-circle-100">
-                  <span>100%</span>
-                  <span style={{ fontSize: '10px', fontWeight: 700 }}>IP OWN</span>
-                </div>
+            <div className="badge-100-position">
+              <div className="badge-circle-100">
+                <span>100%</span>
+                <span style={{ fontSize: '10px', fontWeight: 700 }}>IP OWN</span>
               </div>
             </div>
           </div>

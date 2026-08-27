@@ -176,7 +176,7 @@ export default function Hero() {
                 <p className="overlay-desc">
                   We build clean full-stack architectures, custom dashboards, mobile apps, and automated workflows with 100% transparent delivery.
                 </p>
-                <div style={{ marginTop: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                <div style={{ marginTop: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
                   <Link href="/projects" className="btn-white-pill">
                     <span>Explore Work Demos</span>
                     <ArrowRight size={15} color="var(--color-accent-500)" />
