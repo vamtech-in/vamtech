@@ -97,7 +97,7 @@ export default function Footer() {
 
         {/* SEO Topical Keyword Strip */}
         <div style={{ padding: '24px 0', borderTop: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', flexWrap: 'wrap', gap: '8px 16px', fontSize: '12px', color: '#64748b' }}>
-          <span style={{ color: '#0055ff', fontWeight: 700 }}>POPULAR IN LUCKNOW:</span>
+          <span style={{ color: 'var(--color-accent-500)', fontWeight: 700 }}>POPULAR IN LUCKNOW:</span>
           <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Software Company in Lucknow</Link>
           <span>•</span>
           <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Best Software Development Company Lucknow</Link>
@@ -133,7 +133,7 @@ export default function Footer() {
 
       <style jsx>{`
         .footer-ref-shell {
-          background-color: #060e1d;
+          background-color: var(--color-primary-900);
           color: #ffffff;
           border-top: 1px solid rgba(255, 255, 255, 0.08);
           padding: 80px 0 36px;
@@ -152,6 +152,7 @@ export default function Footer() {
         }
 
         .footer-brand-desc {
+          font-family: var(--font-body);
           font-size: 14px;
           line-height: 1.6;
           color: #94a3b8;
@@ -177,12 +178,13 @@ export default function Footer() {
         }
 
         .footer-social-row a:hover {
-          background: #0055ff;
-          border-color: #0055ff;
+          background: var(--color-accent-500);
+          border-color: var(--color-accent-500);
           transform: translateY(-2px);
         }
 
         .footer-nav-col h4 {
+          font-family: var(--font-heading);
           font-size: 15px;
           font-weight: 800;
           color: #ffffff;
@@ -198,13 +200,14 @@ export default function Footer() {
         }
 
         .footer-nav-col ul li a {
+          font-family: var(--font-body);
           font-size: 14px;
           color: #8c9ba8;
           transition: color 0.2s ease;
         }
 
         .footer-nav-col ul li a:hover {
-          color: #0055ff;
+          color: var(--color-accent-400);
         }
 
         .footer-contact-items {
@@ -224,7 +227,7 @@ export default function Footer() {
         }
 
         .footer-contact-items a {
-          color: #38bdf8;
+          color: var(--color-blue-400);
         }
 
         .footer-contact-items p {
@@ -251,7 +254,7 @@ export default function Footer() {
 
         .copyright-text em {
           font-style: italic;
-          color: #0055ff;
+          color: var(--color-accent-500);
           font-weight: 700;
         }
 

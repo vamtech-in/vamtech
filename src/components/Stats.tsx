@@ -66,9 +66,9 @@ export default function Stats() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: linear-gradient(135deg, #0055ff 0%, #00c6ff 100%);
+          background: linear-gradient(135deg, var(--color-accent-500) 0%, var(--color-accent-600) 100%);
           color: #ffffff;
-          box-shadow: 0 14px 34px rgba(0, 85, 255, 0.35);
+          box-shadow: 0 14px 34px rgba(255, 107, 53, 0.35);
           margin-bottom: 18px;
           transition: transform 0.25s ease;
         }
@@ -101,6 +101,7 @@ export default function Stats() {
         }
 
         .stat-number {
+          font-family: var(--font-heading);
           font-size: clamp(26px, 3vw, 34px);
           font-weight: 900;
           letter-spacing: -0.04em;
@@ -108,16 +109,18 @@ export default function Stats() {
         }
 
         .stat-label {
+          font-family: var(--font-heading);
           font-size: 19px;
-          font-weight: 900;
-          color: #0a192f;
+          font-weight: 800;
+          color: var(--color-primary-900);
           margin-bottom: 4px;
           letter-spacing: -0.02em;
         }
 
         .stat-detail {
+          font-family: var(--font-body);
           font-size: 13.5px;
-          color: #475569;
+          color: var(--color-gray-600);
         }
 
         @media (max-width: 768px) {

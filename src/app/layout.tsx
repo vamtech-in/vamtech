@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
-import { Plus_Jakarta_Sans, JetBrains_Mono, Inter } from 'next/font/google';
+import { Poppins, Inter, Fira_Code, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -14,8 +14,29 @@ const gtmContainerId = (process.env.NEXT_PUBLIC_GTM_ID && process.env.NEXT_PUBLI
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0055ff',
+  themeColor: '#0b1f3a',
 };
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-heading',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-body',
+  display: 'swap',
+});
+
+const firaCode = Fira_Code({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-mono',
+  display: 'swap',
+});
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -27,14 +48,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
-  variable: '--font-mono',
-  display: 'swap',
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-inter',
+  variable: '--font-mono-alt',
   display: 'swap',
 });
 
@@ -130,7 +144,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${plusJakarta.variable} ${jetbrainsMono.variable} ${inter.variable}`}
+      className={`${poppins.variable} ${inter.variable} ${firaCode.variable} ${plusJakarta.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <meta

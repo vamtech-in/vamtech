@@ -38,7 +38,7 @@ export default function FeaturedProjects() {
           <div className="ref-card-white portfolio-mini-card">
             <div className="mini-card-squiggle">
               <svg width="38" height="14" viewBox="0 0 40 14" fill="none">
-                <path d="M2 7C6 2 10 2 14 7C18 12 22 12 26 7C30 2 34 2 38 7" stroke="#0055ff" strokeWidth="3" strokeLinecap="round" />
+                <path d="M2 7C6 2 10 2 14 7C18 12 22 12 26 7C30 2 34 2 38 7" stroke="var(--color-accent-500)" strokeWidth="3" strokeLinecap="round" />
               </svg>
             </div>
             <h3 className="mini-card-title">AMZ Web<br />Application</h3>
@@ -49,7 +49,7 @@ export default function FeaturedProjects() {
           <div className="ref-card-dark portfolio-mini-card">
             <div className="mini-card-squiggle">
               <svg width="38" height="14" viewBox="0 0 40 14" fill="none">
-                <path d="M2 7C6 2 10 2 14 7C18 12 22 12 26 7C30 2 34 2 38 7" stroke="#0055ff" strokeWidth="3" strokeLinecap="round" />
+                <path d="M2 7C6 2 10 2 14 7C18 12 22 12 26 7C30 2 34 2 38 7" stroke="var(--color-accent-500)" strokeWidth="3" strokeLinecap="round" />
               </svg>
             </div>
             <h3 className="mini-card-title" style={{ color: '#ffffff' }}>Gift<br />Mobile App</h3>
@@ -60,7 +60,7 @@ export default function FeaturedProjects() {
           <div className="ref-card-dark portfolio-mini-card">
             <div className="mini-card-squiggle">
               <svg width="38" height="14" viewBox="0 0 40 14" fill="none">
-                <path d="M2 7C6 2 10 2 14 7C18 12 22 12 26 7C30 2 34 2 38 7" stroke="#0055ff" strokeWidth="3" strokeLinecap="round" />
+                <path d="M2 7C6 2 10 2 14 7C18 12 22 12 26 7C30 2 34 2 38 7" stroke="var(--color-accent-500)" strokeWidth="3" strokeLinecap="round" />
               </svg>
             </div>
             <h3 className="mini-card-title" style={{ color: '#ffffff' }}>AI Copilot<br />Assistant</h3>
@@ -71,7 +71,7 @@ export default function FeaturedProjects() {
           <div className="ref-card-white portfolio-mini-card">
             <div className="mini-card-squiggle">
               <svg width="38" height="14" viewBox="0 0 40 14" fill="none">
-                <path d="M2 7C6 2 10 2 14 7C18 12 22 12 26 7C30 2 34 2 38 7" stroke="#0055ff" strokeWidth="3" strokeLinecap="round" />
+                <path d="M2 7C6 2 10 2 14 7C18 12 22 12 26 7C30 2 34 2 38 7" stroke="var(--color-accent-500)" strokeWidth="3" strokeLinecap="round" />
               </svg>
             </div>
             <h3 className="mini-card-title">Cloud Scale<br />ERP Engine</h3>
@@ -192,19 +192,19 @@ export default function FeaturedProjects() {
               <h3 className="showcase-title" style={{ color: '#ffffff' }}>AMZ Web App</h3>
               <ul className="showcase-bullets" style={{ color: '#c0cad6' }}>
                 <li>
-                  <span className="bullet-dot" style={{ backgroundColor: '#0055ff' }} />
+                  <span className="bullet-dot" style={{ backgroundColor: 'var(--color-accent-500)' }} />
                   <span>Real-time multi-channel inventory reconciliation and algorithmic repricing across global storefronts.</span>
                 </li>
                 <li>
-                  <span className="bullet-dot" style={{ backgroundColor: '#0055ff' }} />
+                  <span className="bullet-dot" style={{ backgroundColor: 'var(--color-accent-500)' }} />
                   <span>Sub-200ms latency on data aggregation spanning over 500,000 active daily SKUs.</span>
                 </li>
                 <li>
-                  <span className="bullet-dot" style={{ backgroundColor: '#0055ff' }} />
+                  <span className="bullet-dot" style={{ backgroundColor: 'var(--color-accent-500)' }} />
                   <span>Role-based access security, automated VAT calculation, and exportable financial audit reports.</span>
                 </li>
                 <li>
-                  <span className="bullet-dot" style={{ backgroundColor: '#0055ff' }} />
+                  <span className="bullet-dot" style={{ backgroundColor: 'var(--color-accent-500)' }} />
                   <span>Zero-downtime Blue/Green deployments powered by Kubernetes and Terraform.</span>
                 </li>
               </ul>
@@ -214,7 +214,7 @@ export default function FeaturedProjects() {
                   className="btn-white-pill"
                 >
                   <span>Explore Architecture</span>
-                  <ArrowRight size={14} color="#0055ff" />
+                  <ArrowRight size={14} color="var(--color-accent-500)" />
                 </button>
               </div>
             </div>
@@ -306,12 +306,12 @@ export default function FeaturedProjects() {
         }
 
         .showcase-pink {
-          background: linear-gradient(135deg, #0055ff 0%, #0070f3 50%, #00b4d8 100%);
+          background: linear-gradient(135deg, var(--color-accent-500) 0%, var(--color-accent-600) 50%, #cc4a1a 100%);
           color: #ffffff;
         }
 
         .showcase-slate {
-          background: linear-gradient(135deg, #0a192f 0%, #060e1d 100%);
+          background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-800) 100%);
           color: #ffffff;
           border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -330,16 +330,17 @@ export default function FeaturedProjects() {
 
         .pink-badge {
           background-color: #ffffff;
-          color: #0055ff;
+          color: var(--color-accent-500);
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .orange-badge {
-          background-color: #0055ff;
+          background-color: var(--color-accent-500);
           color: #ffffff;
         }
 
         .showcase-title {
+          font-family: var(--font-heading);
           font-size: clamp(28px, 3.5vw, 40px);
           font-weight: 900;
           letter-spacing: -0.04em;

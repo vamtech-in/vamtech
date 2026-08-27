@@ -73,7 +73,7 @@ export default function AudienceLens() {
                 <div style={{ marginTop: '24px' }}>
                   <Link href="/contact" className="btn-white-pill" style={{ padding: '10px 20px', fontSize: '13px' }}>
                     <span>Explore Model</span>
-                    <ArrowRight size={14} color="#0055ff" />
+                    <ArrowRight size={14} color="var(--color-accent-500)" />
                   </Link>
                 </div>
               </div>
@@ -103,8 +103,9 @@ export default function AudienceLens() {
         }
 
         .audience-subtitle {
+          font-family: var(--font-body);
           font-size: 16px;
-          color: #475569;
+          color: var(--color-gray-600);
           max-width: 540px;
           line-height: 1.55;
         }
@@ -116,25 +117,26 @@ export default function AudienceLens() {
         }
 
         .audience-ref-card {
-          background-color: #060e1d;
+          background-color: var(--color-primary-900);
           border-radius: 24px;
-          border: 1px solid rgba(0, 85, 255, 0.2);
+          border: 1px solid rgba(255, 107, 53, 0.2);
           padding: clamp(32px, 4vw, 48px);
           display: grid;
           grid-template-columns: 1.35fr 0.65fr;
           gap: 40px;
           align-items: center;
-          box-shadow: 0 16px 45px rgba(0, 20, 60, 0.35);
+          box-shadow: 0 16px 45px rgba(5, 14, 31, 0.35);
           transition: all 0.25s ease;
         }
 
         .audience-ref-card:hover {
-          border-color: rgba(0, 85, 255, 0.45);
+          border-color: rgba(255, 107, 53, 0.45);
           transform: translateY(-3px);
-          box-shadow: 0 24px 55px rgba(0, 85, 255, 0.2);
+          box-shadow: 0 24px 55px rgba(255, 107, 53, 0.15);
         }
 
         .audience-card-title {
+          font-family: var(--font-heading);
           font-size: clamp(26px, 3.2vw, 36px);
           font-weight: 900;
           letter-spacing: -0.04em;

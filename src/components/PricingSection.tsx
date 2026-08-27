@@ -122,7 +122,7 @@ export default function PricingSection() {
                   style={{ width: '100%', justifyContent: 'center', padding: '14px 20px', fontSize: '14px' }}
                 >
                   <span>{plan.ctaText}</span>
-                  <ArrowRight size={15} color={plan.isDark ? '#0055ff' : '#ffffff'} />
+                  <ArrowRight size={15} color={plan.isDark ? 'var(--color-accent-500)' : '#ffffff'} />
                 </Link>
               </div>
             </div>
@@ -137,8 +137,9 @@ export default function PricingSection() {
         }
 
         .pricing-subtitle {
+          font-family: var(--font-body);
           font-size: 16px;
-          color: #475569;
+          color: var(--color-gray-600);
           max-width: 520px;
           line-height: 1.55;
         }
@@ -146,7 +147,8 @@ export default function PricingSection() {
         .pricing-cards-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
+          gap: 28px;
+          align-items: stretch;
         }
 
         @media (max-width: 1040px) {
@@ -169,17 +171,17 @@ export default function PricingSection() {
         }
 
         .card-dark {
-          background-color: #060e1d;
+          background-color: var(--color-primary-900);
           color: #ffffff;
-          border: 1px solid rgba(0, 85, 255, 0.2);
-          box-shadow: 0 20px 50px rgba(0, 20, 60, 0.35);
+          border: 1px solid rgba(255, 107, 53, 0.2);
+          box-shadow: 0 20px 50px rgba(5, 14, 31, 0.35);
         }
 
         .card-light {
           background-color: #ffffff;
-          color: #0a192f;
-          border: 1px solid rgba(0, 30, 80, 0.08);
-          box-shadow: 0 10px 35px rgba(10, 25, 45, 0.06);
+          color: var(--color-primary-900);
+          border: 1px solid var(--border-default);
+          box-shadow: 0 10px 35px rgba(5, 14, 31, 0.06);
         }
 
         .card-top-badge {
@@ -194,18 +196,19 @@ export default function PricingSection() {
         }
 
         .card-dark .card-top-badge {
-          background-color: rgba(0, 85, 255, 0.2);
-          color: #38bdf8;
-          border: 1px solid rgba(0, 85, 255, 0.35);
+          background-color: rgba(255, 107, 53, 0.15);
+          color: var(--color-accent-400);
+          border: 1px solid rgba(255, 107, 53, 0.3);
         }
 
         .card-light .card-top-badge {
-          background-color: rgba(0, 85, 255, 0.08);
-          color: #0055ff;
-          border: 1px solid rgba(0, 85, 255, 0.15);
+          background-color: rgba(255, 107, 53, 0.1);
+          color: var(--color-accent-500);
+          border: 1px solid rgba(255, 107, 53, 0.25);
         }
 
         .card-plan-title {
+          font-family: var(--font-heading);
           font-size: clamp(24px, 2.8vw, 32px);
           font-weight: 900;
           letter-spacing: -0.04em;
@@ -213,6 +216,7 @@ export default function PricingSection() {
         }
 
         .card-plan-subtitle {
+          font-family: var(--font-body);
           font-size: 14px;
           line-height: 1.5;
           margin-bottom: 24px;
@@ -223,7 +227,7 @@ export default function PricingSection() {
         }
 
         .card-light .card-plan-subtitle {
-          color: #5d6d80;
+          color: var(--color-gray-600);
         }
 
         .card-price-row {
@@ -240,10 +244,11 @@ export default function PricingSection() {
         }
 
         .card-light .card-price-row {
-          border-color: #eef2f6;
+          border-color: var(--border-default);
         }
 
         .price-value {
+          font-family: var(--font-heading);
           font-size: clamp(40px, 4.8vw, 54px);
           font-weight: 900;
           letter-spacing: -0.05em;
@@ -254,7 +259,7 @@ export default function PricingSection() {
         }
 
         .card-light .price-value {
-          color: #0a192f;
+          color: var(--color-primary-900);
         }
 
         .price-period {
@@ -297,12 +302,12 @@ export default function PricingSection() {
         }
 
         .check-dark {
-          background-color: rgba(0, 85, 255, 0.3);
-          color: #38bdf8;
+          background-color: rgba(255, 107, 53, 0.2);
+          color: var(--color-accent-400);
         }
 
         .check-light {
-          background-color: #0055ff;
+          background-color: var(--color-accent-500);
           color: #ffffff;
         }
 

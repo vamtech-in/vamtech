@@ -117,7 +117,7 @@ export default function Hero() {
 
               {/* Floating Pill Card 1: 2-4 Week MVP */}
               <div className="floating-stat-card card-top-left">
-                <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(0, 85, 255, 0.12)', color: '#0055ff' }}>
+                <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(255, 107, 53, 0.14)', color: 'var(--color-accent-500)' }}>
                   <Zap size={18} />
                 </div>
                 <div>
@@ -139,7 +139,7 @@ export default function Hero() {
 
               {/* Floating Pill Card 3: Direct Developer Sync */}
               <div className="floating-stat-card card-bottom-left">
-                <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(56, 189, 248, 0.15)', color: '#0284c7' }}>
+                <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(0, 168, 232, 0.15)', color: 'var(--color-blue-500)' }}>
                   <Code2 size={18} />
                 </div>
                 <div>
@@ -179,7 +179,7 @@ export default function Hero() {
                 <div style={{ marginTop: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                   <Link href="/projects" className="btn-white-pill">
                     <span>Explore Work Demos</span>
-                    <ArrowRight size={15} color="#0055ff" />
+                    <ArrowRight size={15} color="var(--color-accent-500)" />
                   </Link>
                   <Link href="/contact" className="btn-dark-glass">
                     <span>Get Free Consultation</span>

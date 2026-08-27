@@ -388,7 +388,7 @@ export default function ContactSection() {
         }
 
         .social-icons-stack a:hover {
-          color: #0055ff;
+          color: var(--color-accent-500);
           transform: translateX(2px);
         }
 
@@ -398,12 +398,12 @@ export default function ContactSection() {
 
         .contact-dark-card {
           position: relative;
-          background-color: #060e1d;
+          background-color: var(--color-primary-900);
           color: #ffffff;
           border-radius: 24px;
           padding: clamp(36px, 4.5vw, 54px);
           border: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+          box-shadow: 0 20px 60px rgba(5, 14, 31, 0.45);
           overflow: hidden;
         }
 
@@ -429,6 +429,7 @@ export default function ContactSection() {
         .brush-strokes-decor span:nth-child(3) { width: 20px; }
 
         .dark-card-title {
+          font-family: var(--font-heading);
           font-size: clamp(24px, 2.8vw, 32px);
           font-weight: 900;
           letter-spacing: -0.035em;
@@ -476,7 +477,7 @@ export default function ContactSection() {
           width: 5px;
           height: 5px;
           border-radius: 50%;
-          background-color: #0055ff;
+          background-color: var(--color-accent-500);
         }
 
         .badge-100-position {

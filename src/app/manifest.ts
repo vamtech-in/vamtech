@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       'VAMTech builds scalable digital products, custom enterprise software, web & mobile applications, AI automation, and cloud platforms.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#060e1d',
-    theme_color: '#0055ff',
+    background_color: '#050e1f',
+    theme_color: '#0b1f3a',
     icons: [
       {
         src: '/favicon.svg',

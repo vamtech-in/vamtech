@@ -37,10 +37,11 @@ export default function Navbar() {
         position: 'sticky',
         top: 0,
         zIndex: 50,
-        transition: 'all 0.25s ease',
-        backgroundColor: isScrolled ? 'rgba(215, 226, 230, 0.88)' : 'transparent',
+        transition: 'all 0.25s var(--ease-default)',
+        backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.94)' : 'transparent',
         backdropFilter: isScrolled ? 'blur(16px)' : 'none',
-        borderBottom: isScrolled ? '1px solid rgba(0, 0, 0, 0.06)' : '1px solid transparent',
+        borderBottom: isScrolled ? '1px solid var(--border-default)' : '1px solid transparent',
+        boxShadow: isScrolled ? 'var(--shadow-sm)' : 'none',
       }}
     >
       <div className="container">
@@ -49,7 +50,7 @@ export default function Navbar() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            height: '84px',
+            height: '80px',
           }}
         >
           {/* Logo */}
@@ -75,7 +76,7 @@ export default function Navbar() {
                   style={{
                     fontSize: '14.5px',
                     fontWeight: isActive ? 700 : 600,
-                    color: isActive ? 'var(--color-brand-blue)' : '#0a192f',
+                    color: isActive ? 'var(--color-accent-500)' : 'var(--color-primary-900)',
                     transition: 'all 0.2s ease',
                     position: 'relative',
                     padding: '6px 0',
@@ -92,7 +93,7 @@ export default function Navbar() {
                         width: '5px',
                         height: '5px',
                         borderRadius: '50%',
-                        backgroundColor: 'var(--color-brand-blue)',
+                        backgroundColor: 'var(--color-accent-500)',
                       }}
                     />
                   )}

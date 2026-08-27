@@ -251,24 +251,24 @@ export default function ServicesSection() {
           padding: 18px 24px;
           background-color: #ffffff;
           border-radius: 16px;
-          border: 1px solid rgba(0, 30, 80, 0.08);
-          box-shadow: 0 6px 18px rgba(10, 25, 45, 0.04);
+          border: 1px solid var(--border-default);
+          box-shadow: 0 6px 18px rgba(5, 14, 31, 0.04);
           transition: all 0.2s ease;
           cursor: pointer;
         }
 
         .offering-item-card:hover {
           transform: translateX(4px);
-          border-color: rgba(0, 85, 255, 0.35);
-          box-shadow: 0 10px 28px rgba(0, 85, 255, 0.1);
+          border-color: rgba(255, 107, 53, 0.35);
+          box-shadow: 0 10px 28px rgba(255, 107, 53, 0.1);
         }
 
         .offering-number {
           font-size: 13px;
           font-weight: 800;
-          color: #0055ff;
+          color: var(--color-accent-500);
           font-family: var(--font-mono);
-          background-color: rgba(0, 85, 255, 0.08);
+          background-color: rgba(255, 107, 53, 0.08);
           padding: 6px 10px;
           border-radius: 8px;
         }
@@ -278,15 +278,17 @@ export default function ServicesSection() {
         }
 
         .offering-title {
+          font-family: var(--font-heading);
           font-size: 16.5px;
           font-weight: 800;
-          color: #0a192f;
+          color: var(--color-primary-900);
           margin-bottom: 4px;
         }
 
         .offering-stack {
+          font-family: var(--font-body);
           font-size: 13px;
-          color: #64748b;
+          color: var(--color-gray-600);
           line-height: 1.4;
         }
 
@@ -296,7 +298,7 @@ export default function ServicesSection() {
         }
 
         .offering-item-card:hover .offering-arrow {
-          color: #0055ff;
+          color: var(--color-accent-500);
           transform: translateX(3px);
         }
 
@@ -311,7 +313,7 @@ export default function ServicesSection() {
           border-radius: 28px;
           background: linear-gradient(145deg, #ffffff 0%, #edf3f8 100%);
           border: 1px solid rgba(255, 255, 255, 0.9);
-          box-shadow: 0 20px 50px rgba(0, 30, 80, 0.06);
+          box-shadow: 0 20px 50px rgba(5, 14, 31, 0.06);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -325,8 +327,8 @@ export default function ServicesSection() {
           width: 220px;
           background: #ffffff;
           border-radius: 22px;
-          border: 2px solid #0a192f;
-          box-shadow: 0 16px 36px rgba(0, 20, 60, 0.12);
+          border: 2px solid var(--color-primary-900);
+          box-shadow: 0 16px 36px rgba(5, 14, 31, 0.12);
           overflow: hidden;
           padding: 16px;
         }
@@ -352,7 +354,7 @@ export default function ServicesSection() {
         }
 
         .server-dots span:first-child {
-          background-color: #0055ff;
+          background-color: var(--color-accent-500);
         }
 
         .server-id {
@@ -371,26 +373,27 @@ export default function ServicesSection() {
           width: 58px;
           height: 58px;
           border-radius: 50%;
-          background: rgba(0, 85, 255, 0.1);
-          border: 1.5px solid rgba(0, 85, 255, 0.3);
+          background: rgba(255, 107, 53, 0.1);
+          border: 1.5px solid rgba(255, 107, 53, 0.3);
           display: flex;
           align-items: center;
           justify-content: center;
           margin: 0 auto 16px;
-          box-shadow: 0 0 20px rgba(0, 85, 255, 0.2);
+          box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
         }
 
         .server-metric-text strong {
+          font-family: var(--font-heading);
           display: block;
           font-size: 24px;
           font-weight: 900;
-          color: #0a192f;
+          color: var(--color-primary-900);
           letter-spacing: -0.04em;
         }
 
         .server-metric-text span {
           font-size: 11px;
-          color: #64748b;
+          color: var(--color-gray-600);
           font-weight: 600;
         }
 
@@ -409,7 +412,7 @@ export default function ServicesSection() {
         }
 
         .rack-slot.active {
-          background-color: #0055ff;
+          background-color: var(--color-accent-500);
         }
 
         .diagram-node-orbital {

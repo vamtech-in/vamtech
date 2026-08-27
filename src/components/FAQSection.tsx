@@ -211,13 +211,14 @@ export default function FAQSection() {
           display: inline-block;
           font-size: 12px;
           font-weight: 800;
-          color: #0055ff;
+          color: var(--color-accent-500);
           margin-bottom: 4px;
         }
 
         .character-bubble p {
+          font-family: var(--font-body);
           font-size: 13.5px;
-          color: #475569;
+          color: var(--color-gray-600);
           line-height: 1.45;
           max-width: 190px;
         }
@@ -227,7 +228,7 @@ export default function FAQSection() {
           width: 80px;
           height: 80px;
           border-radius: 50%;
-          background: linear-gradient(135deg, #edf4ff, #d8e5ff);
+          background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(0, 168, 232, 0.15));
           display: flex;
           align-items: center;
           justify-content: center;
@@ -242,14 +243,14 @@ export default function FAQSection() {
           width: 22px;
           height: 22px;
           border-radius: 50%;
-          background-color: #0055ff;
+          background-color: var(--color-accent-500);
           color: #ffffff;
           font-size: 13px;
           font-weight: 900;
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 4px 10px rgba(0, 85, 255, 0.4);
+          box-shadow: 0 4px 10px rgba(255, 107, 53, 0.4);
         }
 
         .q-1 {
@@ -260,19 +261,20 @@ export default function FAQSection() {
         .q-2 {
           bottom: 0px;
           left: -4px;
-          background-color: #00b4d8;
+          background-color: var(--color-blue-500);
         }
 
         .quick-inquire-box {
-          background-color: #060e1d;
+          background-color: var(--color-primary-900);
           color: #ffffff;
           border-radius: 20px;
           padding: 28px;
-          border: 1px solid rgba(0, 85, 255, 0.2);
-          box-shadow: 0 16px 40px rgba(0, 20, 60, 0.35);
+          border: 1px solid rgba(255, 107, 53, 0.2);
+          box-shadow: 0 16px 40px rgba(5, 14, 31, 0.35);
         }
 
         .quick-inquire-box h4 {
+          font-family: var(--font-heading);
           font-size: 18px;
           font-weight: 900;
           color: #ffffff;
@@ -280,6 +282,7 @@ export default function FAQSection() {
         }
 
         .quick-inquire-box p {
+          font-family: var(--font-body);
           font-size: 13px;
           color: #9aa8b8;
           margin-bottom: 18px;
@@ -293,7 +296,7 @@ export default function FAQSection() {
 
         .quick-input {
           flex: 1;
-          background: #0f1c34;
+          background: var(--color-primary-800);
           border: 1px solid rgba(255, 255, 255, 0.15);
           border-radius: 10px;
           padding: 10px 14px;
@@ -303,8 +306,8 @@ export default function FAQSection() {
         }
 
         .quick-input:focus {
-          border-color: #0055ff;
-          box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.2);
+          border-color: var(--color-accent-500);
+          box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
         }
 
         .quick-submit-btn {
@@ -333,7 +336,7 @@ export default function FAQSection() {
         }
 
         .faq-accordion-item {
-          background-color: #060e1d;
+          background-color: var(--color-primary-900);
           border-radius: 16px;
           border: 1px solid rgba(255, 255, 255, 0.1);
           overflow: hidden;
@@ -341,12 +344,12 @@ export default function FAQSection() {
         }
 
         .faq-accordion-item:hover {
-          border-color: rgba(0, 85, 255, 0.35);
+          border-color: rgba(255, 107, 53, 0.35);
         }
 
         .faq-accordion-item.item-open {
-          border-color: rgba(0, 85, 255, 0.5);
-          background-color: #0c182f;
+          border-color: rgba(255, 107, 53, 0.5);
+          background-color: var(--color-primary-800);
         }
 
         .faq-toggle-btn {
@@ -363,6 +366,7 @@ export default function FAQSection() {
         }
 
         .faq-question-text {
+          font-family: var(--font-heading);
           font-size: 16px;
           font-weight: 800;
           color: #ffffff;
@@ -370,7 +374,7 @@ export default function FAQSection() {
         }
 
         .faq-chevron-icon {
-          color: #0055ff;
+          color: var(--color-accent-500);
           flex-shrink: 0;
         }
 
