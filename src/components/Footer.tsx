@@ -118,7 +118,7 @@ export default function Footer() {
         {/* Exact Bottom Copyright Bar from Reference */}
         <div className="footer-bottom-bar">
           <p className="copyright-text">
-            © All Rights Reserved By <strong>VAMTech LLC</strong> 2024-2026 | Custom Software &amp; AI Engineering
+            © All Rights Reserved By <strong>VAMTech Pvt Ltd.</strong> | Custom Software &amp; AI Engineering
           </p>
 
           <div className="footer-legal-links">
