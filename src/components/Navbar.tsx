@@ -75,7 +75,7 @@ export default function Navbar() {
                   style={{
                     fontSize: '14.5px',
                     fontWeight: isActive ? 700 : 600,
-                    color: isActive ? 'var(--color-orange)' : '#1e242c',
+                    color: isActive ? 'var(--color-brand-blue)' : '#0a192f',
                     transition: 'all 0.2s ease',
                     position: 'relative',
                     padding: '6px 0',
@@ -92,7 +92,7 @@ export default function Navbar() {
                         width: '5px',
                         height: '5px',
                         borderRadius: '50%',
-                        backgroundColor: 'var(--color-orange)',
+                        backgroundColor: 'var(--color-brand-blue)',
                       }}
                     />
                   )}
@@ -119,7 +119,7 @@ export default function Navbar() {
               width: '42px',
               height: '42px',
               borderRadius: '50%',
-              border: '1px solid rgba(0, 0, 0, 0.1)',
+              border: '1px solid rgba(0, 30, 80, 0.12)',
               backgroundColor: '#ffffff',
               color: 'var(--text-main)',
               cursor: 'pointer',
@@ -137,8 +137,8 @@ export default function Navbar() {
         <div
           style={{
             backgroundColor: '#ffffff',
-            borderBottom: '1px solid #d7e2e6',
-            boxShadow: '0 20px 30px rgba(0, 0, 0, 0.12)',
+            borderBottom: '1px solid #cbd5e1',
+            boxShadow: '0 20px 30px rgba(0, 20, 60, 0.12)',
             padding: '24px',
             animation: 'fadeIn 0.2s ease-out',
           }}
@@ -150,7 +150,7 @@ export default function Navbar() {
               style={{
                 fontSize: '16px',
                 fontWeight: pathname === '/' ? 800 : 600,
-                color: pathname === '/' ? 'var(--color-orange)' : 'var(--text-main)',
+                color: pathname === '/' ? 'var(--color-brand-blue)' : 'var(--text-main)',
                 padding: '8px 12px',
               }}
               onClick={() => setMobileMenuOpen(false)}
@@ -166,10 +166,10 @@ export default function Navbar() {
                   style={{
                     fontSize: '16px',
                     fontWeight: isActive ? 800 : 600,
-                    color: isActive ? 'var(--color-orange)' : 'var(--text-main)',
+                    color: isActive ? 'var(--color-brand-blue)' : 'var(--text-main)',
                     padding: '8px 12px',
                     borderRadius: '8px',
-                    backgroundColor: isActive ? 'rgba(255, 87, 34, 0.08)' : 'transparent',
+                    backgroundColor: isActive ? 'rgba(0, 85, 255, 0.08)' : 'transparent',
                   }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -206,7 +206,7 @@ export default function Navbar() {
           }
         }
         .nav-link-item:hover {
-          color: var(--color-orange) !important;
+          color: var(--color-brand-blue) !important;
         }
       `}</style>
     </header>

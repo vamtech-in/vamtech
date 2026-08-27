@@ -97,7 +97,7 @@ export default function Footer() {
 
         {/* SEO Topical Keyword Strip */}
         <div style={{ padding: '24px 0', borderTop: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', flexWrap: 'wrap', gap: '8px 16px', fontSize: '12px', color: '#64748b' }}>
-          <span style={{ color: '#ff5722', fontWeight: 700 }}>POPULAR IN LUCKNOW:</span>
+          <span style={{ color: '#0055ff', fontWeight: 700 }}>POPULAR IN LUCKNOW:</span>
           <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Software Company in Lucknow</Link>
           <span>•</span>
           <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Best Software Development Company Lucknow</Link>
@@ -133,7 +133,7 @@ export default function Footer() {
 
       <style jsx>{`
         .footer-ref-shell {
-          background-color: #07090d;
+          background-color: #060e1d;
           color: #ffffff;
           border-top: 1px solid rgba(255, 255, 255, 0.08);
           padding: 80px 0 36px;
@@ -177,8 +177,8 @@ export default function Footer() {
         }
 
         .footer-social-row a:hover {
-          background: #ff5722;
-          border-color: #ff5722;
+          background: #0055ff;
+          border-color: #0055ff;
           transform: translateY(-2px);
         }
 
@@ -204,7 +204,7 @@ export default function Footer() {
         }
 
         .footer-nav-col ul li a:hover {
-          color: #ff5722;
+          color: #0055ff;
         }
 
         .footer-contact-items {
@@ -224,7 +224,7 @@ export default function Footer() {
         }
 
         .footer-contact-items a {
-          color: #ff5722;
+          color: #38bdf8;
         }
 
         .footer-contact-items p {
@@ -251,7 +251,7 @@ export default function Footer() {
 
         .copyright-text em {
           font-style: italic;
-          color: #ff5722;
+          color: #0055ff;
           font-weight: 700;
         }
 

@@ -122,7 +122,7 @@ export default function PricingSection() {
                   style={{ width: '100%', justifyContent: 'center', padding: '14px 20px', fontSize: '14px' }}
                 >
                   <span>{plan.ctaText}</span>
-                  <ArrowRight size={15} color={plan.isDark ? '#ff5722' : '#ffffff'} />
+                  <ArrowRight size={15} color={plan.isDark ? '#0055ff' : '#ffffff'} />
                 </Link>
               </div>
             </div>
@@ -138,7 +138,7 @@ export default function PricingSection() {
 
         .pricing-subtitle {
           font-size: 16px;
-          color: #556375;
+          color: #475569;
           max-width: 520px;
           line-height: 1.55;
         }
@@ -169,16 +169,16 @@ export default function PricingSection() {
         }
 
         .card-dark {
-          background-color: #0c0e12;
+          background-color: #060e1d;
           color: #ffffff;
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+          border: 1px solid rgba(0, 85, 255, 0.2);
+          box-shadow: 0 20px 50px rgba(0, 20, 60, 0.35);
         }
 
         .card-light {
           background-color: #ffffff;
-          color: #0c0e12;
-          border: 1px solid rgba(255, 255, 255, 0.9);
+          color: #0a192f;
+          border: 1px solid rgba(0, 30, 80, 0.08);
           box-shadow: 0 10px 35px rgba(10, 25, 45, 0.06);
         }
 
@@ -194,15 +194,15 @@ export default function PricingSection() {
         }
 
         .card-dark .card-top-badge {
-          background-color: rgba(255, 87, 34, 0.2);
-          color: #ff7043;
-          border: 1px solid rgba(255, 87, 34, 0.3);
+          background-color: rgba(0, 85, 255, 0.2);
+          color: #38bdf8;
+          border: 1px solid rgba(0, 85, 255, 0.35);
         }
 
         .card-light .card-top-badge {
-          background-color: #f1f5f9;
-          color: #475569;
-          border: 1px solid #e2e8f0;
+          background-color: rgba(0, 85, 255, 0.08);
+          color: #0055ff;
+          border: 1px solid rgba(0, 85, 255, 0.15);
         }
 
         .card-plan-title {
@@ -219,7 +219,7 @@ export default function PricingSection() {
         }
 
         .card-dark .card-plan-subtitle {
-          color: #9aa8b8;
+          color: #94a3b8;
         }
 
         .card-light .card-plan-subtitle {
@@ -254,7 +254,7 @@ export default function PricingSection() {
         }
 
         .card-light .price-value {
-          color: #0c0e12;
+          color: #0a192f;
         }
 
         .price-period {
@@ -297,12 +297,12 @@ export default function PricingSection() {
         }
 
         .check-dark {
-          background-color: rgba(255, 255, 255, 0.15);
-          color: #ffffff;
+          background-color: rgba(0, 85, 255, 0.3);
+          color: #38bdf8;
         }
 
         .check-light {
-          background-color: #0c0e12;
+          background-color: #0055ff;
           color: #ffffff;
         }
 

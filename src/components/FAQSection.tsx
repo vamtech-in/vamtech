@@ -211,13 +211,13 @@ export default function FAQSection() {
           display: inline-block;
           font-size: 12px;
           font-weight: 800;
-          color: #ff5722;
+          color: #0055ff;
           margin-bottom: 4px;
         }
 
         .character-bubble p {
           font-size: 13.5px;
-          color: #505d6e;
+          color: #475569;
           line-height: 1.45;
           max-width: 190px;
         }
@@ -242,14 +242,14 @@ export default function FAQSection() {
           width: 22px;
           height: 22px;
           border-radius: 50%;
-          background-color: #ff5722;
+          background-color: #0055ff;
           color: #ffffff;
           font-size: 13px;
           font-weight: 900;
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 4px 10px rgba(255, 87, 34, 0.4);
+          box-shadow: 0 4px 10px rgba(0, 85, 255, 0.4);
         }
 
         .q-1 {
@@ -260,16 +260,16 @@ export default function FAQSection() {
         .q-2 {
           bottom: 0px;
           left: -4px;
-          background-color: #2f54eb;
+          background-color: #00b4d8;
         }
 
         .quick-inquire-box {
-          background-color: #0c0e12;
+          background-color: #060e1d;
           color: #ffffff;
           border-radius: 20px;
           padding: 28px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+          border: 1px solid rgba(0, 85, 255, 0.2);
+          box-shadow: 0 16px 40px rgba(0, 20, 60, 0.35);
         }
 
         .quick-inquire-box h4 {
@@ -293,7 +293,7 @@ export default function FAQSection() {
 
         .quick-input {
           flex: 1;
-          background: #191d26;
+          background: #0f1c34;
           border: 1px solid rgba(255, 255, 255, 0.15);
           border-radius: 10px;
           padding: 10px 14px;
@@ -303,7 +303,8 @@ export default function FAQSection() {
         }
 
         .quick-input:focus {
-          border-color: #ff5722;
+          border-color: #0055ff;
+          box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.2);
         }
 
         .quick-submit-btn {
@@ -332,7 +333,7 @@ export default function FAQSection() {
         }
 
         .faq-accordion-item {
-          background-color: #0c0e12;
+          background-color: #060e1d;
           border-radius: 16px;
           border: 1px solid rgba(255, 255, 255, 0.1);
           overflow: hidden;
@@ -340,12 +341,12 @@ export default function FAQSection() {
         }
 
         .faq-accordion-item:hover {
-          border-color: rgba(255, 255, 255, 0.25);
+          border-color: rgba(0, 85, 255, 0.35);
         }
 
         .faq-accordion-item.item-open {
-          border-color: rgba(255, 87, 34, 0.4);
-          background-color: #11141b;
+          border-color: rgba(0, 85, 255, 0.5);
+          background-color: #0c182f;
         }
 
         .faq-toggle-btn {
@@ -369,7 +370,7 @@ export default function FAQSection() {
         }
 
         .faq-chevron-icon {
-          color: #ff5722;
+          color: #0055ff;
           flex-shrink: 0;
         }
 

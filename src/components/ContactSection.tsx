@@ -167,7 +167,7 @@ export default function ContactSection() {
 
               {isSubmitted ? (
                 <div className="contact-success-state">
-                  <CheckCircle2 size={48} color="#ff5722" />
+                  <CheckCircle2 size={48} color="#0055ff" />
                   <h4>Inquiry Sent Successfully!</h4>
                   <p>Our lead technical team will review your brief and get back within 1 business day.</p>
                   <button onClick={() => setIsSubmitted(false)} className="btn-orange" style={{ marginTop: '16px' }}>
@@ -256,25 +256,24 @@ export default function ContactSection() {
                   {/* Submit Button */}
                   <div className="form-submit-row">
                     <button type="submit" disabled={isSubmitting} className="btn-orange contact-btn">
-                      <span>{isSubmitting ? 'Sending...' : 'Contact us'}</span>
+                      <span>{isSubmitting ? 'Sending Brief...' : 'Contact Us'}</span>
                       <Send size={15} />
                     </button>
                   </div>
                 </form>
               )}
 
-              {/* Bottom Orange Particle Accents from Reference */}
               <div className="bottom-orange-particles">
                 <span />
                 <span />
                 <span />
               </div>
-            </div>
 
-            {/* Bottom-Right Dashed "100%" Circle Badge from Reference Image 1 */}
-            <div className="badge-100-position">
-              <div className="badge-circle-100">
-                <span>100%</span>
+              <div className="badge-100-position">
+                <div className="badge-circle-100">
+                  <span>100%</span>
+                  <span style={{ fontSize: '10px', fontWeight: 700 }}>IP OWN</span>
+                </div>
               </div>
             </div>
           </div>
@@ -289,7 +288,6 @@ export default function ContactSection() {
           align-items: flex-start;
         }
 
-        /* Left White Card */
         .contact-left-wrapper {
           display: flex;
           flex-direction: column;
@@ -347,10 +345,9 @@ export default function ContactSection() {
           left: 0;
           right: 0;
           height: 6px;
-          background-color: #ff5722;
+          background-color: #0055ff;
         }
 
-        /* Social Follow Doodle Area */
         .social-connect-area {
           display: flex;
           align-items: center;
@@ -391,18 +388,17 @@ export default function ContactSection() {
         }
 
         .social-icons-stack a:hover {
-          color: #ff5722;
+          color: #0055ff;
           transform: translateX(2px);
         }
 
-        /* Right Dark Card */
         .contact-dark-card-wrapper {
           position: relative;
         }
 
         .contact-dark-card {
           position: relative;
-          background-color: #0a0c10;
+          background-color: #060e1d;
           color: #ffffff;
           border-radius: 24px;
           padding: clamp(36px, 4.5vw, 54px);
@@ -480,7 +476,7 @@ export default function ContactSection() {
           width: 5px;
           height: 5px;
           border-radius: 50%;
-          background-color: #ff5722;
+          background-color: #0055ff;
         }
 
         .badge-100-position {

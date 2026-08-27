@@ -43,12 +43,12 @@ export default function CTASection() {
 
         .cta-black-banner {
           position: relative;
-          background: linear-gradient(135deg, #11141a 0%, #080a0d 100%);
+          background: linear-gradient(135deg, #0a192f 0%, #060e1d 100%);
           border-radius: 28px;
           padding: clamp(48px, 6vw, 72px) 24px;
           text-align: center;
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(0, 85, 255, 0.25);
+          box-shadow: 0 25px 60px rgba(0, 20, 60, 0.45);
           overflow: hidden;
         }
 
@@ -80,7 +80,7 @@ export default function CTASection() {
         .p-dot {
           position: absolute;
           border-radius: 50%;
-          background-color: #ff5722;
+          background-color: #0055ff;
         }
 
         .dot-1 {
@@ -88,7 +88,7 @@ export default function CTASection() {
           height: 5px;
           bottom: 25px;
           left: 8%;
-          box-shadow: 0 0 10px #ff5722;
+          box-shadow: 0 0 10px #0055ff;
         }
 
         .dot-2 {
@@ -96,7 +96,7 @@ export default function CTASection() {
           height: 7px;
           bottom: 35px;
           right: 12%;
-          box-shadow: 0 0 12px #ff5722;
+          box-shadow: 0 0 12px #0055ff;
         }
 
         .dot-3 {
@@ -111,7 +111,7 @@ export default function CTASection() {
           height: 6px;
           top: 40px;
           left: 20%;
-          background-color: #2f54eb;
+          background-color: #00b4d8;
         }
 
         .cta-banner-content {
