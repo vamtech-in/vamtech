@@ -97,20 +97,22 @@ export default function Footer() {
 
         {/* SEO Topical Keyword Strip */}
         <div style={{ padding: '24px 0', borderTop: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', flexWrap: 'wrap', gap: '8px 16px', fontSize: '12px', color: '#64748b' }}>
-          <span style={{ color: '#94a3b8', fontWeight: 600 }}>POPULAR INQUIRIES:</span>
-          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Custom Software Development Lucknow</Link>
+          <span style={{ color: '#ff5722', fontWeight: 700 }}>POPULAR IN LUCKNOW:</span>
+          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Software Company in Lucknow</Link>
           <span>•</span>
-          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Web Application Development</Link>
+          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Best Software Development Company Lucknow</Link>
           <span>•</span>
-          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Mobile App Development India</Link>
+          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Web Development Company Lucknow</Link>
           <span>•</span>
-          <Link href="/pricing" style={{ color: '#94a3b8', textDecoration: 'none' }}>Rapid MVP Development (₹24,999)</Link>
+          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Mobile App Developers Lucknow</Link>
+          <span>•</span>
+          <Link href="/pricing" style={{ color: '#94a3b8', textDecoration: 'none' }}>Rapid MVP Sprints (₹24,999)</Link>
           <span>•</span>
           <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>AI Automation &amp; Custom LLMs</Link>
           <span>•</span>
-          <Link href="/contact" style={{ color: '#94a3b8', textDecoration: 'none' }}>Hire Dedicated Next.js Developers</Link>
+          <Link href="/contact" style={{ color: '#94a3b8', textDecoration: 'none' }}>Hire Dedicated Developers Lucknow</Link>
           <span>•</span>
-          <Link href="/solutions" style={{ color: '#94a3b8', textDecoration: 'none' }}>SaaS Architecture Blueprints</Link>
+          <Link href="/about" style={{ color: '#94a3b8', textDecoration: 'none' }}>IT Company Tiwariganj Lucknow</Link>
         </div>
 
         {/* Exact Bottom Copyright Bar from Reference */}

@@ -27,7 +27,7 @@ export default function Hero() {
             {/* Top Startup Kicker Badge */}
             <div className="hero-kicker-badge">
               <span className="kicker-pulse" />
-              <span>CUSTOM SOFTWARE &amp; MVP DEVELOPMENT • LUCKNOW &amp; GLOBAL</span>
+              <span>BEST SOFTWARE COMPANY IN LUCKNOW • RAPID MVP SPRINTS</span>
             </div>
 
             {/* Main Display Title */}
@@ -38,7 +38,7 @@ export default function Hero() {
             </h1>
 
             <p className="hero-subtitle">
-              We help founders, startups, and growing enterprises turn bold ideas into high-performance web applications, mobile apps, SaaS MVPs, and AI automations in 2–4 weeks with 100% source code ownership.
+              Lucknow&apos;s premier custom software development agency. We help founders, startups, and enterprises build high-performance web applications, cross-platform mobile apps, SaaS MVPs, and AI automations in 2–4 weeks with 100% source code ownership.
             </p>
 
             {/* Primary & Secondary Action CTAs */}

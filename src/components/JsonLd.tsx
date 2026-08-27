@@ -40,16 +40,23 @@ export default function JsonLd() {
 
   const localBusinessSchema = {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
+    '@type': ['LocalBusiness', 'ProfessionalService'],
     '@id': 'https://vamtech.io/#localbusiness',
-    name: 'VAMTech — Software & Web Development Company Lucknow',
+    name: 'VAMTech — Best Software Development Company in Lucknow',
+    alternateName: [
+      'VAMTech Technologies',
+      'VAMTech Software Company Lucknow',
+      'VAMTech Web & Mobile App Development',
+      'VAMTech Tiwariganj',
+    ],
     image: 'https://vamtech.io/favicon.svg',
     url: 'https://vamtech.io',
     telephone: '+917237900686',
     priceRange: '₹24,999 - ₹2,50,000+',
+    hasMap: 'https://maps.google.com/?q=VAMTech+Tiwariganj+Faizabad+Road+Lucknow+226028',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Tiwariganj',
+      streetAddress: 'Tiwariganj, Faizabad Road',
       addressLocality: 'Lucknow',
       addressRegion: 'Uttar Pradesh',
       postalCode: '226028',
@@ -59,6 +66,13 @@ export default function JsonLd() {
       '@type': 'GeoCoordinates',
       latitude: 26.8927,
       longitude: 81.0422,
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '88',
+      bestRating: '5',
+      worstRating: '1',
     },
     openingHoursSpecification: [
       {
@@ -76,24 +90,27 @@ export default function JsonLd() {
       },
     ],
     areaServed: [
-      'Lucknow',
-      'Uttar Pradesh',
-      'Noida',
-      'Delhi NCR',
-      'Bengaluru',
-      'Mumbai',
-      'India',
-      'Global',
+      { '@type': 'City', name: 'Lucknow' },
+      { '@type': 'AdministrativeArea', name: 'Gomti Nagar, Lucknow' },
+      { '@type': 'AdministrativeArea', name: 'Indira Nagar, Lucknow' },
+      { '@type': 'AdministrativeArea', name: 'Hazratganj, Lucknow' },
+      { '@type': 'AdministrativeArea', name: 'Aliganj, Lucknow' },
+      { '@type': 'AdministrativeArea', name: 'Faizabad Road, Lucknow' },
+      { '@type': 'AdministrativeArea', name: 'Tiwariganj, Lucknow' },
+      { '@type': 'AdministrativeArea', name: 'Uttar Pradesh' },
+      { '@type': 'AdministrativeArea', name: 'Delhi NCR' },
+      { '@type': 'Country', name: 'India' },
+      { '@type': 'Country', name: 'Worldwide' },
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Software Engineering & AI Services',
+      name: 'Software Engineering & AI Services Lucknow',
       itemListElement: [
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Custom Software & Web Application Development',
+            name: 'Custom Software & Web Application Development in Lucknow',
             description:
               'Full-stack custom software and scalable web apps built using Next.js, React, Node.js, and TypeScript with 100% source code ownership.',
           },
@@ -102,7 +119,7 @@ export default function JsonLd() {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Mobile App Development (iOS & Android)',
+            name: 'Mobile App Development Lucknow (iOS & Android)',
             description:
               'Cross-platform React Native and progressive web app (PWA) development with offline sync and native performance.',
           },
@@ -156,10 +173,18 @@ export default function JsonLd() {
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'What is the cost of software development and MVP development at VAMTech?',
+        name: 'Which is the best custom software development company in Lucknow?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'VAMTech offers transparent sprint packages starting at ₹24,999 for MVP sprints and starter web apps. Custom enterprise software and dedicated engineering squad pricing is scoped on clear milestones with zero hidden fees.',
+          text: 'VAMTech Technologies is recognized as the best custom software development company in Lucknow, India. We deliver bespoke full-stack web applications, mobile apps (iOS & Android), AI automation workflows, and fast 2–4 week MVP sprints starting at ₹24,999 with 100% source code and IP ownership.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the cost of software development and MVP development in Lucknow at VAMTech?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'VAMTech offers transparent sprint packages starting at ₹24,999 for MVP sprints and starter web apps. Custom enterprise software and dedicated engineering squads (₹49,999/mo / $3,500/mo) are scoped on clear milestones with zero hidden fees.',
         },
       },
       {
@@ -183,7 +208,7 @@ export default function JsonLd() {
         name: 'Is VAMTech based in Lucknow, India, and do you work with global clients?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes! VAMTech is headquartered in Tiwariganj, Lucknow (Uttar Pradesh, India), and operates remote global engineering pods serving founders and businesses across India, the US, UK, Middle East, and worldwide.',
+          text: 'Yes! VAMTech is headquartered in Tiwariganj, Lucknow (Uttar Pradesh, India), serving clients across Lucknow, Gomti Nagar, Indira Nagar, Delhi NCR, as well as global founders in the US, UK, Middle East, and worldwide.',
         },
       },
       {
