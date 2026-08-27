@@ -27,7 +27,7 @@ export default function ProjectsArchive() {
                 style={{ padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
               >
                 <div>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 800, color: '#ff5722', textTransform: 'uppercase' }}>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 800, color: '#0055ff', textTransform: 'uppercase' }}>
                     {project.category}
                   </span>
 
