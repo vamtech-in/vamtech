@@ -117,7 +117,7 @@ export default function Hero() {
 
               {/* Floating Pill Card 1: 2-4 Week MVP */}
               <div className="floating-stat-card card-top-left">
-                <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(255, 87, 34, 0.15)', color: '#ff5722' }}>
+                <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(0, 85, 255, 0.12)', color: '#0055ff' }}>
                   <Zap size={18} />
                 </div>
                 <div>
@@ -179,7 +179,7 @@ export default function Hero() {
                 <div style={{ marginTop: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                   <Link href="/projects" className="btn-white-pill">
                     <span>Explore Work Demos</span>
-                    <ArrowRight size={15} color="#ff5722" />
+                    <ArrowRight size={15} color="#0055ff" />
                   </Link>
                   <Link href="/contact" className="btn-dark-glass">
                     <span>Get Free Consultation</span>

@@ -58,17 +58,16 @@ export default function TestimonialsSection() {
         {/* 3 White Cards Grid */}
         <div className="testimonials-grid">
           {commitments.map((item) => (
-            <div key={item.id} className="testimonial-card">
-              {/* Top Tag & Icon */}
+            <div key={item.id} className="testi              {/* Top Tag & Icon */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-                <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', fontWeight: 800, color: '#ff5722', letterSpacing: '0.08em' }}>
+                <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', fontWeight: 800, color: '#0055ff', letterSpacing: '0.08em' }}>
                   {item.tag}
                 </span>
                 <span style={{ fontSize: '20px' }}>{item.icon}</span>
               </div>
 
               {/* Title */}
-              <h3 style={{ fontSize: '19px', fontWeight: 900, color: '#0c0e12', marginBottom: '10px', letterSpacing: '-0.02em' }}>
+              <h3 style={{ fontSize: '19px', fontWeight: 900, color: '#0a192f', marginBottom: '10px', letterSpacing: '-0.02em' }}>
                 {item.title}
               </h3>
 
@@ -81,12 +80,12 @@ export default function TestimonialsSection() {
                 <div>
                   <h4 className="author-name">{item.author}</h4>
                   <p className="author-role">
-                    <span style={{ color: '#ff5722' }}>{item.role}</span>
+                    <span style={{ color: '#0055ff' }}>{item.role}</span>
                   </p>
                 </div>
               </div>
 
-              {/* Bottom Orange Corner Accent from Reference */}
+              {/* Bottom Blue Corner Accent from Reference */}
               <div className="corner-accent" />
             </div>
           ))}
@@ -105,7 +104,7 @@ export default function TestimonialsSection() {
           font-weight: 900;
           font-family: serif;
           line-height: 1;
-          color: rgba(47, 84, 235, 0.06);
+          color: rgba(0, 85, 255, 0.05);
           pointer-events: none;
           z-index: 1;
           user-select: none;
@@ -128,7 +127,7 @@ export default function TestimonialsSection() {
 
         .testimonials-subtitle {
           font-size: 16px;
-          color: #556375;
+          color: #475569;
           max-width: 520px;
           line-height: 1.55;
         }
@@ -144,25 +143,25 @@ export default function TestimonialsSection() {
           background-color: #ffffff;
           border-radius: 20px;
           padding: 32px 28px 36px;
-          border: 1px solid rgba(255, 255, 255, 0.9);
+          border: 1px solid rgba(0, 30, 80, 0.08);
           box-shadow: 0 10px 30px rgba(10, 25, 45, 0.05);
           display: flex;
           flex-direction: column;
-          justifyContent: space-between;
+          justify-content: space-between;
           overflow: hidden;
           transition: all 0.25s ease;
         }
 
         .testimonial-card:hover {
           transform: translateY(-4px);
-          box-shadow: 0 18px 40px rgba(10, 25, 45, 0.09);
+          box-shadow: 0 18px 40px rgba(0, 85, 255, 0.1);
         }
 
         .quote-icon {
           font-size: 42px;
           font-weight: 900;
           font-family: serif;
-          color: #ff5722;
+          color: #0055ff;
           line-height: 0.8;
           margin-bottom: 12px;
         }
@@ -176,7 +175,7 @@ export default function TestimonialsSection() {
         .testimonial-text {
           font-size: 14.5px;
           line-height: 1.6;
-          color: #2c3848;
+          color: #1e293b;
           margin-bottom: 24px;
           flex: 1;
         }
@@ -191,7 +190,7 @@ export default function TestimonialsSection() {
           width: 40px;
           height: 40px;
           border-radius: 50%;
-          background: linear-gradient(135deg, #ff5722, #ff784e);
+          background: linear-gradient(135deg, #0055ff, #00c6ff);
           color: #ffffff;
           display: flex;
           align-items: center;
@@ -204,7 +203,7 @@ export default function TestimonialsSection() {
         .author-name {
           font-size: 15px;
           font-weight: 800;
-          color: #0c0e12;
+          color: #0a192f;
           margin-bottom: 2px;
         }
 
@@ -219,8 +218,9 @@ export default function TestimonialsSection() {
           right: 0;
           width: 24px;
           height: 24px;
-          background: linear-gradient(135deg, transparent 50%, #ff5722 50%);
+          background: linear-gradient(135deg, transparent 50%, #0055ff 50%);
           border-bottom-right-radius: 20px;
+        }0px;
         }
 
         @media (max-width: 900px) {

@@ -14,7 +14,7 @@ const gtmContainerId = (process.env.NEXT_PUBLIC_GTM_ID && process.env.NEXT_PUBLI
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#ff5722',
+  themeColor: '#0055ff',
 };
 
 const plusJakarta = Plus_Jakarta_Sans({

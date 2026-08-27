@@ -142,11 +142,11 @@ export default function ServicesSection() {
                   <span>Cloud Edge</span>
                 </div>
                 <div className="floating-satellite satellite-2">
-                  <Zap size={16} color="#ff5722" />
+                  <Zap size={16} color="#0055ff" />
                   <span>AI Engine</span>
                 </div>
                 <div className="floating-satellite satellite-3">
-                  <Database size={16} color="#13c2c2" />
+                  <Database size={16} color="#00b4d8" />
                   <span>Postgres Cluster</span>
                 </div>
               </div>
@@ -170,11 +170,11 @@ export default function ServicesSection() {
           gap: 10px;
           padding: 10px 22px;
           border-radius: 999px;
-          border: 1px solid rgba(0, 0, 0, 0.08);
+          border: 1px solid rgba(0, 30, 80, 0.08);
           background-color: #ffffff;
           font-size: 15px;
           font-weight: 700;
-          color: #2b3542;
+          color: #0a192f;
           cursor: pointer;
           transition: all 0.22s ease;
           box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
@@ -182,21 +182,21 @@ export default function ServicesSection() {
 
         .tab-pill-btn:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 8px 20px rgba(0, 85, 255, 0.12);
         }
 
         .tab-pill-btn.active-orange {
           background-color: #ffffff;
-          border-color: rgba(255, 87, 34, 0.4);
-          color: #ff5722;
-          box-shadow: 0 6px 20px rgba(255, 87, 34, 0.15);
+          border-color: rgba(0, 85, 255, 0.4);
+          color: #0055ff;
+          box-shadow: 0 6px 20px rgba(0, 85, 255, 0.15);
         }
 
         .tab-pill-btn.active-blue {
           background-color: #ffffff;
-          border-color: rgba(47, 84, 235, 0.4);
-          color: #2f54eb;
-          box-shadow: 0 6px 20px rgba(47, 84, 235, 0.15);
+          border-color: rgba(0, 85, 255, 0.4);
+          color: #0055ff;
+          box-shadow: 0 6px 20px rgba(0, 85, 255, 0.15);
         }
 
         .tab-pill-dot {
@@ -206,13 +206,13 @@ export default function ServicesSection() {
         }
 
         .orange-dot {
-          background-color: #ff5722;
-          box-shadow: 0 0 8px #ff5722;
+          background-color: #0055ff;
+          box-shadow: 0 0 8px #0055ff;
         }
 
         .blue-dot {
-          background-color: #2f54eb;
-          box-shadow: 0 0 8px #2f54eb;
+          background-color: #00b4d8;
+          box-shadow: 0 0 8px #00b4d8;
         }
 
         .services-grid-layout {
@@ -227,13 +227,13 @@ export default function ServicesSection() {
           font-weight: 900;
           letter-spacing: -0.04em;
           margin-bottom: 14px;
-          color: #0c0e12;
+          color: #0a192f;
         }
 
         .services-lead-text {
           font-size: 16px;
           line-height: 1.6;
-          color: #556375;
+          color: #475569;
           margin-bottom: 32px;
           max-width: 540px;
         }
@@ -251,7 +251,7 @@ export default function ServicesSection() {
           padding: 18px 24px;
           background-color: #ffffff;
           border-radius: 16px;
-          border: 1px solid rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(0, 30, 80, 0.08);
           box-shadow: 0 6px 18px rgba(10, 25, 45, 0.04);
           transition: all 0.2s ease;
           cursor: pointer;
@@ -259,16 +259,16 @@ export default function ServicesSection() {
 
         .offering-item-card:hover {
           transform: translateX(4px);
-          border-color: rgba(255, 87, 34, 0.3);
-          box-shadow: 0 10px 28px rgba(255, 87, 34, 0.08);
+          border-color: rgba(0, 85, 255, 0.35);
+          box-shadow: 0 10px 28px rgba(0, 85, 255, 0.1);
         }
 
         .offering-number {
           font-size: 13px;
           font-weight: 800;
-          color: #ff5722;
+          color: #0055ff;
           font-family: var(--font-mono);
-          background-color: rgba(255, 87, 34, 0.1);
+          background-color: rgba(0, 85, 255, 0.08);
           padding: 6px 10px;
           border-radius: 8px;
         }
@@ -280,23 +280,23 @@ export default function ServicesSection() {
         .offering-title {
           font-size: 16.5px;
           font-weight: 800;
-          color: #0c0e12;
+          color: #0a192f;
           margin-bottom: 4px;
         }
 
         .offering-stack {
           font-size: 13px;
-          color: #6a798c;
+          color: #64748b;
           line-height: 1.4;
         }
 
         .offering-arrow {
-          color: #8c9ba8;
+          color: #94a3b8;
           transition: all 0.2s ease;
         }
 
         .offering-item-card:hover .offering-arrow {
-          color: #ff5722;
+          color: #0055ff;
           transform: translateX(3px);
         }
 
@@ -309,9 +309,9 @@ export default function ServicesSection() {
           position: relative;
           min-height: 440px;
           border-radius: 28px;
-          background: linear-gradient(145deg, #ffffff 0%, #edf3f7 100%);
+          background: linear-gradient(145deg, #ffffff 0%, #edf3f8 100%);
           border: 1px solid rgba(255, 255, 255, 0.9);
-          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 20px 50px rgba(0, 30, 80, 0.06);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -325,8 +325,8 @@ export default function ServicesSection() {
           width: 220px;
           background: #ffffff;
           border-radius: 22px;
-          border: 2px solid #0c0e12;
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+          border: 2px solid #0a192f;
+          box-shadow: 0 16px 36px rgba(0, 20, 60, 0.12);
           overflow: hidden;
           padding: 16px;
         }
@@ -352,7 +352,7 @@ export default function ServicesSection() {
         }
 
         .server-dots span:first-child {
-          background-color: #ff5722;
+          background-color: #0055ff;
         }
 
         .server-id {
@@ -371,20 +371,20 @@ export default function ServicesSection() {
           width: 58px;
           height: 58px;
           border-radius: 50%;
-          background: rgba(47, 84, 235, 0.1);
-          border: 1.5px solid rgba(47, 84, 235, 0.3);
+          background: rgba(0, 85, 255, 0.1);
+          border: 1.5px solid rgba(0, 85, 255, 0.3);
           display: flex;
           align-items: center;
           justify-content: center;
           margin: 0 auto 16px;
-          box-shadow: 0 0 20px rgba(47, 84, 235, 0.2);
+          box-shadow: 0 0 20px rgba(0, 85, 255, 0.2);
         }
 
         .server-metric-text strong {
           display: block;
           font-size: 24px;
           font-weight: 900;
-          color: #0c0e12;
+          color: #0a192f;
           letter-spacing: -0.04em;
         }
 
@@ -409,7 +409,7 @@ export default function ServicesSection() {
         }
 
         .rack-slot.active {
-          background-color: #ff5722;
+          background-color: #0055ff;
         }
 
         .diagram-node-orbital {

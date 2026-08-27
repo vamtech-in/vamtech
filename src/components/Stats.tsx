@@ -66,9 +66,9 @@ export default function Stats() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: linear-gradient(135deg, #ff6b3d 0%, #ff5722 100%);
+          background: linear-gradient(135deg, #0055ff 0%, #00c6ff 100%);
           color: #ffffff;
-          box-shadow: 0 14px 34px rgba(255, 87, 34, 0.38);
+          box-shadow: 0 14px 34px rgba(0, 85, 255, 0.35);
           margin-bottom: 18px;
           transition: transform 0.25s ease;
         }
@@ -110,14 +110,14 @@ export default function Stats() {
         .stat-label {
           font-size: 19px;
           font-weight: 900;
-          color: #0c0e12;
+          color: #0a192f;
           margin-bottom: 4px;
           letter-spacing: -0.02em;
         }
 
         .stat-detail {
           font-size: 13.5px;
-          color: #5f7082;
+          color: #475569;
         }
 
         @media (max-width: 768px) {
