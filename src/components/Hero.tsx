@@ -17,7 +17,6 @@ export default function Hero() {
   return (
     <section className="hero-section">
       {/* Vibrant Background Lighting */}
-      <div className="hero-orange-orb" />
       <div className="hero-blue-glow" />
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>

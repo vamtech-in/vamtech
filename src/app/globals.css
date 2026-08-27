@@ -439,20 +439,6 @@ button, input, select, textarea {
   overflow: hidden;
 }
 
-.hero-orange-orb {
-  position: absolute;
-  top: -60px;
-  right: 2%;
-  width: clamp(320px, 38vw, 520px);
-  height: clamp(320px, 38vw, 520px);
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #ff7043 0%, #ff5722 55%, #d84315 90%);
-  box-shadow: 0 30px 90px rgba(255, 87, 34, 0.4);
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.92;
-}
-
 .hero-blue-glow {
   position: absolute;
   top: 100px;
