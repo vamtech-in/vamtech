@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     'Transparent Software Sprints',
   ],
   alternates: {
-    canonical: 'https://vamtech.io/pricing',
+    canonical: 'https://www.vamtech.in/pricing',
   },
   openGraph: {
     title: 'Affordable Software Development & MVP Pricing | VAMTech',
     description:
       'Predictable sprint budgeting starting at ₹24,999 for MVPs and ₹49,999/mo for dedicated developers. 100% source code ownership and milestone-based payments.',
-    url: 'https://vamtech.io/pricing',
+    url: 'https://www.vamtech.in/pricing',
   },
 };
 

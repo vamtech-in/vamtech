@@ -26,13 +26,13 @@ export const metadata: Metadata = {
     'Hire Dedicated Software Developers',
   ],
   alternates: {
-    canonical: 'https://vamtech.io/services',
+    canonical: 'https://www.vamtech.in/services',
   },
   openGraph: {
     title: 'Software Development & AI Automation Services | VAMTech',
     description:
       'Architect, build, and deploy custom software, web platforms, mobile apps, and AI workflows. Fixed-sprint delivery starting at ₹24,999.',
-    url: 'https://vamtech.io/services',
+    url: 'https://www.vamtech.in/services',
   },
 };
 
