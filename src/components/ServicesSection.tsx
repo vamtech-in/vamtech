@@ -470,6 +470,50 @@ export default function ServicesSection() {
             min-height: 360px;
           }
         }
+
+        @media (max-width: 600px) {
+          .diagram-visual-card {
+            min-height: 280px;
+            padding: 20px;
+          }
+          .orbit-circle-dashed {
+            width: 220px;
+            height: 220px;
+          }
+          .satellite-1 {
+            top: 10%;
+            left: 4%;
+          }
+          .satellite-2 {
+            top: 14%;
+            right: 2%;
+          }
+          .satellite-3 {
+            bottom: 10%;
+            right: 4%;
+          }
+          .floating-satellite span {
+            display: none;
+          }
+          .floating-satellite {
+            padding: 7px 10px;
+          }
+          .server-unit-mockup {
+            width: 180px;
+          }
+          .offering-item-card {
+            padding: 14px 16px;
+            gap: 14px;
+          }
+          .tech-services-tabs {
+            gap: 10px;
+            margin-bottom: 32px;
+          }
+          .tab-pill-btn {
+            padding: 9px 16px;
+            font-size: 14px;
+          }
+        }
       `}</style>
     </section>
   );

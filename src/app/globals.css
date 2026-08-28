@@ -158,6 +158,7 @@
   --section-py: var(--space-20);
   --section-py-mobile: var(--space-10);
   --gutter: var(--space-6);
+  --gutter-xs: var(--space-4);
 
   /* -----------------------------------------------------------------------
      4. RADIUS, SHADOW, BORDER
@@ -323,6 +324,32 @@ a {
 
 button, input, select, textarea {
   font: inherit;
+}
+
+/* Touch-action for faster tap response on iOS */
+a, button, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* Minimum tap target size for accessibility */
+button, .btn, .btn-primary, .btn-secondary, .btn-orange, .btn-hire-now,
+.btn-dark-pill, .btn-white-pill, .btn-ghost, .btn-hero-primary,
+.btn-hero-secondary, .btn-hero-whatsapp {
+  min-height: 44px;
+}
+
+/* Focus-visible for keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Safe-area insets for notched phones */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }
 
 /* =========================================================================
@@ -500,6 +527,10 @@ button, input, select, textarea {
 @media (max-width: 768px) {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .container { padding-inline: var(--space-4); }
+}
+
+@media (max-width: 480px) {
+  .container { padding-inline: var(--space-3); }
 }
 
 .section-py {
@@ -887,6 +918,20 @@ button, input, select, textarea {
   overflow: hidden;
 }
 
+@media (max-width: 767px) {
+  .hero-section {
+    padding-top: 24px;
+    padding-bottom: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding-top: 16px;
+    padding-bottom: 48px;
+  }
+}
+
 .hero-blue-glow {
   position: absolute;
   top: 80px;
@@ -906,6 +951,21 @@ button, input, select, textarea {
   gap: 40px;
   align-items: center;
   margin-bottom: 64px;
+}
+
+@media (max-width: 900px) {
+  .hero-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-grid-layout {
+    gap: 36px;
+    margin-bottom: 36px;
+  }
 }
 
 .hero-left-content {
@@ -938,9 +998,51 @@ button, input, select, textarea {
   box-shadow: 0 0 8px var(--color-accent-500);
 }
 
+/* Kicker badge text: show full on desktop, short on mobile */
+.hero-kicker-short { display: none; }
+.hero-kicker-full  { display: inline; }
+
+@media (max-width: 480px) {
+  .hero-kicker-short { display: inline; }
+  .hero-kicker-full  { display: none; }
+}
+
+/* Floating cards row — flex container for mobile */
+.floating-cards-row {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floating-cards-row > .floating-stat-card {
+  pointer-events: auto;
+}
+
+@media (max-width: 900px) {
+  .floating-cards-row {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    pointer-events: auto;
+  }
+  .floating-cards-row > .floating-stat-card {
+    position: static !important;
+    transform: none !important;
+    flex: 1 1 calc(50% - 10px);
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-cards-row > .floating-stat-card {
+    flex: 1 1 100%;
+  }
+}
+
 .hero-main-title {
   font-family: var(--font-heading);
-  font-size: clamp(46px, 6.2vw, 76px);
+  font-size: clamp(38px, 6.2vw, 76px);
   font-weight: 900;
   letter-spacing: -0.045em;
   line-height: 0.98;
@@ -948,6 +1050,13 @@ button, input, select, textarea {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  .hero-main-title {
+    font-size: clamp(34px, 10vw, 46px);
+    letter-spacing: -0.03em;
+  }
 }
 
 .hero-word {
@@ -1046,6 +1155,16 @@ button, input, select, textarea {
   flex-wrap: wrap;
 }
 
+@media (max-width: 480px) {
+  .hero-tech-ribbon {
+    gap: 8px;
+  }
+  .hero-tech-pill {
+    font-size: 10.5px;
+    padding: 3px 8px;
+  }
+}
+
 .tech-ribbon-label {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -1088,11 +1207,30 @@ button, input, select, textarea {
   justify-content: center;
 }
 
+@media (max-width: 900px) {
+  .hero-right-visual {
+    order: -1;
+  }
+}
+
 .hero-visual-card-wrap {
   position: relative;
   width: 100%;
   max-width: 440px;
   transform: translateY(-18px);
+}
+
+@media (max-width: 900px) {
+  .hero-visual-card-wrap {
+    transform: none;
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-visual-card-wrap {
+    max-width: 100%;
+  }
 }
 
 .hero-terminal-box {
@@ -1197,6 +1335,61 @@ button, input, select, textarea {
 .card-bottom-left {
   bottom: -26px;
   left: 10px;
+}
+
+/* On mobile, float cards become a horizontal strip below the terminal */
+@media (max-width: 900px) {
+  .floating-stat-card {
+    position: static;
+    transform: none !important;
+    flex: 1;
+    min-width: 140px;
+    border-radius: 12px;
+    padding: 10px 14px;
+  }
+  .hero-visual-card-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .hero-terminal-box {
+    order: 0;
+  }
+  .card-top-left,
+  .card-bottom-right,
+  .card-bottom-left {
+    order: 1;
+  }
+  /* Re-arrange the 3 stat cards into a row */
+  .hero-visual-card-wrap > .floating-stat-card ~ .floating-stat-card ~ .floating-stat-card {
+    display: flex;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Group stat cards in a flex row */
+  .floating-cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-stat-card {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  .floating-stat-num {
+    font-size: 10px;
+  }
+  .floating-stat-lbl {
+    font-size: 10px;
+  }
+  .floating-icon-wrap {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .floating-icon-wrap {
@@ -1708,6 +1901,40 @@ button, input, select, textarea {
   align-items: center;
 }
 
+@media (max-width: 767px) {
+  .showcase-content-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .showcase-stats-column {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .showcase-stat-pill {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 16px;
+  }
+  .hero-image-backdrop {
+    min-height: auto;
+    padding: 24px 20px;
+  }
+  .hero-showcase-frame {
+    margin-top: 32px;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .showcase-stat-pill {
+    min-width: 100%;
+  }
+  .hero-overlay-card {
+    padding: 20px;
+  }
+}
+
 .hero-overlay-card {
   background: rgba(11, 31, 58, 0.85);
   backdrop-filter: blur(16px);
@@ -1823,5 +2050,74 @@ button, input, select, textarea {
 @media (max-width: 980px) {
   .showcase-content-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================================
+   GLOBAL RESPONSIVE POLISH — Final overrides
+   ========================================================================= */
+
+/* SEO strip dot separators hidden on xs (they wrap awkwardly) */
+@media (max-width: 480px) {
+  .seo-sep {
+    display: none;
+  }
+}
+
+/* Images always responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Section header margins scale on mobile */
+@media (max-width: 768px) {
+  .section-header {
+    margin-bottom: 32px;
+  }
+  .section-title {
+    font-size: clamp(26px, 7vw, 40px);
+  }
+  .section-title-ref {
+    font-size: clamp(28px, 8vw, 48px);
+  }
+  .section-subtitle {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header {
+    margin-bottom: 24px;
+  }
+  .section-title {
+    font-size: clamp(24px, 8vw, 34px);
+  }
+  .section-title-ref {
+    font-size: clamp(26px, 9vw, 38px);
+  }
+}
+
+/* Prevent horizontal scroll globally */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Improve text readability on small screens */
+@media (max-width: 480px) {
+  p, .body-text {
+    font-size: 15px;
+  }
+}
+
+/* Landscape phone optimizations */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    padding-top: 12px;
+    padding-bottom: 36px;
+  }
+  .hero-main-title {
+    font-size: clamp(28px, 5vw, 48px);
   }
 }

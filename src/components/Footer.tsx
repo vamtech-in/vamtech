@@ -96,22 +96,22 @@ export default function Footer() {
         </div>
 
         {/* SEO Topical Keyword Strip */}
-        <div style={{ padding: '24px 0', borderTop: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', flexWrap: 'wrap', gap: '8px 16px', fontSize: '12px', color: '#64748b' }}>
-          <span style={{ color: 'var(--color-accent-500)', fontWeight: 700 }}>POPULAR IN LUCKNOW:</span>
+        <div style={{ padding: '24px 0', borderTop: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', flexWrap: 'wrap', gap: '6px 12px', fontSize: '12px', color: '#64748b' }}>
+          <span style={{ color: 'var(--color-accent-500)', fontWeight: 700, width: '100%' }} className="seo-strip-label">POPULAR IN LUCKNOW:</span>
           <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Software Company in Lucknow</Link>
-          <span>•</span>
+          <span className="seo-sep">•</span>
           <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Best Software Development Company Lucknow</Link>
-          <span>•</span>
+          <span className="seo-sep">•</span>
           <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Web Development Company Lucknow</Link>
-          <span>•</span>
+          <span className="seo-sep">•</span>
           <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Mobile App Developers Lucknow</Link>
-          <span>•</span>
+          <span className="seo-sep">•</span>
           <Link href="/pricing" style={{ color: '#94a3b8', textDecoration: 'none' }}>Rapid MVP Sprints (₹24,999)</Link>
-          <span>•</span>
+          <span className="seo-sep">•</span>
           <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>AI Automation &amp; Custom LLMs</Link>
-          <span>•</span>
+          <span className="seo-sep">•</span>
           <Link href="/contact" style={{ color: '#94a3b8', textDecoration: 'none' }}>Hire Dedicated Developers Lucknow</Link>
-          <span>•</span>
+          <span className="seo-sep">•</span>
           <Link href="/about" style={{ color: '#94a3b8', textDecoration: 'none' }}>IT Company Tiwariganj Lucknow</Link>
         </div>
 
@@ -282,6 +282,30 @@ export default function Footer() {
         @media (max-width: 580px) {
           .footer-top-grid {
             grid-template-columns: 1fr;
+          }
+          .footer-ref-shell {
+            padding: 56px 0 28px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .footer-bottom-bar {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+          }
+          .footer-legal-links {
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+          }
+          .footer-top-grid {
+            margin-bottom: 40px;
+            gap: 32px;
+          }
+          .footer-brand-col {
+            max-width: 100%;
           }
         }
       `}</style>

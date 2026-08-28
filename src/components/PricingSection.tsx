@@ -153,18 +153,34 @@ export default function PricingSection() {
 
         @media (max-width: 1040px) {
           .pricing-cards-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr);
           }
         }
 
-        .pricing-ref-card {
-          border-radius: 24px;
-          padding: clamp(32px, 4vw, 48px);
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          transition: all 0.25s ease;
+        @media (max-width: 768px) {
+          .pricing-cards-grid {
+            grid-template-columns: 1fr;
+          }
+          .pricing-ref-card {
+            padding: 28px 24px;
+          }
+          .pricing-header {
+            margin-bottom: 36px;
+          }
         }
+
+        @media (max-width: 480px) {
+          .pricing-ref-card {
+            padding: 24px 20px;
+          }
+          .price-value {
+            font-size: clamp(36px, 10vw, 48px);
+          }
+          .card-plan-title {
+            font-size: clamp(20px, 6vw, 26px);
+          }
+        }
+
 
         .pricing-ref-card:hover {
           transform: translateY(-4px);

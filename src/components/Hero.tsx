@@ -26,7 +26,8 @@ export default function Hero() {
             {/* Top Startup Kicker Badge */}
             <div className="hero-kicker-badge">
               <span className="kicker-pulse" />
-              <span>BEST SOFTWARE COMPANY IN LUCKNOW • RAPID MVP SPRINTS</span>
+              <span className="hero-kicker-full">BEST SOFTWARE COMPANY IN LUCKNOW • RAPID MVP SPRINTS</span>
+              <span className="hero-kicker-short">LUCKNOW&apos;S BEST SOFTWARE CO.</span>
             </div>
 
             {/* Main Display Title */}
@@ -115,36 +116,39 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Floating Pill Card 1: 2-4 Week MVP */}
-              <div className="floating-stat-card card-top-left">
-                <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(255, 107, 53, 0.14)', color: 'var(--color-accent-500)' }}>
-                  <Zap size={18} />
+              {/* Floating stat cards — on mobile these stack as a flex row */}
+              <div className="floating-cards-row">
+                {/* Floating Pill Card 1: 2-4 Week MVP */}
+                <div className="floating-stat-card card-top-left">
+                  <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(255, 107, 53, 0.14)', color: 'var(--color-accent-500)' }}>
+                    <Zap size={18} />
+                  </div>
+                  <div>
+                    <div className="floating-stat-num">2-4 WEEKS</div>
+                    <div className="floating-stat-lbl">Rapid MVP Delivery</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="floating-stat-num">2-4 WEEKS</div>
-                  <div className="floating-stat-lbl">Rapid MVP Delivery</div>
-                </div>
-              </div>
 
-              {/* Floating Pill Card 2: 100% Code Ownership */}
-              <div className="floating-stat-card card-bottom-right">
-                <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
-                  <Shield size={18} />
+                {/* Floating Pill Card 2: 100% Code Ownership */}
+                <div className="floating-stat-card card-bottom-right">
+                  <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
+                    <Shield size={18} />
+                  </div>
+                  <div>
+                    <div className="floating-stat-num">100% OWNERSHIP</div>
+                    <div className="floating-stat-lbl">Full GitHub Source Code</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="floating-stat-num">100% OWNERSHIP</div>
-                  <div className="floating-stat-lbl">Full GitHub Source Code</div>
-                </div>
-              </div>
 
-              {/* Floating Pill Card 3: Direct Developer Sync */}
-              <div className="floating-stat-card card-bottom-left">
-                <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(0, 168, 232, 0.15)', color: 'var(--color-blue-500)' }}>
-                  <Code2 size={18} />
-                </div>
-                <div>
-                  <div className="floating-stat-num">DIRECT ACCESS</div>
-                  <div className="floating-stat-lbl">No Middlemen / Fast Sync</div>
+                {/* Floating Pill Card 3: Direct Developer Sync */}
+                <div className="floating-stat-card card-bottom-left">
+                  <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(0, 168, 232, 0.15)', color: 'var(--color-blue-500)' }}>
+                    <Code2 size={18} />
+                  </div>
+                  <div>
+                    <div className="floating-stat-num">DIRECT ACCESS</div>
+                    <div className="floating-stat-lbl">No Middlemen / Fast Sync</div>
+                  </div>
                 </div>
               </div>
             </div>

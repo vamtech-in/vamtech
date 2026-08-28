@@ -24,6 +24,16 @@ export default function Navbar() {
     setMobileMenuOpen(false);
   }, [pathname]);
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileMenuOpen]);
+
   const navLinks = [
     { name: 'Services', href: '/services' },
     { name: 'About Us', href: '/about' },
@@ -50,7 +60,7 @@ export default function Navbar() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            height: '80px',
+            height: '72px',
           }}
         >
           {/* Logo */}
@@ -110,28 +120,48 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Hamburger Button */}
+          {/* Mobile Hamburger Button — 44×44px touch target */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: '42px',
-              height: '42px',
+              width: '44px',
+              height: '44px',
               borderRadius: '50%',
               border: '1px solid rgba(0, 30, 80, 0.12)',
               backgroundColor: '#ffffff',
               color: 'var(--text-main)',
               cursor: 'pointer',
+              flexShrink: 0,
             }}
             className="mobile-hamburger-btn"
-            aria-label="Toggle navigation menu"
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
+
+      {/* Mobile Backdrop — click outside to close */}
+      {mobileMenuOpen && (
+        <div
+          onClick={() => setMobileMenuOpen(false)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            top: '72px',
+            backgroundColor: 'rgba(5, 14, 31, 0.4)',
+            backdropFilter: 'blur(2px)',
+            zIndex: -1,
+            animation: 'fadeIn 0.2s ease-out',
+          }}
+          className="mobile-backdrop mobile-drawer-container"
+          aria-hidden="true"
+        />
+      )}
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
@@ -140,19 +170,26 @@ export default function Navbar() {
             backgroundColor: '#ffffff',
             borderBottom: '1px solid #cbd5e1',
             boxShadow: '0 20px 30px rgba(0, 20, 60, 0.12)',
-            padding: '24px',
-            animation: 'fadeIn 0.2s ease-out',
+            padding: '16px 20px 20px',
+            animation: 'fadeInDown 0.2s ease-out',
+            maxHeight: 'calc(100vh - 72px)',
+            overflowY: 'auto',
           }}
           className="mobile-drawer-container"
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
             <Link
               href="/"
               style={{
                 fontSize: '16px',
                 fontWeight: pathname === '/' ? 800 : 600,
                 color: pathname === '/' ? 'var(--color-brand-blue)' : 'var(--text-main)',
-                padding: '8px 12px',
+                padding: '12px',
+                borderRadius: '10px',
+                backgroundColor: pathname === '/' ? 'rgba(0, 85, 255, 0.06)' : 'transparent',
+                minHeight: '44px',
+                display: 'flex',
+                alignItems: 'center',
               }}
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -168,9 +205,12 @@ export default function Navbar() {
                     fontSize: '16px',
                     fontWeight: isActive ? 800 : 600,
                     color: isActive ? 'var(--color-brand-blue)' : 'var(--text-main)',
-                    padding: '8px 12px',
-                    borderRadius: '8px',
+                    padding: '12px',
+                    borderRadius: '10px',
                     backgroundColor: isActive ? 'rgba(0, 85, 255, 0.08)' : 'transparent',
+                    display: 'flex',
+                    alignItems: 'center',
+                    minHeight: '44px',
                   }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -179,11 +219,11 @@ export default function Navbar() {
               );
             })}
 
-            <div style={{ paddingTop: '16px', borderTop: '1px solid #edf2f5' }}>
+            <div style={{ paddingTop: '12px', borderTop: '1px solid #edf2f5', marginTop: '8px' }}>
               <Link
                 href="/contact"
                 className="btn-hire-now"
-                style={{ width: '100%', justifyContent: 'center', padding: '14px' }}
+                style={{ width: '100%', justifyContent: 'center', padding: '14px', minHeight: '48px' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="status-dot" />
@@ -203,6 +243,9 @@ export default function Navbar() {
             display: none !important;
           }
           .mobile-drawer-container {
+            display: none !important;
+          }
+          .mobile-backdrop {
             display: none !important;
           }
         }

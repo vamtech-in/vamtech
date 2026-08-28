@@ -53,7 +53,7 @@ export default function AnnouncementBar({
         }}
       >
         {/* Left / Center announcement string */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1, minWidth: 0 }}>
           <span
             className="announcement-badge"
             style={{
@@ -61,22 +61,33 @@ export default function AnnouncementBar({
               borderRadius: '9999px',
               border: '1px solid rgba(255, 255, 255, 0.25)',
               fontSize: '11px',
-              textTransform: 'uppercase',
+              textTransform: 'uppercase' as const,
               letterSpacing: '-0.02em',
               fontWeight: 500,
               backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              whiteSpace: 'nowrap' as const,
+              flexShrink: 0,
             }}
           >
             {badge}
           </span>
-          <span className="announcement-message" style={{ color: 'var(--color-parchment)', opacity: 0.95 }}>
+          <span
+            className="announcement-message"
+            style={{
+              color: 'var(--color-parchment)',
+              opacity: 0.95,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap' as const,
+            }}
+          >
             {message}
           </span>
         </div>
 
         {/* Right CTA & Close Action */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexShrink: 0 }}>
-          <Link href={linkHref} className="btn-white-pill">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
+          <Link href={linkHref} className="btn-white-pill announcement-cta">
             <span>{linkText}</span>
             <ArrowRight size={12} />
           </Link>
@@ -92,9 +103,12 @@ export default function AnnouncementBar({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '4px',
+              width: '32px',
+              height: '32px',
+              minHeight: '32px',
               opacity: 0.8,
               transition: 'opacity 0.2s',
+              borderRadius: '6px',
             }}
             onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.8')}
@@ -103,6 +117,21 @@ export default function AnnouncementBar({
           </button>
         </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 480px) {
+          .announcement-cta {
+            display: none !important;
+          }
+          .announcement-message {
+            font-size: 11px;
+          }
+          .announcement-badge {
+            display: none;
+          }
+        }
+      `}</style>
     </aside>
+
   );
 }
