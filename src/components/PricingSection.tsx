@@ -97,7 +97,7 @@ export default function PricingSection() {
 
                 {/* Price Display */}
                 <div className="card-price-row">
-                  <span className="price-value">{plan.price}</span>
+                  <span className={`price-value ${plan.price.includes(' ') ? 'price-value-text' : ''}`}>{plan.price}</span>
                   <span className="price-period">{plan.period}</span>
                 </div>
 
@@ -144,43 +144,15 @@ export default function PricingSection() {
           line-height: 1.55;
         }
 
-        .pricing-cards-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 28px;
-          align-items: stretch;
+        .pricing-ref-card {
+          border-radius: 24px;
+          padding: 40px 32px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          transition: all 0.25s ease;
+          position: relative;
         }
-
-        @media (max-width: 1040px) {
-          .pricing-cards-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
-        @media (max-width: 768px) {
-          .pricing-cards-grid {
-            grid-template-columns: 1fr;
-          }
-          .pricing-ref-card {
-            padding: 28px 24px;
-          }
-          .pricing-header {
-            margin-bottom: 36px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .pricing-ref-card {
-            padding: 24px 20px;
-          }
-          .price-value {
-            font-size: clamp(36px, 10vw, 48px);
-          }
-          .card-plan-title {
-            font-size: clamp(20px, 6vw, 26px);
-          }
-        }
-
 
         .pricing-ref-card:hover {
           transform: translateY(-4px);
@@ -189,7 +161,7 @@ export default function PricingSection() {
         .card-dark {
           background-color: var(--color-primary-900);
           color: #ffffff;
-          border: 1px solid rgba(255, 107, 53, 0.2);
+          border: 1px solid rgba(255, 107, 53, 0.3);
           box-shadow: 0 20px 50px rgba(5, 14, 31, 0.35);
         }
 
@@ -225,10 +197,18 @@ export default function PricingSection() {
 
         .card-plan-title {
           font-family: var(--font-heading);
-          font-size: clamp(24px, 2.8vw, 32px);
+          font-size: clamp(24px, 2.4vw, 30px);
           font-weight: 900;
           letter-spacing: -0.04em;
           margin-bottom: 8px;
+        }
+
+        .card-dark .card-plan-title {
+          color: #ffffff !important;
+        }
+
+        .card-light .card-plan-title {
+          color: var(--color-primary-900) !important;
         }
 
         .card-plan-subtitle {
@@ -239,24 +219,25 @@ export default function PricingSection() {
         }
 
         .card-dark .card-plan-subtitle {
-          color: #94a3b8;
+          color: #cbd5e1 !important;
         }
 
         .card-light .card-plan-subtitle {
-          color: var(--color-gray-600);
+          color: var(--color-gray-600) !important;
         }
 
         .card-price-row {
           display: flex;
           align-items: baseline;
-          gap: 4px;
+          gap: 8px;
+          flex-wrap: wrap;
           padding-bottom: 24px;
           margin-bottom: 28px;
           border-bottom: 1px solid;
         }
 
         .card-dark .card-price-row {
-          border-color: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.12);
         }
 
         .card-light .card-price-row {
@@ -265,9 +246,15 @@ export default function PricingSection() {
 
         .price-value {
           font-family: var(--font-heading);
-          font-size: clamp(40px, 4.8vw, 54px);
+          font-size: clamp(38px, 4.2vw, 50px);
           font-weight: 900;
-          letter-spacing: -0.05em;
+          letter-spacing: -0.04em;
+          line-height: 1.1;
+        }
+
+        .price-value-text {
+          font-size: clamp(28px, 3.2vw, 36px);
+          line-height: 1.15;
         }
 
         .card-dark .price-value {
@@ -279,9 +266,16 @@ export default function PricingSection() {
         }
 
         .price-period {
-          font-size: 16px;
+          font-size: 15px;
           font-weight: 700;
-          color: #8c9ba8;
+        }
+
+        .card-dark .price-period {
+          color: #94a3b8;
+        }
+
+        .card-light .price-period {
+          color: #64748b;
         }
 
         .card-features-list {
@@ -299,7 +293,7 @@ export default function PricingSection() {
         }
 
         .card-dark .card-feature-item {
-          color: #c9d6e4;
+          color: #e2e8f0;
         }
 
         .card-light .card-feature-item {
@@ -327,9 +321,33 @@ export default function PricingSection() {
           color: #ffffff;
         }
 
-        @media (max-width: 820px) {
+        @media (max-width: 1040px) {
+          .pricing-cards-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 768px) {
           .pricing-cards-grid {
             grid-template-columns: 1fr;
+          }
+          .pricing-ref-card {
+            padding: 28px 24px;
+          }
+          .pricing-header {
+            margin-bottom: 36px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .pricing-ref-card {
+            padding: 24px 20px;
+          }
+          .price-value {
+            font-size: clamp(32px, 8vw, 42px);
+          }
+          .card-plan-title {
+            font-size: clamp(20px, 6vw, 26px);
           }
         }
       `}</style>
