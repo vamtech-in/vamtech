@@ -1,315 +1,146 @@
 'use client';
+/* eslint-disable @next/next/no-img-element */
 
 import React from 'react';
 import Link from 'next/link';
-import Logo from './Logo';
-import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { companyDetails } from '@/data/siteData';
 
 export default function Footer() {
   return (
-    <footer className="footer-ref-shell">
-      <div className="container">
-        {/* Main Footer Grid */}
+    <footer className="editorial-footer">
+      <div className="editorial-container">
+        {/* Top Grid */}
         <div className="footer-top-grid">
           {/* Brand Info */}
-          <div className="footer-brand-col">
-            <Link href="/" style={{ display: 'inline-block', marginBottom: '16px' }}>
-              <Logo size="md" inverted={true} />
-            </Link>
-            <p className="footer-brand-desc">
-              Building scalable digital products, cloud platforms, and intelligent software solutions for forward-thinking companies.
+          <div>
+            <div className="footer-brand-title" style={{ display: 'flex', alignItems: 'center', marginBottom: '18px' }}>
+              <img
+                src="/images/vamtech-logo-white.png"
+                alt="VAMTech"
+                style={{ height: '34px', width: 'auto', display: 'block' }}
+              />
+            </div>
+            <p className="footer-tagline-text">
+              Custom software development company focused on helping growing businesses build, launch and maintain digital products.
             </p>
-
-            <div className="footer-social-row">
-              <a href="https://linkedin.com/company/vamtech" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                  <rect width="4" height="12" x="2" y="9" />
-                  <circle cx="4" cy="4" r="2" />
-                </svg>
-              </a>
-              <a href="https://twitter.com/vamtech.in" target="_blank" rel="noreferrer" aria-label="Twitter">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
-              <a href="https://instagram.com/vamtech.in" target="_blank" rel="noreferrer" aria-label="Instagram">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                </svg>
-              </a>
-              <a href="https://github.com/vivekmaddy16" target="_blank" rel="noreferrer" aria-label="GitHub">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                  <path d="M9 18c-4.51 2-5-2-7-2" />
-                </svg>
-              </a>
-            </div>
           </div>
 
-          {/* Nav Links */}
-          <div className="footer-nav-col">
-            <h4>Capabilities</h4>
-            <ul>
-              <li><Link href="/services#software-development">Full-Stack Development</Link></li>
-              <li><Link href="/services#ai-automation">AI &amp; Automation</Link></li>
-              <li><Link href="/services#cloud-devops">Cloud &amp; DevOps</Link></li>
-              <li><Link href="/services#ui-ux-design">UI/UX Product Design</Link></li>
+          {/* Navigation */}
+          <div>
+            <h4 className="footer-col-title">Navigation</h4>
+            <ul className="footer-links-list">
+              <li>
+                <Link href="#works" className="footer-link-item">Works</Link>
+              </li>
+              <li>
+                <Link href="#services" className="footer-link-item">Services</Link>
+              </li>
+              <li>
+                <Link href="#about" className="footer-link-item">About</Link>
+              </li>
+              <li>
+                <Link href="#team" className="footer-link-item">Team</Link>
+              </li>
+              <li>
+                <Link href="#pricing" className="footer-link-item">Pricing</Link>
+              </li>
+              <li>
+                <Link href="#contact" className="footer-link-item">Contact</Link>
+              </li>
             </ul>
           </div>
 
-          <div className="footer-nav-col">
-            <h4>Company</h4>
-            <ul>
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/projects">Portfolio Case Studies</Link></li>
-              <li><Link href="/pricing">Pricing &amp; Engagement</Link></li>
-              <li><Link href="/contact">Contact Lead Team</Link></li>
+          {/* Services */}
+          <div>
+            <h4 className="footer-col-title">Services</h4>
+            <ul className="footer-links-list">
+              <li>
+                <Link href="#services" className="footer-link-item">Web & Commerce</Link>
+              </li>
+              <li>
+                <Link href="#services" className="footer-link-item">Mobile Apps</Link>
+              </li>
+              <li>
+                <Link href="#services" className="footer-link-item">CRM Systems</Link>
+              </li>
+              <li>
+                <Link href="#services" className="footer-link-item">ERP Software</Link>
+              </li>
+              <li>
+                <Link href="#services" className="footer-link-item">AI Solutions</Link>
+              </li>
+              <li>
+                <Link href="#services" className="footer-link-item">Hosting & SLA</Link>
+              </li>
             </ul>
           </div>
 
-          <div className="footer-nav-col">
-            <h4>Direct Channels</h4>
-            <div className="footer-contact-items">
-              <div>
-                <span>Email:</span>
-                <a href="mailto:contactvamtech@gmail.com">contactvamtech@gmail.com</a>
-              </div>
-              <div>
-                <span>Phone:</span>
-                <p>
-                  <a href="tel:+917237900686" style={{ color: 'inherit' }}>(+91) 72379 00686</a><br />
-                  <a href="tel:+917307386706" style={{ color: 'inherit' }}>(+91) 73073 86706</a><br />
-                  <a href="tel:+919170601664" style={{ color: 'inherit' }}>(+91) 9170601664</a><br />
-                  <a href="tel:+916394770500" style={{ color: 'inherit' }}>(+91) 63947 70500</a>
+          {/* Contact & Socials */}
+          <div>
+            <h4 className="footer-col-title">Direct Contact</h4>
+            <ul className="footer-links-list" style={{ marginBottom: '24px' }}>
+              <li>
+                <a href={`mailto:${companyDetails.email}`} className="footer-link-item">
+                  {companyDetails.email}
+                </a>
+              </li>
+              <li>
+                <a href={companyDetails.whatsappUrl} target="_blank" rel="noopener noreferrer" className="footer-link-item">
+                  {companyDetails.phone}
+                </a>
+              </li>
+              <li className="footer-link-item">
+                {companyDetails.address}
+              </li>
+            </ul>
 
-                </p>
-              </div>
-              <div>
-                <span>Location:</span>
-                <p>Tiwariganj, Lucknow (226028)</p>
-              </div>
+            <h4 className="footer-col-title">Social</h4>
+            <div style={{ display: 'flex', gap: '16px' }}>
+              <a
+                href={companyDetails.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-link-item"
+              >
+                LinkedIn ↗
+              </a>
+              <a
+                href={companyDetails.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-link-item"
+              >
+                Instagram ↗
+              </a>
+              <a
+                href={companyDetails.socials.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-link-item"
+              >
+                X ↗
+              </a>
             </div>
           </div>
         </div>
 
-        {/* SEO Topical Keyword Strip */}
-        <div style={{ padding: '24px 0', borderTop: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', flexWrap: 'wrap', gap: '6px 12px', fontSize: '12px', color: '#64748b' }}>
-          <span style={{ color: 'var(--color-accent-500)', fontWeight: 700, width: '100%' }} className="seo-strip-label">POPULAR IN LUCKNOW:</span>
-          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Software Company in Lucknow</Link>
-          <span className="seo-sep">•</span>
-          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Best Software Development Company Lucknow</Link>
-          <span className="seo-sep">•</span>
-          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Web Development Company Lucknow</Link>
-          <span className="seo-sep">•</span>
-          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>Mobile App Developers Lucknow</Link>
-          <span className="seo-sep">•</span>
-          <Link href="/pricing" style={{ color: '#94a3b8', textDecoration: 'none' }}>Rapid MVP Sprints (₹24,999)</Link>
-          <span className="seo-sep">•</span>
-          <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>AI Automation &amp; Custom LLMs</Link>
-          <span className="seo-sep">•</span>
-          <Link href="/contact" style={{ color: '#94a3b8', textDecoration: 'none' }}>Hire Dedicated Developers Lucknow</Link>
-          <span className="seo-sep">•</span>
-          <Link href="/about" style={{ color: '#94a3b8', textDecoration: 'none' }}>IT Company Tiwariganj Lucknow</Link>
-        </div>
-
-        {/* Exact Bottom Copyright Bar from Reference */}
+        {/* Bottom Bar */}
         <div className="footer-bottom-bar">
-          <p className="copyright-text">
-            © All Rights Reserved By <strong>VAMTech Pvt Ltd.</strong> | Custom Software &amp; AI Engineering
-          </p>
+          <div>
+            © {companyDetails.year} VAMTech Solutions. All rights reserved.
+          </div>
 
           <div className="footer-legal-links">
-            <Link href="/privacy">Privacy Policy</Link>
-            <span>•</span>
-            <Link href="/terms">Terms of Service</Link>
-            <span>•</span>
-            <Link href="/contact">Support</Link>
+            <Link href="/privacy" className="footer-link-item">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="footer-link-item">
+              Terms of Service
+            </Link>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .footer-ref-shell {
-          background-color: var(--color-primary-900);
-          color: #ffffff;
-          border-top: 1px solid rgba(255, 255, 255, 0.08);
-          padding: 80px 0 36px;
-          position: relative;
-        }
-
-        .footer-top-grid {
-          display: grid;
-          grid-template-columns: 1.3fr 0.9fr 0.9fr 1fr;
-          gap: 48px;
-          margin-bottom: 64px;
-        }
-
-        .footer-brand-col {
-          max-width: 320px;
-        }
-
-        .footer-brand-desc {
-          font-family: var(--font-body);
-          font-size: 14px;
-          line-height: 1.6;
-          color: #94a3b8;
-          margin-bottom: 24px;
-        }
-
-        .footer-social-row {
-          display: flex;
-          gap: 12px;
-        }
-
-        .footer-social-row a {
-          width: 38px;
-          height: 38px;
-          border-radius: 10px;
-          background: rgba(255, 255, 255, 0.06);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #ffffff;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          transition: all 0.2s ease;
-        }
-
-        .footer-social-row a:hover {
-          background: var(--color-accent-500);
-          border-color: var(--color-accent-500);
-          transform: translateY(-2px);
-        }
-
-        .footer-nav-col h4 {
-          font-family: var(--font-heading);
-          font-size: 15px;
-          font-weight: 800;
-          color: #ffffff;
-          letter-spacing: -0.01em;
-          margin-bottom: 20px;
-        }
-
-        .footer-nav-col ul {
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
-
-        .footer-nav-col ul li a {
-          font-family: var(--font-body);
-          font-size: 14px;
-          color: #8c9ba8;
-          transition: color 0.2s ease;
-        }
-
-        .footer-nav-col ul li a:hover {
-          color: var(--color-accent-400);
-        }
-
-        .footer-contact-items {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          font-size: 13.5px;
-          color: #8c9ba8;
-        }
-
-        .footer-contact-items span {
-          display: block;
-          font-size: 11px;
-          font-family: var(--font-mono);
-          color: #64748b;
-          text-transform: uppercase;
-        }
-
-        .footer-contact-items a {
-          color: var(--color-blue-400);
-        }
-
-        .footer-contact-items p {
-          color: #c0cad6;
-          margin: 0;
-        }
-
-        /* Bottom Bar */
-        .footer-bottom-bar {
-          padding-top: 32px;
-          border-top: 1px solid rgba(255, 255, 255, 0.08);
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          flex-wrap: wrap;
-          gap: 16px;
-          font-size: 13px;
-          color: #718096;
-        }
-
-        .copyright-text strong {
-          color: #ffffff;
-        }
-
-        .copyright-text em {
-          font-style: italic;
-          color: var(--color-accent-500);
-          font-weight: 700;
-        }
-
-        .footer-legal-links {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-        }
-
-        .footer-legal-links a {
-          color: #8c9ba8;
-          transition: color 0.2s ease;
-        }
-
-        .footer-legal-links a:hover {
-          color: #ffffff;
-        }
-
-        @media (max-width: 900px) {
-          .footer-top-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
-        @media (max-width: 580px) {
-          .footer-top-grid {
-            grid-template-columns: 1fr;
-          }
-          .footer-ref-shell {
-            padding: 56px 0 28px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .footer-bottom-bar {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 12px;
-          }
-          .footer-legal-links {
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-          }
-          .footer-top-grid {
-            margin-bottom: 40px;
-            gap: 32px;
-          }
-          .footer-brand-col {
-            max-width: 100%;
-          }
-        }
-      `}</style>
     </footer>
   );
 }
-

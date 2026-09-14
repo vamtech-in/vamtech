@@ -1,228 +1,140 @@
 'use client';
+/* eslint-disable @next/next/no-img-element */
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, Sparkles, Shield, Zap, Globe, Cpu, CheckCircle2, PhoneCall, Code2, Terminal } from 'lucide-react';
-
-const techStacks = [
-  { name: 'Next.js 15', icon: '⚡' },
-  { name: 'React & Native', icon: '⚛️' },
-  { name: 'TypeScript', icon: '🔷' },
-  { name: 'Node.js & Python', icon: '🟢' },
-  { name: 'AI & Automations', icon: '🤖' },
-  { name: 'AWS & Cloud Edge', icon: '☁️' },
-];
+import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="hero-section">
-      {/* Vibrant Background Lighting */}
-      <div className="hero-blue-glow" />
-
-      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        <div className="hero-grid-layout">
-          {/* Left Column: Typography & CTAs */}
-          <div className="hero-left-content">
-            {/* Top Startup Kicker Badge */}
-            <div className="hero-kicker-badge">
-              <span className="kicker-pulse" />
-              <span className="hero-kicker-full">BEST SOFTWARE COMPANY IN LUCKNOW • RAPID MVP SPRINTS</span>
-              <span className="hero-kicker-short">LUCKNOW&apos;S BEST SOFTWARE CO.</span>
+    <section className="morfikos-hero-section" id="hero">
+      <div className="editorial-container">
+        <div className="morfikos-hero-content">
+          {/* 1. "Trusted by founders." Row with 3 overlapping avatars */}
+          <div className="trusted-founders-badge">
+            <div className="founders-avatar-stack">
+              <img
+                src="/images/team/vivek-maddheshiya.png"
+                alt="Vivek Maddheshiya"
+                className="founder-avatar-img"
+              />
+              <img
+                src="/images/team/aditya-gupta.png"
+                alt="Aditya Gupta"
+                className="founder-avatar-img"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=120&auto=format&fit=crop"
+                alt="Founder"
+                className="founder-avatar-img"
+              />
             </div>
+            <span className="trusted-founders-text">Trusted by founders.</span>
+          </div>
 
-            {/* Main Display Title */}
-            <h1 className="hero-main-title">
-              <span className="hero-word">Software</span>
-              <span className="hero-word">Transform</span>
-              <span className="hero-word hero-accent-word">Accelerate</span>
-            </h1>
+          {/* 2. Main Editorial Display Headline with Inline Badges */}
+          <h1 className="morfikos-display-headline">
+              {/* Line 1: Custom [badge] Software */}
+              <span className="headline-line">
+                <span className="headline-word-bold">Custom</span>
+                <span
+                  className="hero-inline-badge hero-badge-orange-pill"
+                  style={{
+                    background: '#FF4400',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    position: 'relative',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '38px',
+                      height: '52px',
+                      background: '#EAE6DF',
+                      borderRadius: '5px',
+                      border: '1px solid #C4C0B8',
+                      padding: '4px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '3px',
+                      boxShadow: '0 2px 6px rgba(0,0,0,0.25)',
+                    }}
+                  >
+                    <div style={{ width: '100%', height: '5px', background: '#FF4400', borderRadius: '2px' }} />
+                    <div style={{ width: '70%', height: '3px', background: '#8A8680', borderRadius: '2px' }} />
+                    <div style={{ width: '90%', height: '3px', background: '#B8B4AC', borderRadius: '2px' }} />
+                    <div style={{ width: '60%', height: '3px', background: '#B8B4AC', borderRadius: '2px' }} />
+                    <div
+                      style={{
+                        marginTop: 'auto',
+                        width: '100%',
+                        height: '10px',
+                        background: '#111111',
+                        borderRadius: '2px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <span style={{ fontSize: '5px', color: '#FFF', fontFamily: 'monospace', fontWeight: 700, letterSpacing: '0.05em' }}>
+                        ENDPALA
+                      </span>
+                    </div>
+                  </div>
+                </span>
+                <span className="headline-word-accent">Software</span>
+              </span>
 
-            <p className="hero-subtitle">
-              Lucknow&apos;s premier custom software development agency. We help founders, startups, and enterprises build high-performance web applications, cross-platform mobile apps, SaaS MVPs, and AI automations in 2–4 weeks with 100% source code ownership.
+              {/* Line 2: for [badge] Growing Businesses */}
+              <span className="headline-line">
+                <span className="headline-word-muted">for</span>
+                <span className="hero-inline-badge hero-badge-circle">
+                  <img
+                    src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=240&auto=format&fit=crop"
+                    alt="Developer at computer"
+                    className="badge-cover-img"
+                  />
+                </span>
+                <span className="headline-word-bold">Growing Businesses</span>
+              </span>
+
+              {/* Line 3: based in [badge] India */}
+              <span className="headline-line">
+                <span className="headline-word-muted">based in</span>
+                <span className="hero-inline-badge hero-badge-circle">
+                  <img
+                    src="https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?q=80&w=240&auto=format&fit=crop"
+                    alt="Big Ben illuminated at night"
+                    className="badge-cover-img"
+                  />
+                </span>
+                <span className="headline-word-bold">India</span>
+              </span>
+          </h1>
+
+          {/* 3. Supporting Editorial Copy */}
+          <div className="morfikos-hero-subcopy">
+            <p>
+              VAMTech designs and builds websites, apps, and{' '}
+              <strong style={{ color: 'var(--text-primary)', fontWeight: 700 }}>
+                business software —
+              </strong>
+              <br />
+              then hosts and maintains it, so you never have to think about
+              &ldquo;what&apos;s next.&rdquo;
             </p>
-
-            {/* Primary & Secondary Action CTAs */}
-            <div className="hero-cta-group">
-              <Link href="/contact" className="btn-hero-primary">
-                <span>Start Your Project</span>
-                <ArrowRight size={16} />
-              </Link>
-
-              <Link href="/#pricing" className="btn-hero-secondary">
-                <span>View Plans (₹24,999)</span>
-              </Link>
-
-              <a
-                href="https://wa.me/917237900686?text=Hi%20VAMTech,%20I%20have%20a%20project%20inquiry"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-hero-whatsapp"
-                title="Chat on WhatsApp"
-              >
-                <span>💬 WhatsApp</span>
-              </a>
-            </div>
-
-            {/* Tech Stack Pills Ribbon */}
-            <div className="hero-tech-ribbon">
-              <span className="tech-ribbon-label">BUILT WITH:</span>
-              <div className="tech-pills-wrap">
-                {techStacks.map((tech) => (
-                  <div key={tech.name} className="hero-tech-pill">
-                    <span className="tech-pill-icon">{tech.icon}</span>
-                    <span>{tech.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
-          {/* Right Column: Dynamic Visual Composition & Floating Glass Cards */}
-          <div className="hero-right-visual">
-            <div className="hero-visual-card-wrap">
-              {/* Central Glowing Terminal Mockup */}
-              <div className="hero-terminal-box">
-                <div className="terminal-topbar">
-                  <div className="terminal-dots">
-                    <span className="t-dot t-red" />
-                    <span className="t-dot t-yellow" />
-                    <span className="t-dot t-green" />
-                  </div>
-                  <span className="terminal-filename">vamtech-startup-engine.ts</span>
-                  <div className="terminal-status">LIVE</div>
-                </div>
-
-                <div className="terminal-content">
-                  <p className="t-comment">{'// Launching next-gen web & AI platform'}</p>
-                  <p className="t-code">
-                    <span className="t-kw">const</span> <span className="t-var">project</span> = <span className="t-fn">createMVP</span>({'{'}
-                  </p>
-                  <p className="t-code t-indent">
-                    <span className="t-prop">stack</span>: [<span className="t-str">&apos;Next.js&apos;</span>, <span className="t-str">&apos;TypeScript&apos;</span>, <span className="t-str">&apos;AI&apos;</span>],
-                  </p>
-                  <p className="t-code t-indent">
-                    <span className="t-prop">velocity</span>: <span className="t-str">&apos;2–4 Weeks&apos;</span>,
-                  </p>
-                  <p className="t-code t-indent">
-                    <span className="t-prop">pricing</span>: <span className="t-num">&apos;₹24,999&apos;</span>,
-                  </p>
-                  <p className="t-code t-indent">
-                    <span className="t-prop">ownership</span>: <span className="t-num">100%</span>,
-                  </p>
-                  <p className="t-code">{'}'});</p>
-                  <p className="t-code t-success">
-                    ✓ <span className="t-fn">deployToProduction</span>({'{'} status: <span className="t-str">&apos;Online&apos;</span> {'}'});
-                  </p>
-                </div>
-              </div>
-
-              {/* Floating stat cards — on mobile these stack as a flex row */}
-              <div className="floating-cards-row">
-                {/* Floating Pill Card 1: 2-4 Week MVP */}
-                <div className="floating-stat-card card-top-left">
-                  <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(255, 107, 53, 0.14)', color: 'var(--color-accent-500)' }}>
-                    <Zap size={18} />
-                  </div>
-                  <div>
-                    <div className="floating-stat-num">2-4 WEEKS</div>
-                    <div className="floating-stat-lbl">Rapid MVP Delivery</div>
-                  </div>
-                </div>
-
-                {/* Floating Pill Card 2: 100% Code Ownership */}
-                <div className="floating-stat-card card-bottom-right">
-                  <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
-                    <Shield size={18} />
-                  </div>
-                  <div>
-                    <div className="floating-stat-num">100% OWNERSHIP</div>
-                    <div className="floating-stat-lbl">Full GitHub Source Code</div>
-                  </div>
-                </div>
-
-                {/* Floating Pill Card 3: Direct Developer Sync */}
-                <div className="floating-stat-card card-bottom-left">
-                  <div className="floating-icon-wrap" style={{ backgroundColor: 'rgba(0, 168, 232, 0.15)', color: 'var(--color-blue-500)' }}>
-                    <Code2 size={18} />
-                  </div>
-                  <div>
-                    <div className="floating-stat-num">DIRECT ACCESS</div>
-                    <div className="floating-stat-lbl">No Middlemen / Fast Sync</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Large Rounded Architectural Showcase Card from Reference */}
-        <div className="hero-showcase-frame">
-          <div className="hero-image-backdrop">
-            {/* Grid Lines Overlay */}
-            <div className="cityscape-overlay">
-              <div className="window-frame-lines">
-                <div className="window-pillar" />
-                <div className="window-pillar" />
-                <div className="window-pillar" />
-              </div>
-            </div>
-
-            {/* Left Blueprint Overview */}
-            <div className="showcase-content-grid">
-              <div className="hero-overlay-card">
-                <div className="overlay-badge">
-                  <span className="badge-pulse" />
-                  <span>STARTUP ENGINEERING LAB</span>
-                </div>
-                <h3 className="overlay-title">
-                  Turning bold ideas into scalable, production-ready software.
-                </h3>
-                <p className="overlay-desc">
-                  We build clean full-stack architectures, custom dashboards, mobile apps, and automated workflows with 100% transparent delivery.
-                </p>
-                <div style={{ marginTop: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
-                  <Link href="/projects" className="btn-white-pill">
-                    <span>Explore Work Demos</span>
-                    <ArrowRight size={15} color="var(--color-accent-500)" />
-                  </Link>
-                  <Link href="/contact" className="btn-dark-glass">
-                    <span>Get Free Consultation</span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right Side Live Metric Pillars */}
-              <div className="showcase-stats-column">
-                <div className="showcase-stat-pill">
-                  <div className="s-pill-dot" />
-                  <div>
-                    <h4>Milestone Based</h4>
-                    <p>Pay upon milestone approvals</p>
-                  </div>
-                </div>
-                <div className="showcase-stat-pill">
-                  <div className="s-pill-dot" />
-                  <div>
-                    <h4>Starting at ₹24,999</h4>
-                    <p>Affordable transparent packages</p>
-                  </div>
-                </div>
-                <div className="showcase-stat-pill">
-                  <div className="s-pill-dot" />
-                  <div>
-                    <h4>24/7 Founder Sync</h4>
-                    <p>Direct Slack, WhatsApp &amp; Calls</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* 4. Action CTA Button */}
+          <div className="morfikos-hero-cta">
+            <Link href="#contact" className="btn-morfikos-book">
+              <span>Book a Call</span>
+              <ArrowRight size={16} className="btn-arrow" />
+            </Link>
           </div>
         </div>
       </div>
     </section>
   );
 }
-
-
-
-

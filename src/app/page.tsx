@@ -1,48 +1,59 @@
 import React from 'react';
 import Hero from '@/components/Hero';
-import ServicesSection from '@/components/ServicesSection';
-import FeaturedProjects from '@/components/FeaturedProjects';
-import Stats from '@/components/Stats';
-import AudienceLens from '@/components/AudienceLens';
-import TestimonialsSection from '@/components/TestimonialsSection';
+import ClientLogos from '@/components/ClientLogos';
+import ServicesTicker from '@/components/ServicesTicker';
+import BrandStatement from '@/components/BrandStatement';
+import ServicesOverview from '@/components/ServicesOverview';
+import FeaturedWorks from '@/components/FeaturedWorks';
+import Testimonials from '@/components/Testimonials';
+import StatsSection from '@/components/StatsSection';
+import TeamSection from '@/components/TeamSection';
+import ProblemSolutionSection from '@/components/ProblemSolutionSection';
 import PricingSection from '@/components/PricingSection';
-import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import ContactSection from '@/components/ContactSection';
 
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero Section: "Software / Transform / Accelerate" */}
+      {/* 1. Hero Section: "Custom Software for Growing Businesses based in India" */}
       <Hero />
 
-      {/* 2. Technology & Services Section */}
-      <ServicesSection />
+      {/* 2. Trust / Client Logo Marquee: "Trusted by founders." */}
+      <ClientLogos />
 
-      {/* 3. Portfolio Section: 2x2 Grid + Detailed Phone & Monitor Showcases */}
-      <FeaturedProjects />
+      {/* 3. Services Scrolling Ticker with '✻' separators */}
+      <ServicesTicker />
 
-      {/* 4. Geometric Orange Stats Badges (382+, 14+, 180+) */}
-      <Stats />
+      {/* 4. Brand Statement with Progressive Scroll Word Highlight */}
+      <BrandStatement />
 
-      {/* 5. "We Work With" - 3 Black Cards with Neon Badges */}
-      <AudienceLens />
+      {/* 5. Services Overview: "What we do" (01 to 07 Interactive Desktop + Mobile Accordion) */}
+      <ServicesOverview />
 
-      {/* 6. "Community love us" - Testimonials with Quote Watermarks */}
-      <TestimonialsSection />
+      {/* 6. Featured Works: "Recent Works" (01 / 07 Slider with Scale Hover & Custom Cursor) */}
+      <FeaturedWorks />
 
-      {/* 7. "Hire us" - Comparative Pricing Cards ($3500/m. & $2000/m.) */}
+      {/* 7. Testimonials Carousel: "Why clients love Morfikos" */}
+      <Testimonials />
+
+      {/* 8. Bold Typographic Statistics Area */}
+      <StatsSection />
+
+      {/* 9. Team Section: "The people who build it" (Portrait Cards with Hover Reveal) */}
+      <TeamSection />
+
+      {/* 10. Problem → Solution 3-Column Table: "We turn business bottlenecks into better systems." */}
+      <ProblemSolutionSection />
+
+      {/* 11. Pricing Section: "Explore Pricing" (Essentials ₹20,000 & Custom Build) */}
       <PricingSection />
 
-      {/* 8. "Community's questions" - FAQ Accordion + Quick Inquiry */}
-      <FAQSection />
-
-      {/* 9. "Let's work together" - Pre-Footer Black Banner */}
+      {/* 12. Large Dark CTA Section: "Have a business problem worth solving?" */}
       <CTASection />
 
-      {/* 10. "Contact us" - Exact Image 1 Layout (White Card + Follow Doodle + Fieldset Form + 100% Badge) */}
+      {/* 13. Interactive Contact Intake Form: "Let's build something useful." */}
       <ContactSection />
     </>
   );
 }
-

@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import CommandPalette from '@/components/CommandPalette';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import JsonLd from '@/components/JsonLd';
+import CustomCursor from '@/components/CustomCursor';
 
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-253YX57JZ7';
 const gtmContainerId = (process.env.NEXT_PUBLIC_GTM_ID && process.env.NEXT_PUBLIC_GTM_ID !== 'GTM-XXXXXXX') ? process.env.NEXT_PUBLIC_GTM_ID : null;
@@ -14,7 +15,7 @@ const gtmContainerId = (process.env.NEXT_PUBLIC_GTM_ID && process.env.NEXT_PUBLI
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0b1f3a',
+  themeColor: '#F5F4EF',
 };
 
 const poppins = Poppins({
@@ -221,6 +222,7 @@ export default function RootLayout({
             />
           </noscript>
         ) : null}
+        <CustomCursor />
         <ScrollProgressBar />
         <Navbar />
         <main

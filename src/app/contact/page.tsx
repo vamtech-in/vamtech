@@ -6,7 +6,7 @@ import FAQSection from '@/components/FAQSection';
 export const metadata: Metadata = {
   title: 'Contact Us — Start a Project & Get Free Estimation | Lucknow & Global',
   description:
-    'Contact VAMTech software engineering team. Get a free project architecture consultation and cost estimate for custom web apps, mobile apps, or AI automation. WhatsApp / Call: +91 7237900686.',
+    'Contact VAMTech software engineering team. Get a free project architecture consultation and cost estimate for custom web apps, mobile apps, or AI automation. WhatsApp / Call: +91 7307386706.',
   keywords: [
     'Contact VAMTech',
     'Hire Software Developers in Lucknow',

@@ -12,7 +12,7 @@ export default function JsonLd() {
     description:
       'VAMTech is a premier custom software development, mobile app development, and AI automation company based in Lucknow, India, delivering rapid MVP sprints and enterprise engineering globally.',
     email: 'contactvamtech@gmail.com',
-    telephone: '+917237900686',
+    telephone: '+917307386706',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Tiwariganj',
@@ -30,7 +30,7 @@ export default function JsonLd() {
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: '+917237900686',
+        telephone: '+917307386706',
         contactType: 'sales and customer service',
         areaServed: ['IN', 'US', 'GB', 'CA', 'AE', 'AU', 'Worldwide'],
         availableLanguage: ['English', 'Hindi'],
@@ -51,7 +51,7 @@ export default function JsonLd() {
     ],
     image: 'https://www.vamtech.in/favicon.svg',
     url: 'https://www.vamtech.in',
-    telephone: '+917237900686',
+    telephone: '+917307386706',
     priceRange: '₹24,999 - ₹2,50,000+',
     hasMap: 'https://maps.google.com/?q=VAMTech+Tiwariganj+Faizabad+Road+Lucknow+226028',
     address: {
