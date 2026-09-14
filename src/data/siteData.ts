@@ -378,7 +378,7 @@ export const teamData: TeamMember[] = [
     name: 'Aniket Kumar',
     role: 'CEO · Commercial',
     bio: 'Directs product strategy, commercial scoping, and long-term client partnerships. Ensures every line of code connects directly to business growth.',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop',
+    image: '/images/team/aniket-kumar.jpg',
     skills: ['Product Strategy', 'Commercial Scoping', 'Growth Architecture'],
   },
   {
