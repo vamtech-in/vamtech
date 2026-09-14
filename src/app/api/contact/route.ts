@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { randomUUID } from 'crypto';
 import fs from 'fs';
 import path from 'path';
 import nodemailer from 'nodemailer';
@@ -43,6 +44,16 @@ function saveLeads(leads: any[]) {
   }
 }
 
+// HTML-escape user input to prevent XSS in email templates
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 // Basic in-memory rate limiting (10 submissions per minute per IP)
 const ipTracker = new Map<string, { count: number; resetAt: number }>();
 function checkRateLimit(ip: string): boolean {
@@ -61,7 +72,8 @@ function checkRateLimit(ip: string): boolean {
 
 function isAuthorizedAdmin(request: Request) {
   const adminKey = (request.headers.get('x-admin-key') || '').trim();
-  const expectedKey = (process.env.ADMIN_PASSWORD || 'Vamtech@Admin#2026').trim();
+  const expectedKey = (process.env.ADMIN_PASSWORD || '').trim();
+  // If ADMIN_PASSWORD is not set in env, deny all admin access
   if (!adminKey || !expectedKey) return false;
   return adminKey === expectedKey;
 }
@@ -87,7 +99,16 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { name, email, company, role, phone, serviceInterest, budgetRange, timeline, message } = body;
+    const { name, email, company, role, phone, serviceInterest, budgetRange, timeline, message, _honeypot } = body;
+
+    // Honeypot bot detection — if the hidden field is filled, silently reject
+    if (_honeypot) {
+      // Return a fake success to fool bots
+      return NextResponse.json(
+        { success: true, message: 'Thank you for your inquiry.', leadId: `LEAD-${Date.now()}` },
+        { status: 200 }
+      );
+    }
 
     // Input sanitization & limits
     const cleanName = String(name || '').trim().slice(0, 100);
@@ -122,10 +143,42 @@ export async function POST(request: Request) {
       );
     }
 
+    // HTML-escape all user input for safe email template injection
+    const safeName = escapeHtml(cleanName);
+    const safeEmail = escapeHtml(cleanEmail);
+    const safeCompany = escapeHtml(cleanCompany);
+    const safeRole = escapeHtml(cleanRole);
+    const safePhone = escapeHtml(cleanPhone);
+    const safeService = escapeHtml(cleanService);
+    const safeBudget = escapeHtml(cleanBudget);
+    const safeTimeline = escapeHtml(cleanTimeline);
+    const safeMessage = escapeHtml(cleanMessage);
+
     let emailSent = false;
     const deliveryLogs: string[] = [];
 
     const recipientEmail = process.env.NOTIFICATION_EMAIL || process.env.CONTACT_EMAIL || 'contactvamtech@gmail.com';
+
+    // Reusable escaped HTML email body
+    const emailHtmlBody = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
+        <h2 style="color: #0055ff; margin-top: 0;">🚀 New Project Intake Inquiry</h2>
+        <hr style="border: 0; border-top: 1px solid #eee;" />
+        <p><strong>Client Name:</strong> ${safeName}</p>
+        <p><strong>Client Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
+        <p><strong>Phone Number:</strong> ${safePhone || 'Not provided'}</p>
+        <p><strong>Company / Role:</strong> ${safeCompany || 'Individual'} (${safeRole || 'Lead'})</p>
+        <p><strong>Service Interest:</strong> ${safeService}</p>
+        <p><strong>Budget Tier:</strong> ${safeBudget}</p>
+        <p><strong>Target Timeline:</strong> ${safeTimeline}</p>
+        <p><strong>Architecture Brief / Message:</strong></p>
+        <blockquote style="background: #f9f9f9; padding: 12px; border-left: 4px solid #0055ff; margin: 0;">
+          ${safeMessage}
+        </blockquote>
+        <hr style="border: 0; border-top: 1px solid #eee; margin-top: 20px;" />
+        <p style="font-size: 12px; color: #888;">Dispatched automatically by Vamtech Web Portal.</p>
+      </div>
+    `;
 
     // 1. Nodemailer / Direct SMTP Integration (Gmail / Custom SMTP)
     const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
@@ -143,29 +196,11 @@ export async function POST(request: Request) {
         });
 
         await transporter.sendMail({
-          from: `"${cleanName} via Vamtech" <${smtpUser}>`,
+          from: `"${safeName} via Vamtech" <${smtpUser}>`,
           to: recipientEmail,
           replyTo: cleanEmail,
-          subject: `[Vamtech Lead] ${cleanName} (${cleanCompany || 'Individual'}) - ${cleanService}`,
-          html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
-              <h2 style="color: #0055ff; margin-top: 0;">🚀 New Project Intake Inquiry</h2>
-              <hr style="border: 0; border-top: 1px solid #eee;" />
-              <p><strong>Client Name:</strong> ${cleanName}</p>
-              <p><strong>Client Email:</strong> <a href="mailto:${cleanEmail}">${cleanEmail}</a></p>
-              <p><strong>Phone Number:</strong> ${cleanPhone || 'Not provided'}</p>
-              <p><strong>Company / Role:</strong> ${cleanCompany || 'Individual'} (${cleanRole || 'Lead'})</p>
-              <p><strong>Service Interest:</strong> ${cleanService}</p>
-              <p><strong>Budget Tier:</strong> ${cleanBudget}</p>
-              <p><strong>Target Timeline:</strong> ${cleanTimeline}</p>
-              <p><strong>Architecture Brief / Message:</strong></p>
-              <blockquote style="background: #f9f9f9; padding: 12px; border-left: 4px solid #0055ff; margin: 0;">
-                ${cleanMessage}
-              </blockquote>
-              <hr style="border: 0; border-top: 1px solid #eee; margin-top: 20px;" />
-              <p style="font-size: 12px; color: #888;">Dispatched automatically by Vamtech Web Portal.</p>
-            </div>
-          `,
+          subject: `[Vamtech Lead] ${safeName} (${safeCompany || 'Individual'}) - ${safeService}`,
+          html: emailHtmlBody,
         });
         emailSent = true;
         deliveryLogs.push(`Nodemailer SMTP: Sent email directly to ${recipientEmail}`);
@@ -191,26 +226,8 @@ export async function POST(request: Request) {
             from: senderEmail,
             to: [recipientEmail],
             reply_to: cleanEmail,
-            subject: `[Vamtech Lead] ${cleanName} from ${cleanCompany || 'Individual'} (${cleanService})`,
-            html: `
-              <div style="font-family: Arial, sans-serif; max-width: 600px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
-                <h2 style="color: #0055ff; margin-top: 0;">🚀 New Project Intake Inquiry</h2>
-                <hr style="border: 0; border-top: 1px solid #eee;" />
-                <p><strong>Client Name:</strong> ${cleanName}</p>
-                <p><strong>Client Email:</strong> <a href="mailto:${cleanEmail}">${cleanEmail}</a></p>
-                <p><strong>Phone Number:</strong> ${cleanPhone || 'Not provided'}</p>
-                <p><strong>Company / Role:</strong> ${cleanCompany || 'Individual'} (${cleanRole || 'Lead'})</p>
-                <p><strong>Service Interest:</strong> ${cleanService}</p>
-                <p><strong>Budget Tier:</strong> ${cleanBudget}</p>
-                <p><strong>Target Timeline:</strong> ${cleanTimeline}</p>
-                <p><strong>Architecture Brief / Message:</strong></p>
-                <blockquote style="background: #f9f9f9; padding: 12px; border-left: 4px solid #0055ff; margin: 0;">
-                  ${cleanMessage}
-                </blockquote>
-                <hr style="border: 0; border-top: 1px solid #eee; margin-top: 20px;" />
-                <p style="font-size: 12px; color: #888;">Dispatched automatically by Vamtech Web Portal.</p>
-              </div>
-            `,
+            subject: `[Vamtech Lead] ${safeName} from ${safeCompany || 'Individual'} (${safeService})`,
+            html: emailHtmlBody,
           }),
         });
 
@@ -289,7 +306,7 @@ export async function POST(request: Request) {
     }
 
     const leadRecord = {
-      id: `LEAD-${Date.now().toString().slice(-6)}`,
+      id: `LEAD-${randomUUID().slice(0, 8).toUpperCase()}`,
       receivedAt: new Date().toISOString(),
       name: cleanName,
       email: cleanEmail,
@@ -357,7 +374,3 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }
 }
-
-
-
-

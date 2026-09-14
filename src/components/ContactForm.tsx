@@ -23,9 +23,10 @@ export default function ContactForm() {
     company: '',
     role: '',
     serviceInterest: 'Custom Enterprise Software',
-    budgetRange: '$20k – $50k',
+    budgetRange: '₹25K – ₹50K',
     timeline: 'Within 1–2 Months',
     message: '',
+    _honeypot: '',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -203,9 +204,10 @@ export default function ContactForm() {
                   company: '',
                   role: '',
                   serviceInterest: 'Custom Enterprise Software',
-                  budgetRange: '$20k – $50k',
+                  budgetRange: '₹25K – ₹50K',
                   timeline: 'Within 1–2 Months',
                   message: '',
+                  _honeypot: '',
                 });
               }}
               className="btn-ghost"
@@ -310,10 +312,10 @@ export default function ContactForm() {
                 onChange={(e) => setFormData({ ...formData, budgetRange: e.target.value })}
                 className="monad-select"
               >
-                <option value="Under $20k">Under $20k (Sprint Audit)</option>
-                <option value="$20k – $50k">$20k – $50k (MVP Sprint)</option>
-                <option value="$50k – $150k">$50k – $150k (Dedicated Squad)</option>
-                <option value="$150k+">$150k+ (Enterprise Overhaul)</option>
+                <option value="Under ₹25K">Under ₹25K (Sprint Audit)</option>
+                <option value="₹25K – ₹50K">₹25K – ₹50K (MVP Sprint)</option>
+                <option value="₹50K – ₹1L">₹50K – ₹1L (Dedicated Squad)</option>
+                <option value="₹1L+">₹1L+ (Enterprise Build)</option>
               </select>
             </div>
           </div>
@@ -341,6 +343,20 @@ export default function ContactForm() {
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               className="monad-textarea"
+            />
+          </div>
+
+          {/* Honeypot field — hidden from real users, filled by bots */}
+          <div style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }} aria-hidden="true">
+            <label htmlFor="_honeypot">Do not fill this field</label>
+            <input
+              id="_honeypot"
+              type="text"
+              name="_honeypot"
+              tabIndex={-1}
+              autoComplete="off"
+              value={formData._honeypot}
+              onChange={(e) => setFormData({ ...formData, _honeypot: e.target.value })}
             />
           </div>
 
@@ -446,10 +462,10 @@ export default function ContactForm() {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
                   {[
-                    'Tomorrow, 10:00 AM',
-                    'Tomorrow, 2:00 PM',
-                    'Day after tomorrow, 11:30 AM',
-                    'Day after tomorrow, 4:00 PM',
+                    'Tomorrow, 10:00 AM IST',
+                    'Tomorrow, 2:00 PM IST',
+                    'Day after tomorrow, 11:30 AM IST',
+                    'Day after tomorrow, 4:00 PM IST',
                   ].map((slot) => (
                     <button
                       key={slot}

@@ -6,7 +6,7 @@ export default function JsonLd() {
     '@type': 'Organization',
     '@id': 'https://www.vamtech.in/#organization',
     name: 'VAMTech Technologies',
-    alternateName: ['VAMTech', 'VAMTech LLC', 'VAMTech Software'],
+    alternateName: ['VAMTech', 'VAMTech Technologies', 'VAMTech Software'],
     url: 'https://www.vamtech.in',
     logo: 'https://www.vamtech.in/favicon.svg',
     description:
@@ -23,8 +23,8 @@ export default function JsonLd() {
     },
     sameAs: [
       'https://github.com/vamtech-in',
-      'https://linkedin.com/company/vamtech',
-      'https://twitter.com/vamtech_io',
+      'https://linkedin.com/company/vamtech-solutions',
+      'https://x.com/vamtech_in',
       'https://instagram.com/vamtech.in',
     ],
     contactPoint: [

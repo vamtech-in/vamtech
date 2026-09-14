@@ -6,8 +6,8 @@ import { ArrowLeft, ArrowUpRight, ArrowRight } from 'lucide-react';
 import { projectsData } from '@/data/siteData';
 
 export const metadata: Metadata = {
-  title: 'Works & Case Studies — Morfikos',
-  description: 'Selected digital products, e-commerce platforms, mobile applications, and enterprise ERP systems built and maintained by Morfikos.',
+  title: 'Works & Case Studies — VAMTech',
+  description: 'Selected digital products, e-commerce platforms, mobile applications, and enterprise ERP systems built and maintained by VAMTech.',
 };
 
 export default function WorksPage() {

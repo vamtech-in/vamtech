@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
-import { Poppins, Inter, Fira_Code, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
+import { Poppins, Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -32,24 +32,10 @@ const inter = Inter({
   display: 'swap',
 });
 
-const firaCode = Fira_Code({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-mono',
-  display: 'swap',
-});
-
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-sans',
-  display: 'swap',
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-mono-alt',
   display: 'swap',
 });
 
@@ -145,17 +131,9 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${poppins.variable} ${inter.variable} ${firaCode.variable} ${plusJakarta.variable} ${jetbrainsMono.variable}`}
+      className={`${poppins.variable} ${inter.variable} ${plusJakarta.variable}`}
     >
       <head>
-        <meta
-          name="google-site-verification"
-          content="bsvWlgXxqFFkRu7Q0Tuqd5SDjB-ctvgNL4hgM8Eooqk"
-        />
-        <meta name="geo.region" content="IN-UP" />
-        <meta name="geo.placename" content="Lucknow" />
-        <meta name="geo.position" content="26.8927;81.0422" />
-        <meta name="ICBM" content="26.8927, 81.0422" />
         <JsonLd />
         {gaMeasurementId ? (
           <>

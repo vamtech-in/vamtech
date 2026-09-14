@@ -52,7 +52,7 @@ export default function Testimonials() {
             {/* Navigation Buttons & Number Indicator */}
             <div className="testimonial-nav-group">
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: '14px', color: 'var(--text-secondary)' }}>
-                0{currentIndex + 1} / 0{total}
+                {String(currentIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
               </span>
 
               <div style={{ display: 'flex', gap: '8px' }}>

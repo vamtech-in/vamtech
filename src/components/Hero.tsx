@@ -72,15 +72,8 @@ export default function Hero() {
                         height: '10px',
                         background: '#111111',
                         borderRadius: '2px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
                       }}
-                    >
-                      <span style={{ fontSize: '5px', color: '#FFF', fontFamily: 'monospace', fontWeight: 700, letterSpacing: '0.05em' }}>
-                        ENDPALA
-                      </span>
-                    </div>
+                    />
                   </div>
                 </span>
                 <span className="headline-word-accent">Software</span>
@@ -104,8 +97,8 @@ export default function Hero() {
                 <span className="headline-word-muted">based in</span>
                 <span className="hero-inline-badge hero-badge-circle">
                   <img
-                    src="https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?q=80&w=240&auto=format&fit=crop"
-                    alt="Big Ben illuminated at night"
+                    src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=240&auto=format&fit=crop"
+                    alt="Taj Mahal, India"
                     className="badge-cover-img"
                   />
                 </span>

@@ -128,7 +128,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="footer-bottom-bar">
           <div>
-            © {companyDetails.year} VAMTech Solutions. All rights reserved.
+            © {companyDetails.year} VAMTech Technologies. All rights reserved.
           </div>
 
           <div className="footer-legal-links">

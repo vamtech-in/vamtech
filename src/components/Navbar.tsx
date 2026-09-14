@@ -61,23 +61,23 @@ export default function Navbar() {
 
             {/* Center Navigation Links */}
             <nav className="morfikos-nav-center">
-              <Link href="#works" className="morfikos-nav-link">
+              <Link href="/#works" className="morfikos-nav-link">
                 Works
               </Link>
-              <Link href="#services" className="morfikos-nav-link">
+              <Link href="/#services" className="morfikos-nav-link">
                 Services
               </Link>
-              <Link href="#about" className="morfikos-nav-link">
+              <Link href="/#about" className="morfikos-nav-link">
                 About
               </Link>
-              <Link href="#contact" className="morfikos-nav-link">
+              <Link href="/#contact" className="morfikos-nav-link">
                 Contact
               </Link>
             </nav>
 
             {/* Right: Pill Button 'Let's Connect' */}
             <div className="morfikos-nav-right">
-              <Link href="#contact" className="btn-morfikos-connect">
+              <Link href="/#contact" className="btn-morfikos-connect">
                 Let&apos;s Connect
               </Link>
 
@@ -100,22 +100,22 @@ export default function Navbar() {
       <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'open' : ''}`}>
         <ul className="mobile-nav-list">
           <li>
-            <Link href="#works" className="mobile-nav-item" onClick={closeMenu}>
+            <Link href="/#works" className="mobile-nav-item" onClick={closeMenu}>
               Works
             </Link>
           </li>
           <li>
-            <Link href="#services" className="mobile-nav-item" onClick={closeMenu}>
+            <Link href="/#services" className="mobile-nav-item" onClick={closeMenu}>
               Services
             </Link>
           </li>
           <li>
-            <Link href="#about" className="mobile-nav-item" onClick={closeMenu}>
+            <Link href="/#about" className="mobile-nav-item" onClick={closeMenu}>
               About
             </Link>
           </li>
           <li>
-            <Link href="#contact" className="mobile-nav-item" onClick={closeMenu}>
+            <Link href="/#contact" className="mobile-nav-item" onClick={closeMenu}>
               Contact
             </Link>
           </li>
@@ -123,7 +123,7 @@ export default function Navbar() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <Link
-            href="#contact"
+            href="/#contact"
             className="btn-morfikos-connect"
             style={{ textAlign: 'center', width: '100%', padding: '16px' }}
             onClick={closeMenu}

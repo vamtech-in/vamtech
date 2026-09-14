@@ -34,7 +34,7 @@ export default function HomePage() {
       {/* 6. Featured Works: "Recent Works" (01 / 07 Slider with Scale Hover & Custom Cursor) */}
       <FeaturedWorks />
 
-      {/* 7. Testimonials Carousel: "Why clients love Morfikos" */}
+      {/* 7. Testimonials Carousel: "Why clients love VAMTech" */}
       <Testimonials />
 
       {/* 8. Bold Typographic Statistics Area */}
