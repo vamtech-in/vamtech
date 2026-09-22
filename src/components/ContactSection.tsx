@@ -92,6 +92,14 @@ export default function ContactSection() {
                 <span className="contact-point-label">Studio Location</span>
                 <span className="contact-point-val">{companyDetails.address}</span>
               </div>
+
+              <div className="contact-point-item">
+                <span className="contact-point-label">Enterprise Registration</span>
+                <span className="contact-point-val" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--color-brand-blue, #0055ff)', display: 'inline-block' }} />
+                  MSME: {companyDetails.udyamRegistration}
+                </span>
+              </div>
             </div>
           </div>
 

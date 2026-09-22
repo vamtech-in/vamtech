@@ -24,6 +24,37 @@ export default function Footer() {
             <p className="footer-tagline-text">
               Custom software development company focused on helping growing businesses build, launch and maintain digital products.
             </p>
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                marginTop: '16px',
+                padding: '6px 12px',
+                borderRadius: '6px',
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                fontSize: '11.5px',
+                color: '#94a3b8',
+                letterSpacing: '0.02em',
+              }}
+            >
+              <span
+                style={{
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  backgroundColor: '#22c55e',
+                  boxShadow: '0 0 8px rgba(34, 197, 94, 0.6)',
+                }}
+              />
+              <span>
+                Govt. of India MSME:{' '}
+                <strong style={{ color: '#f8fafc', fontWeight: 600 }}>
+                  {companyDetails.udyamRegistration}
+                </strong>
+              </span>
+            </div>
           </div>
 
           {/* Navigation */}
@@ -127,8 +158,12 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="footer-bottom-bar">
-          <div>
-            © {companyDetails.year} VAMTech Technologies. All rights reserved.
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+            <span>© {companyDetails.year} VAMTech Technologies. All rights reserved.</span>
+            <span style={{ color: 'rgba(255, 255, 255, 0.2)' }}>•</span>
+            <span style={{ fontSize: '12px', color: '#94a3b8' }}>
+              MSME Reg: {companyDetails.udyamRegistration}
+            </span>
           </div>
 
           <div className="footer-legal-links">

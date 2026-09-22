@@ -518,9 +518,11 @@ export const companyDetails = {
   phone: '+91 73073 86706',
   whatsappUrl: 'https://wa.me/917307386706?text=Hi%20VAMTech,%20I%20would%20like%20to%20discuss%20a%20project',
   address: 'Lucknow, Uttar Pradesh, India',
+  udyamRegistration: 'UDYAM-I-UP-51-1268025',
+  registrationType: 'Govt. of India MSME Registered',
   socials: {
-    linkedin: 'https://linkedin.com/company/vamtech-solutions',
-    twitter: 'https://x.com/vamtech_in',
+    linkedin: '#',
+    twitter: '#',
     instagram: 'https://instagram.com/vamtech.in',
   },
   year: '2026',

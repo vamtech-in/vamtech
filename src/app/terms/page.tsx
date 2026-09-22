@@ -49,7 +49,7 @@ export default function TermsPage() {
           </h1>
 
           <p style={{ marginBottom: '32px', fontSize: '12px', fontFamily: 'var(--font-mono)', color: '#64748b' }}>
-            LAST REVISED: FEBRUARY 2026 • VAMTECH TECHNOLOGIES INC.
+            LAST REVISED: FEBRUARY 2026 • VAMTECH SOFTWARE SOLUTIONS (UDYAM: UDYAM-I-UP-51-1268025)
           </p>
 
           <div
@@ -67,7 +67,7 @@ export default function TermsPage() {
                 1. Acceptance of Terms
               </h2>
               <p>
-                By accessing this website or engaging VAMTech Technologies Inc. (&ldquo;VAMTech&rdquo;) for custom software engineering, cloud infrastructure, or AI architecture services, you agree to be bound by these Terms of Service.
+                By accessing this website or engaging VAMTech Software Solutions (Govt. of India MSME Registered: <strong>UDYAM-I-UP-51-1268025</strong>, &ldquo;VAMTech&rdquo;) for custom software engineering, cloud infrastructure, or AI architecture services, you agree to be bound by these Terms of Service.
               </p>
             </section>
 

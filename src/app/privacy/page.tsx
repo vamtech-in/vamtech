@@ -50,7 +50,7 @@ export default function PrivacyPage() {
           </h1>
 
           <p style={{ marginBottom: '32px', fontSize: '12px', fontFamily: 'var(--font-mono)', color: '#64748b' }}>
-            LAST REVISED: FEBRUARY 2026 • VAMTECH TECHNOLOGIES INC.
+            LAST REVISED: FEBRUARY 2026 • VAMTECH SOFTWARE SOLUTIONS (UDYAM: UDYAM-I-UP-51-1268025)
           </p>
 
           <div
@@ -65,10 +65,10 @@ export default function PrivacyPage() {
           >
             <section>
               <h2 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--text-main)', marginBottom: '10px' }}>
-                1. Overview & Scope
+                1. Overview &amp; Scope
               </h2>
               <p>
-                Vamtech Technologies Inc. (&ldquo;Vamtech&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) is dedicated to protecting client confidential data, project intellectual property, and personal information in accordance with global data protection standards, including GDPR and CCPA.
+                VAMTech Software Solutions (Govt. of India MSME Registered: <strong>UDYAM-I-UP-51-1268025</strong>, &ldquo;VAMTech&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) is dedicated to protecting client confidential data, project intellectual property, and personal information in accordance with global data protection standards, including GDPR and CCPA.
               </p>
             </section>
 

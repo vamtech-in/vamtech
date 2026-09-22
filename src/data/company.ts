@@ -21,6 +21,11 @@ export interface CompanyInfo {
     linkedin: string;
     twitter: string;
   };
+  registration?: {
+    type: string;
+    udyamNumber: string;
+    label: string;
+  };
   mission: string;
   vision: string;
   coreValues: {
@@ -66,6 +71,11 @@ export const companyData: CompanyInfo = {
     phone: '+91 7307386706 / +91 6394770500',
     address: 'Tiwariganj, Lucknow (226028)',
     hours: 'Monday – Saturday, 9:00 AM – 8:00 PM IST',
+  },
+  registration: {
+    type: 'Govt. of India MSME',
+    udyamNumber: 'UDYAM-I-UP-51-1268025',
+    label: 'Udyam Registered Enterprise',
   },
   social: {
     github: 'https://github.com/vamtech-in',
